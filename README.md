@@ -5,6 +5,8 @@ An Android app for scouting at FIRST Robotics Competitions
 [![Number of issues](https://img.shields.io/github/issues/wildstang/wildrank-android.svg)](https://github.com/wildstang/wildrank-android/issues)
 
 Created by Team 111 WildStang.
+Fork for 2024 by Team 2767 Stryke Force
+Readme to be updated later
 
 ##***Important note***
 Team 111 WildStang has only used this app with Motorola Xooms flashed with an AOSP 4.2.2 ROM. This will likely function on other devices, as long as those devices support USB OTG. The only thing likely to change between devices is the mount path of the flash drive. This is not a standardized Android feature. To configure this for your specific setup, you should only have to change the return the return value of ```Utilities.getExternalRootDirectory()``` to point to the correct location. A future enhancement we'd like to make is making this path selectable within the application so that you can deploy the same build to a variety of Android tablets.
