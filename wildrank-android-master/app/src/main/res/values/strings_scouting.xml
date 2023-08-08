@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Year-specific strings that are used in the scouting UI should go here -->
+
+    <string-array name="auto_start_loc">
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+
+    <string-array name="climb_level">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+    </string-array>
+
+    <string-array name="auto_step">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+    </string-array>
+
+    <string-array name="rankings">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+    </string-array>
+
+    <string-array name="time_sec_climb">
+        <item>!No Climb</item>
+        <item>About 05sec or less</item>
+        <item>About 10sec</item>
+        <item>About 15sec</item>
+        <item>About 20sec</item>
+        <item>About 25sec</item>
+        <item>About 30sec + </item>
+    </string-array>
+
+    <string-array name="drives">
+        <item>Tank</item>
+        <item>Tank w/ Omni corners</item>
+        <item>Mecanum</item>
+        <item>Swerve</item>
+        <item>H-Drive/Slide</item>
+        <item>Other Holonomic</item>
+        <item>Any Other (Add note)</item>
+    </string-array>
+
+    <string-array name="launcher">
+        <item>No Cargo Scoring</item>
+        <item>Everybot Arm</item>
+        <item>Low Goal Batter Lobber</item>
+        <item>Fixed Single Flywheel Short</item>
+        <item>Fixed Single Flywheel Tall</item>
+        <item>Turreted Single Flywheel Short</item>
+        <item>Turreted Single Flywheel Tall</item>
+        <item>Fixed Multi Flywheel Short</item>
+        <item>Fixed Multi Flywheel Tall</item>
+        <item>Turreted Multi Flywheel Short</item>
+        <item>Turreted Multi Flywheel Tall</item>
+        <item>Catapult</item>
+        <item>Any Other (Add note)</item>
+    </string-array>
+
+    <string-array name="player_stations">
+        <item>Left</item>
+        <item>Right</item>
+        <item>Both</item>
+        <item>None</item>
+    </string-array>
+
+    <string-array name="auto_start_locations_pit_scout">
+        <item>Near Driverstation (1)</item>
+        <item>Near Edges of Field (2)</item>
+        <item>No Preference</item>
+    </string-array>
+
+    <string name="autonomous_explanation">This Screen is for Autonomous Game Actions Only.</string>
+    <string name="cycle">Single Shot Cycle</string>
+    <string name="button_finish">Finish</string>
+    <string name="button_finish_cycle">Finish shot</string>
+    <string name="cycle_help">Help</string>
+</resources>

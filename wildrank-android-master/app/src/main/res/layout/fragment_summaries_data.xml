@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="25sp"
+            android:textStyle="bold"
+            android:text="Quick Overview" />
+
+        <!--
+         Defensive Metric
+         CS - hatches/cargo per match
+         RO - hatches/cargo per match
+         Start pos
+         End pos
+
+         -->
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            android:text="Auto Overview" />
+
+        <org.wildstang.wildrank.androidv2.views.data.MatchDataPreferredStartLoc
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:explanation="Preferred starting location on tarmac"
+            app:label="Preferred Starting Location" />
+
+        <org.wildstang.wildrank.androidv2.views.data.MatchDataAutoMove
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:explanation="Percentage of time robot crosses out of tarmac in auto"
+            app:label="Leaves Tarmac in Auto Percentage" />
+
+        <org.wildstang.wildrank.androidv2.views.data.MatchDataPercentageAutoGamepieceScoredHubHighView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:explanation="Average number of scored game pieces in High Hub in auto"
+            app:label="Auto Average Scored Upper" />
+
+        <org.wildstang.wildrank.androidv2.views.data.MatchDataPercentageAutoGamepieceScoredHubLowView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:explanation="Average number of scored game pieces in Low Hub in auto"
+            app:label="Auto Average Scored Lower" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            android:text="Tele Overview" />
+
+        <org.wildstang.wildrank.androidv2.views.data.MatchDataPercentageGamePiecesScoredHubHighView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:explanation="Average and percentage made for ALL shots (defended or not) at High Hub"
+            app:label="Scored when Targeting Hub Upper" />
+
+        <org.wildstang.wildrank.androidv2.views.data.MatchDataPercentageGamePiecesScoredHubLowView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:explanation="Average and percentage made for ALL shots (defended or not) at Low Hub"
+            app:label="Scored when Targeting Hub Lower" />
+
+        <org.wildstang.wildrank.androidv2.views.data.MatchDataPreferredEndLoc
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:explanation="Preferred climb level on rungs"
+            app:label="Preferred Climb Height" />
+
+        <!-- <org.wildstang.wildrank.androidv2.views.data.MatchDataPreferredEndLoc
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:explanation="Time taken to climb to max"
+            app:label="Estimated Max Climb Time" /> -->
+
+        <!--
+        <org.wildstang.wildrank.androidv2.views.data.MatchDataEndgameIssues
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:explanation="Percentage of instances where problems occurred in the endgame (Climbs/Falls)"
+            app:label="Issues on Climb" /> -->
+
+        <!--<TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="25sp"
+            android:textStyle="bold"
+            android:text="Compatibility Overview " />-->
+
+        <!--
+         Auto compatibility (All bot)
+         Teleop Compatibility (Offense bot)
+         Endgame Compatibility (Offense bot)
+         Auto compatibility (Defense bot)
+         Endgame Compatibility (Defense bot)
+         -->
+
+        <!--
+        <org.wildstang.wildrank.androidv2.views.data.MatchDataAutoSummarizeCompatability
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:explanation="The percentage of time this robot demonstrates compatibility with autonomous strategy - Cross auto line, No intra-team contact, Place 1+ gamepieces"
+            app:label="Auto Strategy Compatibility" />
+            -->
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="25sp"
+            android:textStyle="bold"
+            android:text="Cycle Statistics" />
+
+            <org.wildstang.wildrank.androidv2.views.data.MatchDataPreferredSuccessfulScoringRegion
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:explanation="Where the Scoring is comming from: on the tarmacs or outside of them"
+            app:label="Most Common Scoring Location" />
+
+        <!--<org.wildstang.wildrank.androidv2.views.data.MatchDataPercentageGamePiecesScoredView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:explanation="Calculated as 100% minus the percentage of all abandoned gamepieces divided by all attempts"
+            app:label="Percentage of Gamepieces Scored" /> -->
+
+
+
+
+        <!--<TextView
+            android:id="@+id/robotPositioning"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="25sp"
+            android:textStyle="bold"
+            android:text="Robot Positioning (Auto)" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="25sp"
+            android:textStyle="bold"
+            android:text="Positions" />
+
+        <org.wildstang.wildrank.androidv2.views.data.MatchDataPreferredStartLoc
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:explanation="Preferred starting location on tarmack"
+            app:label="Preferred Starting Location" /> -->
+
+        <!--<org.wildstang.wildrank.androidv2.views.data.MatchDataAutoMove
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:explanation="Percentage of time crossing out of auto zone"
+            app:label="Auto Move %" /> -->
+
+        <!--<org.wildstang.wildrank.androidv2.views.data.MatchDataPreferredEndLoc
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:explanation="Preferred climb level on Hab"
+            app:label="Preferred Climb Height" /> -->
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="25sp"
+            android:textStyle="bold"
+            android:text="Match Maximums" />
+
+        <org.wildstang.wildrank.androidv2.views.data.MatchDataMaxAutoHighView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:explanation="Max demonstrated shots in Auto - Upper Hub"
+            app:label="Maximum Auto Upper Hub" />
+
+        <org.wildstang.wildrank.androidv2.views.data.MatchDataMaxAutoLowView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:explanation="Max demonstrated shots in Auto - Lower Hub"
+            app:label="Maximum Auto Lower Hub" />
+
+        <org.wildstang.wildrank.androidv2.views.data.MatchDataMaxGamePiecesScoredHubHighView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:explanation="Max demonstrated shots in Tele - Upper Hub"
+            app:label="Maximum Tele Upper Hub" />
+
+        <org.wildstang.wildrank.androidv2.views.data.MatchDataMaxEndLocView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:explanation="Max demonstrated climb level on rungs"
+            app:label="Maximum Demonstrated Climb Height" />
+
+        <org.wildstang.wildrank.androidv2.views.data.MatchDataMaxEndLocAttemptView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:explanation="Max attempted climb level on rungs, if this is greater than demonstrated climb they probably fell off a higher rung"
+            app:label="Maximum Attempted Climb Height" />
+    </LinearLayout>
+
+</ScrollView>

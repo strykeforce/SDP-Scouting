@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:id="@+id/robot"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginRight="10dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Robot Specs"
+            android:textSize="30sp" />
+
+        <org.wildstang.wildrank.androidv2.views.scouting.ScoutingNumberView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:key="height"
+            app:label="Height" />
+
+        <org.wildstang.wildrank.androidv2.views.scouting.ScoutingNumberView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:key="width"
+            app:label="Width" />
+
+        <org.wildstang.wildrank.androidv2.views.scouting.ScoutingNumberView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:key="length"
+            app:label="Length" />
+
+        <org.wildstang.wildrank.androidv2.views.scouting.ScoutingNumberView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:key="weight"
+            app:label="Weight" />
+
+        <org.wildstang.wildrank.androidv2.views.scouting.ScoutingSpinnerView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:key="drivetrain"
+            app:label="Drivetrain"
+            app:values="@array/drives" />
+
+        <org.wildstang.wildrank.androidv2.views.scouting.ScoutingSpinnerView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:key="cargo_scorer"
+            app:label="Cargo Scoring Mechanism"
+            app:values="@array/launcher" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/auto"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="10dp"
+        android:layout_toRightOf="@id/robot"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Autonomous"
+            android:textSize="30sp" />
+
+        <org.wildstang.wildrank.androidv2.views.scouting.ScoutingSpinnerView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:key="auto_location"
+            app:label="Preferred Auto Start Location"
+            app:values="@array/auto_start_locations_pit_scout" />
+
+        <org.wildstang.wildrank.androidv2.views.scouting.ScoutingCheckboxView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:key="auto_drives"
+            app:label="Drives off tarmac" />
+
+        <org.wildstang.wildrank.androidv2.views.scouting.ScoutingCounterView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:key="auto_shots_high"
+            app:label="Upper Hub Auto Shots" />
+
+        <org.wildstang.wildrank.androidv2.views.scouting.ScoutingCounterView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:key="auto_shots_low"
+            app:label="Lower Hub Auto Shots" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/tele"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginRight="10dp"
+        android:layout_toRightOf="@id/auto"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Teleop Capabilities"
+            android:textSize="30sp" />
+
+        <org.wildstang.wildrank.androidv2.views.scouting.ScoutingCheckboxView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:key="vision"
+            app:label="Automated Targeting" />
+
+        <org.wildstang.wildrank.androidv2.views.scouting.ScoutingSpinnerView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:key="climb_height"
+            app:label="Preferred Climb Height"
+            app:values="@array/climb_level" />
+
+        <org.wildstang.wildrank.androidv2.views.scouting.ScoutingSpinnerView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:key="climb_time"
+            app:label="Time For Preferred Height"
+            app:values="@array/time_sec_climb" />
+
+
+        <org.wildstang.wildrank.androidv2.views.scouting.ScoutingCheckboxView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:key="external_intake"
+            app:label="External Intake" />
+
+        <org.wildstang.wildrank.androidv2.views.scouting.ScoutingCheckboxView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:key="retract_intake"
+            app:label="Intake Retractable" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/notes"
+        android:layout_width="500dp"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/finish"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="10dp"
+        android:layout_toRightOf="@id/tele"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/notes"
+            android:textSize="30sp" />
+
+        <FrameLayout
+            android:id="@+id/notes_container"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/finish"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentStart="true"
+        android:text="@string/button_finish" />
+
+
+</RelativeLayout>
