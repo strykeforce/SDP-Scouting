@@ -3,128 +3,121 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="#2C2C2C"
+    >
 
-    <LinearLayout
-        android:id="@+id/end_game_1"
-        android:layout_width="250dp"
-        android:layout_height="wrap_content"
+
+   <!--
+    <TextView
+        android:id="@+id/teamNumber"
+        android:layout_width="743dp"
+        android:layout_height="159dp"
+        android:layout_centerInParent="true"
+        android:gravity="center_horizontal|top"
+        android:text="@string/team_number"
+        android:textSize="70dp"
+        android:textColor="@color/red"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="200dp"
+        android:layout_centerHorizontal="true"
+/>
+    <TextView
+        android:id="@+id/endgame"
+        android:layout_width="189dp"
+        android:layout_height="70dp"
         android:layout_alignParentLeft="true"
+        android:layout_marginLeft="545dp"
         android:layout_alignParentTop="true"
-        android:layout_marginRight="10dp"
-        android:orientation="vertical">
+        android:layout_marginTop="275dp"
+        android:text="Endgame"
+        android:textSize="35dp"
+        android:gravity="center_horizontal|top"
+        android:textColor="@color/white"
+        />
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Climb Attempt"
-            android:textSize="30sp" />
-
-        <org.wildstang.wildrank.androidv2.views.scouting.ScoutingSpinnerView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:key="post_match-climb_attempt"
-            app:label="Attempted Climb Height"
-            app:values="@array/climb_level" />
-
-        <org.wildstang.wildrank.androidv2.views.scouting.ScoutingCheckboxView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:key="post_match-climb_fall"
-            app:label="Fell from Rung?" />
-
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/end_game_2"
-        android:layout_width="275dp"
-        android:layout_height="wrap_content"
+    <TextView
+        android:id="@+id/matchNumber"
+        android:layout_width="50dp"
+        android:layout_height="42dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="1200dp"
         android:layout_alignParentTop="true"
-        android:layout_marginRight="10dp"
-        android:layout_toRightOf="@id/end_game_1"
-        android:orientation="vertical">
+        android:layout_marginTop="250dp"
+        android:text="@string/match_number"
+        android:textSize="35dp"
+        android:gravity="center_horizontal|top"
+        />
+-->
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Climb Result"
-            android:textSize="30sp" />
-
-        <org.wildstang.wildrank.androidv2.views.scouting.ScoutingSpinnerView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:key="post_match-climb_level"
-            app:label="Achieved Climb Height"
-            app:values="@array/climb_level" />
-
-        <org.wildstang.wildrank.androidv2.views.scouting.ScoutingSpinnerView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:key="post_match-climb_time"
-            app:label="Total Climb Time"
-            app:values="@array/time_sec_climb" />
-
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/end_game_3"
-        android:layout_width="250dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_marginRight="10dp"
-        android:layout_toRightOf="@id/end_game_2"
-        android:orientation="vertical">
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Match Issues"
-            android:textSize="30sp" />
-
-        <org.wildstang.wildrank.androidv2.views.scouting.ScoutingCheckboxView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:key="post_match-excessive_fouls"
-            app:label="Excessive Fouls" />
-
-        <org.wildstang.wildrank.androidv2.views.scouting.ScoutingCheckboxView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:key="post_match-tipped"
-            app:label="Tipped Over" />
-
-    </LinearLayout>
 
     <LinearLayout
         android:id="@+id/notes"
-        android:layout_width="500dp"
-        android:layout_height="match_parent"
-        android:layout_above="@+id/finish"
-        android:layout_alignParentRight="true"
-        android:layout_marginRight="10dp"
-        android:layout_toRightOf="@id/end_game_3"
-        android:orientation="vertical">
-
+        android:layout_width="1250dp"
+        android:layout_height="275dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="125dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        >
         <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_width="1250dp"
+            android:layout_height="375dp"
             android:text="@string/notes"
-            android:textSize="30sp" />
+            android:textSize="30sp"
+            android:background="@color/white"
+
+
+            />
 
         <FrameLayout
             android:id="@+id/notes_container"
-            android:layout_width="match_parent"
+            android:layout_width="500dp"
             android:layout_height="0dp"
-            android:layout_weight="1" />
+            android:layout_weight="1"
+
+            />
     </LinearLayout>
 
-    <Button
-        android:id="@+id/finish"
-        android:layout_width="match_parent"
+    <org.wildstang.wildrank.androidv2.views.scouting.ScoutingSpinnerView
+        android:layout_width="500dp"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:text="@string/button_finish" />
+        app:key="EndChargePlatform"
+        app:label="Charge Platform"
+        app:values="@array/climb_level"
+        android:layout_above="@+id/notes"
+        android:layout_marginBottom="25dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="20dp"
+        />
 
-</RelativeLayout>
+    <Button
+            android:id="@+id/finish"
+            android:layout_width="1250dp"
+            android:layout_height="70dp"
+            android:layout_marginBottom="15dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="20dp"
+            android:layout_marginLeft="20dp"
+            android:text="End Scouting"
+            android:textSize="35dp"
+            android:background="#FE0000"
+
+            />
+    <!--
+    <Button
+        android:id="@+id/Teleop"
+        android:layout_width="225dp"
+        android:layout_height="70dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="15dp"
+        android:layout_marginLeft="20dp"
+        android:text="Teleop"
+        android:textSize="35sp"
+        android:textColor="@color/white"
+        android:background="#0093FE"
+        />
+        -->
+    </RelativeLayout>
