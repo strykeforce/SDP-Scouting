@@ -3,167 +3,191 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="#292929">
 
     <TextView
-        android:id="@+id/explanation"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:padding="8dp"
-        android:text="@string/autonomous_explanation"
-        android:textSize="15sp" />
+        android:id="@+id/cones"
+        android:layout_width="111dp"
+        android:layout_height="42dp"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="195dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="159dp"
+        android:text="Cones"
+        android:textSize="35sp"
+        android:textColor="#FFFFFF"
+        android:gravity="center_horizontal|top"
+        />
 
-    <LinearLayout
-        android:id="@+id/field_padding"
-        android:padding="8dp"
-        android:layout_width="500dp"
-        android:layout_height="500dp"
-        android:layout_below="@id/explanation"
-        android:orientation="vertical">
+    <TextView
+        android:id="@+id/cubes"
+        android:layout_width="111dp"
+        android:layout_height="42dp"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="969dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="160dp"
+        android:text="Cubes"
+        android:textSize="35sp"
+        android:textColor="#FFFFFF"
+        android:gravity="center_horizontal|top"
+        />
 
-        <ImageView
-            android:id="@+id/hub_map_image"
-            android:layout_width="400dp"
-            android:layout_height="400dp"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentRight="true"
-            android:layout_marginTop="40dp"
-            android:layout_marginRight="15dp"
-            android:scaleType="fitXY"
-            app:srcCompat="@drawable/blue_red_hub_ui" />
-    </LinearLayout>
+    <TextView
+        android:id="@+id/cubes_top"
+        android:layout_width="200dp"
+        android:layout_height="75dp"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="540dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="237dp"
+        android:text="Top"
+        android:textSize="35sp"
+        android:textColor="#FFFFFF"
+        android:gravity="center_horizontal|center_vertical"
+        />
 
-    <LinearLayout
+    <TextView
+        android:id="@+id/middle"
+        android:layout_width="200dp"
+        android:layout_height="75dp"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="540dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="347dp"
+        android:text="Middle"
+        android:textSize="35sp"
+        android:textColor="#FFFFFF"
+        android:gravity="center_horizontal|center_vertical"
+        />
+
+    <TextView
+        android:id="@+id/bottom"
+        android:layout_width="200dp"
+        android:layout_height="75dp"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="540dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="456dp"
+        android:text="Bottom"
+        android:textSize="35sp"
+        android:textColor="#FFFFFF"
+        android:gravity="center_horizontal|center_vertical"
+        />
+
+    <TextView
+        android:id="@+id/docked"
+        android:layout_width="279dp"
+        android:layout_height="50dp"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="197dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="591dp"
+        android:text="Docked"
+        android:textSize="35sp"
+        android:textColor="#FFFFFF"
+        android:gravity="center_horizontal|center_vertical"
+        />
+
+    <TextView
+        android:id="@+id/balanced"
+        android:layout_width="278dp"
+        android:layout_height="50dp"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="500dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="591dp"
+        android:text="Balanced"
+        android:textSize="35sp"
+        android:textColor="#FFFFFF"
+        android:gravity="center_horizontal|center_vertical"
+        />
+
+    <TextView
+        android:id="@+id/crossed_lin"
+        android:layout_width="279dp"
+        android:layout_height="50dp"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="803dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="591dp"
+        android:text="Crossed Line"
+        android:textSize="35sp"
+        android:textColor="#FFFFFF"
+        android:gravity="center_horizontal|center_vertical"
+        />
+
+    <org.wildstang.wildrank.androidv2.views.scouting.ScoutingCounterView
         android:id="@+id/general"
-        android:layout_width="325dp"
-        android:layout_height="match_parent"
-        android:layout_below="@id/explanation"
-        android:layout_toRightOf="@+id/field_padding"
-        android:orientation="vertical">
+        android:layout_width="440dp"
+        android:layout_height="75dp"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="30dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="237dp"
+        android:background="#D9D9D9"
+        android:orientation="vertical"
+        app:key="top_cones"/>
 
+    <org.wildstang.wildrank.androidv2.views.scouting.ScoutingCounterView
+        android:id="@+id/general"
+        android:layout_width="440dp"
+        android:layout_height="75dp"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="30dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="346dp"
+        android:background="#D9D9D9"
+        android:orientation="vertical"
+        app:key="middle_cones"/>
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="20sp"
-            android:text="Robot Positions" />
+    <org.wildstang.wildrank.androidv2.views.scouting.ScoutingCounterView
+        android:id="@+id/general"
+        android:layout_width="440dp"
+        android:layout_height="75dp"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="30dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="456dp"
+        android:background="#D9D9D9"
+        android:orientation="vertical"
+        app:key="bottom_cones"/>
 
-        <org.wildstang.wildrank.androidv2.views.scouting.ScoutingSpinnerView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:key="auto-startLoc"
-            app:label="Starting Location"
-            app:values="@array/auto_start_loc" />
+    <org.wildstang.wildrank.androidv2.views.scouting.ScoutingCounterView
+        android:id="@+id/general"
+        android:layout_width="440dp"
+        android:layout_height="75dp"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="809dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="237dp"
+        android:background="#D9D9D9"
+        android:orientation="vertical"
+        app:key="top_cubes"/>
 
-        <org.wildstang.wildrank.androidv2.views.scouting.ScoutingCheckboxView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:key="auto-drive"
-            app:label="Leaves Tarmac" />
+    <org.wildstang.wildrank.androidv2.views.scouting.ScoutingCounterView
+        android:id="@+id/general"
+        android:layout_width="440dp"
+        android:layout_height="75dp"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="809dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="346dp"
+        android:background="#D9D9D9"
+        android:orientation="vertical"
+        app:key="middle_cubes"/>
 
-
-        <Space
-            android:layout_width="wrap_content"
-            android:layout_height="55dp"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginLeft="68dp"
-            android:layout_marginStart="68dp" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="20sp"
-            android:text="Scoring" />
-
-
-        <org.wildstang.wildrank.androidv2.views.scouting.ScoutingCounterView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:key="auto-miss_cargo_high"
-            app:label="Misses Cargo(s) - High Hub" />
-
-        <org.wildstang.wildrank.androidv2.views.scouting.ScoutingCounterView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:key="auto-miss_cargo_low"
-            app:label="Misses Cargo(s) - Low Hub" />
-
-</LinearLayout>
-
-    <LinearLayout
-        android:layout_width="325dp"
-        android:layout_height="match_parent"
-        android:layout_below="@id/explanation"
-        android:layout_toRightOf="@+id/general"
-        android:orientation="vertical">
-
-        <!--<TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="20sp"
-            android:text="Gamepiece Scored Counts" /> -->
-
-        <!--<org.wildstang.wildrank.androidv2.views.scouting.ScoutingCheckboxView
-            android:id="@+id/drive"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:key="auto-drive"
-            app:label="Drives to Auto Zone" /> -->
-
-       <!-- <org.wildstang.wildrank.androidv2.views.scouting.ScoutingCounterView
-            android:id="@+id/dropped_Count"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:key="auto-dropped"
-            app:label="Dropped/Missed Game Pieces" /> -->
-
-        <Space
-            android:layout_width="wrap_content"
-            android:layout_height="70dp"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginLeft="68dp"
-            android:layout_marginStart="68dp" />
-
-        <org.wildstang.wildrank.androidv2.views.scouting.ScoutingCheckboxView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:key="auto-robot_contact"
-            app:label="Ran Into ANY Other Robot or Tipped" />
-        <Space
-            android:layout_width="wrap_content"
-            android:layout_height="70dp"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginLeft="68dp"
-            android:layout_marginStart="68dp" />
-
-
-        <org.wildstang.wildrank.androidv2.views.scouting.ScoutingCounterView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:key="auto-score_cargo_high"
-            app:label="Scores Cargo(s) - High Hub" />
-
-        <org.wildstang.wildrank.androidv2.views.scouting.ScoutingCounterView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:key="auto-score_cargo_low"
-            app:label="Scores Cargo(s) - Low Hub" />
-
-        <Space
-            android:layout_width="wrap_content"
-            android:layout_height="55dp"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginLeft="68dp"
-            android:layout_marginStart="68dp" />
-
-    </LinearLayout>
+    <org.wildstang.wildrank.androidv2.views.scouting.ScoutingCounterView
+        android:id="@+id/general"
+        android:layout_width="440dp"
+        android:layout_height="75dp"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="809dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="456dp"
+        android:background="#D9D9D9"
+        android:orientation="vertical"
+        app:key="bottom_cubes"/>
 
 </RelativeLayout>
