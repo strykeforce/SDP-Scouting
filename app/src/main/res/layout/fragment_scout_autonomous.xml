@@ -6,84 +6,163 @@
     android:orientation="vertical"
     android:background="#292929">
 
-    <TextView
-        android:id="@+id/cones"
-        android:layout_width="111dp"
-        android:layout_height="42dp"
-        android:layout_alignParentStart="true"
-        android:layout_marginStart="195dp"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="159dp"
-        android:text="Cones"
-        android:textSize="35sp"
-        android:textColor="#FFFFFF"
-        android:gravity="center_horizontal|top"
-        />
 
-    <TextView
-        android:id="@+id/cubes"
-        android:layout_width="111dp"
-        android:layout_height="42dp"
-        android:layout_alignParentStart="true"
-        android:layout_marginStart="969dp"
+    <LinearLayout
+        android:id="@+id/ConeCouters"
+        android:layout_width="500dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="160dp"
-        android:text="Cubes"
-        android:textSize="35sp"
-        android:textColor="#FFFFFF"
-        android:gravity="center_horizontal|top"
-        />
+        android:layout_marginBottom="35dp"
+        android:layout_marginTop="20dp"
 
+        >
+
+        <TextView
+            android:id="@+id/cones"
+            android:layout_width="111dp"
+            android:layout_height="42dp"
+            android:text="Cones"
+            android:textSize="35sp"
+            android:textColor="#FFFFFF"
+            android:gravity="center_horizontal|top" />
+
+        <org.wildstang.wildrank.androidv2.views.scouting.ScoutingCounterView
+            android:id="@+id/ConeTop"
+            android:layout_width="440dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:background="#D9D9D9"
+            android:orientation="vertical"
+            app:key="auto_top_cones" />
+
+        <org.wildstang.wildrank.androidv2.views.scouting.ScoutingCounterView
+            android:id="@+id/ConeMiddle"
+            android:layout_width="440dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:background="#D9D9D9"
+            android:orientation="vertical"
+            app:key="auto_middle_cones"/>
+
+        <org.wildstang.wildrank.androidv2.views.scouting.ScoutingCounterView
+            android:id="@+id/ConeBottom"
+            android:layout_width="440dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:background="#D9D9D9"
+            android:orientation="vertical"
+            app:key="auto_bottom_cones"/>
+
+    </LinearLayout>
+
+<LinearLayout
+    android:id="@+id/Center"
+    android:layout_width="200dp"
+    android:layout_height="wrap_content"
+    android:layout_alignParentTop="true"
+    android:layout_centerHorizontal="true"
+    android:orientation="vertical"
+    android:gravity="center_horizontal"
+    android:layout_marginTop="95dp"
+    >
     <TextView
-        android:id="@+id/cubes_top"
+        android:id="@+id/top"
         android:layout_width="200dp"
         android:layout_height="75dp"
-        android:layout_alignParentStart="true"
-        android:layout_marginStart="540dp"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="237dp"
         android:text="Top"
         android:textSize="35sp"
         android:textColor="#FFFFFF"
         android:gravity="center_horizontal|center_vertical"
+
         />
 
     <TextView
         android:id="@+id/middle"
         android:layout_width="200dp"
         android:layout_height="75dp"
-        android:layout_alignParentStart="true"
-        android:layout_marginStart="540dp"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="347dp"
         android:text="Middle"
         android:textSize="35sp"
         android:textColor="#FFFFFF"
         android:gravity="center_horizontal|center_vertical"
+        android:layout_marginTop="50dp"
         />
 
     <TextView
         android:id="@+id/bottom"
         android:layout_width="200dp"
         android:layout_height="75dp"
-        android:layout_alignParentStart="true"
-        android:layout_marginStart="540dp"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="456dp"
         android:text="Bottom"
         android:textSize="35sp"
         android:textColor="#FFFFFF"
         android:gravity="center_horizontal|center_vertical"
+        android:layout_marginTop="50dp"
         />
+</LinearLayout>
+    <LinearLayout
+        android:id="@+id/CubeCouters"
+        android:layout_width="500dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="100dp"
+        android:layout_alignParentEnd="true"
+    >
+        <TextView
+            android:id="@+id/cubes"
+            android:layout_width="111dp"
+            android:layout_height="42dp"
+            android:text="Cubes"
+            android:textSize="35sp"
+            android:textColor="#FFFFFF"
+            android:gravity="center_horizontal|top"
+            />
+
+        <org.wildstang.wildrank.androidv2.views.scouting.ScoutingCounterView
+            android:id="@+id/CubesTop"
+            android:layout_width="440dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:background="#D9D9D9"
+            android:orientation="vertical"
+            app:key="auto_top_cubes"/>
+
+        <org.wildstang.wildrank.androidv2.views.scouting.ScoutingCounterView
+            android:id="@+id/CubesMiddle"
+            android:layout_width="440dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:background="#D9D9D9"
+            android:orientation="vertical"
+            app:key="auto_middle_cubes"/>
+
+        <org.wildstang.wildrank.androidv2.views.scouting.ScoutingCounterView
+            android:id="@+id/CubesBottom"
+            android:layout_width="440dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:background="#D9D9D9"
+            android:orientation="vertical"
+            app:key="auto_bottom_cubes"/>
+
+    </LinearLayout>
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_below="@id/ConeCouters"
+    android:gravity="center_horizontal"
+>
+
+
 
     <TextView
         android:id="@+id/docked"
         android:layout_width="279dp"
         android:layout_height="50dp"
-        android:layout_alignParentStart="true"
-        android:layout_marginStart="197dp"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="591dp"
         android:text="Docked"
         android:textSize="35sp"
         android:textColor="#FFFFFF"
@@ -94,10 +173,6 @@
         android:id="@+id/balanced"
         android:layout_width="278dp"
         android:layout_height="50dp"
-        android:layout_alignParentStart="true"
-        android:layout_marginStart="500dp"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="591dp"
         android:text="Balanced"
         android:textSize="35sp"
         android:textColor="#FFFFFF"
@@ -108,86 +183,18 @@
         android:id="@+id/crossed_lin"
         android:layout_width="279dp"
         android:layout_height="50dp"
-        android:layout_alignParentStart="true"
-        android:layout_marginStart="803dp"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="591dp"
         android:text="Crossed Line"
         android:textSize="35sp"
         android:textColor="#FFFFFF"
         android:gravity="center_horizontal|center_vertical"
         />
 
-    <org.wildstang.wildrank.androidv2.views.scouting.ScoutingCounterView
-        android:id="@+id/general"
-        android:layout_width="440dp"
-        android:layout_height="75dp"
-        android:layout_alignParentStart="true"
-        android:layout_marginStart="30dp"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="237dp"
-        android:background="#D9D9D9"
-        android:orientation="vertical"
-        app:key="top_cones"/>
+</LinearLayout>
 
-    <org.wildstang.wildrank.androidv2.views.scouting.ScoutingCounterView
-        android:id="@+id/general"
-        android:layout_width="440dp"
-        android:layout_height="75dp"
-        android:layout_alignParentStart="true"
-        android:layout_marginStart="30dp"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="346dp"
-        android:background="#D9D9D9"
-        android:orientation="vertical"
-        app:key="middle_cones"/>
 
-    <org.wildstang.wildrank.androidv2.views.scouting.ScoutingCounterView
-        android:id="@+id/general"
-        android:layout_width="440dp"
-        android:layout_height="75dp"
-        android:layout_alignParentStart="true"
-        android:layout_marginStart="30dp"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="456dp"
-        android:background="#D9D9D9"
-        android:orientation="vertical"
-        app:key="bottom_cones"/>
 
-    <org.wildstang.wildrank.androidv2.views.scouting.ScoutingCounterView
-        android:id="@+id/general"
-        android:layout_width="440dp"
-        android:layout_height="75dp"
-        android:layout_alignParentStart="true"
-        android:layout_marginStart="809dp"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="237dp"
-        android:background="#D9D9D9"
-        android:orientation="vertical"
-        app:key="top_cubes"/>
 
-    <org.wildstang.wildrank.androidv2.views.scouting.ScoutingCounterView
-        android:id="@+id/general"
-        android:layout_width="440dp"
-        android:layout_height="75dp"
-        android:layout_alignParentStart="true"
-        android:layout_marginStart="809dp"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="346dp"
-        android:background="#D9D9D9"
-        android:orientation="vertical"
-        app:key="middle_cubes"/>
 
-    <org.wildstang.wildrank.androidv2.views.scouting.ScoutingCounterView
-        android:id="@+id/general"
-        android:layout_width="440dp"
-        android:layout_height="75dp"
-        android:layout_alignParentStart="true"
-        android:layout_marginStart="809dp"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="456dp"
-        android:background="#D9D9D9"
-        android:orientation="vertical"
-        app:key="bottom_cubes"/>
+
 
 </RelativeLayout>

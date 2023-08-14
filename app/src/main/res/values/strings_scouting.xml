@@ -9,11 +9,11 @@
     </string-array>
 
     <string-array name="climb_level">
-        <item>0</item>
-        <item>1</item>
-        <item>2</item>
-        <item>3</item>
-        <item>4</item>
+        <item>1. Not Parked</item>
+        <item>2. Parked</item>
+        <item>3. Charge Pad Tipped</item>
+        <item>4. Charge Pad Engaged</item>
+        <!--<item>4</item>-->
     </string-array>
 
     <string-array name="auto_step">
