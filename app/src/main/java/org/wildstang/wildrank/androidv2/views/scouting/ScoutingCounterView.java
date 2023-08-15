@@ -5,6 +5,7 @@ import android.content.res.TypedArray;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.SoundEffectConstants;
+import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -41,17 +42,32 @@ public class ScoutingCounterView extends ScoutingView {
         plus = (Button) findViewById(R.id.plus);
         minus = (Button) findViewById(R.id.minus);
 
+
+        boolean hasLabel = label != null && !label.isEmpty(); // Determine whether there's a label
+
+        if (hasLabel) {
+            labelView.setText(label);
+            labelView.setVisibility(View.VISIBLE); // Show the label
+        } else {
+            labelView.setVisibility(View.GONE); // Hide the label
+        }
+
         // Make view clickable
         plus.setOnClickListener(v -> {
             count++;
             countView.setText(Integer.toString(count));
         });
 
-        // Long clicks subtract from count
+
         minus.setOnClickListener(v -> {
-            count--;
-            countView.setText(Integer.toString(count));
-        });
+           if (count>0) {
+               count--;
+               countView.setText(Integer.toString(count));
+           } else {
+
+               countView.setText(Integer.toString(count));
+           }
+           });
     }
 
     public int getCount() {

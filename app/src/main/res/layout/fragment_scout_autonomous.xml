@@ -32,7 +32,7 @@
             android:id="@+id/ConeTop"
             android:layout_width="440dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="37dp"
             android:background="#D9D9D9"
             android:orientation="vertical"
             app:key="auto_top_cones" />
@@ -41,7 +41,7 @@
             android:id="@+id/ConeMiddle"
             android:layout_width="440dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="40dp"
             android:background="#D9D9D9"
             android:orientation="vertical"
             app:key="auto_middle_cones"/>
@@ -50,7 +50,7 @@
             android:id="@+id/ConeBottom"
             android:layout_width="440dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="40dp"
             android:background="#D9D9D9"
             android:orientation="vertical"
             app:key="auto_bottom_cones"/>
@@ -125,7 +125,7 @@
             android:id="@+id/CubesTop"
             android:layout_width="440dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="37dp"
             android:background="#D9D9D9"
             android:orientation="vertical"
             app:key="auto_top_cubes"/>
@@ -134,7 +134,7 @@
             android:id="@+id/CubesMiddle"
             android:layout_width="440dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="40dp"
             android:background="#D9D9D9"
             android:orientation="vertical"
             app:key="auto_middle_cubes"/>
@@ -143,7 +143,7 @@
             android:id="@+id/CubesBottom"
             android:layout_width="440dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="40dp"
             android:background="#D9D9D9"
             android:orientation="vertical"
             app:key="auto_bottom_cubes"/>
@@ -158,35 +158,30 @@
 >
 
 
+<org.wildstang.wildrank.androidv2.views.scouting.ScoutingCheckboxView
+    android:id="@+id/docked"
+    android:layout_width="279dp"
+    android:layout_height="50dp"
+    app:label="Docked"
+    android:background="@color/white"
+    />
 
-    <TextView
-        android:id="@+id/docked"
-        android:layout_width="279dp"
-        android:layout_height="50dp"
-        android:text="Docked"
-        android:textSize="35sp"
-        android:textColor="#FFFFFF"
-        android:gravity="center_horizontal|center_vertical"
-        />
-
-    <TextView
+    <org.wildstang.wildrank.androidv2.views.scouting.ScoutingCheckboxView
         android:id="@+id/balanced"
         android:layout_width="278dp"
         android:layout_height="50dp"
-        android:text="Balanced"
-        android:textSize="35sp"
-        android:textColor="#FFFFFF"
-        android:gravity="center_horizontal|center_vertical"
+        app:label="Balanced"
+        android:background="@color/white"
+        android:layout_marginLeft="30dp"
         />
 
-    <TextView
-        android:id="@+id/crossed_lin"
+    <org.wildstang.wildrank.androidv2.views.scouting.ScoutingCheckboxView
+        android:id="@+id/crossed_line"
         android:layout_width="279dp"
         android:layout_height="50dp"
-        android:text="Crossed Line"
-        android:textSize="35sp"
-        android:textColor="#FFFFFF"
-        android:gravity="center_horizontal|center_vertical"
+        app:label="Crossed Line"
+        android:background="@color/white"
+        android:layout_marginLeft="30dp"
         />
 
 </LinearLayout>
