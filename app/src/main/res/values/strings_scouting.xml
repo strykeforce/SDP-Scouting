@@ -33,8 +33,8 @@
         <item>5</item>
     </string-array>
 
-    <string-array name="time_sec_climb">
-        <item>!No Climb</item>
+    <string-array name="time_sec_balance">
+        <item>!No Balance</item>
         <item>About 05sec or less</item>
         <item>About 10sec</item>
         <item>About 15sec</item>
@@ -53,19 +53,10 @@
         <item>Any Other (Add note)</item>
     </string-array>
 
-    <string-array name="launcher">
-        <item>No Cargo Scoring</item>
-        <item>Everybot Arm</item>
-        <item>Low Goal Batter Lobber</item>
-        <item>Fixed Single Flywheel Short</item>
-        <item>Fixed Single Flywheel Tall</item>
-        <item>Turreted Single Flywheel Short</item>
-        <item>Turreted Single Flywheel Tall</item>
-        <item>Fixed Multi Flywheel Short</item>
-        <item>Fixed Multi Flywheel Tall</item>
-        <item>Turreted Multi Flywheel Short</item>
-        <item>Turreted Multi Flywheel Tall</item>
-        <item>Catapult</item>
+    <string-array name="scorable">
+        <item>Cones</item>
+        <item>Cubes</item>
+        <item>Both</item>
         <item>Any Other (Add note)</item>
     </string-array>
 
@@ -77,9 +68,11 @@
     </string-array>
 
     <string-array name="auto_start_locations_pit_scout">
-        <item>Near Driverstation (1)</item>
-        <item>Near Edges of Field (2)</item>
+        <item>Flat</item>
+        <item>Mid</item>
+        <item>Bump</item>
         <item>No Preference</item>
+        <item>Any Other (Add note)</item>
     </string-array>
 
     <string name="autonomous_explanation">This Screen is for Autonomous Game Actions Only.</string>

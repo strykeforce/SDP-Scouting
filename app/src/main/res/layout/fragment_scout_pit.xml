@@ -53,9 +53,9 @@
         <org.wildstang.wildrank.androidv2.views.scouting.ScoutingSpinnerView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:key="cargo_scorer"
-            app:label="Cargo Scoring Mechanism"
-            app:values="@array/launcher" />
+            app:key="scorer"
+            app:label="Scorable Pieces"
+            app:values="@array/scorable" />
 
     </LinearLayout>
 
@@ -84,19 +84,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:key="auto_drives"
-            app:label="Drives off tarmac" />
+            app:label="Crosses Line" />
 
-        <org.wildstang.wildrank.androidv2.views.scouting.ScoutingCounterView
+        <org.wildstang.wildrank.androidv2.views.scouting.ScoutingCheckboxView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:key="auto_shots_high"
-            app:label="Upper Hub Auto Shots" />
-
-        <org.wildstang.wildrank.androidv2.views.scouting.ScoutingCounterView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:key="auto_shots_low"
-            app:label="Lower Hub Auto Shots" />
+            app:key="auto_balances"
+            app:label="Balances on Charge Station" />
 
     </LinearLayout>
 
@@ -115,25 +109,12 @@
             android:text="Teleop Capabilities"
             android:textSize="30sp" />
 
-        <org.wildstang.wildrank.androidv2.views.scouting.ScoutingCheckboxView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:key="vision"
-            app:label="Automated Targeting" />
-
         <org.wildstang.wildrank.androidv2.views.scouting.ScoutingSpinnerView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:key="climb_height"
-            app:label="Preferred Climb Height"
-            app:values="@array/climb_level" />
-
-        <org.wildstang.wildrank.androidv2.views.scouting.ScoutingSpinnerView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:key="climb_time"
-            app:label="Time For Preferred Height"
-            app:values="@array/time_sec_climb" />
+            app:key="balance_time"
+            app:label="Time For Balance"
+            app:values="@array/time_sec_balance" />
 
 
         <org.wildstang.wildrank.androidv2.views.scouting.ScoutingCheckboxView
