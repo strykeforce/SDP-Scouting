@@ -1,9 +1,12 @@
 package org.wildstang.wildrank.androidv2.fragments;
 
+
 import android.app.AlertDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.os.Parcelable;
 import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
@@ -12,6 +15,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -27,9 +31,12 @@ import org.wildstang.wildrank.androidv2.activities.ScoutMatchActivity;
 import org.wildstang.wildrank.androidv2.adapters.MatchListAdapter;
 import org.wildstang.wildrank.androidv2.data.DatabaseManager;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+
+import com.squareup.picasso.Picasso;
 
 public class MatchScoutingMainFragment extends Fragment implements View.OnClickListener {
 
@@ -174,6 +181,29 @@ public class MatchScoutingMainFragment extends Fragment implements View.OnClickL
             beginScouting.setText(R.string.being_scouting);
         }
         beginScouting.setEnabled(true);
+
+        // Construct the file path for the team's photo
+        // Construct the file path for the team's photo
+        String imagePath = Environment.getExternalStorageDirectory().getAbsolutePath() + "/wildrank/" + teamToScout + ".jpg";
+
+
+// Check if the image file exists
+        File imageFile = new File(imagePath);
+        if (imageFile.exists()) {
+            // Get a reference to the ImageView in your layout
+            ImageView teamPhotoImageView = (ImageView) getView().findViewById(R.id.scouting_team_photo);
+
+            Picasso.get()
+                    .load(new File(imagePath))
+                    .placeholder(R.drawable.loading) // Set a placeholder image resource
+                    .error(R.drawable.no_image_available) // Set an error image resource
+                    .into(teamPhotoImageView);
+        } else {
+            // If the image file doesn't exist, set a default image
+            ImageView teamPhotoImageView = (ImageView) getView().findViewById(R.id.scouting_team_photo);
+            teamPhotoImageView.setImageResource(R.drawable.no_image_available); // Set the default image resource
+        }
+beginScouting.setEnabled(true);
     }
 
     @Override
