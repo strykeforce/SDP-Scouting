@@ -164,6 +164,7 @@
     android:layout_height="50dp"
     app:label="Docked"
     android:background="@color/white"
+    app:key="Docked"
     />
 
     <org.wildstang.wildrank.androidv2.views.scouting.ScoutingCheckboxView
@@ -173,6 +174,7 @@
         app:label="Balanced"
         android:background="@color/white"
         android:layout_marginLeft="30dp"
+        app:key="Balanced"
         />
 
     <org.wildstang.wildrank.androidv2.views.scouting.ScoutingCheckboxView
@@ -182,6 +184,7 @@
         app:label="Crossed Line"
         android:background="@color/white"
         android:layout_marginLeft="30dp"
+       app:key="CrossLine"
         />
 
 </LinearLayout>
