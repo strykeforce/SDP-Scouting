@@ -17,6 +17,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -46,8 +47,8 @@ public class MatchScoutingMainFragment extends Fragment implements View.OnClickL
     private Button beginScouting;
     private TextView matchNumber;
 
-    private String selectedTeamToScout;
-    private String selectedMatchKey;
+    private static String selectedTeamToScout;
+    private static String selectedMatchKey;
 
     private MatchListAdapter adapter;
 
@@ -55,6 +56,14 @@ public class MatchScoutingMainFragment extends Fragment implements View.OnClickL
 
     public MatchScoutingMainFragment() {
         // Required empty public constructor
+    }
+
+    public static String getSelectedTeamToScout() {
+        return selectedTeamToScout;
+    }
+
+    public static String getSelectedMatchKey() {
+        return selectedMatchKey;
     }
 
     @Override
@@ -186,9 +195,18 @@ public class MatchScoutingMainFragment extends Fragment implements View.OnClickL
         // Construct the file path for the team's photo
         String imagePath = Environment.getExternalStorageDirectory().getAbsolutePath() + "/wildrank/" + teamToScout + ".jpg";
 
+        boolean isMatchScouted;
+        try {
+            isMatchScouted = DatabaseManager.getInstance(getActivity()).isMatchScouted(selectedMatchKey, selectedTeamToScout);
+        } catch (Exception e) {
+            e.printStackTrace();
+            Toast.makeText(getActivity(), "Error determining if match is scouted already.", Toast.LENGTH_SHORT).show();
+            isMatchScouted = false;
+        }
 
 // Check if the image file exists
         File imageFile = new File(imagePath);
+        ScrollView window = (ScrollView) getView().findViewById(R.id.summary_window);
         if (imageFile.exists()) {
             // Get a reference to the ImageView in your layout
             ImageView teamPhotoImageView = (ImageView) getView().findViewById(R.id.scouting_team_photo);
@@ -198,10 +216,25 @@ public class MatchScoutingMainFragment extends Fragment implements View.OnClickL
                     .placeholder(R.drawable.loading) // Set a placeholder image resource
                     .error(R.drawable.no_image_available) // Set an error image resource
                     .into(teamPhotoImageView);
+
+            if (isMatchScouted) {
+                teamPhotoImageView.setVisibility(View.GONE);
+                window.setVisibility(View.VISIBLE);
+            } else {
+                teamPhotoImageView.setVisibility(View.VISIBLE);
+                window.setVisibility(View.GONE);
+            }
         } else {
             // If the image file doesn't exist, set a default image
             ImageView teamPhotoImageView = (ImageView) getView().findViewById(R.id.scouting_team_photo);
             teamPhotoImageView.setImageResource(R.drawable.no_image_available); // Set the default image resource
+            if (isMatchScouted) {
+                teamPhotoImageView.setVisibility(View.GONE);
+                window.setVisibility(View.VISIBLE);
+            } else {
+                teamPhotoImageView.setVisibility(View.VISIBLE);
+                window.setVisibility(View.GONE);
+            }
         }
 beginScouting.setEnabled(true);
     }

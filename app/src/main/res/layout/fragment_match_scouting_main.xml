@@ -60,6 +60,14 @@
                 android:src="@drawable/frc_logo"
 
                 />
+
+            <include
+                layout="@layout/fragment_summaries_data_window"
+                android:id="@+id/summary_window"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone"/>
+
         </LinearLayout>
 
         <Button

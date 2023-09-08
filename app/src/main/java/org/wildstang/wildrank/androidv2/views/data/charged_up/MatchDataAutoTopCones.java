@@ -7,6 +7,7 @@ import com.couchbase.lite.CouchbaseLiteException;
 import com.couchbase.lite.Document;
 
 import org.wildstang.wildrank.androidv2.data.DatabaseManager;
+import org.wildstang.wildrank.androidv2.fragments.MatchScoutingMainFragment;
 import org.wildstang.wildrank.androidv2.interfaces.IMatchDataView;
 import org.wildstang.wildrank.androidv2.views.data.MatchDataView;
 
@@ -20,15 +21,6 @@ public class MatchDataAutoTopCones extends MatchDataView implements IMatchDataVi
         super(context, attrs);
     }
 
-    private String matchKey;
-    private String teamKey;
-
-    public MatchDataAutoTopCones(Context context, AttributeSet attrs, String matchKey, String teamKey) {
-        super(context, attrs);
-        this.matchKey = matchKey;
-        this.teamKey = teamKey;
-    }
-
     @Override
     public void calculateFromDocuments(List<Document> documents) {
         if (documents == null) {
@@ -40,7 +32,7 @@ public class MatchDataAutoTopCones extends MatchDataView implements IMatchDataVi
         int autoTopCones = 0;
         Document doc;
         try {
-            doc = DatabaseManager.getInstance(this.getContext()).getMatchResults(matchKey, teamKey);
+            doc = DatabaseManager.getInstance(this.getContext()).getMatchResults(MatchScoutingMainFragment.getSelectedMatchKey(), MatchScoutingMainFragment.getSelectedTeamToScout());
         } catch (CouchbaseLiteException e) {
             throw new RuntimeException(e);
         } catch (IOException e) {
