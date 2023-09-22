@@ -40,4 +40,6 @@ public class MatchDataMaxAutoLowView extends MatchDataView implements IMatchData
                 .subscribe(max -> setValueText("" + max, "gray"), error -> Log.d("wildrank", this.getClass().getName()));
 
     }
+
+    public void calculateFromDocument(Document document) {}
 }

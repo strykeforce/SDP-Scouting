@@ -47,4 +47,6 @@ public class MatchDataMaxEndLocView extends MatchDataView implements IMatchDataV
                 .subscribe(max -> setValueText(max, "gray"), error -> Log.d("wildrank", this.getClass().getName()));
 
     }
+
+    public void calculateFromDocument(Document document) {}
 }

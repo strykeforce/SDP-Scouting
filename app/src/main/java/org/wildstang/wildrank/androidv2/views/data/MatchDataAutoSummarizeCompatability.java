@@ -48,4 +48,6 @@ public class MatchDataAutoSummarizeCompatability extends MatchDataView implement
             setValueText(formatPercentageAsString(percentage), "gray");
         }
     }
+
+    public void calculateFromDocument(Document document) {}
 }

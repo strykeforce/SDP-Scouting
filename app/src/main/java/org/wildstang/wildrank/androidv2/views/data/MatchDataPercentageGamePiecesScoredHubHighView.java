@@ -54,4 +54,6 @@ public class MatchDataPercentageGamePiecesScoredHubHighView extends MatchDataVie
             setValueText(formatNumberAsString(upperScores/documents.size()) +" --> (" +  formatPercentageAsString(percentage) + ")", "gray");
         }
     }
+
+    public void calculateFromDocument(Document document) {}
 }

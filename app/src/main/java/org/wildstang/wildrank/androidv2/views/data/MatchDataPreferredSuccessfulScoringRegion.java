@@ -96,4 +96,6 @@ public class MatchDataPreferredSuccessfulScoringRegion extends MatchDataView imp
 
         }
     }
+
+    public void calculateFromDocument(Document document) {}
 }

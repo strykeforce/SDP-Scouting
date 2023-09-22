@@ -58,4 +58,6 @@ public class MatchDataMaxGamePiecesScoredHubHighView extends MatchDataView imple
             //setValueText(formatNumberAsString(upperScores) + ' ' + formatNumberAsString(upperAttempts)  , "gray");
         }
     }
+
+    public void calculateFromDocument(Document document) {}
 }

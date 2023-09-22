@@ -45,4 +45,6 @@ public class MatchDataPercentageAutoGamepieceScoredHubHighView extends MatchData
             setValueText(formatNumberAsString(upperScores/documents.size()) +" --> (" +  formatPercentageAsString(percentage) + ")", "gray");
         }
     }
+
+    public void calculateFromDocument(Document document) {}
 }

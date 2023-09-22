@@ -54,4 +54,6 @@ public class MatchDataPercentageGamePiecesScoredView extends MatchDataView imple
             setValueText(formatPercentageAsString(percentage), "gray");
         }
     }
+
+    public void calculateFromDocument(Document document) {}
 }

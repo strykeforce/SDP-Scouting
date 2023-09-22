@@ -73,4 +73,25 @@ public class MatchDataPreferredStartLoc extends MatchDataView implements IMatchD
             setValueText(mostCommonElement(startLocs), "gray");
         }
     }
+
+    public void calculateFromDocument(Document document) {
+        if (document == null) {
+            return;
+        }
+        boolean didSomething = false;               // catch teams that did nothing -> present a "N/A"
+        List<String> startLocs = new ArrayList<>();
+
+        Map<String, Object> data = (Map<String, Object>) document.getProperty("data");
+        if (data == null) {
+            return;
+        }
+        String startingLocation = (String) data.get("auto-startLoc");
+        startLocs.add(startingLocation);
+        didSomething = true;
+        if (!didSomething) {
+            setValueText("N/A", "gray");
+        } else {
+            setValueText(mostCommonElement(startLocs), "gray");
+        }
+    }
 }

@@ -22,24 +22,16 @@ public class MatchDataAutoTopCones extends MatchDataView implements IMatchDataVi
     }
 
     @Override
-    public void calculateFromDocuments(List<Document> documents) {
-        if (documents == null) {
-            return;
-        } else if (documents.size() == 0) {
+    public void calculateFromDocuments(List<Document> documents) {}
+
+    public void calculateFromDocument(Document document) {
+        if (document == null) {
             return;
         }
         boolean didSomething = false;               // catch teams that did nothing -> present a "N/A"
         int autoTopCones = 0;
-        Document doc;
-        try {
-            doc = DatabaseManager.getInstance(this.getContext()).getMatchResults(MatchScoutingMainFragment.getSelectedMatchKey(), MatchScoutingMainFragment.getSelectedTeamToScout());
-        } catch (CouchbaseLiteException e) {
-            throw new RuntimeException(e);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-        Map<String, Object> data = (Map<String, Object>) doc.getProperty("data");
-        if (data == null) {
+        Map<String, Object> data = (Map<String, Object>) document.getProperty("data");
+        if (data.get("auto_top_cones") == null) {
             return;
         }
         autoTopCones = (int) data.get("auto_top_cones");

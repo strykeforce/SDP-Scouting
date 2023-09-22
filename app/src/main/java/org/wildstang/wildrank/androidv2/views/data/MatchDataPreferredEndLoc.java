@@ -73,4 +73,6 @@ public class MatchDataPreferredEndLoc extends MatchDataView implements IMatchDat
             setValueText(mostCommonElement(endLocs), "gray");
         }
     }
+
+    public void calculateFromDocument(Document document) {}
 }

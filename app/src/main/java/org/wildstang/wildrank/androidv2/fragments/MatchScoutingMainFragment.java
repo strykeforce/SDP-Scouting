@@ -21,6 +21,7 @@ import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.couchbase.lite.CouchbaseLiteException;
 import com.couchbase.lite.Document;
 import com.couchbase.lite.Query;
 import com.couchbase.lite.QueryEnumerator;
@@ -30,9 +31,12 @@ import org.wildstang.wildrank.androidv2.R;
 import org.wildstang.wildrank.androidv2.Utilities;
 import org.wildstang.wildrank.androidv2.activities.ScoutMatchActivity;
 import org.wildstang.wildrank.androidv2.adapters.MatchListAdapter;
+import org.wildstang.wildrank.androidv2.adapters.TeamSummariesFragmentPagerAdapter;
 import org.wildstang.wildrank.androidv2.data.DatabaseManager;
+import org.wildstang.wildrank.androidv2.views.data.MatchDataView;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -175,6 +179,18 @@ public class MatchScoutingMainFragment extends Fragment implements View.OnClickL
         this.matchNumber.setText("Match " + matchNumber);
 
         selectedTeamToScout = Utilities.getAssignedTeamKeyFromMatchDocument(getActivity(), matchDocument);
+
+
+        // Populates data window
+        try {
+            DatabaseManager db = DatabaseManager.getInstance(getActivity());
+            Document testDocument = db.getMatchResults(selectedMatchKey, selectedTeamToScout);
+            MatchDataView.initializeViewsInViewGroupWithDocument((ViewGroup) getView(), testDocument);
+        } catch (CouchbaseLiteException | IOException e) {
+            e.printStackTrace();
+            Toast.makeText(getActivity(), "Error loading data for team. Check LogCat.", Toast.LENGTH_LONG).show();
+        }
+
         String teamToScout = selectedTeamToScout.replace("frc", "");
         scoutingTeam.setText(teamToScout);
 

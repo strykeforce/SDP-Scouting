@@ -44,4 +44,6 @@ public class MatchDataEndgameIssues extends MatchDataView implements IMatchDataV
             setValueText(formatPercentageAsString(percentage), "gray");
         }
     }
+
+    public void calculateFromDocument(Document document) {}
 }

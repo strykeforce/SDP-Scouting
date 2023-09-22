@@ -46,4 +46,6 @@ public class MatchDataAutoMove extends MatchDataView implements IMatchDataView {
             setValueText(formatPercentageAsString(percentage), "gray");
         }
     }
+
+    public void calculateFromDocument(Document document) {}
 }

@@ -76,6 +76,21 @@ public abstract class MatchDataView extends RelativeLayout implements IMatchData
         }
     }
 
+    public static void initializeViewsInViewGroupWithDocument(ViewGroup v, Document doc) {
+        if (v == null) {
+            return;
+        }
+        int childCount = v.getChildCount();
+        for (int i = 0; i < childCount; i++) {
+            View view = v.getChildAt(i);
+            if (view instanceof IMatchDataView) {
+                ((IMatchDataView) view).calculateFromDocument(doc);
+            } else if (view instanceof ViewGroup) {
+                initializeViewsInViewGroupWithDocument((ViewGroup) view, doc);
+            }
+        }
+    }
+
     public static void clearAllViewsInViewGroup(ViewGroup v) {
         if (v == null) {
             return;
