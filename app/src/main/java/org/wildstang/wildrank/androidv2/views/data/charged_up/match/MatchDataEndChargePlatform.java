@@ -1,4 +1,4 @@
-package org.wildstang.wildrank.androidv2.views.data.charged_up;
+package org.wildstang.wildrank.androidv2.views.data.charged_up.match;
 
 import android.content.Context;
 import android.util.AttributeSet;
@@ -11,9 +11,9 @@ import org.wildstang.wildrank.androidv2.views.data.MatchDataView;
 import java.util.List;
 import java.util.Map;
 
-public class MatchDataTeleBottomCubes extends MatchDataView implements IMatchDataView {
+public class MatchDataEndChargePlatform extends MatchDataView implements IMatchDataView {
 
-    public MatchDataTeleBottomCubes(Context context, AttributeSet attrs) {
+    public MatchDataEndChargePlatform(Context context, AttributeSet attrs) {
         super(context, attrs);
     }
 
@@ -21,17 +21,16 @@ public class MatchDataTeleBottomCubes extends MatchDataView implements IMatchDat
     public void calculateFromDocuments(List<Document> documents) {}
 
     public void calculateFromDocument(Document document) {
-        if (document == null) {
+        if (document == null || document.getProperty("data") == null) {
             return;
         }
         boolean didSomething = false;               // catch teams that did nothing -> present a "N/A"
-        int teleBottomCubes = 0;
         Map<String, Object> data = (Map<String, Object>) document.getProperty("data");
-        if (data.get("tele_bottom_cubes") == null) {
+        if (data.get("EndChargePlatform") == null) {
             return;
         }
-        teleBottomCubes = (int) data.get("tele_bottom_cubes");
+        Object value = data.get("EndChargePlatform");
         didSomething = true;
-        setValueText("" + formatNumberAsString(teleBottomCubes), "gray");
+        setValueText("" + value, "gray");
     }
 }

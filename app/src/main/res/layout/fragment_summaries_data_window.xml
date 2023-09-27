@@ -24,55 +24,55 @@
             android:textStyle="bold"
             android:text="Auto Overview" />
 
-        <org.wildstang.wildrank.androidv2.views.data.charged_up.MatchDataAutoTopCones
+        <org.wildstang.wildrank.androidv2.views.data.charged_up.match.MatchDataAutoTopCones
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:explanation="Amount of top cones scored in auton"
             app:label="Top Cones" />
 
-        <org.wildstang.wildrank.androidv2.views.data.charged_up.MatchDataAutoMiddleCones
+        <org.wildstang.wildrank.androidv2.views.data.charged_up.match.MatchDataAutoMiddleCones
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:explanation="Amount of middle cones scored in auton"
             app:label="Middle Cones" />
 
-        <org.wildstang.wildrank.androidv2.views.data.charged_up.MatchDataAutoBottomCones
+        <org.wildstang.wildrank.androidv2.views.data.charged_up.match.MatchDataAutoBottomCones
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:explanation="Amount of bottom cones scored in auton"
             app:label="Bottom Cones" />
 
-        <org.wildstang.wildrank.androidv2.views.data.charged_up.MatchDataAutoTopCubes
+        <org.wildstang.wildrank.androidv2.views.data.charged_up.match.MatchDataAutoTopCubes
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:explanation="Amount of top cubes scored in auton"
             app:label="Top Cubes" />
 
-        <org.wildstang.wildrank.androidv2.views.data.charged_up.MatchDataAutoMiddleCubes
+        <org.wildstang.wildrank.androidv2.views.data.charged_up.match.MatchDataAutoMiddleCubes
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:explanation="Amount of middle cubes scored in auton"
             app:label="Middle Cubes" />
 
-        <org.wildstang.wildrank.androidv2.views.data.charged_up.MatchDataAutoBottomCubes
+        <org.wildstang.wildrank.androidv2.views.data.charged_up.match.MatchDataAutoBottomCubes
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:explanation="Amount of bottom cubes scored in auton"
             app:label="Bottom Cubes" />
 
-        <org.wildstang.wildrank.androidv2.views.data.charged_up.MatchDataAutoDocked
+        <org.wildstang.wildrank.androidv2.views.data.charged_up.match.MatchDataAutoDocked
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:explanation="If robot ended auton unbalanced on charge station"
             app:label="Docked" />
 
-        <org.wildstang.wildrank.androidv2.views.data.charged_up.MatchDataAutoBalanced
+        <org.wildstang.wildrank.androidv2.views.data.charged_up.match.MatchDataAutoBalanced
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:explanation="If robot ended auton balanced on charge station"
             app:label="Balanced" />
 
-        <org.wildstang.wildrank.androidv2.views.data.charged_up.MatchDataAutoCrossedLine
+        <org.wildstang.wildrank.androidv2.views.data.charged_up.match.MatchDataAutoCrossedLine
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:explanation="If robot crossed line during auton"
@@ -85,37 +85,37 @@
             android:textStyle="bold"
             android:text="Tele Overview" />
 
-        <org.wildstang.wildrank.androidv2.views.data.charged_up.MatchDataTeleTopCones
+        <org.wildstang.wildrank.androidv2.views.data.charged_up.match.MatchDataTeleTopCones
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:explanation="Amount of top cones scored in tele"
             app:label="Top Cones" />
 
-        <org.wildstang.wildrank.androidv2.views.data.charged_up.MatchDataTeleMiddleCones
+        <org.wildstang.wildrank.androidv2.views.data.charged_up.match.MatchDataTeleMiddleCones
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:explanation="Amount of middle cones scored in tele"
             app:label="Middle Cones" />
 
-        <org.wildstang.wildrank.androidv2.views.data.charged_up.MatchDataTeleBottomCones
+        <org.wildstang.wildrank.androidv2.views.data.charged_up.match.MatchDataTeleBottomCones
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:explanation="Amount of bottom cones scored in tele"
             app:label="Bottom Cones" />
 
-        <org.wildstang.wildrank.androidv2.views.data.charged_up.MatchDataTeleTopCubes
+        <org.wildstang.wildrank.androidv2.views.data.charged_up.match.MatchDataTeleTopCubes
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:explanation="Amount of top cubes scored in tele"
             app:label="Top Cubes" />
 
-        <org.wildstang.wildrank.androidv2.views.data.charged_up.MatchDataTeleMiddleCubes
+        <org.wildstang.wildrank.androidv2.views.data.charged_up.match.MatchDataTeleMiddleCubes
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:explanation="Amount of middle cubes scored in tele"
             app:label="Middle Cubes" />
 
-        <org.wildstang.wildrank.androidv2.views.data.charged_up.MatchDataTeleBottomCubes
+        <org.wildstang.wildrank.androidv2.views.data.charged_up.match.MatchDataTeleBottomCubes
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:explanation="Amount of bottom cubes scored in tele"
@@ -128,7 +128,7 @@
             android:textStyle="bold"
             android:text="End Overview" />
 
-        <org.wildstang.wildrank.androidv2.views.data.charged_up.MatchDataEndChargePlatform
+        <org.wildstang.wildrank.androidv2.views.data.charged_up.match.MatchDataEndChargePlatform
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:explanation="Where the robot was at the end of the match"

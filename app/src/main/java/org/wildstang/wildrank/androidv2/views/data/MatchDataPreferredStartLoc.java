@@ -60,7 +60,7 @@ public class MatchDataPreferredStartLoc extends MatchDataView implements IMatchD
 
         for (Document document : documents) {
             Map<String, Object> data = (Map<String, Object>) document.getProperty("data");
-            if (data == null) {
+            if (data == null || data.get("auto-startLoc") == null) {
                 return;
             }
             String startingLocation = (String) data.get("auto-startLoc");

@@ -31,7 +31,7 @@ public class MatchDataAutoMove extends MatchDataView implements IMatchDataView {
         int instances = 0;
         for (Document document : documents) {
             Map<String, Object> data = (Map<String, Object>) document.getProperty("data");
-            if (data == null) {
+            if (data == null || data.get("auto-drive") == null) {
                 return;
             }
             int move = (boolean)data.get("auto-drive")  ? 1 : 0;

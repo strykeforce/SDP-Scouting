@@ -57,6 +57,9 @@ public class StackDataView extends View {
         // Default, empty CycleModel to compare to
         for (Document doc : matchDocs) {
             Map<String, Object> data = (Map<String, Object>) doc.getProperty("data");
+            if (data.get("cycles") == null) {
+                return;
+            }
             List<Map<String, Object>> stackData = (List<Map<String, Object>>) data.get("cycles");
             List<CycleModel> matchStacks = new ArrayList<>();
             if (stackData.size() == 0) {

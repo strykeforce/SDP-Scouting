@@ -1,4 +1,4 @@
-package org.wildstang.wildrank.androidv2.views.data.charged_up;
+package org.wildstang.wildrank.androidv2.views.data.charged_up.match;
 
 import android.content.Context;
 import android.util.AttributeSet;
@@ -11,9 +11,9 @@ import org.wildstang.wildrank.androidv2.views.data.MatchDataView;
 import java.util.List;
 import java.util.Map;
 
-public class MatchDataAutoCrossedLine extends MatchDataView implements IMatchDataView {
+public class MatchDataTeleBottomCones extends MatchDataView implements IMatchDataView {
 
-    public MatchDataAutoCrossedLine(Context context, AttributeSet attrs) {
+    public MatchDataTeleBottomCones(Context context, AttributeSet attrs) {
         super(context, attrs);
     }
 
@@ -21,16 +21,17 @@ public class MatchDataAutoCrossedLine extends MatchDataView implements IMatchDat
     public void calculateFromDocuments(List<Document> documents) {}
 
     public void calculateFromDocument(Document document) {
-        if (document == null) {
+        if (document == null || document.getProperty("data") == null) {
             return;
         }
         boolean didSomething = false;               // catch teams that did nothing -> present a "N/A"
+        int teleBottomCones = 0;
         Map<String, Object> data = (Map<String, Object>) document.getProperty("data");
-        if (data.get("CrossLine") == null) {
+        if (data.get("tele_bottom_cones") == null) {
             return;
         }
-        Object checked = data.get("CrossLine");
+        teleBottomCones = (int) data.get("tele_bottom_cones");
         didSomething = true;
-        setValueText("" + checked, "gray");
+        setValueText("" + formatNumberAsString(teleBottomCones), "gray");
     }
 }

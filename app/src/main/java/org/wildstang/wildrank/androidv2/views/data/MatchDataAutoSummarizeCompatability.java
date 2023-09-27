@@ -30,7 +30,7 @@ public class MatchDataAutoSummarizeCompatability extends MatchDataView implement
         //int instances = 0;
         for (Document document : documents) {
             Map<String, Object> data = (Map<String, Object>) document.getProperty("data");
-            if (data == null) {
+            if (data == null || data.get("auto-drive") == null) {
                 return;
             }
             if ((boolean)data.get("auto-drive")&& ! (boolean)data.get("auto-robot_contact") &&

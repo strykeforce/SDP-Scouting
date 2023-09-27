@@ -29,7 +29,7 @@ public class MatchDataPercentageAutoGamepieceScoredHubHighView extends MatchData
         int upperMisses = 0;
         for (Document document : documents) {
             Map<String, Object> data = (Map<String, Object>) document.getProperty("data");
-            if (data == null) {
+            if (data == null || data.get("auto-score_cargo_high") == null || data.get("auto-miss_cargo_high") == null) {
                 return;
             }
             int scored = (int) data.get("auto-score_cargo_high");

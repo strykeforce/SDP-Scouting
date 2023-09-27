@@ -1,4 +1,4 @@
-package org.wildstang.wildrank.androidv2.views.data.charged_up;
+package org.wildstang.wildrank.androidv2.views.data.charged_up.match;
 
 import android.content.Context;
 import android.util.AttributeSet;
@@ -11,9 +11,9 @@ import org.wildstang.wildrank.androidv2.views.data.MatchDataView;
 import java.util.List;
 import java.util.Map;
 
-public class MatchDataNotes extends MatchDataView implements IMatchDataView {
+public class MatchDataAutoMiddleCones extends MatchDataView implements IMatchDataView {
 
-    public MatchDataNotes(Context context, AttributeSet attrs) {
+    public MatchDataAutoMiddleCones(Context context, AttributeSet attrs) {
         super(context, attrs);
     }
 
@@ -21,16 +21,17 @@ public class MatchDataNotes extends MatchDataView implements IMatchDataView {
     public void calculateFromDocuments(List<Document> documents) {}
 
     public void calculateFromDocument(Document document) {
-        if (document == null) {
+        if (document == null || document.getProperty("data") == null) {
             return;
         }
         boolean didSomething = false;               // catch teams that did nothing -> present a "N/A"
+        int autoMiddleCones = 0;
         Map<String, Object> data = (Map<String, Object>) document.getProperty("data");
-        if (data.get("notes") == null) {
+        if (data.get("auto_middle_cones") == null) {
             return;
         }
-        Object notes = data.get("notes");
+        autoMiddleCones = (int) data.get("auto_middle_cones");
         didSomething = true;
-        setValueText("" + notes, "gray");
+        setValueText("" + formatNumberAsString(autoMiddleCones), "gray");
     }
 }

@@ -1,4 +1,4 @@
-package org.wildstang.wildrank.androidv2.views.data.charged_up;
+package org.wildstang.wildrank.androidv2.views.data.charged_up.match;
 
 import android.content.Context;
 import android.util.AttributeSet;
@@ -11,9 +11,9 @@ import org.wildstang.wildrank.androidv2.views.data.MatchDataView;
 import java.util.List;
 import java.util.Map;
 
-public class MatchDataTeleMiddleCubes extends MatchDataView implements IMatchDataView {
+public class MatchDataAutoMiddleCubes extends MatchDataView implements IMatchDataView {
 
-    public MatchDataTeleMiddleCubes(Context context, AttributeSet attrs) {
+    public MatchDataAutoMiddleCubes(Context context, AttributeSet attrs) {
         super(context, attrs);
     }
 
@@ -21,17 +21,17 @@ public class MatchDataTeleMiddleCubes extends MatchDataView implements IMatchDat
     public void calculateFromDocuments(List<Document> documents) {}
 
     public void calculateFromDocument(Document document) {
-        if (document == null) {
+        if (document == null || document.getProperty("data") == null) {
             return;
         }
         boolean didSomething = false;               // catch teams that did nothing -> present a "N/A"
-        int teleMiddleCubes = 0;
+        int autoMiddleCubes = 0;
         Map<String, Object> data = (Map<String, Object>) document.getProperty("data");
-        if (data.get("tele_middle_cubes") == null) {
+        if (data.get("auto_middle_cubes") == null) {
             return;
         }
-        teleMiddleCubes = (int) data.get("tele_middle_cubes");
+        autoMiddleCubes = (int) data.get("auto_middle_cubes");
         didSomething = true;
-        setValueText("" + formatNumberAsString(teleMiddleCubes), "gray");
+        setValueText("" + formatNumberAsString(autoMiddleCubes), "gray");
     }
 }

@@ -1,19 +1,23 @@
-package org.wildstang.wildrank.androidv2.views.data.charged_up;
+package org.wildstang.wildrank.androidv2.views.data.charged_up.match;
 
 import android.content.Context;
 import android.util.AttributeSet;
 
+import com.couchbase.lite.CouchbaseLiteException;
 import com.couchbase.lite.Document;
 
+import org.wildstang.wildrank.androidv2.data.DatabaseManager;
+import org.wildstang.wildrank.androidv2.fragments.MatchScoutingMainFragment;
 import org.wildstang.wildrank.androidv2.interfaces.IMatchDataView;
 import org.wildstang.wildrank.androidv2.views.data.MatchDataView;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
-public class MatchDataAutoBottomCubes extends MatchDataView implements IMatchDataView {
+public class MatchDataAutoTopCones extends MatchDataView implements IMatchDataView {
 
-    public MatchDataAutoBottomCubes(Context context, AttributeSet attrs) {
+    public MatchDataAutoTopCones(Context context, AttributeSet attrs) {
         super(context, attrs);
     }
 
@@ -21,17 +25,17 @@ public class MatchDataAutoBottomCubes extends MatchDataView implements IMatchDat
     public void calculateFromDocuments(List<Document> documents) {}
 
     public void calculateFromDocument(Document document) {
-        if (document == null) {
+        if (document == null || document.getProperty("data") == null) {
             return;
         }
         boolean didSomething = false;               // catch teams that did nothing -> present a "N/A"
-        int autoBottomCubes = 0;
+        int autoTopCones = 0;
         Map<String, Object> data = (Map<String, Object>) document.getProperty("data");
-        if (data.get("auto_bottom_cubes") == null) {
+        if (data.get("auto_top_cones") == null) {
             return;
         }
-        autoBottomCubes = (int) data.get("auto_bottom_cubes");
+        autoTopCones = (int) data.get("auto_top_cones");
         didSomething = true;
-        setValueText("" + formatNumberAsString(autoBottomCubes), "gray");
+        setValueText("" + formatNumberAsString(autoTopCones), "gray");
     }
 }
