@@ -32,6 +32,6 @@ public class MatchDataAutoMiddleCones extends MatchDataView implements IMatchDat
         }
         autoMiddleCones = (int) data.get("auto_middle_cones");
         didSomething = true;
-        setValueText("" + formatNumberAsString(autoMiddleCones), "gray");
+        setValueText(formatNumberAsString(autoMiddleCones), "gray");
     }
 }

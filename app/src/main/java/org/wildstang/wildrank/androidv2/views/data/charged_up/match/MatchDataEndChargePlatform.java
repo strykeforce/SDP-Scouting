@@ -29,8 +29,8 @@ public class MatchDataEndChargePlatform extends MatchDataView implements IMatchD
         if (data.get("EndChargePlatform") == null) {
             return;
         }
-        Object value = data.get("EndChargePlatform");
+        String value = (String) data.get("EndChargePlatform");
         didSomething = true;
-        setValueText("" + value, "gray");
+        setValueText(value, "gray");
     }
 }

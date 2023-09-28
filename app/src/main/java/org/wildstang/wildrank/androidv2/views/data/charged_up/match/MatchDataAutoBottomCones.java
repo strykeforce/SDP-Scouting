@@ -32,6 +32,6 @@ public class MatchDataAutoBottomCones extends MatchDataView implements IMatchDat
         }
         autoBottomCones = (int) data.get("auto_bottom_cones");
         didSomething = true;
-        setValueText("" + formatNumberAsString(autoBottomCones), "gray");
+        setValueText(formatNumberAsString(autoBottomCones), "gray");
     }
 }

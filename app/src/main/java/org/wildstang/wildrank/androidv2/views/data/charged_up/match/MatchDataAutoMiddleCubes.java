@@ -32,6 +32,6 @@ public class MatchDataAutoMiddleCubes extends MatchDataView implements IMatchDat
         }
         autoMiddleCubes = (int) data.get("auto_middle_cubes");
         didSomething = true;
-        setValueText("" + formatNumberAsString(autoMiddleCubes), "gray");
+        setValueText(formatNumberAsString(autoMiddleCubes), "gray");
     }
 }

@@ -29,7 +29,7 @@ public class MatchDataAutoDocked extends MatchDataView implements IMatchDataView
         if (data.get("Docked") == null) {
             return;
         }
-        Object checked = data.get("Docked");
+        boolean checked = (boolean) data.get("Docked");
         didSomething = true;
         setValueText("" + checked, "gray");
     }

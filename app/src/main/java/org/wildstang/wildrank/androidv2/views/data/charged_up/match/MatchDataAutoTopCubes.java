@@ -32,6 +32,6 @@ public class MatchDataAutoTopCubes extends MatchDataView implements IMatchDataVi
         }
         autoTopCubes = (int) data.get("auto_top_cubes");
         didSomething = true;
-        setValueText("" + formatNumberAsString(autoTopCubes), "gray");
+        setValueText(formatNumberAsString(autoTopCubes), "gray");
     }
 }

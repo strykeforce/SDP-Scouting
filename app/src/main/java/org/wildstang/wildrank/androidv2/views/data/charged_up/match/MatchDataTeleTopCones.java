@@ -32,6 +32,6 @@ public class MatchDataTeleTopCones extends MatchDataView implements IMatchDataVi
         }
         teleTopCones = (int) data.get("tele_top_cones");
         didSomething = true;
-        setValueText("" + formatNumberAsString(teleTopCones), "gray");
+        setValueText(formatNumberAsString(teleTopCones), "gray");
     }
 }

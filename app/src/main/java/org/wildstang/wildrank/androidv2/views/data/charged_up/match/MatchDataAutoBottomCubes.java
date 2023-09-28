@@ -32,6 +32,6 @@ public class MatchDataAutoBottomCubes extends MatchDataView implements IMatchDat
         }
         autoBottomCubes = (int) data.get("auto_bottom_cubes");
         didSomething = true;
-        setValueText("" + formatNumberAsString(autoBottomCubes), "gray");
+        setValueText(formatNumberAsString(autoBottomCubes), "gray");
     }
 }

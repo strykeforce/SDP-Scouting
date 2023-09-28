@@ -30,7 +30,7 @@ public class CompDataAutoConesAverage extends MatchDataView implements IMatchDat
         int cones = 0;
         for (Document document : documents) {
             Map<String, Object> data = (Map<String, Object>) document.getProperty("data");
-            if (data == null || data.get("auto_top_cones") == null || data.get("auto_middle_cones") == null || data.get("auto_bottom_cones") == null) {
+            if (data.get("auto_top_cones") == null || data.get("auto_middle_cones") == null || data.get("auto_bottom_cones") == null) {
                 return;
             }
             cones += (int) data.get("auto_top_cones");
@@ -41,7 +41,7 @@ public class CompDataAutoConesAverage extends MatchDataView implements IMatchDat
         if (!didSomething) {
             setValueText("N/A", "gray");
         } else {
-            double average = cones / documents.size();
+            double average = (double) cones / (double) documents.size();
             setValueText(formatNumberAsString(average), "gray");
         }
     }

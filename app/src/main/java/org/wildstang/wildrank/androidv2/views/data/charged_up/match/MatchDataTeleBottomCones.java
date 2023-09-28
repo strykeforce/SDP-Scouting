@@ -32,6 +32,6 @@ public class MatchDataTeleBottomCones extends MatchDataView implements IMatchDat
         }
         teleBottomCones = (int) data.get("tele_bottom_cones");
         didSomething = true;
-        setValueText("" + formatNumberAsString(teleBottomCones), "gray");
+        setValueText(formatNumberAsString(teleBottomCones), "gray");
     }
 }

@@ -32,6 +32,6 @@ public class MatchDataTeleBottomCubes extends MatchDataView implements IMatchDat
         }
         teleBottomCubes = (int) data.get("tele_bottom_cubes");
         didSomething = true;
-        setValueText("" + formatNumberAsString(teleBottomCubes), "gray");
+        setValueText(formatNumberAsString(teleBottomCubes), "gray");
     }
 }

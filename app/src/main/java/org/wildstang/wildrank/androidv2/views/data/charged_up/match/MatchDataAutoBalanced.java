@@ -29,7 +29,7 @@ public class MatchDataAutoBalanced extends MatchDataView implements IMatchDataVi
         if (data.get("Balanced") == null) {
             return;
         }
-        Object checked = data.get("Balanced");
+        boolean checked = (boolean) data.get("Balanced");
         didSomething = true;
         setValueText("" + checked, "gray");
     }

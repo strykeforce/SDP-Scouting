@@ -29,7 +29,7 @@ public class MatchDataAutoCrossedLine extends MatchDataView implements IMatchDat
         if (data.get("CrossLine") == null) {
             return;
         }
-        Object checked = data.get("CrossLine");
+        boolean checked = (boolean) data.get("CrossLine");
         didSomething = true;
         setValueText("" + checked, "gray");
     }

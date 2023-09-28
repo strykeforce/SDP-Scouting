@@ -36,6 +36,6 @@ public class MatchDataAutoTopCones extends MatchDataView implements IMatchDataVi
         }
         autoTopCones = (int) data.get("auto_top_cones");
         didSomething = true;
-        setValueText("" + formatNumberAsString(autoTopCones), "gray");
+        setValueText(formatNumberAsString(autoTopCones), "gray");
     }
 }
