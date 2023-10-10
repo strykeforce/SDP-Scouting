@@ -69,7 +69,7 @@ public class MatchListAdapter extends ArrayAdapter<QueryRow> {
         holder.blue2.setText(blueTeams[1].toString().replace("frc", ""));
         holder.blue3.setText(blueTeams[2].toString().replace("frc", ""));
 
-        // Gray everything out if the mathc has already been scouted
+        // Gray everything out if the match has already been scouted
         if (isMatchScouted) {
             float alpha = 0.2f;
             holder.matchNumber.setAlpha(alpha);

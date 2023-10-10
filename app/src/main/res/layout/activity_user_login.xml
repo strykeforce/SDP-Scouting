@@ -1,7 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+    
+    <View
+        android:id="@+id/rectangle_1"
+        android:layout_width="1280dp"
+        android:layout_height="100dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:background="#F2BB16" />
+
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        app:srcCompat="@drawable/logo876" />
 
     <RelativeLayout
         android:id="@+id/login_container"
@@ -10,12 +26,14 @@
         android:layout_centerInParent="true"
         android:orientation="vertical">
 
+        <!-- Auto layout, variables, and unit scale are not yet supported -->
+
         <TextView
             android:id="@+id/login_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
-            android:text="@string/wildrank_login"
+            android:text="Login"
             android:textSize="50sp" />
 
         <TextView
@@ -32,9 +50,9 @@
             android:id="@+id/login_user_id"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_below="@id/login_prompt"
             android:layout_alignLeft="@id/login_prompt"
             android:layout_alignRight="@id/login_prompt"
-            android:layout_below="@id/login_prompt"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="30dp"
             android:gravity="center_horizontal"
@@ -48,9 +66,9 @@
             android:id="@+id/login_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_below="@id/login_user_id"
             android:layout_alignLeft="@id/login_prompt"
             android:layout_alignRight="@id/login_prompt"
-            android:layout_below="@id/login_user_id"
             android:layout_centerHorizontal="true"
             android:text="@string/button_login" />
     </RelativeLayout>
@@ -77,8 +95,8 @@
         style="?android:attr/buttonStyleSmall"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
+
+        android:layout_alignParentRight="true"
         android:layout_alignParentTop="true"
         android:text="@string/button_sync" />
 
@@ -86,8 +104,11 @@
         android:id="@+id/version"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentTop="true" />
+        android:layout_alignParentRight="true" />
+
+
+
 
 </RelativeLayout>

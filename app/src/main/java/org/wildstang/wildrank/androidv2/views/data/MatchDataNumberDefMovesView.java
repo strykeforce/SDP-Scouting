@@ -40,4 +40,6 @@ public class MatchDataNumberDefMovesView extends MatchDataView implements IMatch
                 .subscribe(sum -> setValueText("" + sum, "gray"), error -> Log.d("wildrank", this.getClass().getName()));
 
     }
+
+    public void calculateFromDocument(Document document) {}
 }

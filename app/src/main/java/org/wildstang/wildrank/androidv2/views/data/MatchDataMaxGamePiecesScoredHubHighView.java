@@ -28,7 +28,7 @@ public class MatchDataMaxGamePiecesScoredHubHighView extends MatchDataView imple
         double maxUpperScores = 0;
         for (Document document : documents) {
             Map<String, Object> data = (Map<String, Object>) document.getProperty("data");
-            if (data == null) {
+            if (data == null || data.get("cycles") == null) {
                 return;
             }
             //TODO Fix me with a more appropriate max function
@@ -58,4 +58,6 @@ public class MatchDataMaxGamePiecesScoredHubHighView extends MatchDataView imple
             //setValueText(formatNumberAsString(upperScores) + ' ' + formatNumberAsString(upperAttempts)  , "gray");
         }
     }
+
+    public void calculateFromDocument(Document document) {}
 }

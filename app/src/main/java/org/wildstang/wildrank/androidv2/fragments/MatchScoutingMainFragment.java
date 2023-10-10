@@ -1,9 +1,12 @@
 package org.wildstang.wildrank.androidv2.fragments;
 
+
 import android.app.AlertDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.os.Parcelable;
 import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
@@ -12,10 +15,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.couchbase.lite.CouchbaseLiteException;
 import com.couchbase.lite.Document;
 import com.couchbase.lite.Query;
 import com.couchbase.lite.QueryEnumerator;
@@ -25,11 +31,17 @@ import org.wildstang.wildrank.androidv2.R;
 import org.wildstang.wildrank.androidv2.Utilities;
 import org.wildstang.wildrank.androidv2.activities.ScoutMatchActivity;
 import org.wildstang.wildrank.androidv2.adapters.MatchListAdapter;
+import org.wildstang.wildrank.androidv2.adapters.TeamSummariesFragmentPagerAdapter;
 import org.wildstang.wildrank.androidv2.data.DatabaseManager;
+import org.wildstang.wildrank.androidv2.views.data.MatchDataView;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+
+import com.squareup.picasso.Picasso;
 
 public class MatchScoutingMainFragment extends Fragment implements View.OnClickListener {
 
@@ -39,8 +51,8 @@ public class MatchScoutingMainFragment extends Fragment implements View.OnClickL
     private Button beginScouting;
     private TextView matchNumber;
 
-    private String selectedTeamToScout;
-    private String selectedMatchKey;
+    private static String selectedTeamToScout;
+    private static String selectedMatchKey;
 
     private MatchListAdapter adapter;
 
@@ -48,6 +60,14 @@ public class MatchScoutingMainFragment extends Fragment implements View.OnClickL
 
     public MatchScoutingMainFragment() {
         // Required empty public constructor
+    }
+
+    public static String getSelectedTeamToScout() {
+        return selectedTeamToScout;
+    }
+
+    public static String getSelectedMatchKey() {
+        return selectedMatchKey;
     }
 
     @Override
@@ -159,6 +179,18 @@ public class MatchScoutingMainFragment extends Fragment implements View.OnClickL
         this.matchNumber.setText("Match " + matchNumber);
 
         selectedTeamToScout = Utilities.getAssignedTeamKeyFromMatchDocument(getActivity(), matchDocument);
+
+
+        // Populates data window
+        try {
+            DatabaseManager db = DatabaseManager.getInstance(getActivity());
+            Document testDocument = db.getMatchResults(selectedMatchKey, selectedTeamToScout);
+            MatchDataView.initializeViewsInViewGroupWithDocument((ViewGroup) getView(), testDocument);
+        } catch (CouchbaseLiteException | IOException e) {
+            e.printStackTrace();
+            Toast.makeText(getActivity(), "Error loading data for team. Check LogCat.", Toast.LENGTH_LONG).show();
+        }
+
         String teamToScout = selectedTeamToScout.replace("frc", "");
         scoutingTeam.setText(teamToScout);
 
@@ -174,6 +206,53 @@ public class MatchScoutingMainFragment extends Fragment implements View.OnClickL
             beginScouting.setText(R.string.being_scouting);
         }
         beginScouting.setEnabled(true);
+
+        // Construct the file path for the team's photo
+        // Construct the file path for the team's photo
+        String imagePath = Environment.getExternalStorageDirectory().getAbsolutePath() + "/wildrank/" + teamToScout + ".jpg";
+
+        boolean isMatchScouted;
+        try {
+            isMatchScouted = DatabaseManager.getInstance(getActivity()).isMatchScouted(selectedMatchKey, selectedTeamToScout);
+        } catch (Exception e) {
+            e.printStackTrace();
+            Toast.makeText(getActivity(), "Error determining if match is scouted already.", Toast.LENGTH_SHORT).show();
+            isMatchScouted = false;
+        }
+
+// Check if the image file exists
+        File imageFile = new File(imagePath);
+        ScrollView window = (ScrollView) getView().findViewById(R.id.summary_window);
+        if (imageFile.exists()) {
+            // Get a reference to the ImageView in your layout
+            ImageView teamPhotoImageView = (ImageView) getView().findViewById(R.id.scouting_team_photo);
+
+            Picasso.get()
+                    .load(new File(imagePath))
+                    .placeholder(R.drawable.loading) // Set a placeholder image resource
+                    .error(R.drawable.no_image_available) // Set an error image resource
+                    .into(teamPhotoImageView);
+
+            if (isMatchScouted) {
+                teamPhotoImageView.setVisibility(View.GONE);
+                window.setVisibility(View.VISIBLE);
+            } else {
+                teamPhotoImageView.setVisibility(View.VISIBLE);
+                window.setVisibility(View.GONE);
+            }
+        } else {
+            // If the image file doesn't exist, set a default image
+            ImageView teamPhotoImageView = (ImageView) getView().findViewById(R.id.scouting_team_photo);
+            teamPhotoImageView.setImageResource(R.drawable.no_image_available); // Set the default image resource
+            if (isMatchScouted) {
+                teamPhotoImageView.setVisibility(View.GONE);
+                window.setVisibility(View.VISIBLE);
+            } else {
+                teamPhotoImageView.setVisibility(View.VISIBLE);
+                window.setVisibility(View.GONE);
+            }
+        }
+beginScouting.setEnabled(true);
     }
 
     @Override

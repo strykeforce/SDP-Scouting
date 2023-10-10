@@ -57,7 +57,7 @@ public class MatchDataPreferredSuccessfulScoringRegion extends MatchDataView imp
         double innerScores = 0;
         for (Document document : documents) {
             Map<String, Object> data = (Map<String, Object>) document.getProperty("data");
-            if (data == null) {
+            if (data == null || data.get("cycles") == null) {
                 return;
             }
             List<Map<String, Object>> cycles = (List<Map<String, Object>>) data.get("cycles");
@@ -96,4 +96,6 @@ public class MatchDataPreferredSuccessfulScoringRegion extends MatchDataView imp
 
         }
     }
+
+    public void calculateFromDocument(Document document) {}
 }

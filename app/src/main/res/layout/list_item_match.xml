@@ -11,7 +11,7 @@
         android:layout_centerVertical="true"
         android:paddingLeft="8dp"
         android:paddingRight="8dp"
-        android:textAppearance="?android:attr/textAppearanceListItem" />
+        android:textAppearance="@style/MatchScoutingTeams" />
 
     <LinearLayout
         android:id="@+id/red_alliance"
@@ -24,21 +24,21 @@
             android:id="@+id/red_team_1"
             android:layout_width="80dp"
             android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceListItemSmall"
+            android:textAppearance="@style/MatchScoutingTeams"
             android:textColor="@color/red" />
 
         <TextView
             android:id="@+id/red_team_2"
             android:layout_width="80dp"
             android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceListItemSmall"
+            android:textAppearance="@style/MatchScoutingTeams"
             android:textColor="@color/red" />
 
         <TextView
             android:id="@+id/red_team_3"
             android:layout_width="80dp"
             android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceListItemSmall"
+            android:textAppearance="@style/MatchScoutingTeams"
             android:textColor="@color/red" />
 
     </LinearLayout>
@@ -54,21 +54,21 @@
             android:id="@+id/blue_team_1"
             android:layout_width="80dp"
             android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceListItemSmall"
+            android:textAppearance="@style/MatchScoutingTeams"
             android:textColor="@color/blue" />
 
         <TextView
             android:id="@+id/blue_team_2"
             android:layout_width="80dp"
             android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceListItemSmall"
+            android:textAppearance="@style/MatchScoutingTeams"
             android:textColor="@color/blue" />
 
         <TextView
             android:id="@+id/blue_team_3"
             android:layout_width="80dp"
             android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceListItemSmall"
+            android:textAppearance="@style/MatchScoutingTeams"
             android:textColor="@color/blue" />
 
     </LinearLayout>

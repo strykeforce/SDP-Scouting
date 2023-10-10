@@ -44,4 +44,6 @@ public class MatchDataAverageHumanPlayerRatingView extends MatchDataView impleme
                 .subscribe(average -> setValueText(average, "gray"), error -> Log.d("wildrank", this.getClass().getName()));
 
     }
+
+    public void calculateFromDocument(Document document) {}
 }

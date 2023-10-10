@@ -29,7 +29,7 @@ public class MatchDataPercentageAutoGamepieceScoredHubLowView extends MatchDataV
         int lowerMisses = 0;
         for (Document document : documents) {
             Map<String, Object> data = (Map<String, Object>) document.getProperty("data");
-            if (data == null) {
+            if (data == null || data.get("auto-score_cargo_low") == null || data.get("auto-miss_cargo_low") == null) {
                 return;
             }
             int scored = (int) data.get("auto-score_cargo_low");
@@ -45,4 +45,6 @@ public class MatchDataPercentageAutoGamepieceScoredHubLowView extends MatchDataV
             setValueText(formatNumberAsString(lowerScores/documents.size()) +" --> (" +  formatPercentageAsString(percentage) + ")", "gray");
         }
     }
+
+    public void calculateFromDocument(Document document) {}
 }

@@ -60,7 +60,7 @@ public class MatchDataPreferredEndLoc extends MatchDataView implements IMatchDat
 
         for (Document document : documents) {
             Map<String, Object> data = (Map<String, Object>) document.getProperty("data");
-            if (data == null) {
+            if (data == null || data.get("post_match-climb_level") == null) {
                 return;
             }
             String endingLocation = (String) data.get("post_match-climb_level");
@@ -73,4 +73,6 @@ public class MatchDataPreferredEndLoc extends MatchDataView implements IMatchDat
             setValueText(mostCommonElement(endLocs), "gray");
         }
     }
+
+    public void calculateFromDocument(Document document) {}
 }

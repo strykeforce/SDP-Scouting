@@ -29,7 +29,7 @@ public class MatchDataEndgameIssues extends MatchDataView implements IMatchDataV
         int instances = 0;
         for (Document document : documents) {
             Map<String, Object> data = (Map<String, Object>) document.getProperty("data");
-            if (data == null) {
+            if (data == null || data.get("auto-drive") == null) {
                 return;
             }
             int drive = (boolean) data.get("auto-drive") ? 1 : 0;
@@ -44,4 +44,6 @@ public class MatchDataEndgameIssues extends MatchDataView implements IMatchDataV
             setValueText(formatPercentageAsString(percentage), "gray");
         }
     }
+
+    public void calculateFromDocument(Document document) {}
 }

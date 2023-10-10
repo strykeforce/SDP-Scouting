@@ -29,7 +29,7 @@ public class MatchDataPercentageGamePiecesScoredHubLowView extends MatchDataView
         double lowerScores = 0;
         for (Document document : documents) {
             Map<String, Object> data = (Map<String, Object>) document.getProperty("data");
-            if (data == null) {
+            if (data == null || data.get("cycles") == null) {
                 return;
             }
             List<Map<String, Object>> cycles = (List<Map<String, Object>>) data.get("cycles");
@@ -54,4 +54,6 @@ public class MatchDataPercentageGamePiecesScoredHubLowView extends MatchDataView
             setValueText(formatNumberAsString(lowerScores/documents.size()) +" --> (" +  formatPercentageAsString(percentage) + ")", "gray");
         }
     }
+
+    public void calculateFromDocument(Document document) {}
 }

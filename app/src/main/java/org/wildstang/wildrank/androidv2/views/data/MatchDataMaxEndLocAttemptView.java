@@ -45,4 +45,6 @@ public class MatchDataMaxEndLocAttemptView extends MatchDataView implements IMat
                 .subscribe(max -> setValueText(max, "gray"), error -> Log.d("wildrank", this.getClass().getName()));
 
     }
+
+    public void calculateFromDocument(Document document) {}
 }

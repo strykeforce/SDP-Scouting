@@ -43,7 +43,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentBottom="true"
                 android:layout_margin="16dp"
-                android:text="WildRank"
+                android:text="Stryke Force Scouting"
                 android:textColor="@color/white"
                 android:textSize="24sp" />
         </org.wildstang.wildrank.androidv2.views.SixteenNineAspectRatioLayout>
