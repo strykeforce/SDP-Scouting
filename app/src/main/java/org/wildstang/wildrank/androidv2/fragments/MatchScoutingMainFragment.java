@@ -155,9 +155,15 @@ public class MatchScoutingMainFragment extends Fragment implements View.OnClickL
             Toast.makeText(getActivity(), "Error querying the match list. Check logcat!", Toast.LENGTH_LONG).show();
         }
 
-        if (list.getItemAtPosition(currPosition + 1) !=  null) {
-            QueryRow row = (QueryRow) list.getItemAtPosition(currPosition + 1);
-            onMatchSelected(row.getDocument());
+        try {
+            if (DatabaseManager.getInstance(getActivity()).isMatchScouted(selectedMatchKey, selectedTeamToScout)) {
+                if (list.getItemAtPosition(currPosition + 1) != null) {
+                    QueryRow row = (QueryRow) list.getItemAtPosition(currPosition + 1);
+                    onMatchSelected(row.getDocument());
+                }
+            }
+        } catch (CouchbaseLiteException | IOException e) {
+            e.printStackTrace();
         }
     }
 
