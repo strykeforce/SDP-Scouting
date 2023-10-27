@@ -27,6 +27,7 @@ import org.wildstang.wildrank.androidv2.R;
 import org.wildstang.wildrank.androidv2.UserHelper;
 import org.wildstang.wildrank.androidv2.fragments.MatchScoutingMainFragment;
 import org.wildstang.wildrank.androidv2.fragments.NotesMainFragment;
+import org.wildstang.wildrank.androidv2.fragments.PicklistMainFragment;
 import org.wildstang.wildrank.androidv2.fragments.PitScoutingMainFragment;
 import org.wildstang.wildrank.androidv2.fragments.ScoutersFragment;
 import org.wildstang.wildrank.androidv2.fragments.TeamSummariesMainFragment;
@@ -191,6 +192,8 @@ public class HomeActivity extends AppCompatActivity {
                 // Team Summaries
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new TeamSummariesMainFragment()).commit();
                 break;
+            case PICKLIST:
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new PicklistMainFragment()).commit();
             default:
                 break;
         }
@@ -245,7 +248,8 @@ public class HomeActivity extends AppCompatActivity {
         NOTES(R.string.mode_notes),
         SCOUTERS(R.string.mode_scouters),
         WHITEBOARD(R.string.mode_whiteboard),
-        TEAM_SUMMARIES(R.string.mode_team_summaries);
+        TEAM_SUMMARIES(R.string.mode_team_summaries),
+        PICKLIST(R.string.mode_picklist);
 
         private final int titleRes;
 
