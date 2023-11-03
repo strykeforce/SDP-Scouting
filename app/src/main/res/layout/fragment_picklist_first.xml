@@ -11,9 +11,10 @@
         android:layout_weight="7">
 
         <ListView
-            android:id="@+id/pick_list"
+            android:id="@+id/picks_list"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            android:choiceMode="singleChoice" />
     </LinearLayout>
 
     <LinearLayout
@@ -31,7 +32,8 @@
         <ListView
             android:id="@+id/teams_list"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            android:choiceMode="singleChoice" />
 
     </LinearLayout>
 

@@ -17,7 +17,7 @@ import java.util.Map;
 
 public class PicklistAdapter extends ArrayAdapter<QueryRow> {
 
-    public PicklistAdapter(Context context, List<QueryRow> teams, boolean greyOutScoutedTeams) {
+    public PicklistAdapter(Context context, List<QueryRow> teams) {
         super(context, R.layout.list_item_team, teams);
     }
 
