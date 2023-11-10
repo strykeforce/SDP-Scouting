@@ -2,9 +2,11 @@ package org.wildstang.wildrank.androidv2.fragments;
 
 import android.os.Bundle;
 import android.os.Parcelable;
+import android.view.DragEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -37,10 +39,42 @@ public class PicklistFirstFragment extends PicklistMainFragment {
             onTeamSelected(row.getDocument());
         });
 
+        teamsList.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+                startDrag(view, teamsList.getItemAtPosition(position));
+                return true;
+            }
+        });
+
+        teamsList.setOnDragListener(new View.OnDragListener() {
+            @Override
+            public boolean onDrag(View view, DragEvent event) {
+                onTeamDragged(teamsList, event);
+                return true;
+            }
+        });
+
         picksList.setOnItemClickListener((parent, view1, position, id) -> {
             picksList.setItemChecked(position, true);
             QueryRow row = (QueryRow) parent.getItemAtPosition(position);
             onTeamSelected(row.getDocument());
+        });
+
+        picksList.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+                startDrag(view, picksList.getItemAtPosition(position));
+                return true;
+            }
+        });
+
+        picksList.setOnDragListener(new View.OnDragListener() {
+            @Override
+            public boolean onDrag(View view, DragEvent event) {
+                onTeamDragged(picksList, event);
+                return true;
+            }
         });
 
         return view;
@@ -78,5 +112,13 @@ public class PicklistFirstFragment extends PicklistMainFragment {
     @Override
     public void onTeamSelected(Document doc) {
         super.onTeamSelected(doc);
+    }
+
+    public  void startDrag(View view, Object item) {
+        super.startDrag(view, item);
+    }
+
+    public boolean onTeamDragged(ListView list, DragEvent event) {
+        return(super.onTeamDragged(list, event));
     }
 }
