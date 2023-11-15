@@ -1,10 +1,13 @@
 package org.wildstang.wildrank.androidv2.fragments;
 
 import android.app.AlertDialog;
+import android.content.ClipData;
+import android.content.ClipDescription;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
+import android.util.Pair;
 import android.view.DragEvent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -24,6 +27,7 @@ import org.wildstang.wildrank.androidv2.views.SlidingTabs;
 import org.wildstang.wildrank.androidv2.views.data.MatchDataView;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class PicklistMainFragment extends Fragment {
@@ -33,6 +37,9 @@ public class PicklistMainFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_picklist_main, container, false);
+
+        listAdapter = new PicklistAdapter(getActivity(), new ArrayList<>());
+
         pager = (ViewPager) view.findViewById(R.id.view_pager);
         tabs = (SlidingTabs) view.findViewById(R.id.tabs);
 
@@ -72,24 +79,39 @@ public class PicklistMainFragment extends Fragment {
         info.show();
     }
 
-    public  void startDrag(View view, Object item) {
+    public  void startDrag(View view, Object item, PicklistAdapter adapter) {
+        QueryRow queryRow = (QueryRow) item;
+
+        ClipData.Item clipItem = new ClipData.Item(item.toString());
+        String[] mimeTypes = {ClipDescription.MIMETYPE_TEXT_PLAIN};
+        ClipData dragData = new ClipData(item.toString(), mimeTypes, clipItem);
+
         View.DragShadowBuilder shadowBuilder = new View.DragShadowBuilder(view);
-        view.startDragAndDrop(null, shadowBuilder, item, 0);
+        view.startDragAndDrop(dragData, shadowBuilder, new Pair<>(queryRow, adapter), 0);
     }
 
     public boolean onTeamDragged(ListView list, DragEvent event) {
         int action = event.getAction();
         switch (action) {
             case DragEvent.ACTION_DROP:
-                PicklistAdapter sourceAdapter = (PicklistAdapter) ((ListView) event.getLocalState()).getAdapter();
-                PicklistAdapter targetAdapter = (PicklistAdapter) list.getAdapter();
-                int position = list.pointToPosition((int) event.getX(), (int) event.getY());
-                if (position != ListView.INVALID_POSITION) {
-                    QueryRow draggedItem = (QueryRow) event.getLocalState();
-                    sourceAdapter.remove(draggedItem);
-                    targetAdapter.insert(draggedItem, position);
-                    targetAdapter.notifyDataSetChanged();
-                    return true;
+                if (list.getAdapter() != null) {
+                    Pair<QueryRow, PicklistAdapter> localState = (Pair<QueryRow, PicklistAdapter>) event.getLocalState();
+                    QueryRow draggedItem = localState.first;
+                    PicklistAdapter sourceAdapter = localState.second;
+                    PicklistAdapter targetAdapter = (PicklistAdapter) list.getAdapter();
+
+                    if (targetAdapter.getCount() == 0) {
+                        sourceAdapter.remove(draggedItem);
+                        targetAdapter.add(draggedItem);
+                    } else {
+                        int position = list.pointToPosition((int) event.getX(), (int) event.getY());
+                        if (position != ListView.INVALID_POSITION) {
+                            sourceAdapter.remove(draggedItem);
+                            targetAdapter.insert(draggedItem, position);
+                            targetAdapter.notifyDataSetChanged();
+                            return true;
+                        }
+                    }
                 }
                 break;
             default:

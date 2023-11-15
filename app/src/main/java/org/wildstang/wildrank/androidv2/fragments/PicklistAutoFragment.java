@@ -2,9 +2,11 @@ package org.wildstang.wildrank.androidv2.fragments;
 
 import android.os.Bundle;
 import android.os.Parcelable;
+import android.view.DragEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -24,12 +26,19 @@ import java.util.List;
 public class PicklistAutoFragment extends PicklistMainFragment {
     private ListView teamsList;
     private ListView picksList;
-    private PicklistAdapter listAdapter;
+    private PicklistAdapter teamsAdapter;
+    private PicklistAdapter picksAdapter;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_picklist_auto, container, false);
+
         teamsList = (ListView) view.findViewById(R.id.teams_list);
+        teamsAdapter = new PicklistAdapter(getActivity(), new ArrayList<>());
+        teamsList.setAdapter(teamsAdapter);
+
         picksList = (ListView) view.findViewById(R.id.picks_list);
+        picksAdapter = new PicklistAdapter(getActivity(), new ArrayList<>());
+        picksList.setAdapter(picksAdapter);
 
         teamsList.setOnItemClickListener((parent, view1, position, id) -> {
             teamsList.setItemChecked(position, true);
@@ -37,10 +46,42 @@ public class PicklistAutoFragment extends PicklistMainFragment {
             onTeamSelected(row.getDocument());
         });
 
+        teamsList.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+                startDrag(view, teamsList.getItemAtPosition(position), teamsAdapter);
+                return true;
+            }
+        });
+
+        teamsList.setOnDragListener(new View.OnDragListener() {
+            @Override
+            public boolean onDrag(View view, DragEvent event) {
+                onTeamDragged(teamsList, event);
+                return true;
+            }
+        });
+
         picksList.setOnItemClickListener((parent, view1, position, id) -> {
             picksList.setItemChecked(position, true);
             QueryRow row = (QueryRow) parent.getItemAtPosition(position);
             onTeamSelected(row.getDocument());
+        });
+
+        picksList.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+                startDrag(view, picksList.getItemAtPosition(position), picksAdapter);
+                return true;
+            }
+        });
+
+        picksList.setOnDragListener(new View.OnDragListener() {
+            @Override
+            public boolean onDrag(View view, DragEvent event) {
+                onTeamDragged(picksList, event);
+                return true;
+            }
         });
 
         return view;
@@ -69,14 +110,29 @@ public class PicklistAutoFragment extends PicklistMainFragment {
             queryRows.add(row);
         }
 
-        Parcelable state = teamsList.onSaveInstanceState();
-        listAdapter = new PicklistAdapter(getActivity(), queryRows);
-        teamsList.setAdapter(listAdapter);
-        teamsList.onRestoreInstanceState(state);
+        Parcelable teamsState = teamsList.onSaveInstanceState();
+        teamsAdapter = new PicklistAdapter(getActivity(), queryRows);
+        teamsList.setAdapter(teamsAdapter);
+        teamsList.onRestoreInstanceState(teamsState);
+
+        List<QueryRow> fillerRow = new ArrayList<>();
+
+        Parcelable picksState = picksList.onSaveInstanceState();
+        picksAdapter = new PicklistAdapter(getActivity(), fillerRow);
+        picksList.setAdapter(picksAdapter);
+        picksList.onRestoreInstanceState(picksState);
     }
 
     @Override
     public void onTeamSelected(Document doc) {
         super.onTeamSelected(doc);
+    }
+
+    public void startDrag(View view, Object item, PicklistAdapter adapter) {
+        super.startDrag(view, item, adapter);
+    }
+
+    public boolean onTeamDragged(ListView list, DragEvent event) {
+        return(super.onTeamDragged(list, event));
     }
 }
