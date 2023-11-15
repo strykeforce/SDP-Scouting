@@ -398,6 +398,7 @@ public class DatabaseManager {
         return notesList.toArray(new String[notesList.size()]);
     }
 
+
     public class DatabaseState {
         Map<String, DocumentState> states;
 
