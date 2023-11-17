@@ -9,4 +9,5 @@
     <color name="material_blue">#2196F3</color>
     <color name="material_blue_dark">#1976D2</color>
     <color name="StrykeForce">#f2bb16</color>
+    <color name="black_tint">#CC000000</color>
 </resources>

@@ -63,20 +63,24 @@ public class PicklistMainFragment extends Fragment {
         super.onResume();
     }
 
-    public void onTeamSelected(Document doc) {
-        LayoutInflater inflater = LayoutInflater.from(getActivity());
-        ViewGroup dialogView = (ViewGroup) inflater.inflate(R.layout.fragment_summaries_data, null);
-        List<Document> matchDocs = null;
-        try {
-            DatabaseManager db = DatabaseManager.getInstance(getActivity());
-            matchDocs = db.getMatchResultsForTeam((String) doc.getProperty("key"));
-        } catch (CouchbaseLiteException | IOException e) {
-            e.printStackTrace();
-            Toast.makeText(getActivity(), "Error loading data for team. Check LogCat.", Toast.LENGTH_LONG).show();
+    public void onTeamSelected(Document doc, ListView list, View view) {
+        if (list.getTransitionName().equals("teamsList")) {
+            LayoutInflater inflater = LayoutInflater.from(getActivity());
+            ViewGroup dialogView = (ViewGroup) inflater.inflate(R.layout.fragment_summaries_data, null);
+            List<Document> matchDocs = null;
+            try {
+                DatabaseManager db = DatabaseManager.getInstance(getActivity());
+                matchDocs = db.getMatchResultsForTeam((String) doc.getProperty("key"));
+            } catch (CouchbaseLiteException | IOException e) {
+                e.printStackTrace();
+                Toast.makeText(getActivity(), "Error loading data for team. Check LogCat.", Toast.LENGTH_LONG).show();
+            }
+            MatchDataView.initializeViewsInViewGroupWithDocuments(dialogView, matchDocs);
+            AlertDialog.Builder info = new AlertDialog.Builder(getActivity()).setView(dialogView).setNegativeButton("Exit", (dialog, which) -> dialog.dismiss());
+            info.show();
+        } else if (list.getTransitionName().equals("picksList")) {
+            view.setBackgroundColor(getResources().getColor(R.color.black_tint));
         }
-        MatchDataView.initializeViewsInViewGroupWithDocuments(dialogView, matchDocs);
-        AlertDialog.Builder info = new AlertDialog.Builder(getActivity()).setView(dialogView).setNegativeButton("Exit", (dialog, which) -> dialog.dismiss());
-        info.show();
     }
 
     public  void startDrag(View view, Object item, PicklistAdapter adapter) {

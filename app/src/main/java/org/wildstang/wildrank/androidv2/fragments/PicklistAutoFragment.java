@@ -35,15 +35,17 @@ public class PicklistAutoFragment extends PicklistMainFragment {
         teamsList = (ListView) view.findViewById(R.id.teams_list);
         teamsAdapter = new PicklistAdapter(getActivity(), new ArrayList<>());
         teamsList.setAdapter(teamsAdapter);
+        teamsList.setTransitionName("teamsList");
 
         picksList = (ListView) view.findViewById(R.id.picks_list);
         picksAdapter = new PicklistAdapter(getActivity(), new ArrayList<>());
         picksList.setAdapter(picksAdapter);
+        picksList.setTransitionName("picksList");
 
         teamsList.setOnItemClickListener((parent, view1, position, id) -> {
             teamsList.setItemChecked(position, true);
             QueryRow row = (QueryRow) parent.getItemAtPosition(position);
-            onTeamSelected(row.getDocument());
+            onTeamSelected(row.getDocument(), teamsList, view1);
         });
 
         teamsList.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
@@ -65,7 +67,7 @@ public class PicklistAutoFragment extends PicklistMainFragment {
         picksList.setOnItemClickListener((parent, view1, position, id) -> {
             picksList.setItemChecked(position, true);
             QueryRow row = (QueryRow) parent.getItemAtPosition(position);
-            onTeamSelected(row.getDocument());
+            onTeamSelected(row.getDocument(), picksList, view1);
         });
 
         picksList.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
@@ -124,8 +126,8 @@ public class PicklistAutoFragment extends PicklistMainFragment {
     }
 
     @Override
-    public void onTeamSelected(Document doc) {
-        super.onTeamSelected(doc);
+    public void onTeamSelected(Document doc, ListView list, View view) {
+        super.onTeamSelected(doc, list, view);
     }
 
     public void startDrag(View view, Object item, PicklistAdapter adapter) {
