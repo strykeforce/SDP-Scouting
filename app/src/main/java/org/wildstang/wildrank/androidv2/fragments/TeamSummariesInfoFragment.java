@@ -109,7 +109,7 @@ public class TeamSummariesInfoFragment extends TeamSummariesFragment {
     }
 
     private void loadDefaultTeamImage() {
-        teamImageView.setImageDrawable(getView().getResources().getDrawable(R.drawable.frc4212));
+        teamImageView.setImageDrawable(getView().getResources().getDrawable(R.drawable.no_image_available));
     }
 
     private void loadTeamImageFromStream() {
