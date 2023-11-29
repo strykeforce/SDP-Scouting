@@ -3,6 +3,7 @@ package org.wildstang.wildrank.androidv2.fragments;
 import android.app.AlertDialog;
 import android.content.ClipData;
 import android.content.ClipDescription;
+import android.graphics.Point;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
@@ -90,7 +91,13 @@ public class PicklistMainFragment extends Fragment {
         String[] mimeTypes = {ClipDescription.MIMETYPE_TEXT_PLAIN};
         ClipData dragData = new ClipData(item.toString(), mimeTypes, clipItem);
 
-        View.DragShadowBuilder shadowBuilder = new View.DragShadowBuilder(view);
+        View.DragShadowBuilder shadowBuilder = new View.DragShadowBuilder(view) {
+            @Override
+            public void onProvideShadowMetrics(Point outShadowSize, Point outShadowTouchPoint) {
+                outShadowSize.set(view.getWidth(), view.getHeight());
+                outShadowTouchPoint.set((int) (view.getWidth() * 0.25), view.getHeight() / 2);
+            }
+        };
         view.startDragAndDrop(dragData, shadowBuilder, new Pair<>(queryRow, adapter), 0);
     }
 
