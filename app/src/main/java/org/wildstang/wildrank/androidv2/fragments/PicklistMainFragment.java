@@ -4,6 +4,8 @@ import android.app.AlertDialog;
 import android.content.ClipData;
 import android.content.ClipDescription;
 import android.graphics.Point;
+import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
@@ -80,7 +82,16 @@ public class PicklistMainFragment extends Fragment {
             AlertDialog.Builder info = new AlertDialog.Builder(getActivity()).setView(dialogView).setNegativeButton("Exit", (dialog, which) -> dialog.dismiss());
             info.show();
         } else if (list.getTransitionName().equals("picksList")) {
-            view.setBackgroundColor(getResources().getColor(R.color.black_tint));
+            Drawable background = view.getBackground();
+
+            int[] stateSet = {android.R.attr.state_enabled};
+            background.setState(stateSet);
+
+            if (((ColorDrawable) background.getCurrent()).getColor() == 0) {
+                view.setBackgroundColor(getResources().getColor(R.color.black_tint));
+            } else if (((ColorDrawable) background.getCurrent()).getColor() == getResources().getColor(R.color.black_tint)) {
+                view.setBackgroundColor(0);
+            }
         }
     }
 
