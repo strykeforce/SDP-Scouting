@@ -45,7 +45,7 @@ public class PicklistAutoFragment extends PicklistMainFragment {
         teamsList.setOnItemClickListener((parent, view1, position, id) -> {
             teamsList.setItemChecked(position, true);
             QueryRow row = (QueryRow) parent.getItemAtPosition(position);
-            onTeamSelected(row.getDocument(), teamsList, view1);
+            onTeamSelected(row.getDocument(), teamsList, view1, position);
         });
 
         teamsList.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
@@ -59,7 +59,7 @@ public class PicklistAutoFragment extends PicklistMainFragment {
         teamsList.setOnDragListener(new View.OnDragListener() {
             @Override
             public boolean onDrag(View view, DragEvent event) {
-                onTeamDragged(teamsList, event);
+                onTeamDragged(teamsList, picksList, event);
                 return true;
             }
         });
@@ -67,7 +67,7 @@ public class PicklistAutoFragment extends PicklistMainFragment {
         picksList.setOnItemClickListener((parent, view1, position, id) -> {
             picksList.setItemChecked(position, true);
             QueryRow row = (QueryRow) parent.getItemAtPosition(position);
-            onTeamSelected(row.getDocument(), picksList, view1);
+            onTeamSelected(row.getDocument(), picksList, view1, position);
         });
 
         picksList.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
@@ -81,7 +81,7 @@ public class PicklistAutoFragment extends PicklistMainFragment {
         picksList.setOnDragListener(new View.OnDragListener() {
             @Override
             public boolean onDrag(View view, DragEvent event) {
-                onTeamDragged(picksList, event);
+                onTeamDragged(picksList, teamsList, event);
                 return true;
             }
         });
@@ -126,15 +126,15 @@ public class PicklistAutoFragment extends PicklistMainFragment {
     }
 
     @Override
-    public void onTeamSelected(Document doc, ListView list, View view) {
-        super.onTeamSelected(doc, list, view);
+    public void onTeamSelected(Document doc, ListView list, View view, Integer position) {
+        super.onTeamSelected(doc, list, view, position);
     }
 
     public void startDrag(View view, Object item, PicklistAdapter adapter) {
         super.startDrag(view, item, adapter);
     }
 
-    public boolean onTeamDragged(ListView list, DragEvent event) {
-        return(super.onTeamDragged(list, event));
+    public boolean onTeamDragged(ListView tList, ListView oList, DragEvent event) {
+        return(super.onTeamDragged(tList, oList, event));
     }
 }
