@@ -36,13 +36,25 @@
     <org.wildstang.wildrank.androidv2.views.scouting.ScoutingSpinnerView
         android:layout_width="500dp"
         android:layout_height="wrap_content"
-        app:key="EndChargePlatform"
-        app:label="Charge Platform"
-        app:values="@array/climb_level"
+        app:key="Stage"
+        app:label="Stage"
+        app:values="@array/staging"
         android:layout_above="@+id/notes"
         android:layout_marginBottom="25dp"
         android:layout_alignParentLeft="true"
         android:layout_marginLeft="20dp"
+        />
+
+    <org.wildstang.wildrank.androidv2.views.scouting.ScoutingSpinnerView
+        android:layout_width="500dp"
+        android:layout_height="wrap_content"
+        app:key="HighNotes:"
+        app:label="High Notes:"
+        app:values="@array/high_notes"
+        android:layout_above="@+id/notes"
+        android:layout_marginBottom="25dp"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="20dp"
         />
 
     <Button
