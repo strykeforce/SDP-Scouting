@@ -1,6 +1,7 @@
 package org.wildstang.wildrank.androidv2.fragments;
 
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,8 +16,6 @@ public class AutonomousScoutingFragment extends ScoutingFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_scout_autonomous, container, false);
-<<<<<<< Updated upstream
-=======
         String assignedTeamType = PreferenceManager.getDefaultSharedPreferences(getActivity()).getString("assignedTeams", "red_1");
         if (assignedTeamType.contains("red")) {
             System.out.println("Team is red");
@@ -47,7 +46,6 @@ public class AutonomousScoutingFragment extends ScoutingFragment {
             ((Button) view.findViewById(R.id.bluebutton10)).setVisibility(View.VISIBLE);
             ((TextView) view.findViewById(R.id.bluelabel)).setVisibility(View.VISIBLE);
         }
->>>>>>> Stashed changes
         return view;
     }
 }

@@ -23,12 +23,261 @@
         >
 
         <ImageView
-            android:id="@+id/red_auton_map"
+            android:id="@+id/redautonmap"
             android:layout_width="wrap_content"
             android:layout_height="fill_parent"
             android:layout_marginLeft="-44dp"
             android:src="@drawable/red_auton_map"
+            android:visibility="invisible" />
+
+        <Button
+            android:id="@+id/redbutton1"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@color/button_tint"
+            android:clickable="true"
+            android:focusable="true"
+            android:layout_marginLeft="-133dp"
+            android:layout_marginTop="-37dp"
+            android:visibility="invisible"/>
+
+        <Button
+            android:id="@+id/redbutton2"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@color/button_tint"
+            android:clickable="true"
+            android:focusable="true"
+            android:layout_marginLeft="-50dp"
+            android:layout_marginTop="78dp"
+            android:visibility="invisible"/>
+
+        <Button
+            android:id="@+id/redbutton3"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@color/button_tint"
+            android:clickable="true"
+            android:focusable="true"
+            android:layout_marginLeft="-50dp"
+            android:layout_marginTop="194dp"
+            android:visibility="invisible"/>
+
+        <Button
+            android:id="@+id/redbutton4"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@color/button_tint"
+            android:clickable="true"
+            android:focusable="true"
+            android:layout_marginLeft="-50dp"
+            android:layout_marginTop="310dp"
+            android:visibility="invisible"/>
+
+        <Button
+            android:id="@+id/redbutton5"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@color/button_tint"
+            android:clickable="true"
+            android:focusable="true"
+            android:layout_marginLeft="-50dp"
+            android:layout_marginTop="425dp"
+            android:visibility="invisible"/>
+
+        <Button
+            android:id="@+id/redbutton6"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@color/button_tint"
+            android:clickable="true"
+            android:focusable="true"
+            android:layout_marginLeft="-420dp"
+            android:layout_marginTop="194dp"
+            android:visibility="invisible"/>
+
+        <Button
+            android:id="@+id/redbutton7"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@color/button_tint"
+            android:clickable="true"
+            android:focusable="true"
+            android:layout_marginLeft="-50dp"
+            android:layout_marginTop="294dp"
+            android:visibility="invisible"/>
+
+        <Button
+            android:id="@+id/redbutton8"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@color/button_tint"
+            android:clickable="true"
+            android:focusable="true"
+            android:layout_marginLeft="-50dp"
+            android:layout_marginTop="394dp"
+            android:visibility="invisible"/>
+
+        <Button
+            android:id="@+id/redbutton9"
+            android:layout_width="100dp"
+            android:layout_height="150dp"
+            android:background="@color/button_tint"
+            android:clickable="true"
+            android:focusable="true"
+            android:layout_marginLeft="-225dp"
+            android:layout_marginTop="294dp"
+            android:visibility="invisible"/>
+
+        <Button
+            android:id="@+id/redbutton10"
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:background="@color/button_tint"
+            android:clickable="true"
+            android:focusable="true"
+            android:layout_marginLeft="-40dp"
+            android:layout_marginTop="435dp"
+            android:visibility="invisible"/>
+
+        <TextView
+            android:id="@+id/redlabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Amp"
+            android:textColor="@color/StrykeForce"
+            android:layout_marginTop="435dp"
+            android:layout_marginLeft="-135dp"
+            android:visibility="invisible"/>
+
+        <ImageView
+            android:id="@+id/blueautonmap"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:layout_marginLeft="-342dp"
+            android:src="@drawable/blue_auton_map"
+            android:visibility="invisible"
             />
+
+        <Button
+            android:id="@+id/bluebutton1"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@color/button_tint"
+            android:clickable="true"
+            android:focusable="true"
+            android:layout_marginLeft="-865dp"
+            android:layout_marginTop="-20dp"
+            android:visibility="invisible"/>
+
+        <Button
+            android:id="@+id/bluebutton2"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@color/button_tint"
+            android:clickable="true"
+            android:focusable="true"
+            android:layout_marginLeft="-50dp"
+            android:layout_marginTop="88dp"
+            android:visibility="invisible"/>
+
+        <Button
+            android:id="@+id/bluebutton3"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@color/button_tint"
+            android:clickable="true"
+            android:focusable="true"
+            android:layout_marginLeft="-50dp"
+            android:layout_marginTop="194dp"
+            android:visibility="invisible"/>
+
+        <Button
+            android:id="@+id/bluebutton4"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@color/button_tint"
+            android:clickable="true"
+            android:focusable="true"
+            android:layout_marginLeft="-50dp"
+            android:layout_marginTop="303dp"
+            android:visibility="invisible"/>
+
+        <Button
+            android:id="@+id/bluebutton5"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@color/button_tint"
+            android:clickable="true"
+            android:focusable="true"
+            android:layout_marginLeft="-50dp"
+            android:layout_marginTop="410dp"
+            android:visibility="invisible"/>
+
+        <Button
+            android:id="@+id/bluebutton6"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@color/button_tint"
+            android:clickable="true"
+            android:focusable="true"
+            android:layout_marginLeft="295dp"
+            android:layout_marginTop="195dp"
+            android:visibility="invisible"/>
+
+        <Button
+            android:id="@+id/bluebutton7"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@color/button_tint"
+            android:clickable="true"
+            android:focusable="true"
+            android:layout_marginLeft="-50dp"
+            android:layout_marginTop="288dp"
+            android:visibility="invisible"/>
+
+        <Button
+            android:id="@+id/bluebutton8"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@color/button_tint"
+            android:clickable="true"
+            android:focusable="true"
+            android:layout_marginLeft="-50dp"
+            android:layout_marginTop="380dp"
+            android:visibility="invisible"/>
+
+        <Button
+            android:id="@+id/bluebutton9"
+            android:layout_width="100dp"
+            android:layout_height="150dp"
+            android:background="@color/button_tint"
+            android:clickable="true"
+            android:focusable="true"
+            android:layout_marginLeft="60dp"
+            android:layout_marginTop="288dp"
+            android:visibility="invisible"/>
+
+        <Button
+            android:id="@+id/bluebutton10"
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:background="@color/button_tint"
+            android:clickable="true"
+            android:focusable="true"
+            android:layout_marginLeft="-165dp"
+            android:layout_marginTop="435dp"
+            android:visibility="invisible"/>
+
+        <TextView
+            android:id="@+id/bluelabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Amp"
+            android:textColor="@color/StrykeForce"
+            android:layout_marginTop="420dp"
+            android:layout_marginLeft="5dp"
+            android:visibility="invisible"/>
 
     </LinearLayout>
 
