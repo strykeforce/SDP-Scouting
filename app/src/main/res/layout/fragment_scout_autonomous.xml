@@ -16,6 +16,7 @@
         android:layout_alignParentRight="true"
         android:layout_marginRight="55dp"/>
 
+    <!--DO NOT TOUCH THIS LINEARLAYOUT, WILL BREAK EVERYTHING-->
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -30,114 +31,94 @@
             android:src="@drawable/red_auton_map"
             android:visibility="invisible" />
 
-        <Button
+        <org.wildstang.wildrank.androidv2.views.scouting.ScoutingButtonView
             android:id="@+id/redbutton1"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:background="@color/button_tint"
             android:clickable="true"
-            android:focusable="true"
             android:layout_marginLeft="-133dp"
-            android:layout_marginTop="-37dp"
+            android:layout_marginTop="13dp"
             android:visibility="invisible"/>
 
-        <Button
+        <org.wildstang.wildrank.androidv2.views.scouting.ScoutingButtonView
             android:id="@+id/redbutton2"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:background="@color/button_tint"
             android:clickable="true"
-            android:focusable="true"
             android:layout_marginLeft="-50dp"
-            android:layout_marginTop="78dp"
+            android:layout_marginTop="128dp"
             android:visibility="invisible"/>
 
-        <Button
+        <org.wildstang.wildrank.androidv2.views.scouting.ScoutingButtonView
             android:id="@+id/redbutton3"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:background="@color/button_tint"
             android:clickable="true"
-            android:focusable="true"
             android:layout_marginLeft="-50dp"
-            android:layout_marginTop="194dp"
+            android:layout_marginTop="244dp"
             android:visibility="invisible"/>
 
-        <Button
+        <org.wildstang.wildrank.androidv2.views.scouting.ScoutingButtonView
             android:id="@+id/redbutton4"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:background="@color/button_tint"
             android:clickable="true"
-            android:focusable="true"
             android:layout_marginLeft="-50dp"
-            android:layout_marginTop="310dp"
+            android:layout_marginTop="360dp"
             android:visibility="invisible"/>
 
-        <Button
+        <org.wildstang.wildrank.androidv2.views.scouting.ScoutingButtonView
             android:id="@+id/redbutton5"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:background="@color/button_tint"
             android:clickable="true"
-            android:focusable="true"
             android:layout_marginLeft="-50dp"
-            android:layout_marginTop="425dp"
+            android:layout_marginTop="475dp"
             android:visibility="invisible"/>
 
-        <Button
+        <org.wildstang.wildrank.androidv2.views.scouting.ScoutingButtonView
             android:id="@+id/redbutton6"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:background="@color/button_tint"
             android:clickable="true"
-            android:focusable="true"
             android:layout_marginLeft="-420dp"
-            android:layout_marginTop="194dp"
+            android:layout_marginTop="244dp"
             android:visibility="invisible"/>
 
-        <Button
+        <org.wildstang.wildrank.androidv2.views.scouting.ScoutingButtonView
             android:id="@+id/redbutton7"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:background="@color/button_tint"
             android:clickable="true"
-            android:focusable="true"
             android:layout_marginLeft="-50dp"
-            android:layout_marginTop="294dp"
+            android:layout_marginTop="344dp"
             android:visibility="invisible"/>
 
-        <Button
+        <org.wildstang.wildrank.androidv2.views.scouting.ScoutingButtonView
             android:id="@+id/redbutton8"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:background="@color/button_tint"
             android:clickable="true"
-            android:focusable="true"
             android:layout_marginLeft="-50dp"
-            android:layout_marginTop="394dp"
+            android:layout_marginTop="444dp"
             android:visibility="invisible"/>
 
-        <Button
+        <org.wildstang.wildrank.androidv2.views.scouting.ScoutingButtonView
             android:id="@+id/redbutton9"
             android:layout_width="100dp"
             android:layout_height="150dp"
-            android:background="@color/button_tint"
             android:clickable="true"
-            android:focusable="true"
             android:layout_marginLeft="-225dp"
             android:layout_marginTop="294dp"
             android:visibility="invisible"/>
 
-        <Button
+        <org.wildstang.wildrank.androidv2.views.scouting.ScoutingButtonView
             android:id="@+id/redbutton10"
             android:layout_width="100dp"
             android:layout_height="50dp"
-            android:background="@color/button_tint"
             android:clickable="true"
-            android:focusable="true"
             android:layout_marginLeft="-40dp"
-            android:layout_marginTop="435dp"
+            android:layout_marginTop="485dp"
             android:visibility="invisible"/>
 
         <TextView
@@ -146,7 +127,7 @@
             android:layout_height="wrap_content"
             android:text="Amp"
             android:textColor="@color/StrykeForce"
-            android:layout_marginTop="435dp"
+            android:layout_marginTop="500dp"
             android:layout_marginLeft="-135dp"
             android:visibility="invisible"/>
 
@@ -159,114 +140,94 @@
             android:visibility="invisible"
             />
 
-        <Button
+        <org.wildstang.wildrank.androidv2.views.scouting.ScoutingButtonView
             android:id="@+id/bluebutton1"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:background="@color/button_tint"
             android:clickable="true"
-            android:focusable="true"
             android:layout_marginLeft="-865dp"
-            android:layout_marginTop="-20dp"
+            android:layout_marginTop="30dp"
             android:visibility="invisible"/>
 
-        <Button
+        <org.wildstang.wildrank.androidv2.views.scouting.ScoutingButtonView
             android:id="@+id/bluebutton2"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:background="@color/button_tint"
             android:clickable="true"
-            android:focusable="true"
             android:layout_marginLeft="-50dp"
-            android:layout_marginTop="88dp"
+            android:layout_marginTop="138dp"
             android:visibility="invisible"/>
 
-        <Button
+        <org.wildstang.wildrank.androidv2.views.scouting.ScoutingButtonView
             android:id="@+id/bluebutton3"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:background="@color/button_tint"
             android:clickable="true"
-            android:focusable="true"
             android:layout_marginLeft="-50dp"
-            android:layout_marginTop="194dp"
+            android:layout_marginTop="244dp"
             android:visibility="invisible"/>
 
-        <Button
+        <org.wildstang.wildrank.androidv2.views.scouting.ScoutingButtonView
             android:id="@+id/bluebutton4"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:background="@color/button_tint"
             android:clickable="true"
-            android:focusable="true"
             android:layout_marginLeft="-50dp"
-            android:layout_marginTop="303dp"
+            android:layout_marginTop="353dp"
             android:visibility="invisible"/>
 
-        <Button
+        <org.wildstang.wildrank.androidv2.views.scouting.ScoutingButtonView
             android:id="@+id/bluebutton5"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:background="@color/button_tint"
             android:clickable="true"
-            android:focusable="true"
             android:layout_marginLeft="-50dp"
-            android:layout_marginTop="410dp"
+            android:layout_marginTop="460dp"
             android:visibility="invisible"/>
 
-        <Button
+        <org.wildstang.wildrank.androidv2.views.scouting.ScoutingButtonView
             android:id="@+id/bluebutton6"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:background="@color/button_tint"
             android:clickable="true"
-            android:focusable="true"
             android:layout_marginLeft="295dp"
-            android:layout_marginTop="195dp"
+            android:layout_marginTop="245dp"
             android:visibility="invisible"/>
 
-        <Button
+        <org.wildstang.wildrank.androidv2.views.scouting.ScoutingButtonView
             android:id="@+id/bluebutton7"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:background="@color/button_tint"
             android:clickable="true"
-            android:focusable="true"
             android:layout_marginLeft="-50dp"
-            android:layout_marginTop="288dp"
+            android:layout_marginTop="338dp"
             android:visibility="invisible"/>
 
-        <Button
+        <org.wildstang.wildrank.androidv2.views.scouting.ScoutingButtonView
             android:id="@+id/bluebutton8"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:background="@color/button_tint"
             android:clickable="true"
-            android:focusable="true"
             android:layout_marginLeft="-50dp"
-            android:layout_marginTop="380dp"
+            android:layout_marginTop="430dp"
             android:visibility="invisible"/>
 
-        <Button
+        <org.wildstang.wildrank.androidv2.views.scouting.ScoutingButtonView
             android:id="@+id/bluebutton9"
             android:layout_width="100dp"
             android:layout_height="150dp"
-            android:background="@color/button_tint"
             android:clickable="true"
-            android:focusable="true"
             android:layout_marginLeft="60dp"
             android:layout_marginTop="288dp"
             android:visibility="invisible"/>
 
-        <Button
+        <org.wildstang.wildrank.androidv2.views.scouting.ScoutingButtonView
             android:id="@+id/bluebutton10"
             android:layout_width="100dp"
             android:layout_height="50dp"
-            android:background="@color/button_tint"
             android:clickable="true"
-            android:focusable="true"
             android:layout_marginLeft="-165dp"
-            android:layout_marginTop="435dp"
+            android:layout_marginTop="485dp"
             android:visibility="invisible"/>
 
         <TextView
@@ -275,10 +236,19 @@
             android:layout_height="wrap_content"
             android:text="Amp"
             android:textColor="@color/StrykeForce"
-            android:layout_marginTop="420dp"
+            android:layout_marginTop="485dp"
             android:layout_marginLeft="5dp"
             android:visibility="invisible"/>
 
     </LinearLayout>
+
+    <org.wildstang.wildrank.androidv2.views.scouting.ScoutingCheckboxView
+        app:key="auto_move"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        app:label="Exited Robot\nStarting Zone"
+        android:layout_centerVertical="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="130dp"/>
 
 </RelativeLayout>
