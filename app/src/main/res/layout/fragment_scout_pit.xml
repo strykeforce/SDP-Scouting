@@ -6,7 +6,7 @@
 
     <LinearLayout
         android:id="@+id/robot"
-        android:layout_width="250dp"
+        android:layout_width="400dp"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
@@ -61,7 +61,7 @@
 
     <LinearLayout
         android:id="@+id/auto"
-        android:layout_width="300dp"
+        android:layout_width="350dp"
         android:layout_height="wrap_content"
         android:layout_marginRight="10dp"
         android:layout_toRightOf="@id/robot"
@@ -74,11 +74,11 @@
             android:textSize="30sp" />
 
         <org.wildstang.wildrank.androidv2.views.scouting.ScoutingSpinnerView
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:key="auto_location"
-            app:label="Preferred Auto Start Location"
-            app:values="@array/auto_start_locations_pit_scout" />
+            app:label="Highest Auto"
+            app:values="@array/Highest_Auto" />
 
         <org.wildstang.wildrank.androidv2.views.scouting.ScoutingCheckboxView
             android:layout_width="match_parent"
@@ -86,21 +86,21 @@
             app:key="auto_drives"
             app:label="Crosses Line" />
 
+      <!--
         <org.wildstang.wildrank.androidv2.views.scouting.ScoutingCheckboxView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:key="auto_balances"
-            app:label="Balances on Charge Station" />
-
+            app:label="" />
+-->
     </LinearLayout>
 
     <LinearLayout
         android:id="@+id/tele"
         android:layout_width="350dp"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_marginRight="10dp"
-        android:layout_toRightOf="@id/auto"
+        android:layout_toRightOf="@id/robot"
+        android:layout_below="@id/auto"
         android:orientation="vertical">
 
         <TextView
@@ -108,14 +108,6 @@
             android:layout_height="wrap_content"
             android:text="Teleop Capabilities"
             android:textSize="30sp" />
-
-        <org.wildstang.wildrank.androidv2.views.scouting.ScoutingSpinnerView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:key="balance_time"
-            app:label="Time For Balance"
-            app:values="@array/time_sec_balance" />
-
 
         <org.wildstang.wildrank.androidv2.views.scouting.ScoutingCheckboxView
             android:layout_width="match_parent"
@@ -128,6 +120,14 @@
             android:layout_height="wrap_content"
             app:key="retract_intake"
             app:label="Intake Retractable" />
+
+
+        <org.wildstang.wildrank.androidv2.views.scouting.ScoutingSpinnerView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:key="EndGameCap"
+            app:label="EndGame"
+            app:values="@array/EndGame" />
 
     </LinearLayout>
 

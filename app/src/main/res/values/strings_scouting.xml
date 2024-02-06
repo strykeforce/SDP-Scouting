@@ -12,7 +12,8 @@
         <item>1. Not Parked</item>
         <item>2. Parked</item>
         <item>3. Onstage</item>
-        <item>4. Onstage Harmony</item>
+        <item>4. Onstage w/ Budy</item>
+        <item>5. Onstage w/ 2 Buddies</item>
     </string-array>
 
     <string-array name="high_notes">
@@ -39,17 +40,17 @@
         <item>5</item>
     </string-array>
 
-    <string-array name="time_sec_balance">
-        <item>!No Balance</item>
-        <item>About 05sec or less</item>
-        <item>About 10sec</item>
-        <item>About 15sec</item>
-        <item>About 20sec</item>
-        <item>About 25sec</item>
-        <item>About 30sec + </item>
+    <string-array name="EndGame">
+        <item>--</item>
+        <item>1. Other</item>
+        <item>2. Park</item>
+        <item>3. Climb</item>
+        <item>4. Buddy Climb</item>
+        <item>5. Trap</item>
     </string-array>
 
     <string-array name="drives">
+        <item>--</item>
         <item>Tank</item>
         <item>Tank w/ Omni corners</item>
         <item>Mecanum</item>
@@ -60,10 +61,11 @@
     </string-array>
 
     <string-array name="scorable">
-        <item>Cones</item>
-        <item>Cubes</item>
+        <item>--</item>
+        <item>Amp</item>
+        <item>Speaker</item>
+        <item>Trap</item>
         <item>Both</item>
-        <item>Any Other (Add note)</item>
     </string-array>
 
     <string-array name="player_stations">
@@ -73,12 +75,16 @@
         <item>None</item>
     </string-array>
 
-    <string-array name="auto_start_locations_pit_scout">
-        <item>Flat</item>
-        <item>Mid</item>
-        <item>Bump</item>
-        <item>No Preference</item>
-        <item>Any Other (Add note)</item>
+    <string-array name="Highest_Auto">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
     </string-array>
 
     <string name="autonomous_explanation">This Screen is for Autonomous Game Actions Only.</string>
