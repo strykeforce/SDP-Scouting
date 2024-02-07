@@ -74,7 +74,7 @@
             android:layout_marginTop="40dp"
             android:background="#D9D9D9"
             android:orientation="vertical"
-            app:key="tele_made_amps" />
+            app:key="tele_made_amp" />
 
 
         <org.wildstang.wildrank.androidv2.views.scouting.ScoutingCounterView
@@ -82,7 +82,7 @@
             android:layout_width="440dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="50dp"
-            app:key="tele_missed_amps"
+            app:key="tele_missed_amp"
 />
 
     </LinearLayout>
@@ -109,7 +109,7 @@
             />
 
         <org.wildstang.wildrank.androidv2.views.scouting.ScoutingCounterView
-            android:id="@+id/CubesTop"
+            android:id="@+id/Speaker_Made"
             android:layout_width="440dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="40dp"
@@ -155,8 +155,7 @@
             android:layout_marginTop="10dp"
             android:background="#D9D9D9"
             android:orientation="vertical"
-            app:key="trap_counter"
-            />
+            app:key="tele_traps" />
 
     </LinearLayout>
 

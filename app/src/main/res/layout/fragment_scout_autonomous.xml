@@ -33,6 +33,7 @@
 
         <org.wildstang.wildrank.androidv2.views.scouting.ScoutingButtonView
             android:id="@+id/redbutton1"
+            app:key="redbutton1"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:clickable="true"
@@ -42,6 +43,7 @@
 
         <org.wildstang.wildrank.androidv2.views.scouting.ScoutingButtonView
             android:id="@+id/redbutton2"
+            app:key="redbutton2"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:clickable="true"
@@ -51,6 +53,7 @@
 
         <org.wildstang.wildrank.androidv2.views.scouting.ScoutingButtonView
             android:id="@+id/redbutton3"
+            app:key="redbutton3"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:clickable="true"
@@ -60,6 +63,7 @@
 
         <org.wildstang.wildrank.androidv2.views.scouting.ScoutingButtonView
             android:id="@+id/redbutton4"
+            app:key="redbutton4"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:clickable="true"
@@ -69,6 +73,7 @@
 
         <org.wildstang.wildrank.androidv2.views.scouting.ScoutingButtonView
             android:id="@+id/redbutton5"
+            app:key="redbutton5"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:clickable="true"
@@ -78,6 +83,7 @@
 
         <org.wildstang.wildrank.androidv2.views.scouting.ScoutingButtonView
             android:id="@+id/redbutton6"
+            app:key="redbutton6"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:clickable="true"
@@ -87,6 +93,7 @@
 
         <org.wildstang.wildrank.androidv2.views.scouting.ScoutingButtonView
             android:id="@+id/redbutton7"
+            app:key="redbutton7"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:clickable="true"
@@ -96,6 +103,7 @@
 
         <org.wildstang.wildrank.androidv2.views.scouting.ScoutingButtonView
             android:id="@+id/redbutton8"
+            app:key="redbutton8"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:clickable="true"
@@ -105,6 +113,7 @@
 
         <org.wildstang.wildrank.androidv2.views.scouting.ScoutingButtonView
             android:id="@+id/redbutton9"
+            app:key="redbutton9"
             android:layout_width="100dp"
             android:layout_height="150dp"
             android:clickable="true"
@@ -114,6 +123,7 @@
 
         <org.wildstang.wildrank.androidv2.views.scouting.ScoutingButtonView
             android:id="@+id/redbutton10"
+            app:key="redbutton10"
             android:layout_width="100dp"
             android:layout_height="50dp"
             android:clickable="true"
@@ -142,6 +152,7 @@
 
         <org.wildstang.wildrank.androidv2.views.scouting.ScoutingButtonView
             android:id="@+id/bluebutton1"
+            app:key="bluebutton1"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:clickable="true"
@@ -151,6 +162,7 @@
 
         <org.wildstang.wildrank.androidv2.views.scouting.ScoutingButtonView
             android:id="@+id/bluebutton2"
+            app:key="bluebutton2"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:clickable="true"
@@ -160,6 +172,7 @@
 
         <org.wildstang.wildrank.androidv2.views.scouting.ScoutingButtonView
             android:id="@+id/bluebutton3"
+            app:key="bluebutton3"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:clickable="true"
@@ -169,6 +182,7 @@
 
         <org.wildstang.wildrank.androidv2.views.scouting.ScoutingButtonView
             android:id="@+id/bluebutton4"
+            app:key="bluebutton4"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:clickable="true"
@@ -178,6 +192,7 @@
 
         <org.wildstang.wildrank.androidv2.views.scouting.ScoutingButtonView
             android:id="@+id/bluebutton5"
+            app:key="bluebutton5"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:clickable="true"
@@ -187,6 +202,7 @@
 
         <org.wildstang.wildrank.androidv2.views.scouting.ScoutingButtonView
             android:id="@+id/bluebutton6"
+            app:key="bluebutton6"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:clickable="true"
@@ -196,6 +212,7 @@
 
         <org.wildstang.wildrank.androidv2.views.scouting.ScoutingButtonView
             android:id="@+id/bluebutton7"
+            app:key="bluebutton7"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:clickable="true"
@@ -205,6 +222,7 @@
 
         <org.wildstang.wildrank.androidv2.views.scouting.ScoutingButtonView
             android:id="@+id/bluebutton8"
+            app:key="bluebutton8"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:clickable="true"
@@ -214,6 +232,7 @@
 
         <org.wildstang.wildrank.androidv2.views.scouting.ScoutingButtonView
             android:id="@+id/bluebutton9"
+            app:key="bluebutton9"
             android:layout_width="100dp"
             android:layout_height="150dp"
             android:clickable="true"
@@ -223,6 +242,7 @@
 
         <org.wildstang.wildrank.androidv2.views.scouting.ScoutingButtonView
             android:id="@+id/bluebutton10"
+            app:key="bluebutton10"
             android:layout_width="100dp"
             android:layout_height="50dp"
             android:clickable="true"
