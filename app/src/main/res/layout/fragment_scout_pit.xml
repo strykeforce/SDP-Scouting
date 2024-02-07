@@ -76,7 +76,7 @@
         <org.wildstang.wildrank.androidv2.views.scouting.ScoutingSpinnerView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:key="auto_location"
+            app:key="auto_max"
             app:label="Highest Auto"
             app:values="@array/Highest_Auto" />
 
@@ -125,7 +125,7 @@
         <org.wildstang.wildrank.androidv2.views.scouting.ScoutingSpinnerView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:key="EndGameCap"
+            app:key="end_game_cap"
             app:label="EndGame"
             app:values="@array/EndGame" />
 

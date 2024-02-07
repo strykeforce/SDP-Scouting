@@ -13,6 +13,7 @@ import android.widget.TextView;
 
 import com.couchbase.lite.CouchbaseLiteException;
 import com.couchbase.lite.Document;
+import com.squareup.picasso.Picasso;
 
 import org.wildstang.wildrank.androidv2.R;
 import org.wildstang.wildrank.androidv2.Utilities;
@@ -94,14 +95,22 @@ public class TeamSummariesInfoFragment extends TeamSummariesFragment {
                     loadTeamImageFromStream(attachment.getContent());
                 }
             }*/
+            String imagePath = Environment.getExternalStorageDirectory().getAbsolutePath() + "/wildrank/" + teamNumber + ".jpg";
+
             File image = new File(Environment.getExternalStorageDirectory().getAbsolutePath() + "/wildrank/" + teamNumber + ".jpg");
             if (image.exists()) {
-                bitmap = BitmapFactory.decodeFile(image.toString());
-                loadTeamImageFromStream();
+                // Get a reference to the ImageView in your layout
+                ImageView teamPhotoImageView = (ImageView) getView().findViewById(R.id.team_image);
+
+                Picasso.get()
+                        .load(new File(imagePath))
+                        .placeholder(R.drawable.loading) // Set a placeholder image resource
+                        .error(R.drawable.no_image_available) // Set an error image resource
+                        .into(teamPhotoImageView);
             } else {
-                //System.out.println("Attention: Image not found");
-                System.out.println("Assumed image path :" + Environment.getExternalStorageDirectory().getAbsolutePath());
-                loadDefaultTeamImage();
+                // If the image file doesn't exist, set a default image
+                ImageView teamPhotoImageView = (ImageView) getView().findViewById(R.id.team_image);
+                teamPhotoImageView.setImageResource(R.drawable.no_image_available); // Set the default image resource
             }
         } catch (CouchbaseLiteException | IOException e) {
             e.printStackTrace();
