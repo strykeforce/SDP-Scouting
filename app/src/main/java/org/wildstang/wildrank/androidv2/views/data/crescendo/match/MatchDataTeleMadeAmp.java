@@ -27,10 +27,12 @@ public class MatchDataTeleMadeAmp extends MatchDataView implements IMatchDataVie
         }
         boolean didSomething = false;               // catch teams that did nothing -> present a "N/A"
         Map<String, Object> data = (Map<String, Object>) document.getProperty("data");
-        if (data.get("tele_made_amps") == null) {
+        if (data.get("tele_made_amp") == null) {
+
+            setValueText("Null","gray");
             return;
         }
-        int madeAmp = (int) data.get("tele_made_amps");
+        int madeAmp = (int) data.get("tele_made_amp");
         didSomething = true;
         setValueText(formatNumberAsString(madeAmp), "gray");
     }

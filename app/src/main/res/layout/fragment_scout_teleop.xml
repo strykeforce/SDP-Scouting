@@ -25,23 +25,6 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="150dp">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Made"
-            android:textSize="30sp"
-            android:textColor="@color/white"
-            android:gravity="center_horizontal"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Missed"
-            android:textSize="30sp"
-            android:textColor="@color/white"
-            android:gravity="center_horizontal"
-            android:layout_marginTop="90dp"
-            />
     </LinearLayout>
 
 
@@ -52,7 +35,7 @@
         android:orientation="vertical"
         android:gravity="center_horizontal"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="100dp"
         android:layout_alignParentLeft="true"
         android:layout_marginLeft="50dp"
 
@@ -62,6 +45,7 @@
             android:id="@+id/amps_made"
             android:layout_width="wrap_content"
             android:layout_height="42dp"
+            android:layout_marginTop="76dp"
             android:text="Amp"
             android:textSize="35sp"
             android:textColor="#FFFFFF"
@@ -71,18 +55,31 @@
             android:id="@+id/MadeAmps"
             android:layout_width="440dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="40dp"
+            android:layout_marginTop="10dp"
             android:background="#D9D9D9"
             android:orientation="vertical"
-            app:key="tele_made_amp" />
+            app:key="tele_made_amp"
+            />
 
+        <TextView
+            android:id="@+id/TrapText"
+            android:layout_width="wrap_content"
+            android:layout_height="42dp"
+            android:text="Trap"
+            android:textSize="35sp"
+            android:textColor="#FFFFFF"
+            android:gravity="center_horizontal|top"
+            android:layout_marginTop="20dp"
+            />
 
         <org.wildstang.wildrank.androidv2.views.scouting.ScoutingCounterView
-            android:id="@+id/MissedAmps"
+            android:id="@+id/TrapCounter"
             android:layout_width="440dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="50dp"
-            app:key="tele_missed_amp"
+            android:layout_marginTop="10dp"
+            android:background="#D9D9D9"
+            android:orientation="vertical"
+            app:key="tele_traps" />
 />
 
     </LinearLayout>
@@ -95,8 +92,10 @@
         android:orientation="vertical"
         android:gravity="center_horizontal"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="100dp"
         android:layout_alignParentEnd="true"
+        android:paddingBottom="25dp"
+        android:background="@drawable/outline_background"
         >
         <TextView
             android:id="@+id/SpeakerText"
@@ -108,56 +107,47 @@
             android:gravity="center_horizontal|top"
             />
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Made"
+            android:layout_marginTop="40dp"
+            android:textSize="30sp"
+            android:textColor="@color/white"
+            android:gravity="center_horizontal"/>
+
         <org.wildstang.wildrank.androidv2.views.scouting.ScoutingCounterView
             android:id="@+id/Speaker_Made"
             android:layout_width="440dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="40dp"
+            android:layout_marginTop="10dp"
             android:background="#D9D9D9"
             android:orientation="vertical"
             app:key="tele_made_speaker"
             />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Missed"
+            android:textSize="30sp"
+            android:textColor="@color/white"
+            android:gravity="center_horizontal"
+            android:layout_marginTop="30dp"
+            />
+
         <org.wildstang.wildrank.androidv2.views.scouting.ScoutingCounterView
             android:id="@+id/Speaker_Missed"
             android:layout_width="440dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="50dp"
+            android:layout_marginTop="10dp"
             android:background="#D9D9D9"
             android:orientation="vertical"
             app:key="tele_missed_speaker"
             />
     </LinearLayout>
 
-    <LinearLayout
-        android:id="@+id/Traps"
-        android:layout_width="500dp"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:gravity="center_horizontal"
-        android:layout_marginTop="50dp"
-        android:layout_below="@id/Amps"
-        android:layout_centerHorizontal="true"
-        >
-        <TextView
-            android:id="@+id/TrapText"
-            android:layout_width="wrap_content"
-            android:layout_height="42dp"
-            android:text="Trap"
-            android:textSize="35sp"
-            android:textColor="#FFFFFF"
-            android:gravity="center_horizontal|top"
-            />
 
-        <org.wildstang.wildrank.androidv2.views.scouting.ScoutingCounterView
-            android:id="@+id/TrapCounter"
-            android:layout_width="440dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:background="#D9D9D9"
-            android:orientation="vertical"
-            app:key="tele_traps" />
-
-    </LinearLayout>
 
 
 </RelativeLayout>

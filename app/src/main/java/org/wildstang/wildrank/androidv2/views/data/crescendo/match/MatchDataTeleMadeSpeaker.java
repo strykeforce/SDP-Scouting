@@ -27,11 +27,24 @@ public class MatchDataTeleMadeSpeaker extends MatchDataView implements IMatchDat
         }
         boolean didSomething = false;               // catch teams that did nothing -> present a "N/A"
         Map<String, Object> data = (Map<String, Object>) document.getProperty("data");
-        if (data.get("tele_made_speaker") == null) {
+        if (data.get("tele_made_speaker") == null && data.get("tele_missed_speaker") == null ) {
             return;
         }
         int madeSpeaker = (int) data.get("tele_made_speaker");
+        int missedSpeaker = (int) data.get("tele_missed_speaker");
+
+        int totalSpeaker = madeSpeaker + missedSpeaker;
+
+        double percentageMade = 0.0;
+        if (totalSpeaker > 0) {
+            percentageMade = (double) madeSpeaker / totalSpeaker * 100;
+        }else {
+            percentageMade = (double) 0.0;
+        }
+        String SpeakerData = String.format("%d/%d -> (%.1f%%)", madeSpeaker, totalSpeaker, percentageMade);
+
+
         didSomething = true;
-        setValueText(formatNumberAsString(madeSpeaker), "gray");
+        setValueText((SpeakerData), "gray");
     }
 }

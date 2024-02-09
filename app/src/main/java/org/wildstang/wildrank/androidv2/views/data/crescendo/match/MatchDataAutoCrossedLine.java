@@ -11,9 +11,9 @@ import org.wildstang.wildrank.androidv2.views.data.MatchDataView;
 import java.util.List;
 import java.util.Map;
 
-public class MatchDataEndStage extends MatchDataView implements IMatchDataView {
+public class MatchDataAutoCrossedLine extends MatchDataView implements IMatchDataView {
 
-    public MatchDataEndStage(Context context, AttributeSet attrs) {
+    public MatchDataAutoCrossedLine(Context context, AttributeSet attrs) {
         super(context, attrs);
     }
 
@@ -26,14 +26,17 @@ public class MatchDataEndStage extends MatchDataView implements IMatchDataView {
         }
         boolean didSomething = false;               // catch teams that did nothing -> present a "N/A"
         Map<String, Object> data = (Map<String, Object>) document.getProperty("data");
-        if (data.get("Stage") == null) {
+        if (data.get("CrossLine") == null) {
+            setValueText("False","gray");
             return;
         }
-        String Stage = (String) data.get("Stage");
+        boolean checked = (boolean) data.get("CrossLine");
 
-        String StageData = Stage.substring(3);
+        if (checked) {
+            didSomething = true;
+            setValueText("True", "gray");
+        }
 
-        didSomething = true;
-        setValueText(StageData, "gray");
+
     }
 }

@@ -20,7 +20,7 @@ public class MatchDataEndHighNotes extends MatchDataView implements IMatchDataVi
     @Override
     public void calculateFromDocuments(List<Document> documents) {}
 
-    @Override
+
     public void calculateFromDocument(Document document) {
         if (document == null || document.getProperty("data") == null) {
             return;
@@ -30,8 +30,15 @@ public class MatchDataEndHighNotes extends MatchDataView implements IMatchDataVi
         if (data.get("HighNotes") == null) {
             return;
         }
-        int highNotes = (int) data.get("HighNotes");
+        Object highNotesObject = data.get("HighNotes");
+        String highNotesString = (String) highNotesObject;
+                //trim tabs
+        highNotesString = highNotesString.trim();
+        // Change String to Integer
+        int highNotes = Integer.parseInt(highNotesString);
         didSomething = true;
         setValueText(formatNumberAsString(highNotes), "gray");
+
+
     }
 }

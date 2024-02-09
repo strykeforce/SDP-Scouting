@@ -24,7 +24,8 @@ public class CompDataEndStage extends MatchDataView implements IMatchDataView {
         int none = 0;
         int parks = 0;
         int onstages = 0;
-        int harmonies = 0;
+        int Buddy = 0;
+        int Buddies = 0;
         int matches = 0;
         for (Document document : documents) {
             Map<String, Object> data = (Map<String, Object>) document.getProperty("data");
@@ -37,9 +38,11 @@ public class CompDataEndStage extends MatchDataView implements IMatchDataView {
                 parks++;
             } else if (((String) data.get("Stage")).equals("3. Onstage")) {
                 onstages++;
-            } else if (((String) data.get("Stage")).equals("4. Onstage Harmony")) {
-                harmonies++;
-            }
+            } else if (((String) data.get("Stage")).equals("4. Onstage w/ Buddy")) {
+                Buddy++;
+            } else if (((String) data.get("Stage")).equals("5. Onstage w/ 2 Buddies")) {
+            Buddies++;
+        }
             matches++;
             didSomething = true;
         }
@@ -49,11 +52,14 @@ public class CompDataEndStage extends MatchDataView implements IMatchDataView {
             double nonePercentage = ((double) none / (double) matches);
             double parkedPercentage = ((double) parks / (double) matches);
             double onstagePercentage = ((double) onstages / (double) matches);
-            double harmonyPercentage = ((double) harmonies / (double) matches);
-            setValueText(formatNumberAsString(none) + "/" + formatNumberAsString(matches) + " --> " + formatPercentageAsString(nonePercentage) + "\n"
-                    + formatNumberAsString(parks) + "/" + formatNumberAsString(matches) + " --> " + formatPercentageAsString(parkedPercentage) + "\n"
-                    + formatNumberAsString(onstages) + "/" + formatNumberAsString(matches) + " --> " + formatPercentageAsString(onstagePercentage) + "\n"
-                    + formatNumberAsString(harmonies) + "/" + formatNumberAsString(matches) + " --> " + formatPercentageAsString(harmonyPercentage), "gray");
+            double BuddyPercentage = ((double) Buddy / (double) matches);
+            double BuddiesPercentage = ((double) Buddies / (double) matches);
+            setValueText("Not Parked   " + formatNumberAsString(none) + "/" + formatNumberAsString(matches) + " --> " + formatPercentageAsString(nonePercentage) + "\n" +
+                    "Parked   " + formatNumberAsString(parks) + "/" + formatNumberAsString(matches) + " --> " + formatPercentageAsString(parkedPercentage) + "\n"
+                    + "Onstage   " + formatNumberAsString(onstages) + "/" + formatNumberAsString(matches) + " --> " + formatPercentageAsString(onstagePercentage) + "\n"
+                    + "With Buddy   " + formatNumberAsString(Buddy) + "/" + formatNumberAsString(matches) + " --> " + formatPercentageAsString(BuddyPercentage)
+                    + "\n" + "With Buddies   " + formatNumberAsString(Buddies) + "/" + formatNumberAsString(matches) + " --> " + formatPercentageAsString(BuddiesPercentage)
+                    , "gray");
         }
     }
 
