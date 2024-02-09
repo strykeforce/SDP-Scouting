@@ -17,7 +17,7 @@ public class ScoutingButtonView extends ScoutingView {
 
     private OnClickListener listener;
 
-    private ArrayList clicks;
+    private ArrayList<Long> clicks;
 
     public ScoutingButtonView(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -34,7 +34,7 @@ public class ScoutingButtonView extends ScoutingView {
         // This conflicts with our custom state saving
         buttonView.setSaveEnabled(false);
 
-        clicks = new ArrayList();
+        clicks = new ArrayList<Long>();
 
         this.setOnClickListener(v -> {
             clicks.add(Calendar.getInstance().getTimeInMillis());
@@ -46,7 +46,7 @@ public class ScoutingButtonView extends ScoutingView {
         map.put(key, clicks);
     }
 
-    public void setClicks(ArrayList list) {
+    public void setClicks(ArrayList<Long> list) {
         clicks = list;
     }
 
@@ -54,7 +54,7 @@ public class ScoutingButtonView extends ScoutingView {
     public void restoreFromMap(Map<String, Object> map) {
         Object list = map.get(key);
         if (list instanceof ArrayList) {
-            setClicks((ArrayList) list);
+            setClicks((ArrayList<Long>) list);
         }
     }
 }

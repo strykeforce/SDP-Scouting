@@ -27,22 +27,11 @@ public class MatchDataAutoStartingZone extends MatchDataView implements IMatchDa
         }
         boolean didSomething = false;               // catch teams that did nothing -> present a "N/A"
         Map<String, Object> data = (Map<String, Object>) document.getProperty("data");
-        boolean n = false;
-        for (int i = 1; i < 11; i++) {
-            if (data.get("redbutton" + formatNumberAsString(i)) == null || data.get("bluebutton" + formatNumberAsString(i)) == null) {
-                n = true;
-            }
-        }
-        if (n == true) {
+        if (data.get("auto_move") == null) {
             return;
         }
-
-        int traps = (int) data.get("tele_traps"); // TODO fix
-
+        boolean exited = (boolean) data.get("auto_move");
         didSomething = true;
-
-        setValueText(formatNumberAsString(traps), "gray"); // TODO fix
+        setValueText("" + exited, "gray");
     }
 }
-
-// TODO needs to be finished
