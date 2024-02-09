@@ -51,6 +51,12 @@
             app:explanation="Number of Notes made in the Amp over the total."
             app:label="Amp" />
 
+        <org.wildstang.wildrank.androidv2.views.data.crescendo.match.MatchDataTeleTraps
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:explanation="Number of Traps completed."
+            app:label="Traps"
+            />
 
         <TextView
             android:layout_width="match_parent"

@@ -100,6 +100,19 @@
             app:explanation="Average number of Notes scored in the Amp during Tele."
             app:label="Average Amp" />
 
+        <org.wildstang.wildrank.androidv2.views.data.crescendo.comp.CompDataTeleTrapsMax
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:explanation="The max number of traps made"
+            app:label="Max Trap"
+
+            />
+        <org.wildstang.wildrank.androidv2.views.data.crescendo.comp.CompDataTeleTrapsAverage
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:explanation="The average number of traps made"
+            app:label="Average Traps"
+            />
         <org.wildstang.wildrank.androidv2.views.data.crescendo.comp.CompDataTeleMaxCycles
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
