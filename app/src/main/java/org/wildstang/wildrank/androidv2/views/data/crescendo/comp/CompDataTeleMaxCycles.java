@@ -21,22 +21,45 @@ public class CompDataTeleMaxCycles extends MatchDataView implements IMatchDataVi
             return;
         }
         boolean didSomething = false;               // catch teams that did nothing -> present a "N/A"
-        int max = 0;
+        ;
+        int AmpMax = 0;
+        int TrapMax = 0;
+        int CycleMax = 0;
+
         for (Document document : documents) {
             Map<String, Object> data = (Map<String, Object>) document.getProperty("data");
-            if (data.get("tele_made_speaker") == null) {
+            if (data.get("tele_made_speaker") == null && data.get("tele_missed_speaker")== null) {
                 return;
             }
-            int speaker = (int) data.get("tele_made_speaker");
-            if (speaker > max) {
-                max = speaker;
+            // find match with max speaker cycles
+
+            int MadeSpeaker = (int) data.get("tele_made_speaker");
+            int MissedSpeaker = (int) data.get("tele_missed_speaker");
+            int SpeakerMax = MadeSpeaker+MissedSpeaker;
+            //Find max amp Cycles
+
+            if ( data.get("tele_made_amp") == null) {
+            return;
             }
+            int MaxAmp = (int) data.get("tele_made_amp");
+
+            // Find Max Trap
+            if (data.get("tele_traps")==null){
+                return;
+            }
+            int MaxTrap = (int) data.get("tele_traps");
+
+            int Cycles = SpeakerMax+MaxTrap+MaxAmp;
+            if(CycleMax < Cycles ){
+                CycleMax = Cycles;
+            }
+
             didSomething = true;
         }
         if (!didSomething) {
             setValueText("N/A", "gray");
         } else {
-            setValueText(formatNumberAsString(max), "gray");
+            setValueText(formatNumberAsString(CycleMax), "gray");
         }
     }
 
