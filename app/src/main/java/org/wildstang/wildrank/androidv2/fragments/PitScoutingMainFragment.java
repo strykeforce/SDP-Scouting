@@ -2,6 +2,7 @@ package org.wildstang.wildrank.androidv2.fragments;
 
 import android.app.AlertDialog;
 import android.content.Intent;
+import android.graphics.Camera;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.support.v4.app.Fragment;
@@ -10,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -40,6 +42,7 @@ public class PitScoutingMainFragment extends Fragment implements View.OnClickLis
     private TeamListAdapter adapter;
 
 
+
     public PitScoutingMainFragment() {
         // Required empty public constructor
     }
@@ -64,6 +67,9 @@ public class PitScoutingMainFragment extends Fragment implements View.OnClickLis
         beginScouting.setOnClickListener(this);
         beginScouting.setEnabled(false);
         return view;
+
+
+
     }
 
     @Override
