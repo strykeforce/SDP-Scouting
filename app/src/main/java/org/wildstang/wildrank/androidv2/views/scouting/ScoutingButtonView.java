@@ -34,9 +34,10 @@ public class ScoutingButtonView extends ScoutingView {
         // This conflicts with our custom state saving
         buttonView.setSaveEnabled(false);
 
-        clicks = new ArrayList<Long>();
+        clicks = new ArrayList<>();
 
         this.setOnClickListener(v -> {
+            System.out.println("\nButton has been pressed\n");
             clicks.add(Calendar.getInstance().getTimeInMillis());
         });
     }

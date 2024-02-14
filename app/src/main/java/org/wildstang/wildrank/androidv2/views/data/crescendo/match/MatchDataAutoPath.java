@@ -12,6 +12,7 @@ import org.wildstang.wildrank.androidv2.views.data.MatchDataView;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 
 public class MatchDataAutoPath extends MatchDataView implements IMatchDataView {
 
@@ -23,33 +24,29 @@ public class MatchDataAutoPath extends MatchDataView implements IMatchDataView {
     public void calculateFromDocuments(List<Document> documents) {}
 
     public void calculateFromDocument(Document document) {
-
-        System.out.println("\nMatchDataAutoPath is running\n");
-
         if (document == null || document.getProperty("data") == null) {
             return;
         }
-
-        System.out.println("\nInitial null checks fine\n");
-
         boolean didSomething = false;               // catch teams that did nothing -> present a "N/A"
         Map<String, Object> data = (Map<String, Object>) document.getProperty("data");
 
         System.out.println("\nCheck out this data:\n");
         System.out.println(data);
 
-        ArrayList<Pair<String, Long>> presses = new ArrayList<Pair<String, Long>>();
+        ArrayList<Pair<String, Long>> presses = new ArrayList<>();
         for (int i = 1; i < 11; i++) {
-            if (data.get("redbutton" + formatNumberAsString(i)) != null) {
-                for (int j = 0; j < ((ArrayList<Long>) data.get("redbutton" + formatNumberAsString(i))).size(); j++) {
-                    Pair<String, Long> item = new Pair<>("redbutton" + formatNumberAsString(i), (long) ((ArrayList<Long>) data.get("redbutton" + formatNumberAsString(i))).get(j));
+            if (data.get("redbutton" + i) != null) {
+                for (int j = 0; j < ((ArrayList<Long>) data.get("redbutton" + i)).size(); j++) {
+                    Pair<String, Long> item = new Pair<>("redbutton" + i, ((ArrayList<Long>) data.get("redbutton" + i)).get(j));
                     presses.add(item);
+                    didSomething = true;
                 }
             }
-            if (data.get("bluebutton" + formatNumberAsString(i)) != null) {
-                for (int j = 0; j < ((ArrayList<Long>) data.get("bluebutton" + formatNumberAsString(i))).size(); j++) {
-                    Pair<String, Long> item = new Pair<>("bluebutton" + formatNumberAsString(i), (long) ((ArrayList<Long>) data.get("bluebutton" + formatNumberAsString(i))).get(j));
+            if (data.get("bluebutton" + i) != null) {
+                for (int j = 0; j < ((ArrayList<Long>) data.get("bluebutton" + i)).size(); j++) {
+                    Pair<String, Long> item = new Pair<>("bluebutton" + i, ((ArrayList<Long>) data.get("bluebutton" + i)).get(j));
                     presses.add(item);
+                    didSomething = true;
                 }
             }
         }
@@ -57,16 +54,18 @@ public class MatchDataAutoPath extends MatchDataView implements IMatchDataView {
         System.out.println("\nWow look at presses:\n");
         System.out.println(presses);
 
-        ArrayList<Pair<String, Long>> pathList = new ArrayList<Pair<String, Long>>();
+        // FIXME freezes some point after here \/
+
+        ArrayList<Pair<String, Long>> pathList = new ArrayList<>();
         for (int t = 0; t < presses.size(); t++) {
             if (pathList.size() == 0) {
                 pathList.add(presses.get(t));
             } else {
                 for (int f = 0; f < pathList.size(); f++) {
-                    if ((long) (((Pair) presses.get(t)).second) < (long) (((Pair) pathList.get(f)).second)) {
-                        pathList.add(t, (Pair) presses.get(t));
+                    if (presses.get(t).second < (long) (pathList.get(f).second)) {
+                        pathList.add(t, presses.get(t));
                     } else if (f == pathList.size() - 1) {
-                        pathList.add((Pair) presses.get(t));
+                        pathList.add(presses.get(t));
                     }
                 }
             }
@@ -75,27 +74,29 @@ public class MatchDataAutoPath extends MatchDataView implements IMatchDataView {
         System.out.println("\nWow look at pathList:\n");
         System.out.println(pathList);
 
+        // FIXME freezes some point before here /\
+
         String path = "";
         for (int d = 0; d < pathList.size(); d++) {
-            if ((String) (((Pair) (pathList.get(d))).first) == "redbutton1" || (String) (((Pair) (pathList.get(d))).first) == "bluebutton1") {
+            if (Objects.equals(pathList.get(d).first, "redbutton1") || Objects.equals(pathList.get(d).first, "bluebutton1")) {
                 path += "--> Note One ";
-            } else if ((String) (((Pair) (pathList.get(d))).first) == "redbutton2" || (String) (((Pair) (pathList.get(d))).first) == "bluebutton2") {
+            } else if (Objects.equals(pathList.get(d).first, "redbutton2") || Objects.equals(pathList.get(d).first, "bluebutton2")) {
                 path += "--> Note Two ";
-            } else if ((String) (((Pair) (pathList.get(d))).first) == "redbutton3" || (String) (((Pair) (pathList.get(d))).first) == "bluebutton3") {
+            } else if (Objects.equals(pathList.get(d).first, "redbutton3") || Objects.equals(pathList.get(d).first, "bluebutton3")) {
                 path += "--> Note Three ";
-            } else if ((String) (((Pair) (pathList.get(d))).first) == "redbutton4" || (String) (((Pair) (pathList.get(d))).first) == "bluebutton4") {
+            } else if (Objects.equals(pathList.get(d).first, "redbutton4") || Objects.equals(pathList.get(d).first, "bluebutton4")) {
                 path += "--> Note Four ";
-            } else if ((String) (((Pair) (pathList.get(d))).first) == "redbutton5" || (String) (((Pair) (pathList.get(d))).first) == "bluebutton5") {
+            } else if (Objects.equals(pathList.get(d).first, "redbutton5") || Objects.equals(pathList.get(d).first, "bluebutton5")) {
                 path += "--> Note Five ";
-            } else if ((String) (((Pair) (pathList.get(d))).first) == "redbutton6" || (String) (((Pair) (pathList.get(d))).first) == "bluebutton6") {
+            } else if (Objects.equals(pathList.get(d).first, "redbutton6") || Objects.equals(pathList.get(d).first, "bluebutton6")) {
                 path += "--> Note Six ";
-            } else if ((String) (((Pair) (pathList.get(d))).first) == "redbutton7" || (String) (((Pair) (pathList.get(d))).first) == "bluebutton7") {
+            } else if (Objects.equals(pathList.get(d).first, "redbutton7") || Objects.equals(pathList.get(d).first, "bluebutton7")) {
                 path += "--> Note Seven ";
-            } else if ((String) (((Pair) (pathList.get(d))).first) == "redbutton8" || (String) (((Pair) (pathList.get(d))).first) == "bluebutton8") {
+            } else if (Objects.equals(pathList.get(d).first, "redbutton8") || Objects.equals(pathList.get(d).first, "bluebutton8")) {
                 path += "--> Note Eight ";
-            } else if ((String) (((Pair) (pathList.get(d))).first) == "redbutton9" || (String) (((Pair) (pathList.get(d))).first) == "bluebutton9") {
+            } else if (Objects.equals(pathList.get(d).first, "redbutton9") || Objects.equals(pathList.get(d).first, "bluebutton9")) {
                 path += "--> Speaker ";
-            } else if ((String) (((Pair) (pathList.get(d))).first) == "redbutton10" || (String) (((Pair) (pathList.get(d))).first) == "bluebutton10") {
+            } else if (Objects.equals(pathList.get(d).first, "redbutton10") || Objects.equals(pathList.get(d).first, "bluebutton10")) {
                 path += "--> Amp ";
             }
         }
@@ -103,6 +104,10 @@ public class MatchDataAutoPath extends MatchDataView implements IMatchDataView {
         System.out.println("\nWow look at path:\n");
         System.out.println(path);
 
-        setValueText(path, "gray");
+        if (!didSomething) {
+            setValueText("N/A", "gray");
+        } else {
+            setValueText(path, "gray");
+        }
     }
 }

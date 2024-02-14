@@ -24,7 +24,11 @@
             android:textStyle="bold"
             android:text="Auto Overview" />
 
-
+        <org.wildstang.wildrank.androidv2.views.data.crescendo.match.MatchDataAutoPath
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:explanation="The general path of the robot's auton"
+            app:label="Path" />
 
         <org.wildstang.wildrank.androidv2.views.data.crescendo.match.MatchDataAutoCrossedLine
             android:layout_width="match_parent"
