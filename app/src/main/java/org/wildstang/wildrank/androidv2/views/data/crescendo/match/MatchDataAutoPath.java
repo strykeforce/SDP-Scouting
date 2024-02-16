@@ -58,14 +58,18 @@ public class MatchDataAutoPath extends MatchDataView implements IMatchDataView {
 
         ArrayList<Pair<String, Long>> pathList = new ArrayList<>();
         for (int t = 0; t < presses.size(); t++) {
+            System.out.println("\npress iteration " + t + "\n");
             if (pathList.size() == 0) {
                 pathList.add(presses.get(t));
             } else {
                 for (int f = 0; f < pathList.size(); f++) {
-                    if (presses.get(t).second < (long) (pathList.get(f).second)) {
+                    System.out.println("\ncomparison iteration " + f + "\n");
+                    if (presses.get(t).second < pathList.get(f).second) {
                         pathList.add(t, presses.get(t));
+                        return;
                     } else if (f == pathList.size() - 1) {
                         pathList.add(presses.get(t));
+                        return;
                     }
                 }
             }
