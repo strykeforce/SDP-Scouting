@@ -157,7 +157,7 @@ public class MatchScoutingMainFragment extends Fragment implements View.OnClickL
 
         try {
             if (DatabaseManager.getInstance(getActivity()).isMatchScouted(selectedMatchKey, selectedTeamToScout)) {
-                if (list.getItemAtPosition(currPosition + 1) != null) {
+                if (currPosition + 1 < list.getChildCount() && list.getItemAtPosition(currPosition + 1) != null) {
                     QueryRow row = (QueryRow) list.getItemAtPosition(currPosition + 1);
                     onMatchSelected(row.getDocument());
                 }

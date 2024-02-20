@@ -15,8 +15,6 @@ import java.util.Map;
 public class ScoutingButtonView extends ScoutingView {
     private Button buttonView;
 
-    private OnClickListener listener;
-
     private ArrayList<Long> clicks;
 
     public ScoutingButtonView(Context context, AttributeSet attrs) {
@@ -36,10 +34,7 @@ public class ScoutingButtonView extends ScoutingView {
 
         clicks = new ArrayList<>();
 
-        this.setOnClickListener(v -> {
-            System.out.println("\nButton has been pressed\n");
-            clicks.add(Calendar.getInstance().getTimeInMillis());
-        });
+        buttonView.setOnClickListener(v -> clicks.add(Calendar.getInstance().getTimeInMillis()));
     }
 
     @Override
