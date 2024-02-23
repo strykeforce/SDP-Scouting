@@ -8,4 +8,7 @@
 
     </stroke>  <!-- Adjust the width of the outline as needed -->
        <!-- Adjust the color of the outline as needed -->
+    <solid
+        android:color="@color/gray"
+        />
 </shape>
