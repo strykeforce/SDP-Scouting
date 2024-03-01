@@ -25,42 +25,11 @@
             android:textStyle="bold"
             android:text="Auto Overview" />
 
-
-        <org.wildstang.wildrank.androidv2.views.data.charged_up.comp.CompDataAutoConesAverage
+        <org.wildstang.wildrank.androidv2.views.data.crescendo.comp.CompDataAutoStartingZone
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:explanation="Average number of cones scored in auto"
-            app:label="Average Cones" />
-
-        <org.wildstang.wildrank.androidv2.views.data.charged_up.comp.CompDataAutoConesMax
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:explanation="Max number of cones scored in auto"
-            app:label="Max Cones" />
-
-        <org.wildstang.wildrank.androidv2.views.data.charged_up.comp.CompDataAutoCubesAverage
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:explanation="Average number of cubes scored in auto"
-            app:label="Average Cubes" />
-
-        <org.wildstang.wildrank.androidv2.views.data.charged_up.comp.CompDataAutoCubesMax
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:explanation="Max number of cubes scored in auto"
-            app:label="Max Cubes" />
-
-        <org.wildstang.wildrank.androidv2.views.data.charged_up.comp.CompDataAutoCrossedLine
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:explanation="The amount of times the robot crossed the line during auto vs the amount of matches"
-            app:label="Crossed Line" />
-
-        <org.wildstang.wildrank.androidv2.views.data.charged_up.comp.CompDataAutoChargePlatform
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:explanation="The amount of times the robot ended auto with nothing vs the amount of matches\nThe amount of times the robot ended auto docked on the charge platform vs the amount of matches\nThe amount of times the robot ended auto engaged on the charge station vs the amount of matches"
-            app:label="Charge Platform" />
+            app:explanation="How often the robot left the starting zone during Auto."
+            app:label="Auto Starting Zone" />
 
         <TextView
             android:layout_width="match_parent"
@@ -100,11 +69,17 @@
             app:explanation="Average number of Notes scored in the Amp during Tele."
             app:label="Average Amp" />
 
+        <org.wildstang.wildrank.androidv2.views.data.crescendo.comp.CompDataTeleAmpAccuracy
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:explanation="Overall accuracy of robot in the Amp."
+            app:label="Amp Accuracy" />
+
         <org.wildstang.wildrank.androidv2.views.data.crescendo.comp.CompDataTeleTrapsMax
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:explanation="The max number of traps made"
-            app:label="Max Trap"
+            app:label="Max Traps"
 
             />
         <org.wildstang.wildrank.androidv2.views.data.crescendo.comp.CompDataTeleTrapsAverage
@@ -127,9 +102,6 @@
             app:label="Average Cycles"
             />
 
-
-
-
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -142,6 +114,12 @@
             android:layout_height="wrap_content"
             app:explanation="The amount of times the robot ended with nothing vs the amount of matches\nThe amount of times the robot ended parked vs the amount of matches\nThe amount of times the robot ended tipped on the charge platform vs the amount of matches\nThe amount of times the robot ended engaged on the charge platform vs the amount of matches"
             app:label="End Stage" />
+
+        <org.wildstang.wildrank.androidv2.views.data.crescendo.comp.CompDataEndHighNotes
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:explanation="The amounts of high notes scored by their human player."
+            app:label="High Notes" />
 
 
     </LinearLayout>

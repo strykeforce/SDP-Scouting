@@ -67,29 +67,35 @@ public class MatchDataAutoPath extends MatchDataView implements IMatchDataView {
 
         String path = "";
         for (int d = 0; d < pathList.size(); d++) {
-            if (d != 0 && d % 5 == 0) {
+            if (d != 0 && d % 2 == 0) {
                 path += "\n";
             }
             if (Objects.equals(pathList.get(d).first, "redbutton1") || Objects.equals(pathList.get(d).first, "bluebutton1")) {
-                path += "--> Note One ";
+                path += "--> Collected Shared Note One ";
             } else if (Objects.equals(pathList.get(d).first, "redbutton2") || Objects.equals(pathList.get(d).first, "bluebutton2")) {
-                path += "--> Note Two ";
+                path += "--> Collected Shared Note Two ";
             } else if (Objects.equals(pathList.get(d).first, "redbutton3") || Objects.equals(pathList.get(d).first, "bluebutton3")) {
-                path += "--> Note Three ";
+                path += "--> Collected Shared Note Three ";
             } else if (Objects.equals(pathList.get(d).first, "redbutton4") || Objects.equals(pathList.get(d).first, "bluebutton4")) {
-                path += "--> Note Four ";
+                path += "--> Collected Shared Note Four ";
             } else if (Objects.equals(pathList.get(d).first, "redbutton5") || Objects.equals(pathList.get(d).first, "bluebutton5")) {
-                path += "--> Note Five ";
-            } else if (Objects.equals(pathList.get(d).first, "redbutton6") || Objects.equals(pathList.get(d).first, "bluebutton6")) {
-                path += "--> Note Six ";
-            } else if (Objects.equals(pathList.get(d).first, "redbutton7") || Objects.equals(pathList.get(d).first, "bluebutton7")) {
-                path += "--> Note Seven ";
-            } else if (Objects.equals(pathList.get(d).first, "redbutton8") || Objects.equals(pathList.get(d).first, "bluebutton8")) {
-                path += "--> Note Eight ";
+                path += "--> Collected Shared Note Five ";
+            } else if (Objects.equals(pathList.get(d).first, "redbutton6")) {
+                path += "--> Collected Red Note One ";
+            } else if (Objects.equals(pathList.get(d).first, "redbutton7")) {
+                path += "--> Collected Red Note Two ";
+            } else if (Objects.equals(pathList.get(d).first, "redbutton8")) {
+                path += "--> Collected Red Note Three ";
+            } else if (Objects.equals(pathList.get(d).first, "bluebutton6")) {
+                path += "--> Collected Blue Note One ";
+            } else if (Objects.equals(pathList.get(d).first, "bluebutton7")) {
+                path += "--> Collected Blue Note Two ";
+            } else if (Objects.equals(pathList.get(d).first, "bluebutton8")) {
+                path += "--> Collected Blue Note Three ";
             } else if (Objects.equals(pathList.get(d).first, "redbutton9") || Objects.equals(pathList.get(d).first, "bluebutton9")) {
-                path += "--> Speaker ";
+                path += "--> Scored in Speaker ";
             } else if (Objects.equals(pathList.get(d).first, "redbutton10") || Objects.equals(pathList.get(d).first, "bluebutton10")) {
-                path += "--> Amp ";
+                path += "--> Scored in Amp ";
             }
         }
 
