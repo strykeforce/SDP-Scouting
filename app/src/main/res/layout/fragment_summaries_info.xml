@@ -99,25 +99,14 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textSize="20sp"
-                        app:falseString="no"
-                        app:text="&lt;b>External Intake:&lt;/b> {{external_intake}}"
-                        app:trueString="yes" />
-
-                    <org.wildstang.wildrank.androidv2.views.TemplatedTextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textSize="20sp"
-                        app:falseString="no"
-                        app:text="&lt;b>Intake Retractable:&lt;/b> {{retract_intake}}"
-                        app:trueString="yes" />
-
-                    <org.wildstang.wildrank.androidv2.views.TemplatedTextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textSize="20sp"
                         app:text="&lt;b>Drivetrain:&lt;/b> {{drivetrain}}" />
 
-
+                    <org.wildstang.wildrank.androidv2.views.TemplatedTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="20sp"
+                        app:text="&lt;b>Shooter Height:&lt;/b> {{Shoot_Height}}" />
+                    
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"

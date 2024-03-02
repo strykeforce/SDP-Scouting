@@ -87,6 +87,15 @@
         <item>8</item>
     </string-array>
 
+    <string-array name="Shooter_Height">
+        <item>--</item>
+        <item>Low</item>
+        <item>Medium</item>
+        <item>High</item>
+
+
+    </string-array>
+
     <string name="autonomous_explanation">This Screen is for Autonomous Game Actions Only.</string>
     <string name="cycle">Single Shot Cycle</string>
     <string name="button_finish">Finish</string>
