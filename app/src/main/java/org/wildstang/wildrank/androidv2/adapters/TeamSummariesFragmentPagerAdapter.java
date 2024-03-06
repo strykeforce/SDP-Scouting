@@ -9,7 +9,7 @@ import com.couchbase.lite.Document;
 import org.wildstang.wildrank.androidv2.fragments.TeamSummariesDataFragment;
 import org.wildstang.wildrank.androidv2.fragments.TeamSummariesInfoFragment;
 import org.wildstang.wildrank.androidv2.fragments.TeamSummariesRawDataFragment;
-import org.wildstang.wildrank.androidv2.fragments.TeamSummariesStackFragment;
+import org.wildstang.wildrank.androidv2.fragments.TeamSummariesAutosFragment;
 
 import java.util.List;
 
@@ -19,7 +19,7 @@ public class TeamSummariesFragmentPagerAdapter extends FragmentStatePagerAdapter
 
     private TeamSummariesInfoFragment infoFragment;
     private TeamSummariesDataFragment dataFragment;
-    private TeamSummariesStackFragment stackFragment;
+    private TeamSummariesAutosFragment autosFragment;
     private TeamSummariesRawDataFragment rawDataFragment;
 
     public TeamSummariesFragmentPagerAdapter(FragmentManager fm) {
@@ -30,7 +30,7 @@ public class TeamSummariesFragmentPagerAdapter extends FragmentStatePagerAdapter
     private void initFragments() {
         dataFragment = new TeamSummariesDataFragment();
         rawDataFragment = new TeamSummariesRawDataFragment();
-        stackFragment = new TeamSummariesStackFragment();
+        autosFragment = new TeamSummariesAutosFragment();
         infoFragment = new TeamSummariesInfoFragment();
     }
 
@@ -42,7 +42,7 @@ public class TeamSummariesFragmentPagerAdapter extends FragmentStatePagerAdapter
             case 1:
                 return dataFragment;
             case 2:
-                return stackFragment;
+                return autosFragment;
             case 3:
                 return rawDataFragment;
             default:
@@ -68,7 +68,7 @@ public class TeamSummariesFragmentPagerAdapter extends FragmentStatePagerAdapter
             case 1:
                 return "Data";
             case 2:
-                return "Stacks";
+                return "Unique Autos";
             case 3:
                 return "Raw Data";
             default:
@@ -79,7 +79,7 @@ public class TeamSummariesFragmentPagerAdapter extends FragmentStatePagerAdapter
     public void acceptNewTeamData(String teamKey, Document teamDoc, Document pitDoc, List<Document> matchDocs) {
         infoFragment.acceptNewTeamData(teamKey, teamDoc, pitDoc, matchDocs);
         dataFragment.acceptNewTeamData(teamKey, teamDoc, pitDoc, matchDocs);
-        stackFragment.acceptNewTeamData(teamKey, teamDoc, pitDoc, matchDocs);
+        autosFragment.acceptNewTeamData(teamKey, teamDoc, pitDoc, matchDocs);
         rawDataFragment.acceptNewTeamData(teamKey, teamDoc, pitDoc, matchDocs);
     }
 
