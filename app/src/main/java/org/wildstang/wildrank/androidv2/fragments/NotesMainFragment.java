@@ -16,6 +16,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.couchbase.lite.CouchbaseLiteException;
 import com.couchbase.lite.Document;
 import com.couchbase.lite.Query;
 import com.couchbase.lite.QueryEnumerator;
@@ -29,6 +30,7 @@ import org.wildstang.wildrank.androidv2.adapters.MatchListAdapter;
 import org.wildstang.wildrank.androidv2.adapters.TeamListAdapter;
 import org.wildstang.wildrank.androidv2.data.DatabaseManager;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Iterator;
@@ -51,7 +53,7 @@ public class NotesMainFragment extends Fragment implements View.OnClickListener 
 
     private SharedPreferences.OnSharedPreferenceChangeListener listener;
 
-    private boolean useTeamNumbers = false;
+    private boolean useTeamNumbers = true;
 
     public NotesMainFragment() {
         // Required empty public constructor
@@ -220,12 +222,26 @@ public class NotesMainFragment extends Fragment implements View.OnClickListener 
         selectedTeamKey = (String) teamDocument.getProperty("key");
         Log.d("wildrank", "team key is null? " + (selectedMatchKey == null));
         matchNumber.setText("Team: " + Utilities.teamNumberFromTeamKey(selectedTeamKey));
-        scoutingTeam.setText("");
+        try {
+            String[] notes = DatabaseManager.getInstance(getActivity()).getNotes(selectedTeamKey);
 
-        beginScouting.setEnabled(true);
+            // Convert the array of strings into a single string
+            StringBuilder notesText = new StringBuilder();
+            for (String note : notes) {
+                notesText.append(note).append("\n\n"); // Add each note with a newline separator
+            }
+
+            // Set the concatenated string in the TextView
+            scoutingTeam.setText(notesText.toString());
+
+            beginScouting.setEnabled(true);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        } catch (CouchbaseLiteException e) {
+            throw new RuntimeException(e);
+        }
     }
-
-    @Override
+        @Override
     public void onClick(View v) {
         int id = v.getId();
         if (id == R.id.begin_scouting) {

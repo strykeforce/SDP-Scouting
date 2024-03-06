@@ -15,6 +15,7 @@
             android:id="@+id/useTeams"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:checked="true"
             android:text="List Team Numbers" />
 
         <ListView
@@ -33,21 +34,30 @@
             android:layout_height="match_parent"
             android:layout_above="@+id/begin_scouting"
             android:layout_centerInParent="true"
-            android:gravity="center"
+            android:gravity="top|left"
             android:orientation="vertical">
 
             <TextView
                 android:id="@+id/match_number"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
                 android:layout_marginBottom="64dp"
-                android:textSize="120sp" />
+                android:textSize="60sp" />
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:scrollbars="vertical"
+                android:layout_marginLeft="25dp"
+                >
 
-            <TextView
-                android:id="@+id/scouting_teams"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="80sp" />
+                <TextView
+                    android:id="@+id/scouting_teams"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="20sp" />
+            </ScrollView>
 
         </LinearLayout>
 

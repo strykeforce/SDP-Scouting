@@ -54,6 +54,8 @@ public class MatchScoutingMainFragment extends Fragment implements View.OnClickL
     private static String selectedTeamToScout;
     private static String selectedMatchKey;
 
+    private int currPosition;
+
     private MatchListAdapter adapter;
 
     private SharedPreferences.OnSharedPreferenceChangeListener listener;
@@ -122,6 +124,7 @@ public class MatchScoutingMainFragment extends Fragment implements View.OnClickL
 
         list = (ListView) view.findViewById(R.id.match_list);
         list.setOnItemClickListener((parent, view1, position, id) -> {
+            currPosition = position;
             QueryRow row = (QueryRow) parent.getItemAtPosition(position);
             onMatchSelected(row.getDocument());
         });
@@ -150,6 +153,17 @@ public class MatchScoutingMainFragment extends Fragment implements View.OnClickL
         } catch (Exception e) {
             e.printStackTrace();
             Toast.makeText(getActivity(), "Error querying the match list. Check logcat!", Toast.LENGTH_LONG).show();
+        }
+
+        try {
+            if (DatabaseManager.getInstance(getActivity()).isMatchScouted(selectedMatchKey, selectedTeamToScout)) {
+                if (currPosition + 1 < list.getCount() && list.getItemAtPosition(currPosition + 1) != null) {
+                    QueryRow row = (QueryRow) list.getItemAtPosition(currPosition + 1);
+                    onMatchSelected(row.getDocument());
+                }
+            }
+        } catch (CouchbaseLiteException | IOException e) {
+            e.printStackTrace();
         }
     }
 

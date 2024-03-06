@@ -4,9 +4,12 @@
     <color name="blue">#0000FF</color>
     <color name="red">#ff0000</color>
     <color name="white">#ffffff</color>
+    <color name="gray">#808080</color>
 
     <color name="material_red">#F44336</color>
     <color name="material_blue">#2196F3</color>
     <color name="material_blue_dark">#1976D2</color>
     <color name="StrykeForce">#f2bb16</color>
+    <color name="black_tint">#CC000000</color>
+    <color name="button_tint">#48D3D3D3</color>
 </resources>
