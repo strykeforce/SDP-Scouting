@@ -38,6 +38,10 @@ public class AutosDataView extends MatchDataView implements IMatchDataView {
         boolean didSomething = false;
         for (Document doc : matchDocs) {
             Map<String, Object> data = (Map<String, Object>) doc.getProperty("data");
+
+            int totalSpeaker = 0;
+            int totalAmp = 0;
+
             ArrayList<Pair<String, Long>> presses = new ArrayList<>();
             for (int i = 1; i < 11; i++) {
                 if (data.get("redbutton" + i) != null) {
@@ -99,10 +103,14 @@ public class AutosDataView extends MatchDataView implements IMatchDataView {
                     path += "--> Collected Blue Note Three ";
                 } else if (Objects.equals(pathList.get(d).first, "redbutton9") || Objects.equals(pathList.get(d).first, "bluebutton9")) {
                     path += "--> Scored in Speaker ";
+                    totalSpeaker++;
                 } else if (Objects.equals(pathList.get(d).first, "redbutton10") || Objects.equals(pathList.get(d).first, "bluebutton10")) {
                     path += "--> Scored in Amp ";
+                    totalAmp++;
                 }
             }
+
+            path += "\n\nTotal Speaker: " + totalSpeaker + "\t\tTotal Amp: " + totalAmp;
 
             if (autopaths.size() == 0) {
                 autopaths.add(path);
@@ -119,10 +127,11 @@ public class AutosDataView extends MatchDataView implements IMatchDataView {
         String output = "";
         for (int p = 0; p < autopaths.size(); p++) {
             if (p != 0) {
-                output += "\n\n";
+                output += "\n\n\n";
             }
             output += (p + 1) + ": " + autopaths.get(p);
         }
+
         if (!didSomething) {
             setValueText("N/A", "gray");
         } else {
