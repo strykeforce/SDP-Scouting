@@ -119,6 +119,12 @@
         <org.wildstang.wildrank.androidv2.views.scouting.ScoutingCheckboxView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            app:key="no_intake"
+            app:label="No Intake" />
+
+        <org.wildstang.wildrank.androidv2.views.scouting.ScoutingCheckboxView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             app:key="external_intake"
             app:label="External Intake" />
 

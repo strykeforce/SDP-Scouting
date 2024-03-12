@@ -118,9 +118,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textSize="20sp"
-                        app:falseString="no"
+                        app:falseString="No"
                         app:text="&lt;b>Crosses line:&lt;/b> {{auto_drives}}"
-                        app:trueString="True" />
+                        app:trueString="Yes" />
 
                     <org.wildstang.wildrank.androidv2.views.TemplatedTextView
                         android:layout_width="wrap_content"
@@ -141,22 +141,31 @@
                         android:textSize="20sp"
                         app:text="&lt;b>Endgame Climb:&lt;/b> {{end_game_cap}}" />
 
+
                     <org.wildstang.wildrank.androidv2.views.TemplatedTextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textSize="20sp"
-                        app:falseString="no"
+                        app:falseString="No"
+                        app:text="&lt;b>No Intake:&lt;/b> {{no_intake}}"
+                        app:trueString="Yes" />
+
+                    <org.wildstang.wildrank.androidv2.views.TemplatedTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="20sp"
+                        app:falseString="No"
                         app:text="&lt;b>External Intake:&lt;/b> {{external_intake}}"
-                        app:trueString="True" />
+                        app:trueString="Yes" />
 
 
                     <org.wildstang.wildrank.androidv2.views.TemplatedTextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textSize="20sp"
-                        app:falseString="no"
+                        app:falseString="No"
                         app:text="&lt;b>Retractable Intake:&lt;/b> {{retract_intake}}"
-                        app:trueString="True" />
+                        app:trueString="Yes" />
 
                     <TextView
                         android:layout_width="wrap_content"
