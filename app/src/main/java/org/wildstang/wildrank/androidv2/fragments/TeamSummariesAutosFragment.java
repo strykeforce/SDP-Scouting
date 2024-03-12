@@ -9,6 +9,7 @@ import com.couchbase.lite.Document;
 
 import org.wildstang.wildrank.androidv2.R;
 import org.wildstang.wildrank.androidv2.views.data.AutosDataView;
+import org.wildstang.wildrank.androidv2.views.data.MatchDataView;
 
 import java.util.List;
 
@@ -24,6 +25,7 @@ public class TeamSummariesAutosFragment extends TeamSummariesFragment {
 
     @Override
     public void acceptNewTeamData(String teamKey, Document teamDoc, Document pitDoc, List<Document> matchDocs) {
+        view.clearValue();
         view.calculateFromDocuments(matchDocs);
     }
 }
