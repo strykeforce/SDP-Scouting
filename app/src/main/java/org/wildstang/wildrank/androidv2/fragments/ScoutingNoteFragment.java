@@ -21,11 +21,16 @@ public class ScoutingNoteFragment extends Fragment implements View.OnClickListen
 
     private String teamKey;
 
-    public static ScoutingNoteFragment newInstance(String teamkey) {
+    private static String noteSource;
+
+    public static ScoutingNoteFragment newInstance(String teamkey, String notesource) {
         ScoutingNoteFragment f = new ScoutingNoteFragment();
         Bundle b = new Bundle();
         b.putString("teamkey", teamkey);
         f.setArguments(b);
+
+        noteSource = notesource;
+
         return f;
     }
 
@@ -51,6 +56,7 @@ public class ScoutingNoteFragment extends Fragment implements View.OnClickListen
 
         // Save references to our important views
         notes = (EditText) v.findViewById(R.id.notes);
+        notes.setText(noteSource + ": ");
 
         return v;
     }

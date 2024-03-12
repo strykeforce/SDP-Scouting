@@ -86,7 +86,7 @@ public class TeamNotesActivity extends ActionBarActivity {
         note = frag.getNote();
         try {
             //tells the data base to save it
-            DatabaseManager.getInstance(this).saveNotes(teamKey, note, this);
+            DatabaseManager.getInstance(this).saveNotes(teamKey, "General Team Note: " + note, this);
         } catch (CouchbaseLiteException e) {
             e.printStackTrace();
         } catch (IOException e) {

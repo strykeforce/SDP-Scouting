@@ -40,7 +40,7 @@ public class ScoutMatchActivity extends AppCompatActivity {
     private MatchScoutFragmentPagerAdapter adapter;
     private SlidingTabs tabs;
     private Toolbar toolbar;
-    private String matchKey;
+    public String matchKey;
     private String allianceColor;
 
     public static Intent createIntent(Context context, String matchKey, String teamKey, String allianceColor) {
