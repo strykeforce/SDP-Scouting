@@ -59,7 +59,7 @@ public class ScoutingNoteFragment extends Fragment implements View.OnClickListen
 
         // Save references to our important views
         notes = (EditText) v.findViewById(R.id.notes);
-        notes.setText(UserHelper.getLoggedInUsers(getContext()) + ", " + noteSource + ": ");
+        notes.setText(UserHelper.getLoggedInUserModelsAsList(getContext()).get(0).userName + ", " + noteSource + ": ");
 
         return v;
     }

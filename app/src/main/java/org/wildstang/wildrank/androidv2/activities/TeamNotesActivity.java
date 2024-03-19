@@ -20,6 +20,7 @@ import org.wildstang.wildrank.androidv2.UserHelper;
 import org.wildstang.wildrank.androidv2.Utilities;
 import org.wildstang.wildrank.androidv2.data.DatabaseManager;
 import org.wildstang.wildrank.androidv2.fragments.TeamNotesFragment;
+import org.wildstang.wildrank.androidv2.models.UserModel;
 
 import java.io.IOException;
 
@@ -87,7 +88,7 @@ public class TeamNotesActivity extends ActionBarActivity {
         note = frag.getNote();
         try {
             //tells the data base to save it
-            DatabaseManager.getInstance(this).saveNotes(teamKey, UserHelper.getLoggedInUsers(getApplicationContext()) + ", General Team Note: " + note, this);
+            DatabaseManager.getInstance(this).saveNotes(teamKey, UserHelper.getLoggedInUserModelsAsList(getApplicationContext()).get(0).userName + ", General Team Note: " + note, this);
         } catch (CouchbaseLiteException e) {
             e.printStackTrace();
         } catch (IOException e) {

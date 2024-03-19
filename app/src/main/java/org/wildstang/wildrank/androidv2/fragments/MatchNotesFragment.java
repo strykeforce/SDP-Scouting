@@ -126,7 +126,7 @@ public class MatchNotesFragment extends Fragment {
 
         String[] notes = new String[]{"", "", "", "", "", ""};
         for (int i = 0; i < boxes.size(); i++) {
-            notes[i] = UserHelper.getLoggedInUsers(getContext()) + ", " + mkey.substring(start) + ": " + boxes.get(i).getNote();
+            notes[i] = UserHelper.getLoggedInUserModelsAsList(getContext()).get(0).userName + ", " + mkey.substring(start) + ": " + boxes.get(i).getNote();
         }
         return notes;
     }
