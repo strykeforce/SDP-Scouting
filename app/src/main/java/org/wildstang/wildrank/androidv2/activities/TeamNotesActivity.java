@@ -16,6 +16,7 @@ import android.widget.TextView;
 import com.couchbase.lite.CouchbaseLiteException;
 
 import org.wildstang.wildrank.androidv2.R;
+import org.wildstang.wildrank.androidv2.UserHelper;
 import org.wildstang.wildrank.androidv2.Utilities;
 import org.wildstang.wildrank.androidv2.data.DatabaseManager;
 import org.wildstang.wildrank.androidv2.fragments.TeamNotesFragment;
@@ -86,7 +87,7 @@ public class TeamNotesActivity extends ActionBarActivity {
         note = frag.getNote();
         try {
             //tells the data base to save it
-            DatabaseManager.getInstance(this).saveNotes(teamKey, "General Team Note: " + note, this);
+            DatabaseManager.getInstance(this).saveNotes(teamKey, UserHelper.getLoggedInUsers(getApplicationContext()) + ", General Team Note: " + note, this);
         } catch (CouchbaseLiteException e) {
             e.printStackTrace();
         } catch (IOException e) {
