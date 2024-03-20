@@ -54,7 +54,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:key="scorer"
-            app:label="Scorable Pieces"
+            app:label="Scorable Places"
             app:values="@array/scorable" />
 
         <org.wildstang.wildrank.androidv2.views.scouting.ScoutingSpinnerView
@@ -116,25 +116,33 @@
             android:text="Teleop Capabilities"
             android:textSize="30sp" />
 
+        <org.wildstang.wildrank.androidv2.views.scouting.ScoutingSpinnerView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:key="intake"
+            app:label="Intake"
+            app:values="@array/Intake"
+            />
+<!--
         <org.wildstang.wildrank.androidv2.views.scouting.ScoutingCheckboxView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:key="no_intake"
-            app:label="No Intake" />
+            app:key="Trap"
+            app:label="Able to Trap" />
 
-        <org.wildstang.wildrank.androidv2.views.scouting.ScoutingCheckboxView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:key="external_intake"
-            app:label="External Intake" />
+                <org.wildstang.wildrank.androidv2.views.scouting.ScoutingCheckboxView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:key="external_intake"
+                    app:label="External Intake" />
 
-        <org.wildstang.wildrank.androidv2.views.scouting.ScoutingCheckboxView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:key="retract_intake"
-            app:label="Intake Retractable" />
+                <org.wildstang.wildrank.androidv2.views.scouting.ScoutingCheckboxView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:key="retract_intake"
+                    app:label="Intake Retractable" />
 
-
+        -->
         <org.wildstang.wildrank.androidv2.views.scouting.ScoutingSpinnerView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -148,6 +156,8 @@
             android:layout_height="100dp"
             android:text="Camera"
             />
+
+
     </LinearLayout>
 
     <LinearLayout

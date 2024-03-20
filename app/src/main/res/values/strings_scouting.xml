@@ -64,8 +64,10 @@
         <item>--</item>
         <item>Amp</item>
         <item>Speaker</item>
-        <item>Trap</item>
-        <item>Both</item>
+        <item>Amp+Speaker</item>
+        <item>Amp+Speaker+Trap</item>
+        <item>Speaker+Trap</item>
+        <item>Amp+Trap</item>
     </string-array>
 
     <string-array name="player_stations">
@@ -95,6 +97,16 @@
 
 
     </string-array>
+
+    <string-array name="Intake">
+        <item>--</item>
+        <item>No Intake</item>
+        <item>Internal Intake</item>
+        <item>External Intake</item>
+        <item>Retractable External Intake</item>
+
+    </string-array>
+
 
     <string name="autonomous_explanation">This Screen is for Autonomous Game Actions Only.</string>
     <string name="cycle">Single Shot Cycle</string>

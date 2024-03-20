@@ -147,25 +147,15 @@
                         android:layout_height="wrap_content"
                         android:textSize="20sp"
                         app:falseString="No"
-                        app:text="&lt;b>No Intake:&lt;/b> {{no_intake}}"
+                        app:text="&lt;b>Intake:&lt;/b> {{intake}}"
                         app:trueString="Yes" />
 
                     <org.wildstang.wildrank.androidv2.views.TemplatedTextView
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_height="match_parent"
                         android:textSize="20sp"
-                        app:falseString="No"
-                        app:text="&lt;b>External Intake:&lt;/b> {{external_intake}}"
-                        app:trueString="Yes" />
-
-
-                    <org.wildstang.wildrank.androidv2.views.TemplatedTextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textSize="20sp"
-                        app:falseString="No"
-                        app:text="&lt;b>Retractable Intake:&lt;/b> {{retract_intake}}"
-                        app:trueString="Yes" />
+                        app:text="&lt;b>Scorable Places:&lt;/b> {{scorer}}"
+                        />
 
                     <TextView
                         android:layout_width="wrap_content"
