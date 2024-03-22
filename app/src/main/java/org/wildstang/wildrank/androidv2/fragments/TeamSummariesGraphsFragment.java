@@ -71,8 +71,22 @@ public class TeamSummariesGraphsFragment extends TeamSummariesFragment {
                     }
 
                     max.add((float) cycles);
-                    entries.add(new BarEntry(Float.parseFloat(mNum.substring(start)), cycles));
-                    xValues.add(mNum.substring(start));
+
+                    if (xValues.size() == 0) {
+                        xValues.add(mNum.substring(start));
+                    } else {
+                        for (int k = 0; k < xValues.size(); k++) {
+                            if (Integer.valueOf(mNum.substring(start)) < Integer.valueOf(xValues.get(k))) {
+                                xValues.add(k, mNum.substring(start));
+                                break;
+                            } else if (k == xValues.size() - 1) {
+                                xValues.add(mNum.substring(start));
+                                break;
+                            }
+                        }
+                    }
+
+                    entries.add(new BarEntry(xValues.indexOf(mNum.substring(start)), cycles));
                 }
             } else if (spinner.getSelectedItem().equals("Weighted Cycles")) {
                 for (Document document : matchDocuments) {
@@ -93,8 +107,22 @@ public class TeamSummariesGraphsFragment extends TeamSummariesFragment {
                     }
 
                     max.add((float) cycles);
-                    entries.add(new BarEntry(Float.parseFloat(mNum.substring(start)), (float) cycles));
-                    xValues.add(mNum.substring(start));
+
+                    if (xValues.size() == 0) {
+                        xValues.add(mNum.substring(start));
+                    } else {
+                        for (int k = 0; k < xValues.size(); k++) {
+                            if (Integer.valueOf(mNum.substring(start)) < Integer.valueOf(xValues.get(k))) {
+                                xValues.add(k, mNum.substring(start));
+                                break;
+                            } else if (k == xValues.size() - 1) {
+                                xValues.add(mNum.substring(start));
+                                break;
+                            }
+                        }
+                    }
+
+                    entries.add(new BarEntry(xValues.indexOf(mNum.substring(start)), (float) cycles));
                 }
             } else if (spinner.getSelectedItem().equals("Amp and Speaker")) {
                 for (Document document : matchDocuments) {
@@ -110,8 +138,22 @@ public class TeamSummariesGraphsFragment extends TeamSummariesFragment {
                     }
 
                     max.add((float) ((int) data.get("tele_made_amp") + (int) data.get("tele_made_speaker")));
-                    entries.add(new BarEntry(Float.parseFloat(mNum.substring(start)), ((int) data.get("tele_made_amp") + (int) data.get("tele_made_speaker"))));
-                    xValues.add(mNum.substring(start));
+
+                    if (xValues.size() == 0) {
+                        xValues.add(mNum.substring(start));
+                    } else {
+                        for (int k = 0; k < xValues.size(); k++) {
+                            if (Integer.valueOf(mNum.substring(start)) < Integer.valueOf(xValues.get(k))) {
+                                xValues.add(k, mNum.substring(start));
+                                break;
+                            } else if (k == xValues.size() - 1) {
+                                xValues.add(mNum.substring(start));
+                                break;
+                            }
+                        }
+                    }
+
+                    entries.add(new BarEntry(xValues.indexOf(mNum.substring(start)), ((int) data.get("tele_made_amp") + (int) data.get("tele_made_speaker"))));
                 }
             } else if (spinner.getSelectedItem().equals("Amp")) {
                 for (Document document : matchDocuments) {
@@ -127,8 +169,22 @@ public class TeamSummariesGraphsFragment extends TeamSummariesFragment {
                     }
 
                     max.add((float) (int) data.get("tele_made_amp"));
-                    entries.add(new BarEntry(Float.parseFloat(mNum.substring(start)), (int) data.get("tele_made_amp")));
-                    xValues.add(mNum.substring(start));
+
+                    if (xValues.size() == 0) {
+                        xValues.add(mNum.substring(start));
+                    } else {
+                        for (int k = 0; k < xValues.size(); k++) {
+                            if (Integer.valueOf(mNum.substring(start)) < Integer.valueOf(xValues.get(k))) {
+                                xValues.add(k, mNum.substring(start));
+                                break;
+                            } else if (k == xValues.size() - 1) {
+                                xValues.add(mNum.substring(start));
+                                break;
+                            }
+                        }
+                    }
+
+                    entries.add(new BarEntry(xValues.indexOf(mNum.substring(start)), (int) data.get("tele_made_amp")));
                 }
             } else if (spinner.getSelectedItem().equals("Speaker")) {
                 for (Document document : matchDocuments) {
@@ -144,8 +200,22 @@ public class TeamSummariesGraphsFragment extends TeamSummariesFragment {
                     }
 
                     max.add((float) (int) data.get("tele_made_speaker"));
-                    entries.add(new BarEntry(Float.parseFloat(mNum.substring(start)), (int) data.get("tele_made_speaker")));
-                    xValues.add(mNum.substring(start));
+
+                    if (xValues.size() == 0) {
+                        xValues.add(mNum.substring(start));
+                    } else {
+                        for (int k = 0; k < xValues.size(); k++) {
+                            if (Integer.valueOf(mNum.substring(start)) < Integer.valueOf(xValues.get(k))) {
+                                xValues.add(k, mNum.substring(start));
+                                break;
+                            } else if (k == xValues.size() - 1) {
+                                xValues.add(mNum.substring(start));
+                                break;
+                            }
+                        }
+                    }
+
+                    entries.add(new BarEntry(xValues.indexOf(mNum.substring(start)), (int) data.get("tele_made_speaker")));
                 }
             } else if (spinner.getSelectedItem().equals("Auto")) {
                 for (Document document : matchDocuments) {
@@ -174,8 +244,22 @@ public class TeamSummariesGraphsFragment extends TeamSummariesFragment {
                     }
 
                     max.add((float) notes);
-                    entries.add(new BarEntry(Float.parseFloat(mNum.substring(start)), notes));
-                    xValues.add(mNum.substring(start));
+
+                    if (xValues.size() == 0) {
+                        xValues.add(mNum.substring(start));
+                    } else {
+                        for (int k = 0; k < xValues.size(); k++) {
+                            if (Integer.valueOf(mNum.substring(start)) < Integer.valueOf(xValues.get(k))) {
+                                xValues.add(k, mNum.substring(start));
+                                break;
+                            } else if (k == xValues.size() - 1) {
+                                xValues.add(mNum.substring(start));
+                                break;
+                            }
+                        }
+                    }
+
+                    entries.add(new BarEntry(xValues.indexOf(mNum.substring(start)), notes));
                 }
             }
 
@@ -203,16 +287,15 @@ public class TeamSummariesGraphsFragment extends TeamSummariesFragment {
             chart.invalidate();
 
             chart.getXAxis().setDrawLabels(true);
-            chart.getXAxis().setValueFormatter(new IndexAxisValueFormatter() {
-                @Override
-                public String getFormattedValue(float value) {
-                    return Float.toString(value);
-                }
-            });
+            ArrayList<String> format = new ArrayList<>();
+            for (int d = 0; d < xValues.size(); d++) {
+                format.add(Integer.toString(d + 1));
+            }
+            chart.getXAxis().setValueFormatter(new IndexAxisValueFormatter(format));
             chart.getXAxis().setPosition(XAxis.XAxisPosition.BOTTOM);
             chart.getXAxis().setGranularity(1f);
             chart.getXAxis().setGranularityEnabled(true);
-            chart.getXAxis().setLabelCount(10);
+            chart.getXAxis().setLabelCount(1);
         });
     }
 }
