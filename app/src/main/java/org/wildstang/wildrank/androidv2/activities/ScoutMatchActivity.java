@@ -103,7 +103,7 @@ public class ScoutMatchActivity extends AppCompatActivity {
         }
 
         try {
-            MatchResultsModel results = new MatchResultsModel(UserHelper.getLoggedInUsersAsArray(this), matchKey, teamKey, data);
+            MatchResultsModel results = new MatchResultsModel(UserHelper.getLoggedInUsersAsArray(this), allianceColor, matchKey, teamKey, data);
             DatabaseManager.getInstance(this).saveMatchResults(results);
             Document doc = DatabaseManager.getInstance(this).getMatchResults(matchKey, teamKey);
             Log.d("wildrank", doc.getProperties().toString());

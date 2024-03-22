@@ -4,12 +4,14 @@ import java.util.Map;
 
 public class MatchResultsModel {
     private String[] userIds;
+    private String alliance;
     private String matchKey;
     private String teamKey;
     private Map<String, Object> data;
 
-    public MatchResultsModel(String[] userIds, String matchKey, String teamKey, Map<String, Object> data) {
+    public MatchResultsModel(String[] userIds, String alliance, String matchKey, String teamKey, Map<String, Object> data) {
         this.userIds = userIds;
+        this.alliance = alliance;
         this.matchKey = matchKey;
         this.teamKey = teamKey;
         this.data = data;
@@ -17,6 +19,10 @@ public class MatchResultsModel {
 
     public String[] getUserIds() {
         return userIds;
+    }
+
+    public String getAlliance() {
+        return alliance;
     }
 
     public String getMatchKey() {

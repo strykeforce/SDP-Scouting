@@ -193,6 +193,7 @@ public class DatabaseManager {
         HashMap<String, Object> properties = new HashMap<>();
         properties.put("type", DatabaseManagerConstants.MATCH_RESULT_TYPE);
         properties.put("users", matchResults.getUserIds());
+        properties.put("alliance", matchResults.getAlliance());
         properties.put("match_key", matchResults.getMatchKey());
         properties.put("team_key", matchResults.getTeamKey());
         properties.put("data", matchResults.getData());
