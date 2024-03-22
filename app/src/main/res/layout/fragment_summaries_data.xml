@@ -135,6 +135,47 @@
             app:explanation="The amounts of high notes scored by their human player."
             app:label="High Notes" />
 
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            android:text="Averages Without Worst Match (WWM)" />
+
+        <org.wildstang.wildrank.androidv2.views.data.crescendo.comp.CompDataTeleMadeSpeakerAverageWWM
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:explanation="Average number of Notes scored in the Speaker during Tele without the worst match."
+            app:label="Average Speaker WWM"
+            />
+
+        <org.wildstang.wildrank.androidv2.views.data.crescendo.comp.CompDataTeleMadeAmpAverageWWM
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:explanation="Average number of Notes scored in the Amp during Tele without the worst match."
+            app:label="Average Amp WWM"
+            />
+
+        <org.wildstang.wildrank.androidv2.views.data.crescendo.comp.CompDataTeleTrapsAverageWWM
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:explanation="The average number of traps made without the worst match"
+            app:label="Average Traps WWM"
+            />
+
+        <org.wildstang.wildrank.androidv2.views.data.crescendo.comp.CompDataTeleAverageCyclesWWM
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:explanation="Average number of Cycles per match without the worst match."
+            app:label="Average Cycles WWM"
+            />
+
+        <org.wildstang.wildrank.androidv2.views.data.crescendo.comp.CompDataTeleAverageWeightedCyclesWWM
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:explanation="Average number of Cycles in a match with speaker having a weight of 1, amp having a weight of 1.25, and trap having a weight of 2, without the worst match."
+            app:label="Average Weighted Cycles WWM"
+            />
 
     </LinearLayout>
 
