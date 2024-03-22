@@ -11,8 +11,8 @@ import org.wildstang.wildrank.androidv2.views.data.MatchDataView;
 import java.util.List;
 import java.util.Map;
 
-public class CompDataTeleMaxCycles extends MatchDataView implements IMatchDataView {
-    public CompDataTeleMaxCycles(Context context, AttributeSet attrs) {
+public class CompDataTeleMaxWeightedCycles extends MatchDataView implements IMatchDataView {
+    public CompDataTeleMaxWeightedCycles(Context context, AttributeSet attrs) {
         super(context, attrs);
     }
 
@@ -20,11 +20,11 @@ public class CompDataTeleMaxCycles extends MatchDataView implements IMatchDataVi
         if (documents == null || documents.size() == 0) {
             return;
         }
-        boolean didSomething = false;               // catch teams that did nothing -> present a "N/A
+        boolean didSomething = false;               // catch teams that did nothing -> present a "N/A"
 
-        int AmpMax = 0;
-        int TrapMax = 0;
-        int CycleMax = 0;
+        double AmpMax = 0;
+        double TrapMax = 0;
+        double CycleMax = 0;
 
         for (Document document : documents) {
             Map<String, Object> data = (Map<String, Object>) document.getProperty("data");
@@ -33,23 +33,23 @@ public class CompDataTeleMaxCycles extends MatchDataView implements IMatchDataVi
             }
             // find match with max speaker cycles
 
-            int MadeSpeaker = (int) data.get("tele_made_speaker");
-            int MissedSpeaker = (int) data.get("tele_missed_speaker");
-            int SpeakerMax = MadeSpeaker+MissedSpeaker;
+            double MadeSpeaker = Double.parseDouble(Integer.toString((int) data.get("tele_made_speaker")));
+            double MissedSpeaker = Double.parseDouble(Integer.toString((int) data.get("tele_missed_speaker")));
+            double SpeakerMax = MadeSpeaker+MissedSpeaker;
             //Find max amp Cycles
 
             if ( data.get("tele_made_amp") == null) {
             return;
             }
-            int MaxAmp = (int) data.get("tele_made_amp");
+            double MaxAmp = Double.parseDouble(Integer.toString((int) data.get("tele_made_amp"))) * 1.25;
 
             // Find Max Trap
             if (data.get("tele_traps")==null){
                 return;
             }
-            int MaxTrap = (int) data.get("tele_traps");
+            double MaxTrap = Double.parseDouble(Integer.toString((int) data.get("tele_traps"))) * 2.0;
 
-            int Cycles = SpeakerMax+MaxTrap+MaxAmp;
+            double Cycles = SpeakerMax+MaxTrap+MaxAmp;
             if(CycleMax < Cycles ){
                 CycleMax = Cycles;
             }

@@ -102,6 +102,20 @@
             app:label="Average Cycles"
             />
 
+        <org.wildstang.wildrank.androidv2.views.data.crescendo.comp.CompDataTeleMaxWeightedCycles
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:explanation="Max number of Cycles in a match with speaker having a weight of 1, amp having a weight of 1.25, and trap having a weight of 2."
+            app:label="Max Weighted Cycles"
+            />
+
+        <org.wildstang.wildrank.androidv2.views.data.crescendo.comp.CompDataTeleAverageWeightedCycles
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:explanation="Average number of Cycles in a match with speaker having a weight of 1, amp having a weight of 1.25, and trap having a weight of 2."
+            app:label="Average Weighted Cycles"
+            />
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

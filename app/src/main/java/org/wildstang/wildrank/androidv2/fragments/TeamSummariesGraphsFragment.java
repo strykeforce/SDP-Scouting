@@ -74,6 +74,28 @@ public class TeamSummariesGraphsFragment extends TeamSummariesFragment {
                     entries.add(new BarEntry(Float.parseFloat(mNum.substring(start)), cycles));
                     xValues.add(mNum.substring(start));
                 }
+            } else if (spinner.getSelectedItem().equals("Weighted Cycles")) {
+                for (Document document : matchDocuments) {
+                    Map<String, Object> data = (Map<String, Object>) document.getProperty("data");
+                    double cycles = 0.0;
+                    cycles += Double.valueOf(Integer.toString((int) data.get("tele_made_speaker")));
+                    cycles += Double.valueOf(Integer.toString((int) data.get("tele_missed_speaker")));
+                    cycles += Double.valueOf(Integer.toString((int) data.get("tele_made_amp"))) * 1.25;
+                    cycles += Double.valueOf(Integer.toString((int) data.get("tele_traps"))) * 2;
+
+                    String mNum = (String) document.getProperty("match_key");
+                    int start = 0;
+                    for (int i = mNum.length() - 1; i >= 0; i--) {
+                        if (mNum.charAt(i) == 'm') {
+                            start = i + 1;
+                            break;
+                        }
+                    }
+
+                    max.add((float) cycles);
+                    entries.add(new BarEntry(Float.parseFloat(mNum.substring(start)), (float) cycles));
+                    xValues.add(mNum.substring(start));
+                }
             } else if (spinner.getSelectedItem().equals("Amp and Speaker")) {
                 for (Document document : matchDocuments) {
                     Map<String, Object> data = (Map<String, Object>) document.getProperty("data");
