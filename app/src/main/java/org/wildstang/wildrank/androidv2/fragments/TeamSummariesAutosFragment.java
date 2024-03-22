@@ -8,8 +8,7 @@ import android.view.ViewGroup;
 import com.couchbase.lite.Document;
 
 import org.wildstang.wildrank.androidv2.R;
-import org.wildstang.wildrank.androidv2.views.data.AutosDataView;
-import org.wildstang.wildrank.androidv2.views.data.MatchDataView;
+import org.wildstang.wildrank.androidv2.views.data.crescendo.AutosDataView;
 
 import java.util.List;
 

@@ -107,6 +107,14 @@
 
     </string-array>
 
+    <string-array name="Charts">
+        <item>Cycles</item>
+        <item>Amp and Speaker</item>
+        <item>Amp</item>
+        <item>Speaker</item>
+        <item>Auto</item>
+    </string-array>
+
 
     <string name="autonomous_explanation">This Screen is for Autonomous Game Actions Only.</string>
     <string name="cycle">Single Shot Cycle</string>

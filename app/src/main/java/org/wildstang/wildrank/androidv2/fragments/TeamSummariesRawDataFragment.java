@@ -18,7 +18,7 @@ public class TeamSummariesRawDataFragment extends TeamSummariesFragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_summaries_graph, container, false);
+        View view = inflater.inflate(R.layout.fragment_summaries_raw_data, container, false);
         return view;
     }
 

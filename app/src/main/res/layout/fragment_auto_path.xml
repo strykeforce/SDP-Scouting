@@ -8,7 +8,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <org.wildstang.wildrank.androidv2.views.data.AutosDataView android:id="@+id/autosview"
+        <org.wildstang.wildrank.androidv2.views.data.crescendo.AutosDataView
+            android:id="@+id/autosview"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_alignParentLeft="true"

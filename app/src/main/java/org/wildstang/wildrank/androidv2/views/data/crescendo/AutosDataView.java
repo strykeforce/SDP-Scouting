@@ -1,4 +1,4 @@
-package org.wildstang.wildrank.androidv2.views.data;
+package org.wildstang.wildrank.androidv2.views.data.crescendo;
 
 import android.content.Context;
 import android.graphics.Color;
@@ -12,6 +12,7 @@ import com.couchbase.lite.Document;
 
 import org.wildstang.wildrank.androidv2.interfaces.IMatchDataView;
 import org.wildstang.wildrank.androidv2.models.CycleModel;
+import org.wildstang.wildrank.androidv2.views.data.MatchDataView;
 
 import java.util.ArrayList;
 import java.util.Collections;
