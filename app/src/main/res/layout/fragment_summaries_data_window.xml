@@ -58,8 +58,8 @@
         <org.wildstang.wildrank.androidv2.views.data.crescendo.match.MatchDataTeleTraps
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:explanation="Number of Traps completed."
-            app:label="Traps"
+            app:explanation="Number of times the robot passes down the feild."
+            app:label="Passes"
             />
 
         <TextView

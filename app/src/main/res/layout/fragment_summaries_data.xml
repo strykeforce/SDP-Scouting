@@ -75,18 +75,18 @@
             app:explanation="Overall accuracy of robot in the Amp."
             app:label="Amp Accuracy" />
 
-        <org.wildstang.wildrank.androidv2.views.data.crescendo.comp.CompDataTeleTrapsMax
+        <org.wildstang.wildrank.androidv2.views.data.crescendo.comp.CompDataTelePassesMax
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:explanation="The max number of traps made"
-            app:label="Max Traps"
+            app:label="Max Passes"
 
             />
-        <org.wildstang.wildrank.androidv2.views.data.crescendo.comp.CompDataTeleTrapsAverage
+        <org.wildstang.wildrank.androidv2.views.data.crescendo.comp.CompDataTelePassesAverage
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:explanation="The average number of traps made"
-            app:label="Average Traps"
+            app:label="Average Passes"
             />
         <org.wildstang.wildrank.androidv2.views.data.crescendo.comp.CompDataTeleMaxCycles
             android:layout_width="match_parent"
@@ -156,11 +156,11 @@
             app:label="Average Amp WWM"
             />
 
-        <org.wildstang.wildrank.androidv2.views.data.crescendo.comp.CompDataTeleTrapsAverageWWM
+        <org.wildstang.wildrank.androidv2.views.data.crescendo.comp.CompDataTelePassesAverageWWM
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:explanation="The average number of traps made without the worst match"
-            app:label="Average Traps WWM"
+            app:label="Average Passes WWM"
             />
 
         <org.wildstang.wildrank.androidv2.views.data.crescendo.comp.CompDataTeleAverageCyclesWWM

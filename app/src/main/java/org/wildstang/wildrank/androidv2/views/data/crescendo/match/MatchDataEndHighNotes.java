@@ -27,10 +27,10 @@ public class MatchDataEndHighNotes extends MatchDataView implements IMatchDataVi
         }
         boolean didSomething = false;               // catch teams that did nothing -> present a "N/A"
         Map<String, Object> data = (Map<String, Object>) document.getProperty("data");
-        if (data.get("HighNotes") == null) {
+        if (data.get("Traps") == null) {
             return;
         }
-        Object highNotesObject = data.get("HighNotes");
+        Object highNotesObject = data.get("Traps");
         String highNotesString = (String) highNotesObject;
                 //trim tabs
         highNotesString = highNotesString.trim();

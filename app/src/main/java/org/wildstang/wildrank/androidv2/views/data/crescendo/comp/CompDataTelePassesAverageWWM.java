@@ -11,8 +11,8 @@ import org.wildstang.wildrank.androidv2.views.data.MatchDataView;
 import java.util.List;
 import java.util.Map;
 
-public class CompDataTeleTrapsAverageWWM extends MatchDataView implements IMatchDataView {
-    public CompDataTeleTrapsAverageWWM(Context context, AttributeSet attrs) {
+public class CompDataTelePassesAverageWWM extends MatchDataView implements IMatchDataView {
+    public CompDataTelePassesAverageWWM(Context context, AttributeSet attrs) {
         super(context, attrs);
     }
 
@@ -25,14 +25,14 @@ public class CompDataTeleTrapsAverageWWM extends MatchDataView implements IMatch
         int worst = -1;
         for (Document document : documents) {
             Map<String, Object> data = (Map<String, Object>) document.getProperty("data");
-            if (data.get("tele_traps") == null) {
+            if (data.get("tele_passes") == null) {
                 return;
             }
-            traps += (int) data.get("tele_traps");
+            traps += (int) data.get("tele_passes");
             if (worst == -1) {
-                worst = (int) data.get("tele_traps");
-            } else if (worst > (int) data.get("tele_traps")) {
-                worst = (int) data.get("tele_traps");
+                worst = (int) data.get("tele_passes");
+            } else if (worst > (int) data.get("tele_passes")) {
+                worst = (int) data.get("tele_passes");
             }
             didSomething = true;
         }
