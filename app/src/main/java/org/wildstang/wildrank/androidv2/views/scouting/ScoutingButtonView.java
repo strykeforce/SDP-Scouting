@@ -5,6 +5,7 @@ import android.content.res.TypedArray;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.widget.Button;
+import android.widget.Toast;
 
 import org.wildstang.wildrank.androidv2.R;
 
@@ -34,8 +35,20 @@ public class ScoutingButtonView extends ScoutingView {
 
         clicks = new ArrayList<>();
 
-        buttonView.setOnClickListener(v -> clicks.add(Calendar.getInstance().getTimeInMillis()));
-    }
+        buttonView.setOnClickListener(v ->
+
+        {
+            clicks.add(Calendar.getInstance().getTimeInMillis());
+
+            Toast toast = Toast.makeText(getContext(), key, Toast.LENGTH_SHORT);
+            
+            toast.show();
+            //Toast.makeText(getContext(), "Button Clicked", Toast.LENGTH_SHORT).show();
+
+
+
+        });
+        }
 
     @Override
     public void writeContentsToMap(Map<String, Object> map) {
