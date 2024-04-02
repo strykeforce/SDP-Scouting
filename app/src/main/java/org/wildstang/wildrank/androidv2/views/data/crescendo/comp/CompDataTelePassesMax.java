@@ -27,9 +27,9 @@ public class CompDataTelePassesMax extends MatchDataView implements IMatchDataVi
             if (data.get("tele_passes") == null) {
                 return;
             }
-            int traps = (int) data.get("tele_passes");
-            if (traps > max) {
-                max = traps;
+            int passes = (int) data.get("tele_passes");
+            if (passes > max) {
+                max = passes;
             }
             didSomething = true;
         }

@@ -11,34 +11,29 @@ import org.wildstang.wildrank.androidv2.views.data.MatchDataView;
 import java.util.List;
 import java.util.Map;
 
-public class MatchDataEndHighNotes extends MatchDataView implements IMatchDataView {
+public class MatchDataTelePasses extends MatchDataView implements IMatchDataView {
 
-    public MatchDataEndHighNotes(Context context, AttributeSet attrs) {
+    public MatchDataTelePasses(Context context, AttributeSet attrs) {
         super(context, attrs);
     }
 
     @Override
     public void calculateFromDocuments(List<Document> documents) {}
 
-
+    @Override
     public void calculateFromDocument(Document document) {
         if (document == null || document.getProperty("data") == null) {
             return;
         }
         boolean didSomething = false;               // catch teams that did nothing -> present a "N/A"
         Map<String, Object> data = (Map<String, Object>) document.getProperty("data");
-        if (data.get("Traps") == null) {
+        if (data.get("tele_passes") == null) {
+
+            setValueText("Null","gray");
             return;
         }
-        Object highNotesObject = data.get("Traps");
-        String highNotesString = (String) highNotesObject;
-                //trim tabs
-        highNotesString = highNotesString.trim();
-        // Change String to Integer
-        int highNotes = Integer.parseInt(highNotesString);
+        int passes = (int) data.get("tele_passes");
         didSomething = true;
-        setValueText(formatNumberAsString(highNotes), "gray");
-
-
+        setValueText(formatNumberAsString(passes), "gray");
     }
 }

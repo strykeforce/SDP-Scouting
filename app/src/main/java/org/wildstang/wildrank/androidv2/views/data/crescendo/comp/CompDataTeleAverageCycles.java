@@ -33,13 +33,17 @@ public class CompDataTeleAverageCycles extends MatchDataView implements IMatchDa
             if (data.get("tele_made_amp") == null) {
                 return;
             }
-            if (data.get("tele_traps") == null) {
+            if (data.get("tele_passes") == null) {
+                return;
+            }
+            if (data.get("Trap") == null) {
                 return;
             }
             Cycles += (int) data.get("tele_made_speaker");
             Cycles += (int) data.get("tele_missed_speaker");
             Cycles += (int) data.get("tele_made_amp");
-            Cycles += (int) data.get("tele_traps");
+            Cycles += (int) data.get("tele_passes");
+            Cycles += Integer.valueOf(((String) data.get("Trap")).substring(2, 3));
             didSomething = true;
         }
         if (!didSomething) {
