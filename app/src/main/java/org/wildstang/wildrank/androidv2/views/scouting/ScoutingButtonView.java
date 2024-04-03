@@ -3,8 +3,10 @@ package org.wildstang.wildrank.androidv2.views.scouting;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import org.wildstang.wildrank.androidv2.R;
@@ -15,7 +17,7 @@ import java.util.Map;
 
 public class ScoutingButtonView extends ScoutingView {
     private Button buttonView;
-
+    private TextView AutonWords;
     private ArrayList<Long> clicks;
 
     public ScoutingButtonView(Context context, AttributeSet attrs) {
@@ -29,9 +31,12 @@ public class ScoutingButtonView extends ScoutingView {
         a.recycle();
 
         buttonView = (Button) findViewById(R.id.button);
+
+        AutonWords = (TextView) findViewById(R.id.AutonPreview);
         buttonView.setClickable(true);
         // This conflicts with our custom state saving
         buttonView.setSaveEnabled(false);
+
 
         clicks = new ArrayList<>();
 
@@ -41,13 +46,17 @@ public class ScoutingButtonView extends ScoutingView {
             clicks.add(Calendar.getInstance().getTimeInMillis());
 
             Toast toast = Toast.makeText(getContext(), key, Toast.LENGTH_SHORT);
-            
+
             toast.show();
             //Toast.makeText(getContext(), "Button Clicked", Toast.LENGTH_SHORT).show();
 
+            try {
+                AutonWords.setText(key);
 
-
-        });
+            } catch (NullPointerException e) {
+                Log.e("ScoutingButtonView", "Error finding TextView: " + e.getMessage());
+            }
+                    });
         }
 
     @Override
