@@ -34,14 +34,18 @@ public class CompDataTeleAverageCyclesWWM extends MatchDataView implements IMatc
             if (data.get("tele_made_amp") == null) {
                 return;
             }
-            if (data.get("tele_traps") == null) {
+            if (data.get("tele_passes") == null) {
+                return;
+            }
+            if (data.get("Trap") == null) {
                 return;
             }
             int amount = 0;
             amount += (int) data.get("tele_made_speaker");
             amount += (int) data.get("tele_missed_speaker");
             amount += (int) data.get("tele_made_amp");
-            amount += (int) data.get("tele_traps");
+            amount += (int) data.get("tele_passes");
+            amount += Integer.valueOf(((String) data.get("Trap")).substring(2, 3));
             if (worst == -1) {
                 worst = amount;
             } else if (worst > amount) {

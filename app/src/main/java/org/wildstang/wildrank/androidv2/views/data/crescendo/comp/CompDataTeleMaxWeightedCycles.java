@@ -21,45 +21,39 @@ public class CompDataTeleMaxWeightedCycles extends MatchDataView implements IMat
             return;
         }
         boolean didSomething = false;               // catch teams that did nothing -> present a "N/A"
-
-        double AmpMax = 0;
-        double TrapMax = 0;
-        double CycleMax = 0;
-
+        double MaxCycles = 0;
         for (Document document : documents) {
             Map<String, Object> data = (Map<String, Object>) document.getProperty("data");
-            if (data.get("tele_made_speaker") == null && data.get("tele_missed_speaker")== null) {
+            if (data.get("tele_made_speaker") == null) {
                 return;
             }
-            // find match with max speaker cycles
-
-            double MadeSpeaker = Double.parseDouble(Integer.toString((int) data.get("tele_made_speaker")));
-            double MissedSpeaker = Double.parseDouble(Integer.toString((int) data.get("tele_missed_speaker")));
-            double SpeakerMax = MadeSpeaker+MissedSpeaker;
-            //Find max amp Cycles
-
-            if ( data.get("tele_made_amp") == null) {
-            return;
-            }
-            double MaxAmp = Double.parseDouble(Integer.toString((int) data.get("tele_made_amp"))) * 1.25;
-
-            // Find Max Trap
-            if (data.get("tele_traps")==null){
+            if (data.get("tele_missed_speaker") == null) {
                 return;
             }
-            double MaxTrap = Double.parseDouble(Integer.toString((int) data.get("tele_traps"))) * 2.0;
-
-            double Cycles = SpeakerMax+MaxTrap+MaxAmp;
-            if(CycleMax < Cycles ){
-                CycleMax = Cycles;
+            if (data.get("tele_made_amp") == null) {
+                return;
             }
-
+            if (data.get("tele_passes") == null) {
+                return;
+            }
+            if (data.get("Trap") == null) {
+                return;
+            }
+            double Cycles = 0;
+            Cycles += Double.parseDouble(Integer.toString((int) data.get("tele_made_speaker")));
+            Cycles += Double.parseDouble(Integer.toString((int) data.get("tele_missed_speaker")));
+            Cycles += Double.parseDouble(Integer.toString((int) data.get("tele_made_amp"))) * 1.25;
+            Cycles += Double.parseDouble(Integer.toString((int) data.get("tele_passes"))) * 0.6;
+            Cycles += Double.parseDouble(((String) data.get("Trap")).substring(2, 3)) * 2.0;
+            if (MaxCycles < Cycles) {
+                MaxCycles = Cycles;
+            }
             didSomething = true;
         }
         if (!didSomething) {
             setValueText("N/A", "gray");
         } else {
-            setValueText(formatNumberAsString(CycleMax), "gray");
+            setValueText(formatNumberAsString(MaxCycles), "gray");
         }
     }
 

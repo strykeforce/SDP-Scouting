@@ -21,7 +21,7 @@ public class CompDataTeleAverageWeightedCycles extends MatchDataView implements 
             return;
         }
         boolean didSomething = false;               // catch teams that did nothing -> present a "N/A"
-        int Cycles = 0;
+        double Cycles = 0;
         for (Document document : documents) {
             Map<String, Object> data = (Map<String, Object>) document.getProperty("data");
             if (data.get("tele_made_speaker") == null) {
@@ -33,19 +33,23 @@ public class CompDataTeleAverageWeightedCycles extends MatchDataView implements 
             if (data.get("tele_made_amp") == null) {
                 return;
             }
-            if (data.get("tele_traps") == null) {
+            if (data.get("tele_passes") == null) {
+                return;
+            }
+            if (data.get("Trap") == null) {
                 return;
             }
             Cycles += Double.parseDouble(Integer.toString((int) data.get("tele_made_speaker")));
             Cycles += Double.parseDouble(Integer.toString((int) data.get("tele_missed_speaker")));
             Cycles += Double.parseDouble(Integer.toString((int) data.get("tele_made_amp"))) * 1.25;
-            Cycles += Double.parseDouble(Integer.toString((int) data.get("tele_traps"))) * 2.0;
+            Cycles += Double.parseDouble(Integer.toString((int) data.get("tele_passes"))) * 0.6;
+            Cycles += Double.parseDouble(((String) data.get("Trap")).substring(2, 3)) * 2.0;
             didSomething = true;
         }
         if (!didSomething) {
             setValueText("N/A", "gray");
         } else {
-            double average = (double) Cycles / (double) documents.size();
+            double average = Cycles / (double) documents.size();
             setValueText(formatNumberAsString(average), "gray");
         }
     }
