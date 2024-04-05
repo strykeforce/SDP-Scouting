@@ -1,4 +1,4 @@
-package org.wildstang.wildrank.androidv2.fragments;
+package org.wildstang.wildrank.androidv2.fragments.TeamSummaries;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;

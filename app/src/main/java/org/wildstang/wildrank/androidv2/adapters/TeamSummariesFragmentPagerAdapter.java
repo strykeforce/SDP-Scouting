@@ -6,11 +6,11 @@ import android.support.v4.app.FragmentStatePagerAdapter;
 
 import com.couchbase.lite.Document;
 
-import org.wildstang.wildrank.androidv2.fragments.TeamSummariesDataFragment;
-import org.wildstang.wildrank.androidv2.fragments.TeamSummariesGraphsFragment;
-import org.wildstang.wildrank.androidv2.fragments.TeamSummariesInfoFragment;
-import org.wildstang.wildrank.androidv2.fragments.TeamSummariesRawDataFragment;
-import org.wildstang.wildrank.androidv2.fragments.TeamSummariesAutosFragment;
+import org.wildstang.wildrank.androidv2.fragments.TeamSummaries.TeamSummariesDataFragment;
+import org.wildstang.wildrank.androidv2.fragments.TeamSummaries.TeamSummariesGraphsFragment;
+import org.wildstang.wildrank.androidv2.fragments.TeamSummaries.TeamSummariesInfoFragment;
+import org.wildstang.wildrank.androidv2.fragments.TeamSummaries.TeamSummariesRawDataFragment;
+import org.wildstang.wildrank.androidv2.fragments.TeamSummaries.TeamSummariesAutosFragment;
 
 import java.util.List;
 

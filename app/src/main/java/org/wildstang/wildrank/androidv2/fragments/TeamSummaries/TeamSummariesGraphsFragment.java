@@ -1,4 +1,4 @@
-package org.wildstang.wildrank.androidv2.fragments;
+package org.wildstang.wildrank.androidv2.fragments.TeamSummaries;
 
 import android.graphics.Color;
 import android.os.Bundle;
@@ -10,18 +10,15 @@ import android.widget.Button;
 
 import com.couchbase.lite.Document;
 import com.github.mikephil.charting.charts.BarChart;
-import com.github.mikephil.charting.components.AxisBase;
 import com.github.mikephil.charting.components.XAxis;
 import com.github.mikephil.charting.components.YAxis;
 import com.github.mikephil.charting.data.BarData;
 import com.github.mikephil.charting.data.BarDataSet;
 import com.github.mikephil.charting.data.BarEntry;
 import com.github.mikephil.charting.formatter.IndexAxisValueFormatter;
-import com.github.mikephil.charting.utils.ColorTemplate;
 
 import org.wildstang.wildrank.androidv2.R;
-import org.wildstang.wildrank.androidv2.activities.MatchNotesActivity;
-import org.wildstang.wildrank.androidv2.views.WhiteboardView;
+import org.wildstang.wildrank.androidv2.fragments.TeamSummaries.TeamSummariesFragment;
 import org.wildstang.wildrank.androidv2.views.scouting.ScoutingSpinnerView;
 
 import java.util.ArrayList;
@@ -213,7 +210,7 @@ public class TeamSummariesGraphsFragment extends TeamSummariesFragment {
                 for (Document document : matchDocuments) {
                     Map<String, Object> data = (Map<String, Object>) document.getProperty("data");
                     int notes = 0;
-                    for (int i = 1; i < 11; i++) {
+                    for (int i = 9; i < 11; i++) {
                         if (data.get("redbutton" + i) != null) {
                             for (int j = 0; j < ((ArrayList<Long>) data.get("redbutton" + i)).size(); j++) {
                                 notes++;
@@ -264,7 +261,7 @@ public class TeamSummariesGraphsFragment extends TeamSummariesFragment {
 
             ArrayList<String> format = new ArrayList<>();
             for (int d = 0; d < xValues.size(); d++) {
-                entries.add(new BarEntry(d + 1, xValues.get(d).second));
+                entries.add(new BarEntry(d, xValues.get(d).second));
                 format.add(Integer.toString(d + 1));
             }
 
@@ -287,7 +284,7 @@ public class TeamSummariesGraphsFragment extends TeamSummariesFragment {
             chart.getXAxis().setPosition(XAxis.XAxisPosition.BOTTOM);
             chart.getXAxis().setGranularity(1f);
             chart.getXAxis().setGranularityEnabled(true);
-            chart.getXAxis().setLabelCount(1);
+            chart.getXAxis().setLabelCount(xValues.size());
         });
     }
 }

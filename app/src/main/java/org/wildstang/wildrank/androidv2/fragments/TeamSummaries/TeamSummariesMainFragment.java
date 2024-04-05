@@ -1,4 +1,4 @@
-package org.wildstang.wildrank.androidv2.fragments;
+package org.wildstang.wildrank.androidv2.fragments.TeamSummaries;
 
 import android.os.Bundle;
 import android.os.Parcelable;
@@ -90,7 +90,7 @@ public class TeamSummariesMainFragment extends Fragment {
         Log.d("wildrank", "team query count: " + enumerator.getCount());
 
         List<QueryRow> queryRows = new ArrayList<>();
-        for (Iterator<QueryRow> it = enumerator; it.hasNext(); ) {
+        for (Iterator<QueryRow> it = enumerator; it.hasNext();) {
             QueryRow row = it.next();
             queryRows.add(row);
         }
@@ -111,6 +111,8 @@ public class TeamSummariesMainFragment extends Fragment {
             Document teamDocument = db.getTeamFromKey(teamKey);
             Document pitDocument = db.getInternalDatabase().getExistingDocument("pit:" + teamKey);
             List<Document> matchDocuments = db.getMatchResultsForTeam(teamKey);
+            System.out.println("\n" + teamKey);
+            System.out.println(db.getMatchResultsForTeam(teamKey) + "\n");
             ((TeamSummariesFragmentPagerAdapter) pager.getAdapter()).acceptNewTeamData(teamKey, teamDocument, pitDocument, matchDocuments);
         } catch (CouchbaseLiteException | IOException e) {
             e.printStackTrace();
