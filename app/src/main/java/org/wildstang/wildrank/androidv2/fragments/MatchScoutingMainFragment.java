@@ -266,7 +266,7 @@ public class MatchScoutingMainFragment extends Fragment implements View.OnClickL
                 window.setVisibility(View.GONE);
             }
         }
-beginScouting.setEnabled(true);
+        beginScouting.setEnabled(true);
     }
 
     @Override

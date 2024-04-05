@@ -59,7 +59,8 @@ public class TeamSummariesGraphsFragment extends TeamSummariesFragment {
                     cycles += (int) data.get("tele_made_speaker");
                     cycles += (int) data.get("tele_missed_speaker");
                     cycles += (int) data.get("tele_made_amp");
-                    cycles += (int) data.get("tele_traps");
+                    cycles += (int) data.get("tele_passes");
+                    cycles += Integer.valueOf(((String) data.get("Trap")).substring(2, 3));
 
                     String mNum = (String) document.getProperty("match_key");
                     int start = 0;
@@ -93,7 +94,8 @@ public class TeamSummariesGraphsFragment extends TeamSummariesFragment {
                     cycles += Double.valueOf(Integer.toString((int) data.get("tele_made_speaker")));
                     cycles += Double.valueOf(Integer.toString((int) data.get("tele_missed_speaker")));
                     cycles += Double.valueOf(Integer.toString((int) data.get("tele_made_amp"))) * 1.25;
-                    cycles += Double.valueOf(Integer.toString((int) data.get("tele_traps"))) * 2;
+                    cycles += Double.valueOf(Integer.toString((int) data.get("tele_passes"))) * 0.6;
+                    cycles += Double.valueOf(((String) data.get("Trap")).substring(2, 3)) * 2.0;
 
                     String mNum = (String) document.getProperty("match_key");
                     int start = 0;
