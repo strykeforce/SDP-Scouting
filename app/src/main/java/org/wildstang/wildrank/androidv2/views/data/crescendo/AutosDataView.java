@@ -22,8 +22,6 @@ import java.util.Map;
 import java.util.Objects;
 
 public class AutosDataView extends MatchDataView implements IMatchDataView {
-    ArrayList<String> autopaths = new ArrayList<>();
-
     public AutosDataView(Context context, AttributeSet attrs) {
         super(context, attrs);
     }
@@ -37,6 +35,7 @@ public class AutosDataView extends MatchDataView implements IMatchDataView {
             return;
         }
         boolean didSomething = false;
+        ArrayList<String> autopaths = new ArrayList<>();
         for (Document doc : matchDocs) {
             Map<String, Object> data = (Map<String, Object>) doc.getProperty("data");
             ArrayList<Pair<String, Long>> presses = new ArrayList<>();
@@ -113,6 +112,7 @@ public class AutosDataView extends MatchDataView implements IMatchDataView {
                         break;
                     } else if (b == autopaths.size() - 1) {
                         autopaths.add(path);
+                        break;
                     }
                 }
             }
