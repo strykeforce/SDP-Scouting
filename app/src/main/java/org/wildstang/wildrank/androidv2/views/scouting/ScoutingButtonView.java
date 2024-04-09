@@ -17,7 +17,6 @@ import java.util.Map;
 
 public class ScoutingButtonView extends ScoutingView {
     private Button buttonView;
-    private TextView AutonWords;
     private ArrayList<Long> clicks;
 
     public ScoutingButtonView(Context context, AttributeSet attrs) {
@@ -32,7 +31,6 @@ public class ScoutingButtonView extends ScoutingView {
 
         buttonView = (Button) findViewById(R.id.button);
 
-        AutonWords = (TextView) findViewById(R.id.AutonPreview);
         buttonView.setClickable(true);
         // This conflicts with our custom state saving
         buttonView.setSaveEnabled(false);
@@ -40,24 +38,8 @@ public class ScoutingButtonView extends ScoutingView {
 
         clicks = new ArrayList<>();
 
-        buttonView.setOnClickListener(v ->
-
-        {
-            clicks.add(Calendar.getInstance().getTimeInMillis());
-
-            Toast toast = Toast.makeText(getContext(), key, Toast.LENGTH_SHORT);
-
-            toast.show();
-            //Toast.makeText(getContext(), "Button Clicked", Toast.LENGTH_SHORT).show();
-
-            try {
-                AutonWords.setText(key);
-
-            } catch (NullPointerException e) {
-                Log.e("ScoutingButtonView", "Error finding TextView: " + e.getMessage());
-            }
-                    });
-        }
+        buttonView.setOnClickListener(v -> clicks.add(Calendar.getInstance().getTimeInMillis()));
+    }
 
     @Override
     public void writeContentsToMap(Map<String, Object> map) {
@@ -66,6 +48,10 @@ public class ScoutingButtonView extends ScoutingView {
 
     public void setClicks(ArrayList<Long> list) {
         clicks = list;
+    }
+
+    public ArrayList<Long> getClicks() {
+        return clicks;
     }
 
     @Override

@@ -263,23 +263,26 @@
     </LinearLayout>
 
     <org.wildstang.wildrank.androidv2.views.scouting.ScoutingCheckboxView
+        android:id="@+id/crosslinecheckbox"
         app:key="CrossLine"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         app:label="Exited Robot\nStarting Zone"
-        android:layout_centerVertical="true"
+        android:layout_alignTop="@id/AutoTitle"
+        android:layout_marginTop="125dp"
         android:layout_alignParentRight="true"
         android:layout_marginRight="130dp"/>
 
     <TextView
         android:layout_width="250dp"
         android:layout_height="250dp"
+        android:layout_alignTop="@id/crosslinecheckbox"
+        android:layout_marginTop="115dp"
         android:layout_alignParentRight="true"
-        android:layout_alignParentBottom="true"
+        android:layout_marginRight="100dp"
         android:id="@+id/AutonPreview"
         android:background="@color/white"
-        android:text="Auton Preview"
-        android:textColor="@color/red"
+        android:text="Auton Preview:"
         />
 
 </RelativeLayout>
