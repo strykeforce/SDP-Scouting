@@ -6,8 +6,6 @@ import android.preference.PreferenceManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import org.wildstang.wildrank.androidv2.R;
@@ -29,97 +27,8 @@ public class AutonomousScoutingFragment extends ScoutingFragment {
     private int eightClicks;
     private int nineClicks;
     private int tenClicks;
-
-    private Runnable update = new Runnable() {
-        @Override
-        public void run() {
-            if (color == "Red") {
-                if (((ScoutingButtonView) getView().findViewById(R.id.redbutton1)).getClicks().size() != oneClicks) {
-                    preview.setText(preview.getText() + "\n--> Collected Shared Note One ");
-                    oneClicks = ((ScoutingButtonView) getView().findViewById(R.id.redbutton1)).getClicks().size();
-                }
-                if (((ScoutingButtonView) getView().findViewById(R.id.redbutton2)).getClicks().size() != twoClicks) {
-                    preview.setText(preview.getText() + "\n--> Collected Shared Note Two ");
-                    twoClicks = ((ScoutingButtonView) getView().findViewById(R.id.redbutton2)).getClicks().size();
-                }
-                if (((ScoutingButtonView) getView().findViewById(R.id.redbutton3)).getClicks().size() != threeClicks) {
-                    preview.setText(preview.getText() + "\n--> Collected Shared Note Three ");
-                    threeClicks = ((ScoutingButtonView) getView().findViewById(R.id.redbutton3)).getClicks().size();
-                }
-                if (((ScoutingButtonView) getView().findViewById(R.id.redbutton4)).getClicks().size() != fourClicks) {
-                    preview.setText(preview.getText() + "\n--> Collected Shared Note Four ");
-                    fourClicks = ((ScoutingButtonView) getView().findViewById(R.id.redbutton4)).getClicks().size();
-                }
-                if (((ScoutingButtonView) getView().findViewById(R.id.redbutton5)).getClicks().size() != fiveClicks) {
-                    preview.setText(preview.getText() + "\n--> Collected Shared Note Five ");
-                    fiveClicks = ((ScoutingButtonView) getView().findViewById(R.id.redbutton5)).getClicks().size();
-                }
-                if (((ScoutingButtonView) getView().findViewById(R.id.redbutton6)).getClicks().size() != sixClicks) {
-                    preview.setText(preview.getText() + "\n--> Collected Red Note One ");
-                    sixClicks = ((ScoutingButtonView) getView().findViewById(R.id.redbutton6)).getClicks().size();
-                }
-                if (((ScoutingButtonView) getView().findViewById(R.id.redbutton7)).getClicks().size() != sevenClicks) {
-                    preview.setText(preview.getText() + "\n--> Collected Red Note Two ");
-                    sevenClicks = ((ScoutingButtonView) getView().findViewById(R.id.redbutton7)).getClicks().size();
-                }
-                if (((ScoutingButtonView) getView().findViewById(R.id.redbutton8)).getClicks().size() != eightClicks) {
-                    preview.setText(preview.getText() + "\n--> Collected Red Note Three ");
-                    eightClicks = ((ScoutingButtonView) getView().findViewById(R.id.redbutton8)).getClicks().size();
-                }
-                if (((ScoutingButtonView) getView().findViewById(R.id.redbutton9)).getClicks().size() != nineClicks) {
-                    preview.setText(preview.getText() + "\n--> Scored in Speaker ");
-                    nineClicks = ((ScoutingButtonView) getView().findViewById(R.id.redbutton9)).getClicks().size();
-                }
-                if (((ScoutingButtonView) getView().findViewById(R.id.redbutton10)).getClicks().size() != tenClicks) {
-                    preview.setText(preview.getText() + "\n--> Scored in Amp ");
-                    tenClicks = ((ScoutingButtonView) getView().findViewById(R.id.redbutton10)).getClicks().size();
-                }
-            } else {
-                if (((ScoutingButtonView) getView().findViewById(R.id.bluebutton1)).getClicks().size() != oneClicks) {
-                    preview.setText(preview.getText() + "\n--> Collected Shared Note One ");
-                    oneClicks = ((ScoutingButtonView) getView().findViewById(R.id.bluebutton1)).getClicks().size();
-                }
-                if (((ScoutingButtonView) getView().findViewById(R.id.bluebutton2)).getClicks().size() != twoClicks) {
-                    preview.setText(preview.getText() + "\n--> Collected Shared Note Two ");
-                    twoClicks = ((ScoutingButtonView) getView().findViewById(R.id.bluebutton2)).getClicks().size();
-                }
-                if (((ScoutingButtonView) getView().findViewById(R.id.bluebutton3)).getClicks().size() != threeClicks) {
-                    preview.setText(preview.getText() + "\n--> Collected Shared Note Three ");
-                    threeClicks = ((ScoutingButtonView) getView().findViewById(R.id.bluebutton3)).getClicks().size();
-                }
-                if (((ScoutingButtonView) getView().findViewById(R.id.bluebutton4)).getClicks().size() != fourClicks) {
-                    preview.setText(preview.getText() + "\n--> Collected Shared Note Four ");
-                    fourClicks = ((ScoutingButtonView) getView().findViewById(R.id.bluebutton4)).getClicks().size();
-                }
-                if (((ScoutingButtonView) getView().findViewById(R.id.bluebutton5)).getClicks().size() != fiveClicks) {
-                    preview.setText(preview.getText() + "\n--> Collected Shared Note Five ");
-                    fiveClicks = ((ScoutingButtonView) getView().findViewById(R.id.bluebutton5)).getClicks().size();
-                }
-                if (((ScoutingButtonView) getView().findViewById(R.id.bluebutton6)).getClicks().size() != sixClicks) {
-                    preview.setText(preview.getText() + "\n--> Collected Red Note One ");
-                    sixClicks = ((ScoutingButtonView) getView().findViewById(R.id.bluebutton6)).getClicks().size();
-                }
-                if (((ScoutingButtonView) getView().findViewById(R.id.bluebutton7)).getClicks().size() != sevenClicks) {
-                    preview.setText(preview.getText() + "\n--> Collected Red Note Two ");
-                    sevenClicks = ((ScoutingButtonView) getView().findViewById(R.id.bluebutton7)).getClicks().size();
-                }
-                if (((ScoutingButtonView) getView().findViewById(R.id.bluebutton8)).getClicks().size() != eightClicks) {
-                    preview.setText(preview.getText() + "\n--> Collected Red Note Three ");
-                    eightClicks = ((ScoutingButtonView) getView().findViewById(R.id.bluebutton8)).getClicks().size();
-                }
-                if (((ScoutingButtonView) getView().findViewById(R.id.bluebutton9)).getClicks().size() != nineClicks) {
-                    preview.setText(preview.getText() + "\n--> Scored in Speaker ");
-                    nineClicks = ((ScoutingButtonView) getView().findViewById(R.id.bluebutton9)).getClicks().size();
-                }
-                if (((ScoutingButtonView) getView().findViewById(R.id.bluebutton10)).getClicks().size() != tenClicks) {
-                    preview.setText(preview.getText() + "\n--> Scored in Amp ");
-                    tenClicks = ((ScoutingButtonView) getView().findViewById(R.id.bluebutton10)).getClicks().size();
-                }
-            }
-
-            handler.postDelayed(this, 500);
-        }
-    };
+    private ArrayList<String> pressOrder;
+    private ArrayList<Integer> stringLength;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -179,8 +88,349 @@ public class AutonomousScoutingFragment extends ScoutingFragment {
             nineClicks = ((ScoutingButtonView) view.findViewById(R.id.bluebutton9)).getClicks().size();
             tenClicks = ((ScoutingButtonView) view.findViewById(R.id.bluebutton10)).getClicks().size();
         }
+        pressOrder = new ArrayList<>();
+        stringLength = new ArrayList<>();
+        view.findViewById(R.id.undo_button).setOnClickListener(v -> undo());
         handler.post(update);
         return view;
+    }
+
+    private Runnable update = new Runnable() {
+        @Override
+        public void run() {
+            if (color == "Red") {
+                if (((ScoutingButtonView) getView().findViewById(R.id.redbutton1)).getClicks().size() != oneClicks) {
+                    preview.setText(preview.getText() + "\n--> Collected Shared Note One ");
+                    oneClicks = ((ScoutingButtonView) getView().findViewById(R.id.redbutton1)).getClicks().size();
+                    pressOrder.add("R1");
+                    stringLength.add(31);
+                }
+                if (((ScoutingButtonView) getView().findViewById(R.id.redbutton2)).getClicks().size() != twoClicks) {
+                    preview.setText(preview.getText() + "\n--> Collected Shared Note Two ");
+                    twoClicks = ((ScoutingButtonView) getView().findViewById(R.id.redbutton2)).getClicks().size();
+                    pressOrder.add("R2");
+                    stringLength.add(31);
+                }
+                if (((ScoutingButtonView) getView().findViewById(R.id.redbutton3)).getClicks().size() != threeClicks) {
+                    preview.setText(preview.getText() + "\n--> Collected Shared Note Three ");
+                    threeClicks = ((ScoutingButtonView) getView().findViewById(R.id.redbutton3)).getClicks().size();
+                    pressOrder.add("R3");
+                    stringLength.add(33);
+                }
+                if (((ScoutingButtonView) getView().findViewById(R.id.redbutton4)).getClicks().size() != fourClicks) {
+                    preview.setText(preview.getText() + "\n--> Collected Shared Note Four ");
+                    fourClicks = ((ScoutingButtonView) getView().findViewById(R.id.redbutton4)).getClicks().size();
+                    pressOrder.add("R4");
+                    stringLength.add(32);
+                }
+                if (((ScoutingButtonView) getView().findViewById(R.id.redbutton5)).getClicks().size() != fiveClicks) {
+                    preview.setText(preview.getText() + "\n--> Collected Shared Note Five ");
+                    fiveClicks = ((ScoutingButtonView) getView().findViewById(R.id.redbutton5)).getClicks().size();
+                    pressOrder.add("R5");
+                    stringLength.add(32);
+                }
+                if (((ScoutingButtonView) getView().findViewById(R.id.redbutton6)).getClicks().size() != sixClicks) {
+                    preview.setText(preview.getText() + "\n--> Collected Red Note One ");
+                    sixClicks = ((ScoutingButtonView) getView().findViewById(R.id.redbutton6)).getClicks().size();
+                    pressOrder.add("R6");
+                    stringLength.add(28);
+                }
+                if (((ScoutingButtonView) getView().findViewById(R.id.redbutton7)).getClicks().size() != sevenClicks) {
+                    preview.setText(preview.getText() + "\n--> Collected Red Note Two ");
+                    sevenClicks = ((ScoutingButtonView) getView().findViewById(R.id.redbutton7)).getClicks().size();
+                    pressOrder.add("R7");
+                    stringLength.add(28);
+                }
+                if (((ScoutingButtonView) getView().findViewById(R.id.redbutton8)).getClicks().size() != eightClicks) {
+                    preview.setText(preview.getText() + "\n--> Collected Red Note Three ");
+                    eightClicks = ((ScoutingButtonView) getView().findViewById(R.id.redbutton8)).getClicks().size();
+                    pressOrder.add("R8");
+                    stringLength.add(30);
+                }
+                if (((ScoutingButtonView) getView().findViewById(R.id.redbutton9)).getClicks().size() != nineClicks) {
+                    preview.setText(preview.getText() + "\n--> Scored in Speaker ");
+                    nineClicks = ((ScoutingButtonView) getView().findViewById(R.id.redbutton9)).getClicks().size();
+                    pressOrder.add("R9");
+                    stringLength.add(23);
+                }
+                if (((ScoutingButtonView) getView().findViewById(R.id.redbutton10)).getClicks().size() != tenClicks) {
+                    preview.setText(preview.getText() + "\n--> Scored in Amp ");
+                    tenClicks = ((ScoutingButtonView) getView().findViewById(R.id.redbutton10)).getClicks().size();
+                    pressOrder.add("R10");
+                    stringLength.add(19);
+                }
+            } else {
+                if (((ScoutingButtonView) getView().findViewById(R.id.bluebutton1)).getClicks().size() != oneClicks) {
+                    preview.setText(preview.getText() + "\n--> Collected Shared Note One ");
+                    oneClicks = ((ScoutingButtonView) getView().findViewById(R.id.bluebutton1)).getClicks().size();
+                    pressOrder.add("B1");
+                    stringLength.add(31);
+                }
+                if (((ScoutingButtonView) getView().findViewById(R.id.bluebutton2)).getClicks().size() != twoClicks) {
+                    preview.setText(preview.getText() + "\n--> Collected Shared Note Two ");
+                    twoClicks = ((ScoutingButtonView) getView().findViewById(R.id.bluebutton2)).getClicks().size();
+                    pressOrder.add("B2");
+                    stringLength.add(31);
+                }
+                if (((ScoutingButtonView) getView().findViewById(R.id.bluebutton3)).getClicks().size() != threeClicks) {
+                    preview.setText(preview.getText() + "\n--> Collected Shared Note Three ");
+                    threeClicks = ((ScoutingButtonView) getView().findViewById(R.id.bluebutton3)).getClicks().size();
+                    pressOrder.add("B3");
+                    stringLength.add(33);
+                }
+                if (((ScoutingButtonView) getView().findViewById(R.id.bluebutton4)).getClicks().size() != fourClicks) {
+                    preview.setText(preview.getText() + "\n--> Collected Shared Note Four ");
+                    fourClicks = ((ScoutingButtonView) getView().findViewById(R.id.bluebutton4)).getClicks().size();
+                    pressOrder.add("B4");
+                    stringLength.add(32);
+                }
+                if (((ScoutingButtonView) getView().findViewById(R.id.bluebutton5)).getClicks().size() != fiveClicks) {
+                    preview.setText(preview.getText() + "\n--> Collected Shared Note Five ");
+                    fiveClicks = ((ScoutingButtonView) getView().findViewById(R.id.bluebutton5)).getClicks().size();
+                    pressOrder.add("B5");
+                    stringLength.add(32);
+                }
+                if (((ScoutingButtonView) getView().findViewById(R.id.bluebutton6)).getClicks().size() != sixClicks) {
+                    preview.setText(preview.getText() + "\n--> Collected Blue Note One ");
+                    sixClicks = ((ScoutingButtonView) getView().findViewById(R.id.bluebutton6)).getClicks().size();
+                    pressOrder.add("B6");
+                    stringLength.add(29);
+                }
+                if (((ScoutingButtonView) getView().findViewById(R.id.bluebutton7)).getClicks().size() != sevenClicks) {
+                    preview.setText(preview.getText() + "\n--> Collected Blue Note Two ");
+                    sevenClicks = ((ScoutingButtonView) getView().findViewById(R.id.bluebutton7)).getClicks().size();
+                    pressOrder.add("B7");
+                    stringLength.add(29);
+                }
+                if (((ScoutingButtonView) getView().findViewById(R.id.bluebutton8)).getClicks().size() != eightClicks) {
+                    preview.setText(preview.getText() + "\n--> Collected Blue Note Three ");
+                    eightClicks = ((ScoutingButtonView) getView().findViewById(R.id.bluebutton8)).getClicks().size();
+                    pressOrder.add("B8");
+                    stringLength.add(31);
+                }
+                if (((ScoutingButtonView) getView().findViewById(R.id.bluebutton9)).getClicks().size() != nineClicks) {
+                    preview.setText(preview.getText() + "\n--> Scored in Speaker ");
+                    nineClicks = ((ScoutingButtonView) getView().findViewById(R.id.bluebutton9)).getClicks().size();
+                    pressOrder.add("B9");
+                    stringLength.add(23);
+                }
+                if (((ScoutingButtonView) getView().findViewById(R.id.bluebutton10)).getClicks().size() != tenClicks) {
+                    preview.setText(preview.getText() + "\n--> Scored in Amp ");
+                    tenClicks = ((ScoutingButtonView) getView().findViewById(R.id.bluebutton10)).getClicks().size();
+                    pressOrder.add("B10");
+                    stringLength.add(19);
+                }
+            }
+
+            handler.postDelayed(this, 500);
+        }
+    };
+
+    public void undo() {
+        if (pressOrder.size() == 0) {
+            return;
+        }
+        if (pressOrder.get(pressOrder.size() - 1).equals("R1")) {
+            handler.removeCallbacks(update);
+            ArrayList<Long> newClicks = ((ScoutingButtonView) getView().findViewById(R.id.redbutton1)).getClicks();
+            newClicks.remove(newClicks.size() - 1);
+            ((ScoutingButtonView) getView().findViewById(R.id.redbutton1)).setClicks(newClicks);
+            pressOrder.remove(pressOrder.size() - 1);
+            preview.setText(((String) (preview.getText())).substring(0, preview.getText().length() - stringLength.get(stringLength.size() - 1)));
+            stringLength.remove(stringLength.size() - 1);
+            oneClicks--;
+            handler.post(update);
+        } else if (pressOrder.get(pressOrder.size() - 1).equals("R2")) {
+            handler.removeCallbacks(update);
+            ArrayList<Long> newClicks = ((ScoutingButtonView) getView().findViewById(R.id.redbutton2)).getClicks();
+            newClicks.remove(newClicks.size() - 1);
+            ((ScoutingButtonView) getView().findViewById(R.id.redbutton2)).setClicks(newClicks);
+            pressOrder.remove(pressOrder.size() - 1);
+            preview.setText(((String) (preview.getText())).substring(0, preview.getText().length() - stringLength.get(stringLength.size() - 1)));
+            stringLength.remove(stringLength.size() - 1);
+            twoClicks--;
+            handler.post(update);
+        } else if (pressOrder.get(pressOrder.size() - 1).equals("R3")) {
+            handler.removeCallbacks(update);
+            ArrayList<Long> newClicks = ((ScoutingButtonView) getView().findViewById(R.id.redbutton3)).getClicks();
+            newClicks.remove(newClicks.size() - 1);
+            ((ScoutingButtonView) getView().findViewById(R.id.redbutton3)).setClicks(newClicks);
+            pressOrder.remove(pressOrder.size() - 1);
+            preview.setText(((String) (preview.getText())).substring(0, preview.getText().length() - stringLength.get(stringLength.size() - 1)));
+            stringLength.remove(stringLength.size() - 1);
+            threeClicks--;
+            handler.post(update);
+        } else if (pressOrder.get(pressOrder.size() - 1).equals("R4")) {
+            handler.removeCallbacks(update);
+            ArrayList<Long> newClicks = ((ScoutingButtonView) getView().findViewById(R.id.redbutton4)).getClicks();
+            newClicks.remove(newClicks.size() - 1);
+            ((ScoutingButtonView) getView().findViewById(R.id.redbutton4)).setClicks(newClicks);
+            pressOrder.remove(pressOrder.size() - 1);
+            preview.setText(((String) (preview.getText())).substring(0, preview.getText().length() - stringLength.get(stringLength.size() - 1)));
+            stringLength.remove(stringLength.size() - 1);
+            fourClicks--;
+            handler.post(update);
+        } else if (pressOrder.get(pressOrder.size() - 1).equals("R5")) {
+            handler.removeCallbacks(update);
+            ArrayList<Long> newClicks = ((ScoutingButtonView) getView().findViewById(R.id.redbutton5)).getClicks();
+            newClicks.remove(newClicks.size() - 1);
+            ((ScoutingButtonView) getView().findViewById(R.id.redbutton5)).setClicks(newClicks);
+            pressOrder.remove(pressOrder.size() - 1);
+            preview.setText(((String) (preview.getText())).substring(0, preview.getText().length() - stringLength.get(stringLength.size() - 1)));
+            stringLength.remove(stringLength.size() - 1);
+            fiveClicks--;
+            handler.post(update);
+        } else if (pressOrder.get(pressOrder.size() - 1).equals("R6")) {
+            handler.removeCallbacks(update);
+            ArrayList<Long> newClicks = ((ScoutingButtonView) getView().findViewById(R.id.redbutton6)).getClicks();
+            newClicks.remove(newClicks.size() - 1);
+            ((ScoutingButtonView) getView().findViewById(R.id.redbutton6)).setClicks(newClicks);
+            pressOrder.remove(pressOrder.size() - 1);
+            preview.setText(((String) (preview.getText())).substring(0, preview.getText().length() - stringLength.get(stringLength.size() - 1)));
+            stringLength.remove(stringLength.size() - 1);
+            sixClicks--;
+            handler.post(update);
+        } else if (pressOrder.get(pressOrder.size() - 1).equals("R7")) {
+            handler.removeCallbacks(update);
+            ArrayList<Long> newClicks = ((ScoutingButtonView) getView().findViewById(R.id.redbutton7)).getClicks();
+            newClicks.remove(newClicks.size() - 1);
+            ((ScoutingButtonView) getView().findViewById(R.id.redbutton7)).setClicks(newClicks);
+            pressOrder.remove(pressOrder.size() - 1);
+            preview.setText(((String) (preview.getText())).substring(0, preview.getText().length() - stringLength.get(stringLength.size() - 1)));
+            stringLength.remove(stringLength.size() - 1);
+            sevenClicks--;
+            handler.post(update);
+        } else if (pressOrder.get(pressOrder.size() - 1).equals("R8")) {
+            handler.removeCallbacks(update);
+            ArrayList<Long> newClicks = ((ScoutingButtonView) getView().findViewById(R.id.redbutton8)).getClicks();
+            newClicks.remove(newClicks.size() - 1);
+            ((ScoutingButtonView) getView().findViewById(R.id.redbutton8)).setClicks(newClicks);
+            pressOrder.remove(pressOrder.size() - 1);
+            preview.setText(((String) (preview.getText())).substring(0, preview.getText().length() - stringLength.get(stringLength.size() - 1)));
+            stringLength.remove(stringLength.size() - 1);
+            eightClicks--;
+            handler.post(update);
+        } else if (pressOrder.get(pressOrder.size() - 1).equals("R9")) {
+            handler.removeCallbacks(update);
+            ArrayList<Long> newClicks = ((ScoutingButtonView) getView().findViewById(R.id.redbutton9)).getClicks();
+            newClicks.remove(newClicks.size() - 1);
+            ((ScoutingButtonView) getView().findViewById(R.id.redbutton9)).setClicks(newClicks);
+            pressOrder.remove(pressOrder.size() - 1);
+            preview.setText(((String) (preview.getText())).substring(0, preview.getText().length() - stringLength.get(stringLength.size() - 1)));
+            stringLength.remove(stringLength.size() - 1);
+            nineClicks--;
+            handler.post(update);
+        } else if (pressOrder.get(pressOrder.size() - 1).equals("R10")) {
+            handler.removeCallbacks(update);
+            ArrayList<Long> newClicks = ((ScoutingButtonView) getView().findViewById(R.id.redbutton10)).getClicks();
+            newClicks.remove(newClicks.size() - 1);
+            ((ScoutingButtonView) getView().findViewById(R.id.redbutton10)).setClicks(newClicks);
+            pressOrder.remove(pressOrder.size() - 1);
+            preview.setText(((String) (preview.getText())).substring(0, preview.getText().length() - stringLength.get(stringLength.size() - 1)));
+            stringLength.remove(stringLength.size() - 1);
+            tenClicks--;
+            handler.post(update);
+        } else if (pressOrder.get(pressOrder.size() - 1).equals("B1")) {
+            handler.removeCallbacks(update);
+            ArrayList<Long> newClicks = ((ScoutingButtonView) getView().findViewById(R.id.bluebutton1)).getClicks();
+            newClicks.remove(newClicks.size() - 1);
+            ((ScoutingButtonView) getView().findViewById(R.id.bluebutton1)).setClicks(newClicks);
+            pressOrder.remove(pressOrder.size() - 1);
+            preview.setText(((String) (preview.getText())).substring(0, preview.getText().length() - stringLength.get(stringLength.size() - 1)));
+            stringLength.remove(stringLength.size() - 1);
+            oneClicks--;
+            handler.post(update);
+        } else if (pressOrder.get(pressOrder.size() - 1).equals("B2")) {
+            handler.removeCallbacks(update);
+            ArrayList<Long> newClicks = ((ScoutingButtonView) getView().findViewById(R.id.bluebutton2)).getClicks();
+            newClicks.remove(newClicks.size() - 1);
+            ((ScoutingButtonView) getView().findViewById(R.id.bluebutton2)).setClicks(newClicks);
+            pressOrder.remove(pressOrder.size() - 1);
+            preview.setText(((String) (preview.getText())).substring(0, preview.getText().length() - stringLength.get(stringLength.size() - 1)));
+            stringLength.remove(stringLength.size() - 1);
+            twoClicks--;
+            handler.post(update);
+        } else if (pressOrder.get(pressOrder.size() - 1).equals("B3")) {
+            handler.removeCallbacks(update);
+            ArrayList<Long> newClicks = ((ScoutingButtonView) getView().findViewById(R.id.bluebutton3)).getClicks();
+            newClicks.remove(newClicks.size() - 1);
+            ((ScoutingButtonView) getView().findViewById(R.id.bluebutton3)).setClicks(newClicks);
+            pressOrder.remove(pressOrder.size() - 1);
+            preview.setText(((String) (preview.getText())).substring(0, preview.getText().length() - stringLength.get(stringLength.size() - 1)));
+            stringLength.remove(stringLength.size() - 1);
+            threeClicks--;
+            handler.post(update);
+        } else if (pressOrder.get(pressOrder.size() - 1).equals("B4")) {
+            handler.removeCallbacks(update);
+            ArrayList<Long> newClicks = ((ScoutingButtonView) getView().findViewById(R.id.bluebutton4)).getClicks();
+            newClicks.remove(newClicks.size() - 1);
+            ((ScoutingButtonView) getView().findViewById(R.id.bluebutton4)).setClicks(newClicks);
+            pressOrder.remove(pressOrder.size() - 1);
+            preview.setText(((String) (preview.getText())).substring(0, preview.getText().length() - stringLength.get(stringLength.size() - 1)));
+            stringLength.remove(stringLength.size() - 1);
+            fourClicks--;
+            handler.post(update);
+        } else if (pressOrder.get(pressOrder.size() - 1).equals("B5")) {
+            handler.removeCallbacks(update);
+            ArrayList<Long> newClicks = ((ScoutingButtonView) getView().findViewById(R.id.bluebutton5)).getClicks();
+            newClicks.remove(newClicks.size() - 1);
+            ((ScoutingButtonView) getView().findViewById(R.id.bluebutton5)).setClicks(newClicks);
+            pressOrder.remove(pressOrder.size() - 1);
+            preview.setText(((String) (preview.getText())).substring(0, preview.getText().length() - stringLength.get(stringLength.size() - 1)));
+            stringLength.remove(stringLength.size() - 1);
+            fiveClicks--;
+            handler.post(update);
+        } else if (pressOrder.get(pressOrder.size() - 1).equals("B6")) {
+            handler.removeCallbacks(update);
+            ArrayList<Long> newClicks = ((ScoutingButtonView) getView().findViewById(R.id.bluebutton6)).getClicks();
+            newClicks.remove(newClicks.size() - 1);
+            ((ScoutingButtonView) getView().findViewById(R.id.bluebutton6)).setClicks(newClicks);
+            pressOrder.remove(pressOrder.size() - 1);
+            preview.setText(((String) (preview.getText())).substring(0, preview.getText().length() - stringLength.get(stringLength.size() - 1)));
+            stringLength.remove(stringLength.size() - 1);
+            sixClicks--;
+            handler.post(update);
+        } else if (pressOrder.get(pressOrder.size() - 1).equals("B7")) {
+            handler.removeCallbacks(update);
+            ArrayList<Long> newClicks = ((ScoutingButtonView) getView().findViewById(R.id.bluebutton7)).getClicks();
+            newClicks.remove(newClicks.size() - 1);
+            ((ScoutingButtonView) getView().findViewById(R.id.bluebutton7)).setClicks(newClicks);
+            pressOrder.remove(pressOrder.size() - 1);
+            preview.setText(((String) (preview.getText())).substring(0, preview.getText().length() - stringLength.get(stringLength.size() - 1)));
+            stringLength.remove(stringLength.size() - 1);
+            sevenClicks--;
+            handler.post(update);
+        } else if (pressOrder.get(pressOrder.size() - 1).equals("B8")) {
+            handler.removeCallbacks(update);
+            ArrayList<Long> newClicks = ((ScoutingButtonView) getView().findViewById(R.id.bluebutton8)).getClicks();
+            newClicks.remove(newClicks.size() - 1);
+            ((ScoutingButtonView) getView().findViewById(R.id.bluebutton8)).setClicks(newClicks);
+            pressOrder.remove(pressOrder.size() - 1);
+            preview.setText(((String) (preview.getText())).substring(0, preview.getText().length() - stringLength.get(stringLength.size() - 1)));
+            stringLength.remove(stringLength.size() - 1);
+            eightClicks--;
+            handler.post(update);
+        } else if (pressOrder.get(pressOrder.size() - 1).equals("B9")) {
+            handler.removeCallbacks(update);
+            ArrayList<Long> newClicks = ((ScoutingButtonView) getView().findViewById(R.id.bluebutton9)).getClicks();
+            newClicks.remove(newClicks.size() - 1);
+            ((ScoutingButtonView) getView().findViewById(R.id.bluebutton9)).setClicks(newClicks);
+            pressOrder.remove(pressOrder.size() - 1);
+            preview.setText(((String) (preview.getText())).substring(0, preview.getText().length() - stringLength.get(stringLength.size() - 1)));
+            stringLength.remove(stringLength.size() - 1);
+            nineClicks--;
+            handler.post(update);
+        } else if (pressOrder.get(pressOrder.size() - 1).equals("B10")) {
+            handler.removeCallbacks(update);
+            ArrayList<Long> newClicks = ((ScoutingButtonView) getView().findViewById(R.id.bluebutton10)).getClicks();
+            newClicks.remove(newClicks.size() - 1);
+            ((ScoutingButtonView) getView().findViewById(R.id.bluebutton10)).setClicks(newClicks);
+            pressOrder.remove(pressOrder.size() - 1);
+            preview.setText(((String) (preview.getText())).substring(0, preview.getText().length() - stringLength.get(stringLength.size() - 1)));
+            stringLength.remove(stringLength.size() - 1);
+            tenClicks--;
+            handler.post(update);
+        }
     }
 
     @Override

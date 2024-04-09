@@ -269,7 +269,7 @@
         android:layout_height="wrap_content"
         app:label="Exited Robot\nStarting Zone"
         android:layout_alignTop="@id/AutoTitle"
-        android:layout_marginTop="125dp"
+        android:layout_marginTop="100dp"
         android:layout_alignParentRight="true"
         android:layout_marginRight="130dp"/>
 
@@ -277,12 +277,23 @@
         android:layout_width="250dp"
         android:layout_height="250dp"
         android:layout_alignTop="@id/crosslinecheckbox"
-        android:layout_marginTop="115dp"
+        android:layout_marginTop="100dp"
         android:layout_alignParentRight="true"
         android:layout_marginRight="100dp"
         android:id="@+id/AutonPreview"
         android:background="@color/white"
         android:text="Auton Preview:"
+        />
+
+    <Button
+        android:id="@+id/undo_button"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:layout_alignBottom="@id/AutonPreview"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="-65dp"
+        android:layout_marginRight="170dp"
+        android:text="UNDO"
         />
 
 </RelativeLayout>
