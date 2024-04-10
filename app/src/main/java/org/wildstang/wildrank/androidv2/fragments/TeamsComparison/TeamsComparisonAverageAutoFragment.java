@@ -74,24 +74,22 @@ public class TeamsComparisonAverageAutoFragment extends TeamsComparisonFragment 
             for (int i = 0; i < teams.size(); i++) {
                 List<Document> teamDocuments = allMatchDocuments.get(i);
 
-                int notes = 0;
+                int scored = 0;
                 for (Document document : teamDocuments) {
                     Map<String, Object> data = (Map<String, Object>) document.getProperty("data");
-                    for (int p = 9; p < 11; p++) {
-                        if (data.get("redbutton" + p) != null) {
-                            for (int j = 0; j < ((ArrayList<Long>) data.get("redbutton" + p)).size(); j++) {
-                                notes++;
-                            }
+                    if (data.get("redbutton9") != null) {
+                        for (int j = 0; j < ((ArrayList<Long>) data.get("redbutton9")).size(); j++) {
+                            scored++;
                         }
-                        if (data.get("bluebutton" + p) != null) {
-                            for (int j = 0; j < ((ArrayList<Long>) data.get("bluebutton" + p)).size(); j++) {
-                                notes++;
-                            }
+                    }
+                    if (data.get("bluebutton9") != null) {
+                        for (int j = 0; j < ((ArrayList<Long>) data.get("bluebutton9")).size(); j++) {
+                            scored++;
                         }
                     }
                 }
 
-                float average = (float) notes / (float) teamDocuments.size();
+                float average = (float) scored / (float) teamDocuments.size();
 
                 if (spinner.getSelectedItem().equals("Team Number")) {
                     System.out.println("Team Number");
