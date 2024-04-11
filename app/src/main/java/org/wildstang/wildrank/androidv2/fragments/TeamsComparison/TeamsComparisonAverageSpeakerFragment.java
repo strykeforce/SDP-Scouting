@@ -44,7 +44,6 @@ public class TeamsComparisonAverageSpeakerFragment extends TeamsComparisonFragme
             return;
         }
 
-        System.out.println(getView());
         BarChart chart = (BarChart) getView().findViewById(R.id.chart);
         chart.getAxisRight().setDrawLabels(false);
 
@@ -86,11 +85,9 @@ public class TeamsComparisonAverageSpeakerFragment extends TeamsComparisonFragme
                 float average = (float) speaker / (float) teamDocuments.size();
 
                 if (spinner.getSelectedItem().equals("Team Number")) {
-                    System.out.println("Team Number");
                     barValues.add(average);
                     xAxisLabels.add(teams.get(i).toString().substring(0, teams.get(i).toString().length() - 2));
                 } else if (spinner.getSelectedItem().equals("Descending")) {
-                    System.out.println("Descending");
                     if (barValues.size() == 0) {
                         barValues.add(average);
                         xAxisLabels.add(teams.get(i).toString().substring(0, teams.get(i).toString().length() - 2));
@@ -108,7 +105,6 @@ public class TeamsComparisonAverageSpeakerFragment extends TeamsComparisonFragme
                         }
                     }
                 } else if (spinner.getSelectedItem().equals("Ascending")) {
-                    System.out.println("Ascending");
                     if (barValues.size() == 0) {
                         barValues.add(average);
                         xAxisLabels.add(teams.get(i).toString().substring(0, teams.get(i).toString().length() - 2));
