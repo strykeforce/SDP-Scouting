@@ -36,65 +36,116 @@ public class AutonomousScoutingFragment extends ScoutingFragment {
         String assignedTeamType = PreferenceManager.getDefaultSharedPreferences(getActivity()).getString("assignedTeam", "red_1");
         preview = (TextView) view.findViewById(R.id.AutonPreview);
         if (assignedTeamType.contains("red")) {
-            System.out.println("Team is red");
             color = "Red";
             view.findViewById(R.id.redautonmap).setVisibility(View.VISIBLE);
-            view.findViewById(R.id.redbutton1).setVisibility(View.VISIBLE);
-            view.findViewById(R.id.redbutton2).setVisibility(View.VISIBLE);
-            view.findViewById(R.id.redbutton3).setVisibility(View.VISIBLE);
-            view.findViewById(R.id.redbutton4).setVisibility(View.VISIBLE);
-            view.findViewById(R.id.redbutton5).setVisibility(View.VISIBLE);
-            view.findViewById(R.id.redbutton6).setVisibility(View.VISIBLE);
-            view.findViewById(R.id.redbutton7).setVisibility(View.VISIBLE);
-            view.findViewById(R.id.redbutton8).setVisibility(View.VISIBLE);
-            view.findViewById(R.id.redbutton9).setVisibility(View.VISIBLE);
-            view.findViewById(R.id.redbutton10).setVisibility(View.VISIBLE);
-            view.findViewById(R.id.redSpeakerMake).setVisibility(View.VISIBLE);
-            view.findViewById(R.id.redSpeakerMiss).setVisibility(View.VISIBLE);
-
-            oneClicks = ((ScoutingButtonView) view.findViewById(R.id.redbutton1)).getClicks().size();
-            twoClicks = ((ScoutingButtonView) view.findViewById(R.id.redbutton2)).getClicks().size();
-            threeClicks = ((ScoutingButtonView) view.findViewById(R.id.redbutton3)).getClicks().size();
-            fourClicks = ((ScoutingButtonView) view.findViewById(R.id.redbutton4)).getClicks().size();
-            fiveClicks = ((ScoutingButtonView) view.findViewById(R.id.redbutton5)).getClicks().size();
-            sixClicks = ((ScoutingButtonView) view.findViewById(R.id.redbutton6)).getClicks().size();
-            sevenClicks = ((ScoutingButtonView) view.findViewById(R.id.redbutton7)).getClicks().size();
-            eightClicks = ((ScoutingButtonView) view.findViewById(R.id.redbutton8)).getClicks().size();
-            nineClicks = ((ScoutingButtonView) view.findViewById(R.id.redbutton9)).getClicks().size();
-            tenClicks = ((ScoutingButtonView) view.findViewById(R.id.redbutton10)).getClicks().size();
+            view.findViewById(R.id.redposbutton1).setVisibility(View.VISIBLE);
+            view.findViewById(R.id.redposbutton2).setVisibility(View.VISIBLE);
+            view.findViewById(R.id.redposbutton3).setVisibility(View.VISIBLE);
+            view.findViewById(R.id.redposlabel).setVisibility(View.VISIBLE);
         } else {
-            System.out.println("Team is blue");
             color = "Blue";
             view.findViewById(R.id.blueautonmap).setVisibility(View.VISIBLE);
-            view.findViewById(R.id.bluebutton1).setVisibility(View.VISIBLE);
-            view.findViewById(R.id.bluebutton2).setVisibility(View.VISIBLE);
-            view.findViewById(R.id.bluebutton3).setVisibility(View.VISIBLE);
-            view.findViewById(R.id.bluebutton4).setVisibility(View.VISIBLE);
-            view.findViewById(R.id.bluebutton5).setVisibility(View.VISIBLE);
-            view.findViewById(R.id.bluebutton6).setVisibility(View.VISIBLE);
-            view.findViewById(R.id.bluebutton7).setVisibility(View.VISIBLE);
-            view.findViewById(R.id.bluebutton8).setVisibility(View.VISIBLE);
-            view.findViewById(R.id.bluebutton9).setVisibility(View.VISIBLE);
-            view.findViewById(R.id.bluebutton10).setVisibility(View.VISIBLE);
-            view.findViewById(R.id.blueSpeakerMake).setVisibility(View.VISIBLE);
-            view.findViewById(R.id.blueSpeakerMiss).setVisibility(View.VISIBLE);
-
-            oneClicks = ((ScoutingButtonView) view.findViewById(R.id.bluebutton1)).getClicks().size();
-            twoClicks = ((ScoutingButtonView) view.findViewById(R.id.bluebutton2)).getClicks().size();
-            threeClicks = ((ScoutingButtonView) view.findViewById(R.id.bluebutton3)).getClicks().size();
-            fourClicks = ((ScoutingButtonView) view.findViewById(R.id.bluebutton4)).getClicks().size();
-            fiveClicks = ((ScoutingButtonView) view.findViewById(R.id.bluebutton5)).getClicks().size();
-            sixClicks = ((ScoutingButtonView) view.findViewById(R.id.bluebutton6)).getClicks().size();
-            sevenClicks = ((ScoutingButtonView) view.findViewById(R.id.bluebutton7)).getClicks().size();
-            eightClicks = ((ScoutingButtonView) view.findViewById(R.id.bluebutton8)).getClicks().size();
-            nineClicks = ((ScoutingButtonView) view.findViewById(R.id.bluebutton9)).getClicks().size();
-            tenClicks = ((ScoutingButtonView) view.findViewById(R.id.bluebutton10)).getClicks().size();
+            view.findViewById(R.id.blueposbutton1).setVisibility(View.VISIBLE);
+            view.findViewById(R.id.blueposbutton2).setVisibility(View.VISIBLE);
+            view.findViewById(R.id.blueposbutton3).setVisibility(View.VISIBLE);
+            view.findViewById(R.id.blueposlabel).setVisibility(View.VISIBLE);
         }
         pressOrder = new ArrayList<>();
         stringLength = new ArrayList<>();
         view.findViewById(R.id.undo_button).setOnClickListener(v -> undo());
-        handler.post(update);
+        handler.post(check);
         return view;
+    }
+
+    private Runnable check = new Runnable() {
+        @Override
+        public void run() {
+            if (((ScoutingButtonView) getView().findViewById(R.id.redposbutton1)).getClicks().size() != 0 || ((ScoutingButtonView) getView().findViewById(R.id.blueposbutton1)).getClicks().size() != 0) {
+                posSelected("P1");
+            } else if (((ScoutingButtonView) getView().findViewById(R.id.redposbutton2)).getClicks().size() != 0 || ((ScoutingButtonView) getView().findViewById(R.id.blueposbutton2)).getClicks().size() != 0) {
+                posSelected("P2");
+            } else if (((ScoutingButtonView) getView().findViewById(R.id.redposbutton3)).getClicks().size() != 0 || ((ScoutingButtonView) getView().findViewById(R.id.blueposbutton3)).getClicks().size() != 0) {
+                posSelected("P3");
+            } else handler.postDelayed(this, 500);
+        }
+    };
+
+    private void posSelected(String pos) {
+        if (pos.equals("P3")) {
+            preview.setText(preview.getText() + "\nStarted on Source Side ");
+            pressOrder.add(pos);
+            stringLength.add(24);
+        } else if (pos.equals("P1")) {
+            preview.setText(preview.getText() + "\nStarted on Amp Side ");
+            pressOrder.add(pos);
+            stringLength.add(21);
+        } else if (pos.equals("P2")) {
+            preview.setText(preview.getText() + "\nStarted in Middle ");
+            pressOrder.add(pos);
+            stringLength.add(19);
+        }
+
+        if (color == "Red") {
+            getView().findViewById(R.id.redposbutton1).setVisibility(View.INVISIBLE);
+            getView().findViewById(R.id.redposbutton2).setVisibility(View.INVISIBLE);
+            getView().findViewById(R.id.redposbutton3).setVisibility(View.INVISIBLE);
+            getView().findViewById(R.id.redposlabel).setVisibility(View.INVISIBLE);
+
+            getView().findViewById(R.id.redbutton1).setVisibility(View.VISIBLE);
+            getView().findViewById(R.id.redbutton2).setVisibility(View.VISIBLE);
+            getView().findViewById(R.id.redbutton3).setVisibility(View.VISIBLE);
+            getView().findViewById(R.id.redbutton4).setVisibility(View.VISIBLE);
+            getView().findViewById(R.id.redbutton5).setVisibility(View.VISIBLE);
+            getView().findViewById(R.id.redbutton6).setVisibility(View.VISIBLE);
+            getView().findViewById(R.id.redbutton7).setVisibility(View.VISIBLE);
+            getView().findViewById(R.id.redbutton8).setVisibility(View.VISIBLE);
+            getView().findViewById(R.id.redbutton9).setVisibility(View.VISIBLE);
+            getView().findViewById(R.id.redbutton10).setVisibility(View.VISIBLE);
+            getView().findViewById(R.id.redSpeakerMake).setVisibility(View.VISIBLE);
+            getView().findViewById(R.id.redSpeakerMiss).setVisibility(View.VISIBLE);
+
+            oneClicks = ((ScoutingButtonView) getView().findViewById(R.id.redbutton1)).getClicks().size();
+            twoClicks = ((ScoutingButtonView) getView().findViewById(R.id.redbutton2)).getClicks().size();
+            threeClicks = ((ScoutingButtonView) getView().findViewById(R.id.redbutton3)).getClicks().size();
+            fourClicks = ((ScoutingButtonView) getView().findViewById(R.id.redbutton4)).getClicks().size();
+            fiveClicks = ((ScoutingButtonView) getView().findViewById(R.id.redbutton5)).getClicks().size();
+            sixClicks = ((ScoutingButtonView) getView().findViewById(R.id.redbutton6)).getClicks().size();
+            sevenClicks = ((ScoutingButtonView) getView().findViewById(R.id.redbutton7)).getClicks().size();
+            eightClicks = ((ScoutingButtonView) getView().findViewById(R.id.redbutton8)).getClicks().size();
+            nineClicks = ((ScoutingButtonView) getView().findViewById(R.id.redbutton9)).getClicks().size();
+            tenClicks = ((ScoutingButtonView) getView().findViewById(R.id.redbutton10)).getClicks().size();
+        } else if (color == "Blue") {
+            getView().findViewById(R.id.blueposbutton1).setVisibility(View.INVISIBLE);
+            getView().findViewById(R.id.blueposbutton2).setVisibility(View.INVISIBLE);
+            getView().findViewById(R.id.blueposbutton3).setVisibility(View.INVISIBLE);
+            getView().findViewById(R.id.blueposlabel).setVisibility(View.INVISIBLE);
+
+            getView().findViewById(R.id.bluebutton1).setVisibility(View.VISIBLE);
+            getView().findViewById(R.id.bluebutton2).setVisibility(View.VISIBLE);
+            getView().findViewById(R.id.bluebutton3).setVisibility(View.VISIBLE);
+            getView().findViewById(R.id.bluebutton4).setVisibility(View.VISIBLE);
+            getView().findViewById(R.id.bluebutton5).setVisibility(View.VISIBLE);
+            getView().findViewById(R.id.bluebutton6).setVisibility(View.VISIBLE);
+            getView().findViewById(R.id.bluebutton7).setVisibility(View.VISIBLE);
+            getView().findViewById(R.id.bluebutton8).setVisibility(View.VISIBLE);
+            getView().findViewById(R.id.bluebutton9).setVisibility(View.VISIBLE);
+            getView().findViewById(R.id.bluebutton10).setVisibility(View.VISIBLE);
+            getView().findViewById(R.id.blueSpeakerMake).setVisibility(View.VISIBLE);
+            getView().findViewById(R.id.blueSpeakerMiss).setVisibility(View.VISIBLE);
+
+            oneClicks = ((ScoutingButtonView) getView().findViewById(R.id.bluebutton1)).getClicks().size();
+            twoClicks = ((ScoutingButtonView) getView().findViewById(R.id.bluebutton2)).getClicks().size();
+            threeClicks = ((ScoutingButtonView) getView().findViewById(R.id.bluebutton3)).getClicks().size();
+            fourClicks = ((ScoutingButtonView) getView().findViewById(R.id.bluebutton4)).getClicks().size();
+            fiveClicks = ((ScoutingButtonView) getView().findViewById(R.id.bluebutton5)).getClicks().size();
+            sixClicks = ((ScoutingButtonView) getView().findViewById(R.id.bluebutton6)).getClicks().size();
+            sevenClicks = ((ScoutingButtonView) getView().findViewById(R.id.bluebutton7)).getClicks().size();
+            eightClicks = ((ScoutingButtonView) getView().findViewById(R.id.bluebutton8)).getClicks().size();
+            nineClicks = ((ScoutingButtonView) getView().findViewById(R.id.bluebutton9)).getClicks().size();
+            tenClicks = ((ScoutingButtonView) getView().findViewById(R.id.bluebutton10)).getClicks().size();
+        }
+
+        handler.post(update);
     }
 
     private Runnable update = new Runnable() {
@@ -432,11 +483,65 @@ public class AutonomousScoutingFragment extends ScoutingFragment {
             stringLength.remove(stringLength.size() - 1);
             tenClicks--;
             handler.post(update);
+        } else if (pressOrder.get(pressOrder.size() - 1).substring(0, 1).equals("P")) {
+            handler.removeCallbacks(update);
+            ArrayList<Long> newClicks = new ArrayList<>();
+            System.out.println("\nSize of newclicks: " + newClicks.size());
+            ((ScoutingButtonView) getView().findViewById(R.id.redposbutton1)).setClicks(newClicks);
+            ((ScoutingButtonView) getView().findViewById(R.id.redposbutton2)).setClicks(newClicks);
+            ((ScoutingButtonView) getView().findViewById(R.id.redposbutton3)).setClicks(newClicks);
+            ((ScoutingButtonView) getView().findViewById(R.id.blueposbutton1)).setClicks(newClicks);
+            ((ScoutingButtonView) getView().findViewById(R.id.blueposbutton2)).setClicks(newClicks);
+            ((ScoutingButtonView) getView().findViewById(R.id.blueposbutton3)).setClicks(newClicks);
+            pressOrder.remove(pressOrder.size() - 1);
+            preview.setText(((String) (preview.getText())).substring(0, preview.getText().length() - stringLength.get(stringLength.size() - 1)));
+            stringLength.remove(stringLength.size() - 1);
+
+            if (color == "Red") {
+                getView().findViewById(R.id.redbutton1).setVisibility(View.INVISIBLE);
+                getView().findViewById(R.id.redbutton2).setVisibility(View.INVISIBLE);
+                getView().findViewById(R.id.redbutton3).setVisibility(View.INVISIBLE);
+                getView().findViewById(R.id.redbutton4).setVisibility(View.INVISIBLE);
+                getView().findViewById(R.id.redbutton5).setVisibility(View.INVISIBLE);
+                getView().findViewById(R.id.redbutton6).setVisibility(View.INVISIBLE);
+                getView().findViewById(R.id.redbutton7).setVisibility(View.INVISIBLE);
+                getView().findViewById(R.id.redbutton8).setVisibility(View.INVISIBLE);
+                getView().findViewById(R.id.redbutton9).setVisibility(View.INVISIBLE);
+                getView().findViewById(R.id.redbutton10).setVisibility(View.INVISIBLE);
+                getView().findViewById(R.id.redSpeakerMake).setVisibility(View.INVISIBLE);
+                getView().findViewById(R.id.redSpeakerMiss).setVisibility(View.INVISIBLE);
+
+                getView().findViewById(R.id.redposbutton1).setVisibility(View.VISIBLE);
+                getView().findViewById(R.id.redposbutton2).setVisibility(View.VISIBLE);
+                getView().findViewById(R.id.redposbutton3).setVisibility(View.VISIBLE);
+                getView().findViewById(R.id.redposlabel).setVisibility(View.VISIBLE);
+            } else if (color == "Blue") {
+                getView().findViewById(R.id.bluebutton1).setVisibility(View.INVISIBLE);
+                getView().findViewById(R.id.bluebutton2).setVisibility(View.INVISIBLE);
+                getView().findViewById(R.id.bluebutton3).setVisibility(View.INVISIBLE);
+                getView().findViewById(R.id.bluebutton4).setVisibility(View.INVISIBLE);
+                getView().findViewById(R.id.bluebutton5).setVisibility(View.INVISIBLE);
+                getView().findViewById(R.id.bluebutton6).setVisibility(View.INVISIBLE);
+                getView().findViewById(R.id.bluebutton7).setVisibility(View.INVISIBLE);
+                getView().findViewById(R.id.bluebutton8).setVisibility(View.INVISIBLE);
+                getView().findViewById(R.id.bluebutton9).setVisibility(View.INVISIBLE);
+                getView().findViewById(R.id.bluebutton10).setVisibility(View.INVISIBLE);
+                getView().findViewById(R.id.blueSpeakerMake).setVisibility(View.INVISIBLE);
+                getView().findViewById(R.id.blueSpeakerMiss).setVisibility(View.INVISIBLE);
+
+                getView().findViewById(R.id.blueposbutton1).setVisibility(View.VISIBLE);
+                getView().findViewById(R.id.blueposbutton2).setVisibility(View.VISIBLE);
+                getView().findViewById(R.id.blueposbutton3).setVisibility(View.VISIBLE);
+                getView().findViewById(R.id.blueposlabel).setVisibility(View.VISIBLE);
+            }
+
+            handler.post(check);
         }
     }
 
     @Override
     public void onDestroyView() {
+        handler.removeCallbacks(check);
         handler.removeCallbacks(update);
         super.onDestroyView();
     }

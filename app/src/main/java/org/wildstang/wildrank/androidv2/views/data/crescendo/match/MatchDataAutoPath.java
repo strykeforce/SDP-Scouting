@@ -66,8 +66,38 @@ public class MatchDataAutoPath extends MatchDataView implements IMatchDataView {
         }
 
         String path = "";
+        for (int b = 1; b < 4; b++) {
+            if (data.get("redposbutton" + b) != null) {
+                if (((ArrayList) data.get("redposbutton" + b)).size() != 0) {
+                    if (b == 3) {
+                        path += "Started on Source Side ";
+                        break;
+                    } else if (b == 1) {
+                        path += "Started on Amp Side ";
+                        break;
+                    } else if (b == 2) {
+                        path += "Started in Middle ";
+                        break;
+                    }
+                }
+            }
+            if (data.get("blueposbutton" + b) != null) {
+                if (((ArrayList) data.get("blueposbutton" + b)).size() != 0) {
+                    if (b == 3) {
+                        path += "Started on Source Side ";
+                        break;
+                    } else if (b == 1) {
+                        path += "Started on Amp Side ";
+                        break;
+                    } else if (b == 2) {
+                        path += "Started in Middle ";
+                        break;
+                    }
+                }
+            }
+        }
         for (int d = 0; d < pathList.size(); d++) {
-            if (d != 0 && d % 2 == 0) {
+            if ((d + 1) % 2 == 0) {
                 path += "\n";
             }
             if (Objects.equals(pathList.get(d).first, "redbutton1") || Objects.equals(pathList.get(d).first, "bluebutton1")) {
