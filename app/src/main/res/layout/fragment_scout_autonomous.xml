@@ -322,7 +322,7 @@
 
         <org.wildstang.wildrank.androidv2.views.scouting.ScoutingButtonView
             android:id="@+id/blueposbutton3"
-            app:key="redposbutton3"
+            app:key="blueposbutton3"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:clickable="true"
@@ -332,7 +332,7 @@
 
         <org.wildstang.wildrank.androidv2.views.scouting.ScoutingButtonView
             android:id="@+id/blueposbutton1"
-            app:key="redposbutton1"
+            app:key="blueposbutton1"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:clickable="true"
@@ -342,7 +342,7 @@
 
         <org.wildstang.wildrank.androidv2.views.scouting.ScoutingButtonView
             android:id="@+id/blueposbutton2"
-            app:key="redposbutton2"
+            app:key="blueposbutton2"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:clickable="true"
