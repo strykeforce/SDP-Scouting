@@ -1,6 +1,7 @@
 package org.wildstang.wildrank.androidv2.fragments;
 
 import android.os.Bundle;
+import android.os.UserManager;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
@@ -11,6 +12,8 @@ import android.widget.EditText;
 import com.couchbase.lite.CouchbaseLiteException;
 
 import org.wildstang.wildrank.androidv2.R;
+import org.wildstang.wildrank.androidv2.UserHelper;
+import org.wildstang.wildrank.androidv2.activities.UserLoginActivity;
 import org.wildstang.wildrank.androidv2.data.DatabaseManager;
 
 import java.io.IOException;
@@ -21,11 +24,16 @@ public class ScoutingNoteFragment extends Fragment implements View.OnClickListen
 
     private String teamKey;
 
-    public static ScoutingNoteFragment newInstance(String teamkey) {
+    private static String noteSource;
+
+    public static ScoutingNoteFragment newInstance(String teamkey, String notesource) {
         ScoutingNoteFragment f = new ScoutingNoteFragment();
         Bundle b = new Bundle();
         b.putString("teamkey", teamkey);
         f.setArguments(b);
+
+        noteSource = notesource;
+
         return f;
     }
 
@@ -51,6 +59,7 @@ public class ScoutingNoteFragment extends Fragment implements View.OnClickListen
 
         // Save references to our important views
         notes = (EditText) v.findViewById(R.id.notes);
+        notes.setText(UserHelper.getLoggedInUserModelsAsList(getContext()).get(0).userName + ", " + noteSource + ": ");
 
         return v;
     }

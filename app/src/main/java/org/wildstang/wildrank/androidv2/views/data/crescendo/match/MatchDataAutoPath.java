@@ -66,36 +66,66 @@ public class MatchDataAutoPath extends MatchDataView implements IMatchDataView {
         }
 
         String path = "";
+        for (int b = 1; b < 4; b++) {
+            if (data.get("redposbutton" + b) != null) {
+                if (((ArrayList) data.get("redposbutton" + b)).size() != 0) {
+                    if (b == 3) {
+                        path += "Started on Source Side ";
+                        break;
+                    } else if (b == 1) {
+                        path += "Started on Amp Side ";
+                        break;
+                    } else if (b == 2) {
+                        path += "Started in Middle ";
+                        break;
+                    }
+                }
+            }
+            if (data.get("blueposbutton" + b) != null) {
+                if (((ArrayList) data.get("blueposbutton" + b)).size() != 0) {
+                    if (b == 3) {
+                        path += "Started on Source Side ";
+                        break;
+                    } else if (b == 1) {
+                        path += "Started on Amp Side ";
+                        break;
+                    } else if (b == 2) {
+                        path += "Started in Middle ";
+                        break;
+                    }
+                }
+            }
+        }
         for (int d = 0; d < pathList.size(); d++) {
-            if (d != 0 && d % 2 == 0) {
+            if ((d + 1) % 2 == 0) {
                 path += "\n";
             }
             if (Objects.equals(pathList.get(d).first, "redbutton1") || Objects.equals(pathList.get(d).first, "bluebutton1")) {
-                path += "--> Collected Shared Note One ";
+                path += "--> Shared Note One ";
             } else if (Objects.equals(pathList.get(d).first, "redbutton2") || Objects.equals(pathList.get(d).first, "bluebutton2")) {
-                path += "--> Collected Shared Note Two ";
+                path += "--> Shared Note Two ";
             } else if (Objects.equals(pathList.get(d).first, "redbutton3") || Objects.equals(pathList.get(d).first, "bluebutton3")) {
-                path += "--> Collected Shared Note Three ";
+                path += "--> Shared Note Three ";
             } else if (Objects.equals(pathList.get(d).first, "redbutton4") || Objects.equals(pathList.get(d).first, "bluebutton4")) {
-                path += "--> Collected Shared Note Four ";
+                path += "--> Shared Note Four ";
             } else if (Objects.equals(pathList.get(d).first, "redbutton5") || Objects.equals(pathList.get(d).first, "bluebutton5")) {
-                path += "--> Collected Shared Note Five ";
+                path += "--> Shared Note Five ";
             } else if (Objects.equals(pathList.get(d).first, "redbutton6")) {
-                path += "--> Collected Red Note One ";
+                path += "--> Red Note One ";
             } else if (Objects.equals(pathList.get(d).first, "redbutton7")) {
-                path += "--> Collected Red Note Two ";
+                path += "--> Red Note Two ";
             } else if (Objects.equals(pathList.get(d).first, "redbutton8")) {
-                path += "--> Collected Red Note Three ";
+                path += "--> Red Note Three ";
             } else if (Objects.equals(pathList.get(d).first, "bluebutton6")) {
-                path += "--> Collected Blue Note One ";
+                path += "--> Blue Note One ";
             } else if (Objects.equals(pathList.get(d).first, "bluebutton7")) {
-                path += "--> Collected Blue Note Two ";
+                path += "--> Blue Note Two ";
             } else if (Objects.equals(pathList.get(d).first, "bluebutton8")) {
-                path += "--> Collected Blue Note Three ";
+                path += "--> Blue Note Three ";
             } else if (Objects.equals(pathList.get(d).first, "redbutton9") || Objects.equals(pathList.get(d).first, "bluebutton9")) {
-                path += "--> Scored in Speaker ";
+                path += "--> Scored Speaker ";
             } else if (Objects.equals(pathList.get(d).first, "redbutton10") || Objects.equals(pathList.get(d).first, "bluebutton10")) {
-                path += "--> Scored in Amp ";
+                path += "--> Missed Speaker ";
             }
         }
 

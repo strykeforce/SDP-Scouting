@@ -27,11 +27,11 @@ public class MatchDataTeleTraps extends MatchDataView implements IMatchDataView 
         }
         boolean didSomething = false;               // catch teams that did nothing -> present a "N/A"
         Map<String, Object> data = (Map<String, Object>) document.getProperty("data");
-        if (data.get("tele_traps") == null) {
+        if (data.get("Trap") == null) {
             return;
         }
-        int traps = (int) data.get("tele_traps");
+        String traps = ((String) data.get("Trap")).substring(2, 3);
         didSomething = true;
-        setValueText(formatNumberAsString(traps), "gray");
+        setValueText(traps, "gray");
     }
 }

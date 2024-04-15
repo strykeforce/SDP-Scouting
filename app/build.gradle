@@ -11,7 +11,7 @@ android {
         minSdkVersion 20
         targetSdkVersion 23
         versionCode 1
-        versionName "2023_SEASON_DEV"
+        versionName "2024_SEASON_FINAL"
     }
 
     compileOptions {
@@ -53,6 +53,7 @@ dependencies {
     compile 'com.couchbase.lite:couchbase-lite-android:1.3.1'
     compile 'com.google.code.gson:gson:2.7'
     implementation 'com.squareup.picasso:picasso:2.71828'
+    implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
 
 
 

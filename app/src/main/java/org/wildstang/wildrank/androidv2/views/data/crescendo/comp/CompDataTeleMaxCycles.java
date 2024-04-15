@@ -21,45 +21,39 @@ public class CompDataTeleMaxCycles extends MatchDataView implements IMatchDataVi
             return;
         }
         boolean didSomething = false;               // catch teams that did nothing -> present a "N/A"
-        ;
-        int AmpMax = 0;
-        int TrapMax = 0;
-        int CycleMax = 0;
-
+        int MaxCycles = 0;
         for (Document document : documents) {
             Map<String, Object> data = (Map<String, Object>) document.getProperty("data");
-            if (data.get("tele_made_speaker") == null && data.get("tele_missed_speaker")== null) {
+            if (data.get("tele_made_speaker") == null) {
                 return;
             }
-            // find match with max speaker cycles
-
-            int MadeSpeaker = (int) data.get("tele_made_speaker");
-            int MissedSpeaker = (int) data.get("tele_missed_speaker");
-            int SpeakerMax = MadeSpeaker+MissedSpeaker;
-            //Find max amp Cycles
-
-            if ( data.get("tele_made_amp") == null) {
-            return;
-            }
-            int MaxAmp = (int) data.get("tele_made_amp");
-
-            // Find Max Trap
-            if (data.get("tele_traps")==null){
+            if (data.get("tele_missed_speaker") == null) {
                 return;
             }
-            int MaxTrap = (int) data.get("tele_traps");
-
-            int Cycles = SpeakerMax+MaxTrap+MaxAmp;
-            if(CycleMax < Cycles ){
-                CycleMax = Cycles;
+            if (data.get("tele_made_amp") == null) {
+                return;
             }
-
+            if (data.get("tele_passes") == null) {
+                return;
+            }
+            if (data.get("Trap") == null) {
+                return;
+            }
+            int Cycles = 0;
+            Cycles += (int) data.get("tele_made_speaker");
+            Cycles += (int) data.get("tele_missed_speaker");
+            Cycles += (int) data.get("tele_made_amp");
+            Cycles += (int) data.get("tele_passes");
+            Cycles += Integer.valueOf(((String) data.get("Trap")).substring(2, 3));
+            if (MaxCycles < Cycles) {
+                MaxCycles = Cycles;
+            }
             didSomething = true;
         }
         if (!didSomething) {
             setValueText("N/A", "gray");
         } else {
-            setValueText(formatNumberAsString(CycleMax), "gray");
+            setValueText(formatNumberAsString(MaxCycles), "gray");
         }
     }
 

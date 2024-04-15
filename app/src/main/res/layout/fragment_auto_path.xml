@@ -4,13 +4,16 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@android:color/white">
 
-    <org.wildstang.wildrank.androidv2.views.data.AutosDataView
-        android:id="@+id/autosview"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        app:label=""
-        app:explanation="All the different paths the robot has run, not including duplicates"/>
+        android:layout_height="match_parent">
+
+        <org.wildstang.wildrank.androidv2.views.data.crescendo.AutosDataView
+            android:id="@+id/autosview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:label=""
+            app:explanation="All the different paths the robot has run, not including duplicates"/>
+    </ScrollView>
 
 </RelativeLayout>

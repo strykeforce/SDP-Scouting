@@ -118,27 +118,7 @@
             android:layout_height="150dp"
             android:clickable="true"
             android:layout_marginLeft="-225dp"
-            android:layout_marginTop="294dp"
-            android:visibility="invisible"/>
-
-        <org.wildstang.wildrank.androidv2.views.scouting.ScoutingButtonView
-            android:id="@+id/redbutton10"
-            app:key="redbutton10"
-            android:layout_width="100dp"
-            android:layout_height="50dp"
-            android:clickable="true"
-            android:layout_marginLeft="-40dp"
-            android:layout_marginTop="485dp"
-            android:visibility="invisible"/>
-
-        <TextView
-            android:id="@+id/redlabel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Amp"
-            android:textColor="@color/StrykeForce"
-            android:layout_marginTop="500dp"
-            android:layout_marginLeft="-135dp"
+            android:layout_marginTop="219dp"
             android:visibility="invisible"/>
 
         <ImageView
@@ -237,38 +217,183 @@
             android:layout_height="150dp"
             android:clickable="true"
             android:layout_marginLeft="60dp"
-            android:layout_marginTop="288dp"
+            android:layout_marginTop="208dp"
             android:visibility="invisible"/>
+
+        <TextView
+            android:id="@+id/redSpeakerMake"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Make"
+            android:textColor="@color/white"
+            android:layout_marginTop="285dp"
+            android:layout_marginLeft="-510dp"
+            android:visibility="invisible" />
+
+        <org.wildstang.wildrank.androidv2.views.scouting.ScoutingButtonView
+            android:id="@+id/redbutton10"
+            app:key="redbutton10"
+            android:layout_width="100dp"
+            android:layout_height="150dp"
+            android:clickable="true"
+            android:layout_marginLeft="-138dp"
+            android:layout_marginTop="375dp"
+            android:visibility="invisible"/>
+
+        <TextView
+            android:id="@+id/redSpeakerMiss"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Miss"
+            android:textColor="@color/white"
+            android:layout_marginTop="440dp"
+            android:layout_marginLeft="3dp"
+            android:visibility="invisible" />
+
+        <TextView
+            android:id="@+id/blueSpeakerMake"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Make"
+            android:textColor="@color/white"
+            android:layout_marginTop="275dp"
+            android:layout_marginLeft="341dp"
+            android:visibility="invisible" />
 
         <org.wildstang.wildrank.androidv2.views.scouting.ScoutingButtonView
             android:id="@+id/bluebutton10"
             app:key="bluebutton10"
             android:layout_width="100dp"
-            android:layout_height="50dp"
+            android:layout_height="150dp"
             android:clickable="true"
-            android:layout_marginLeft="-165dp"
-            android:layout_marginTop="485dp"
+            android:layout_marginLeft="4dp"
+            android:layout_marginTop="368dp"
             android:visibility="invisible"/>
 
         <TextView
-            android:id="@+id/bluelabel"
+            android:id="@+id/blueSpeakerMiss"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Amp"
-            android:textColor="@color/StrykeForce"
-            android:layout_marginTop="485dp"
-            android:layout_marginLeft="5dp"
+            android:text="Miss"
+            android:textColor="@color/white"
+            android:layout_marginTop="435dp"
+            android:layout_marginLeft="-133dp"
+            android:visibility="invisible" />
+
+        <org.wildstang.wildrank.androidv2.views.scouting.ScoutingButtonView
+            android:id="@+id/redposbutton3"
+            app:key="redposbutton3"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:clickable="true"
+            android:layout_marginLeft="-470dp"
+            android:layout_marginTop="207dp"
             android:visibility="invisible"/>
+
+        <org.wildstang.wildrank.androidv2.views.scouting.ScoutingButtonView
+            android:id="@+id/redposbutton1"
+            app:key="redposbutton1"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:clickable="true"
+            android:layout_marginLeft="-100dp"
+            android:layout_marginTop="429dp"
+            android:visibility="invisible"/>
+
+        <org.wildstang.wildrank.androidv2.views.scouting.ScoutingButtonView
+            android:id="@+id/redposbutton2"
+            app:key="redposbutton2"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:clickable="true"
+            android:layout_marginLeft="-50dp"
+            android:layout_marginTop="318dp"
+            android:visibility="invisible"/>
+
+        <TextView
+            android:id="@+id/redposlabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Select a Starting Position:"
+            android:textColor="@color/white"
+            android:layout_marginTop="177dp"
+            android:layout_marginLeft="-153dp"
+            android:visibility="invisible" />
+
+        <org.wildstang.wildrank.androidv2.views.scouting.ScoutingButtonView
+            android:id="@+id/blueposbutton3"
+            app:key="blueposbutton3"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:clickable="true"
+            android:layout_marginLeft="355dp"
+            android:layout_marginTop="202dp"
+            android:visibility="invisible"/>
+
+        <org.wildstang.wildrank.androidv2.views.scouting.ScoutingButtonView
+            android:id="@+id/blueposbutton1"
+            app:key="blueposbutton1"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:clickable="true"
+            android:layout_marginLeft="-100dp"
+            android:layout_marginTop="424dp"
+            android:visibility="invisible"/>
+
+        <org.wildstang.wildrank.androidv2.views.scouting.ScoutingButtonView
+            android:id="@+id/blueposbutton2"
+            app:key="blueposbutton2"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:clickable="true"
+            android:layout_marginLeft="-150dp"
+            android:layout_marginTop="313dp"
+            android:visibility="invisible"/>
+
+        <TextView
+            android:id="@+id/blueposlabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Select a Starting Position:"
+            android:textColor="@color/white"
+            android:layout_marginTop="177dp"
+            android:layout_marginLeft="-93dp"
+            android:visibility="invisible" />
 
     </LinearLayout>
 
     <org.wildstang.wildrank.androidv2.views.scouting.ScoutingCheckboxView
+        android:id="@+id/crosslinecheckbox"
         app:key="CrossLine"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         app:label="Exited Robot\nStarting Zone"
-        android:layout_centerVertical="true"
+        android:layout_alignTop="@id/AutoTitle"
+        android:layout_marginTop="100dp"
         android:layout_alignParentRight="true"
         android:layout_marginRight="130dp"/>
+
+    <TextView
+        android:layout_width="250dp"
+        android:layout_height="250dp"
+        android:layout_alignTop="@id/crosslinecheckbox"
+        android:layout_marginTop="100dp"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="100dp"
+        android:id="@+id/AutonPreview"
+        android:background="@color/white"
+        android:text="Auton Preview:"
+        />
+
+    <Button
+        android:id="@+id/undo_button"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:layout_alignBottom="@id/AutonPreview"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="-65dp"
+        android:layout_marginRight="170dp"
+        android:text="UNDO"
+        />
 
 </RelativeLayout>

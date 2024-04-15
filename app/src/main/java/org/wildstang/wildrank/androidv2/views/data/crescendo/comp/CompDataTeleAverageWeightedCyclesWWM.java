@@ -11,8 +11,8 @@ import org.wildstang.wildrank.androidv2.views.data.MatchDataView;
 import java.util.List;
 import java.util.Map;
 
-public class CompDataTeleAverageCycles extends MatchDataView implements IMatchDataView {
-    public CompDataTeleAverageCycles(Context context, AttributeSet attrs) {
+public class CompDataTeleAverageWeightedCyclesWWM extends MatchDataView implements IMatchDataView {
+    public CompDataTeleAverageWeightedCyclesWWM(Context context, AttributeSet attrs) {
         super(context, attrs);
     }
 
@@ -21,7 +21,8 @@ public class CompDataTeleAverageCycles extends MatchDataView implements IMatchDa
             return;
         }
         boolean didSomething = false;               // catch teams that did nothing -> present a "N/A"
-        int Cycles = 0;
+        double Cycles = 0;
+        double worst = -1;
         for (Document document : documents) {
             Map<String, Object> data = (Map<String, Object>) document.getProperty("data");
             if (data.get("tele_made_speaker") == null) {
@@ -39,17 +40,24 @@ public class CompDataTeleAverageCycles extends MatchDataView implements IMatchDa
             if (data.get("Trap") == null) {
                 return;
             }
-            Cycles += (int) data.get("tele_made_speaker");
-            Cycles += (int) data.get("tele_missed_speaker");
-            Cycles += (int) data.get("tele_made_amp");
-            Cycles += (int) data.get("tele_passes");
-            Cycles += Integer.valueOf(((String) data.get("Trap")).substring(2, 3));
+            double amount = 0;
+            amount += Double.parseDouble(Integer.toString((int) data.get("tele_made_speaker")));
+            amount += Double.parseDouble(Integer.toString((int) data.get("tele_missed_speaker")));
+            amount += Double.parseDouble(Integer.toString((int) data.get("tele_made_amp"))) * 1.25;
+            amount += Double.parseDouble(Integer.toString((int) data.get("tele_passes"))) * 0.6;
+            amount += Double.parseDouble(((String) data.get("Trap")).substring(2, 3)) * 2.0;
+            if (worst == -1) {
+                worst = amount;
+            } else if (worst > amount) {
+                worst = amount;
+            }
+            Cycles += amount;
             didSomething = true;
         }
         if (!didSomething) {
             setValueText("N/A", "gray");
         } else {
-            double average = (double) Cycles / (double) documents.size();
+            double average = (Cycles - worst) / ((double) documents.size() - 1);
             setValueText(formatNumberAsString(average), "gray");
         }
     }

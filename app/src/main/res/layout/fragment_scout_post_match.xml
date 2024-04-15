@@ -57,9 +57,9 @@
     <org.wildstang.wildrank.androidv2.views.scouting.ScoutingSpinnerView
         android:layout_width="500dp"
         android:layout_height="wrap_content"
-        app:key="HighNotes"
-        app:label="High Notes:"
-        app:values="@array/high_notes"
+        app:key="Trap"
+        app:label="Trap"
+        app:values="@array/traps"
         android:layout_above="@+id/notes"
         android:layout_marginBottom="20dp"
         android:layout_alignParentRight="true"

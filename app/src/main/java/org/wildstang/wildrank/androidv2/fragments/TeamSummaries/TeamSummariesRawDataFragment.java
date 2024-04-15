@@ -1,4 +1,4 @@
-package org.wildstang.wildrank.androidv2.fragments;
+package org.wildstang.wildrank.androidv2.fragments.TeamSummaries;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -11,6 +11,7 @@ import com.google.gson.Gson;
 
 import org.json.JSONObject;
 import org.wildstang.wildrank.androidv2.R;
+import org.wildstang.wildrank.androidv2.fragments.TeamSummaries.TeamSummariesFragment;
 
 import java.util.List;
 
@@ -18,7 +19,7 @@ public class TeamSummariesRawDataFragment extends TeamSummariesFragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_summaries_graph, container, false);
+        View view = inflater.inflate(R.layout.fragment_summaries_raw_data, container, false);
         return view;
     }
 

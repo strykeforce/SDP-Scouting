@@ -69,38 +69,17 @@
             app:explanation="Average number of Notes scored in the Amp during Tele."
             app:label="Average Amp" />
 
-        <org.wildstang.wildrank.androidv2.views.data.crescendo.comp.CompDataTeleAmpAccuracy
+        <org.wildstang.wildrank.androidv2.views.data.crescendo.comp.CompDataTelePassesMax
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:explanation="Overall accuracy of robot in the Amp."
-            app:label="Amp Accuracy" />
+            app:explanation="Max number of passes done during Tele."
+            app:label="Max Passes" />
 
-        <org.wildstang.wildrank.androidv2.views.data.crescendo.comp.CompDataTeleTrapsMax
+        <org.wildstang.wildrank.androidv2.views.data.crescendo.comp.CompDataTelePassesAverage
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:explanation="The max number of traps made"
-            app:label="Max Traps"
-
-            />
-        <org.wildstang.wildrank.androidv2.views.data.crescendo.comp.CompDataTeleTrapsAverage
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:explanation="The average number of traps made"
-            app:label="Average Traps"
-            />
-        <org.wildstang.wildrank.androidv2.views.data.crescendo.comp.CompDataTeleMaxCycles
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:explanation="Max number of Cycles in a match."
-            app:label="Max Cycles"
-            />
-
-        <org.wildstang.wildrank.androidv2.views.data.crescendo.comp.CompDataTeleAverageCycles
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:explanation="Average number of Cycles per match."
-            app:label="Average Cycles"
-            />
+            app:explanation="Average number of passes done during Tele."
+            app:label="Average Passes" />
 
         <TextView
             android:layout_width="match_parent"
@@ -115,12 +94,100 @@
             app:explanation="The amount of times the robot ended with nothing vs the amount of matches\nThe amount of times the robot ended parked vs the amount of matches\nThe amount of times the robot ended tipped on the charge platform vs the amount of matches\nThe amount of times the robot ended engaged on the charge platform vs the amount of matches"
             app:label="End Stage" />
 
-        <org.wildstang.wildrank.androidv2.views.data.crescendo.comp.CompDataEndHighNotes
+        <org.wildstang.wildrank.androidv2.views.data.crescendo.comp.CompDataEndTrapsMax
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:explanation="The amounts of high notes scored by their human player."
-            app:label="High Notes" />
+            app:explanation="Max amount of traps scored in a match."
+            app:label="Max Traps" />
 
+        <org.wildstang.wildrank.androidv2.views.data.crescendo.comp.CompDataEndTrapsAverage
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:explanation="Average amount of traps scored in a match."
+            app:label="Average Traps" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            android:text="Cycles Overview" />
+
+        <org.wildstang.wildrank.androidv2.views.data.crescendo.comp.CompDataTeleMaxCycles
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:explanation="Max number of Cycles in a match."
+            app:label="Max Cycles"
+            />
+
+        <org.wildstang.wildrank.androidv2.views.data.crescendo.comp.CompDataTeleAverageCycles
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:explanation="Average number of Cycles per match."
+            app:label="Average Cycles"
+            />
+
+        <org.wildstang.wildrank.androidv2.views.data.crescendo.comp.CompDataTeleMaxWeightedCycles
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:explanation="Max number of Cycles in a match with speaker having a weight of 1, amp having a weight of 1.25, passes having a weight of 0.6, and trap having a weight of 2."
+            app:label="Max Weighted Cycles"
+            />
+
+        <org.wildstang.wildrank.androidv2.views.data.crescendo.comp.CompDataTeleAverageWeightedCycles
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:explanation="Average number of Cycles in a match with speaker having a weight of 1, amp having a weight of 1.25, passes having a weight of 0.6, and trap having a weight of 2."
+            app:label="Average Weighted Cycles"
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            android:text="Averages Without Worst Match (WWM)" />
+
+        <org.wildstang.wildrank.androidv2.views.data.crescendo.comp.CompDataTeleMadeSpeakerAverageWWM
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:explanation="Average number of Notes scored in the Speaker during Tele without the worst match."
+            app:label="Average Speaker WWM"
+            />
+
+        <org.wildstang.wildrank.androidv2.views.data.crescendo.comp.CompDataTeleMadeAmpAverageWWM
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:explanation="Average number of Notes scored in the Amp during Tele without the worst match."
+            app:label="Average Amp WWM"
+            />
+
+        <org.wildstang.wildrank.androidv2.views.data.crescendo.comp.CompDataTelePassesAverageWWM
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:explanation="The average number of passes made without the worst match"
+            app:label="Average Passes WWM"
+            />
+
+        <org.wildstang.wildrank.androidv2.views.data.crescendo.comp.CompDataEndTrapsAverageWWM
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:explanation="The average number of traps scored without the worst match"
+            app:label="Average Traps WWM" />
+
+        <org.wildstang.wildrank.androidv2.views.data.crescendo.comp.CompDataTeleAverageCyclesWWM
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:explanation="Average number of Cycles per match without the worst match."
+            app:label="Average Cycles WWM"
+            />
+
+        <org.wildstang.wildrank.androidv2.views.data.crescendo.comp.CompDataTeleAverageWeightedCyclesWWM
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:explanation="Average number of Cycles in a match with speaker having a weight of 1, amp having a weight of 1.25, passes having a weight of 0.6, and trap having a weight of 2, without the worst match."
+            app:label="Average Weighted Cycles WWM"
+            />
 
     </LinearLayout>
 

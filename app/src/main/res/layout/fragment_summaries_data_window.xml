@@ -55,11 +55,11 @@
             app:explanation="Number of Notes made in the Amp over the total."
             app:label="Amp" />
 
-        <org.wildstang.wildrank.androidv2.views.data.crescendo.match.MatchDataTeleTraps
+        <org.wildstang.wildrank.androidv2.views.data.crescendo.match.MatchDataTelePasses
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:explanation="Number of Traps completed."
-            app:label="Traps"
+            app:explanation="Number of times the robot passes down the field."
+            app:label="Passes"
             />
 
         <TextView
@@ -74,6 +74,12 @@
             android:layout_height="wrap_content"
             app:explanation="Where the robot was at the end of the match"
             app:label="Stage" />
+
+        <org.wildstang.wildrank.androidv2.views.data.crescendo.match.MatchDataTeleTraps
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:explanation="How many traps the robot was able to complete"
+            app:label="Traps" />
 
     </LinearLayout>
 

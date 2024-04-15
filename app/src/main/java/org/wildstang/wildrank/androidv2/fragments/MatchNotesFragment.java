@@ -14,7 +14,9 @@ import com.couchbase.lite.CouchbaseLiteException;
 import org.wildstang.wildrank.androidv2.NoteBox;
 import org.wildstang.wildrank.androidv2.R;
 import org.wildstang.wildrank.androidv2.ReverseInterpolator;
+import org.wildstang.wildrank.androidv2.UserHelper;
 import org.wildstang.wildrank.androidv2.Utilities;
+import org.wildstang.wildrank.androidv2.activities.MatchNotesActivity;
 import org.wildstang.wildrank.androidv2.data.DatabaseManager;
 
 import java.io.IOException;
@@ -113,9 +115,18 @@ public class MatchNotesFragment extends Fragment {
     }
 
     public String[] getNotes() {
+        String mkey = ((MatchNotesActivity) getActivity()).matchKey;
+        int start = 0;
+        for (int i = mkey.length() - 1; i >= 0; i--) {
+            if (mkey.charAt(i) == 'm') {
+                start = i;
+                break;
+            }
+        }
+
         String[] notes = new String[]{"", "", "", "", "", ""};
         for (int i = 0; i < boxes.size(); i++) {
-            notes[i] = boxes.get(i).getNote();
+            notes[i] = UserHelper.getLoggedInUserModelsAsList(getContext()).get(0).userName + ", " + mkey.substring(start) + ": " + boxes.get(i).getNote();
         }
         return notes;
     }

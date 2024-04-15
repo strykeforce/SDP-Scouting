@@ -16,7 +16,7 @@
         <item>5. Onstage w/ 2 Buddies</item>
     </string-array>
 
-    <string-array name="high_notes">
+    <string-array name="traps">
         <item>\t\t0\t\t</item>
         <item>\t\t1\t\t</item>
         <item>\t\t2\t\t</item>
@@ -64,8 +64,10 @@
         <item>--</item>
         <item>Amp</item>
         <item>Speaker</item>
-        <item>Trap</item>
-        <item>Both</item>
+        <item>Amp+Speaker</item>
+        <item>Amp+Speaker+Trap</item>
+        <item>Speaker+Trap</item>
+        <item>Amp+Trap</item>
     </string-array>
 
     <string-array name="player_stations">
@@ -95,6 +97,31 @@
 
 
     </string-array>
+
+    <string-array name="Intake">
+        <item>--</item>
+        <item>No Intake</item>
+        <item>Internal Intake</item>
+        <item>External Intake</item>
+        <item>Retractable External Intake</item>
+
+    </string-array>
+
+    <string-array name="Charts">
+        <item>Cycles</item>
+        <item>Weighted Cycles</item>
+        <item>Amp and Speaker</item>
+        <item>Amp</item>
+        <item>Speaker</item>
+        <item>Auto</item>
+    </string-array>
+
+    <string-array name="Sorting">
+        <item>Team Number</item>
+        <item>Descending</item>
+        <item>Ascending</item>
+    </string-array>
+
 
     <string name="autonomous_explanation">This Screen is for Autonomous Game Actions Only.</string>
     <string name="cycle">Single Shot Cycle</string>

@@ -11,8 +11,8 @@ import org.wildstang.wildrank.androidv2.views.data.MatchDataView;
 import java.util.List;
 import java.util.Map;
 
-public class CompDataTeleTrapsAverage extends MatchDataView implements IMatchDataView {
-    public CompDataTeleTrapsAverage(Context context, AttributeSet attrs) {
+public class CompDataTelePassesAverage extends MatchDataView implements IMatchDataView {
+    public CompDataTelePassesAverage(Context context, AttributeSet attrs) {
         super(context, attrs);
     }
 
@@ -21,19 +21,19 @@ public class CompDataTeleTrapsAverage extends MatchDataView implements IMatchDat
             return;
         }
         boolean didSomething = false;               // catch teams that did nothing -> present a "N/A"
-        int traps = 0;
+        int passes = 0;
         for (Document document : documents) {
             Map<String, Object> data = (Map<String, Object>) document.getProperty("data");
-            if (data.get("tele_traps") == null) {
+            if (data.get("tele_passes") == null) {
                 return;
             }
-            traps += (int) data.get("tele_traps");
+            passes += (int) data.get("tele_passes");
             didSomething = true;
         }
         if (!didSomething) {
             setValueText("N/A", "gray");
         } else {
-            double average = (double) traps / (double) documents.size();
+            double average = (double) passes / (double) documents.size();
             setValueText(formatNumberAsString(average), "gray");
         }
     }

@@ -11,8 +11,8 @@ import org.wildstang.wildrank.androidv2.views.data.MatchDataView;
 import java.util.List;
 import java.util.Map;
 
-public class CompDataTeleAverageCycles extends MatchDataView implements IMatchDataView {
-    public CompDataTeleAverageCycles(Context context, AttributeSet attrs) {
+public class CompDataTeleMadeAmpAverageWWM extends MatchDataView implements IMatchDataView {
+    public CompDataTeleMadeAmpAverageWWM(Context context, AttributeSet attrs) {
         super(context, attrs);
     }
 
@@ -21,35 +21,25 @@ public class CompDataTeleAverageCycles extends MatchDataView implements IMatchDa
             return;
         }
         boolean didSomething = false;               // catch teams that did nothing -> present a "N/A"
-        int Cycles = 0;
+        int amp = 0;
+        int worst = -1;
         for (Document document : documents) {
             Map<String, Object> data = (Map<String, Object>) document.getProperty("data");
-            if (data.get("tele_made_speaker") == null) {
-                return;
-            }
-            if (data.get("tele_missed_speaker") == null) {
-                return;
-            }
             if (data.get("tele_made_amp") == null) {
                 return;
             }
-            if (data.get("tele_passes") == null) {
-                return;
+            amp += (int) data.get("tele_made_amp");
+            if (worst == -1) {
+                worst = (int) data.get("tele_made_amp");
+            } else if (worst > (int) data.get("tele_made_amp")) {
+                worst = (int) data.get("tele_made_amp");
             }
-            if (data.get("Trap") == null) {
-                return;
-            }
-            Cycles += (int) data.get("tele_made_speaker");
-            Cycles += (int) data.get("tele_missed_speaker");
-            Cycles += (int) data.get("tele_made_amp");
-            Cycles += (int) data.get("tele_passes");
-            Cycles += Integer.valueOf(((String) data.get("Trap")).substring(2, 3));
             didSomething = true;
         }
         if (!didSomething) {
             setValueText("N/A", "gray");
         } else {
-            double average = (double) Cycles / (double) documents.size();
+            double average = ((double) amp - (double) worst) / ((double) documents.size() - 1);
             setValueText(formatNumberAsString(average), "gray");
         }
     }

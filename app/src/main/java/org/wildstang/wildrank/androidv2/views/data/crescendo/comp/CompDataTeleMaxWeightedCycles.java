@@ -11,8 +11,8 @@ import org.wildstang.wildrank.androidv2.views.data.MatchDataView;
 import java.util.List;
 import java.util.Map;
 
-public class CompDataTeleAverageCycles extends MatchDataView implements IMatchDataView {
-    public CompDataTeleAverageCycles(Context context, AttributeSet attrs) {
+public class CompDataTeleMaxWeightedCycles extends MatchDataView implements IMatchDataView {
+    public CompDataTeleMaxWeightedCycles(Context context, AttributeSet attrs) {
         super(context, attrs);
     }
 
@@ -21,7 +21,7 @@ public class CompDataTeleAverageCycles extends MatchDataView implements IMatchDa
             return;
         }
         boolean didSomething = false;               // catch teams that did nothing -> present a "N/A"
-        int Cycles = 0;
+        double MaxCycles = 0;
         for (Document document : documents) {
             Map<String, Object> data = (Map<String, Object>) document.getProperty("data");
             if (data.get("tele_made_speaker") == null) {
@@ -39,18 +39,21 @@ public class CompDataTeleAverageCycles extends MatchDataView implements IMatchDa
             if (data.get("Trap") == null) {
                 return;
             }
-            Cycles += (int) data.get("tele_made_speaker");
-            Cycles += (int) data.get("tele_missed_speaker");
-            Cycles += (int) data.get("tele_made_amp");
-            Cycles += (int) data.get("tele_passes");
-            Cycles += Integer.valueOf(((String) data.get("Trap")).substring(2, 3));
+            double Cycles = 0;
+            Cycles += Double.parseDouble(Integer.toString((int) data.get("tele_made_speaker")));
+            Cycles += Double.parseDouble(Integer.toString((int) data.get("tele_missed_speaker")));
+            Cycles += Double.parseDouble(Integer.toString((int) data.get("tele_made_amp"))) * 1.25;
+            Cycles += Double.parseDouble(Integer.toString((int) data.get("tele_passes"))) * 0.6;
+            Cycles += Double.parseDouble(((String) data.get("Trap")).substring(2, 3)) * 2.0;
+            if (MaxCycles < Cycles) {
+                MaxCycles = Cycles;
+            }
             didSomething = true;
         }
         if (!didSomething) {
             setValueText("N/A", "gray");
         } else {
-            double average = (double) Cycles / (double) documents.size();
-            setValueText(formatNumberAsString(average), "gray");
+            setValueText(formatNumberAsString(MaxCycles), "gray");
         }
     }
 

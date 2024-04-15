@@ -1,7 +1,6 @@
-package org.wildstang.wildrank.androidv2.fragments;
+package org.wildstang.wildrank.androidv2.fragments.TeamSummaries;
 
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.os.Environment;
 import android.util.Log;
@@ -18,6 +17,7 @@ import com.squareup.picasso.Picasso;
 import org.wildstang.wildrank.androidv2.R;
 import org.wildstang.wildrank.androidv2.Utilities;
 import org.wildstang.wildrank.androidv2.data.DatabaseManager;
+import org.wildstang.wildrank.androidv2.fragments.TeamSummaries.TeamSummariesFragment;
 import org.wildstang.wildrank.androidv2.views.TemplatedTextView;
 
 import java.io.File;

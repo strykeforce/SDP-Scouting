@@ -3,8 +3,11 @@ package org.wildstang.wildrank.androidv2.views.scouting;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.widget.Button;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import org.wildstang.wildrank.androidv2.R;
 
@@ -14,7 +17,6 @@ import java.util.Map;
 
 public class ScoutingButtonView extends ScoutingView {
     private Button buttonView;
-
     private ArrayList<Long> clicks;
 
     public ScoutingButtonView(Context context, AttributeSet attrs) {
@@ -28,9 +30,11 @@ public class ScoutingButtonView extends ScoutingView {
         a.recycle();
 
         buttonView = (Button) findViewById(R.id.button);
+
         buttonView.setClickable(true);
         // This conflicts with our custom state saving
         buttonView.setSaveEnabled(false);
+
 
         clicks = new ArrayList<>();
 
@@ -44,6 +48,12 @@ public class ScoutingButtonView extends ScoutingView {
 
     public void setClicks(ArrayList<Long> list) {
         clicks = list;
+    }
+
+    public void resetClicks() {clicks = new ArrayList<>();}
+
+    public ArrayList<Long> getClicks() {
+        return clicks;
     }
 
     @Override

@@ -27,7 +27,7 @@ public class MatchDataAutoCrossedLine extends MatchDataView implements IMatchDat
         boolean didSomething = false;               // catch teams that did nothing -> present a "N/A"
         Map<String, Object> data = (Map<String, Object>) document.getProperty("data");
         if (data.get("CrossLine") == null) {
-            setValueText("False","gray");
+            setValueText("N/A","gray");
             return;
         }
         boolean checked = (boolean) data.get("CrossLine");
@@ -35,7 +35,7 @@ public class MatchDataAutoCrossedLine extends MatchDataView implements IMatchDat
         if (checked) {
             didSomething = true;
             setValueText("True", "gray");
-        }
+        } else setValueText("False", "gray");
 
 
     }

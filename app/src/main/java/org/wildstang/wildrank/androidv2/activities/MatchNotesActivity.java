@@ -26,7 +26,7 @@ import java.io.IOException;
  * For taking notes for all the teams in a specific match
  */
 public class MatchNotesActivity extends AppCompatActivity {
-    private static String matchKey;
+    public static String matchKey;
     private static String[] teamKeys;
     private static String[] notes;
     private Toolbar toolbar;
