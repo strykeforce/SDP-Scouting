@@ -50,6 +50,8 @@ public class ScoutingButtonView extends ScoutingView {
         clicks = list;
     }
 
+    public void resetClicks() {clicks = new ArrayList<>();}
+
     public ArrayList<Long> getClicks() {
         return clicks;
     }

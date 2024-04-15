@@ -66,7 +66,7 @@ public class AutonomousScoutingFragment extends ScoutingFragment {
                 posSelected("P2");
             } else if (((ScoutingButtonView) getView().findViewById(R.id.redposbutton3)).getClicks().size() != 0 || ((ScoutingButtonView) getView().findViewById(R.id.blueposbutton3)).getClicks().size() != 0) {
                 posSelected("P3");
-            } else handler.postDelayed(this, 500);
+            } else handler.postDelayed(this, 100);
         }
     };
 
@@ -275,7 +275,7 @@ public class AutonomousScoutingFragment extends ScoutingFragment {
                 }
             }
 
-            handler.postDelayed(this, 500);
+            handler.postDelayed(this, 100);
         }
     };
 
@@ -487,12 +487,12 @@ public class AutonomousScoutingFragment extends ScoutingFragment {
             handler.removeCallbacks(update);
             ArrayList<Long> newClicks = new ArrayList<>();
             System.out.println("\nSize of newclicks: " + newClicks.size());
-            ((ScoutingButtonView) getView().findViewById(R.id.redposbutton1)).setClicks(newClicks);
-            ((ScoutingButtonView) getView().findViewById(R.id.redposbutton2)).setClicks(newClicks);
-            ((ScoutingButtonView) getView().findViewById(R.id.redposbutton3)).setClicks(newClicks);
-            ((ScoutingButtonView) getView().findViewById(R.id.blueposbutton1)).setClicks(newClicks);
-            ((ScoutingButtonView) getView().findViewById(R.id.blueposbutton2)).setClicks(newClicks);
-            ((ScoutingButtonView) getView().findViewById(R.id.blueposbutton3)).setClicks(newClicks);
+            ((ScoutingButtonView) getView().findViewById(R.id.redposbutton1)).resetClicks();
+            ((ScoutingButtonView) getView().findViewById(R.id.redposbutton2)).resetClicks();
+            ((ScoutingButtonView) getView().findViewById(R.id.redposbutton3)).resetClicks();
+            ((ScoutingButtonView) getView().findViewById(R.id.blueposbutton1)).resetClicks();
+            ((ScoutingButtonView) getView().findViewById(R.id.blueposbutton2)).resetClicks();
+            ((ScoutingButtonView) getView().findViewById(R.id.blueposbutton3)).resetClicks();
             pressOrder.remove(pressOrder.size() - 1);
             preview.setText(((String) (preview.getText())).substring(0, preview.getText().length() - stringLength.get(stringLength.size() - 1)));
             stringLength.remove(stringLength.size() - 1);
