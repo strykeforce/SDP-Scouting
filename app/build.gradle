@@ -14,6 +14,17 @@ android {
         versionName "2024_SEASON_FINAL"
     }
 
+    signingConfigs {
+
+        release{
+            storeFile file('StrykeForceScouting.keystore')
+            storePassword 'StrykeForce'
+            keyAlias 'Scouting'
+            keyPassword 'StrykeForce'
+        }
+
+    }
+
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
