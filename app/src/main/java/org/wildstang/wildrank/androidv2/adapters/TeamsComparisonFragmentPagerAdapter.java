@@ -10,6 +10,7 @@ import org.wildstang.wildrank.androidv2.fragments.TeamsComparison.TeamsCompariso
 import org.wildstang.wildrank.androidv2.fragments.TeamsComparison.TeamsComparisonAverageAmpFragment;
 import org.wildstang.wildrank.androidv2.fragments.TeamsComparison.TeamsComparisonAverageAutoFragment;
 import org.wildstang.wildrank.androidv2.fragments.TeamsComparison.TeamsComparisonAverageCyclesFragment;
+import org.wildstang.wildrank.androidv2.fragments.TeamsComparison.TeamsComparisonAveragePassesFragment;
 import org.wildstang.wildrank.androidv2.fragments.TeamsComparison.TeamsComparisonAverageSpeakerFragment;
 import org.wildstang.wildrank.androidv2.fragments.TeamsComparison.TeamsComparisonAverageWeightedCyclesFragment;
 
@@ -22,6 +23,7 @@ public class TeamsComparisonFragmentPagerAdapter extends FragmentStatePagerAdapt
     private TeamsComparisonAverageAmpFragment averageAmpFragment;
     private TeamsComparisonAverageSpeakerFragment averageSpeakerFragment;
     private TeamsComparisonAverageAmpAndSpeakerFragment averageAmpAndSpeakerFragment;
+    private TeamsComparisonAveragePassesFragment averagePassesFragment;
     private TeamsComparisonAverageCyclesFragment averageCyclesFragment;
     private TeamsComparisonAverageWeightedCyclesFragment averageWeightedCyclesFragment;
 
@@ -35,6 +37,7 @@ public class TeamsComparisonFragmentPagerAdapter extends FragmentStatePagerAdapt
         averageAmpFragment = new TeamsComparisonAverageAmpFragment();
         averageSpeakerFragment = new TeamsComparisonAverageSpeakerFragment();
         averageAmpAndSpeakerFragment = new TeamsComparisonAverageAmpAndSpeakerFragment();
+        averagePassesFragment = new TeamsComparisonAveragePassesFragment();
         averageCyclesFragment = new TeamsComparisonAverageCyclesFragment();
         averageWeightedCyclesFragment = new TeamsComparisonAverageWeightedCyclesFragment();
     }
@@ -51,8 +54,10 @@ public class TeamsComparisonFragmentPagerAdapter extends FragmentStatePagerAdapt
             case 3:
                 return averageAmpAndSpeakerFragment;
             case 4:
-                return averageCyclesFragment;
+                return averagePassesFragment;
             case 5:
+                return averageCyclesFragment;
+            case 6:
                 return averageWeightedCyclesFragment;
             default:
                 return null;
@@ -76,8 +81,10 @@ public class TeamsComparisonFragmentPagerAdapter extends FragmentStatePagerAdapt
             case 3:
                 return "Average Amp and Speaker";
             case 4:
-                return "Average Cycles";
+                return "Average Passes";
             case 5:
+                return "Average Cycles";
+            case 6:
                 return "Average Weighted Cycles";
             default:
                 return "ERROR INVALID POSITION";
@@ -89,6 +96,7 @@ public class TeamsComparisonFragmentPagerAdapter extends FragmentStatePagerAdapt
         averageAmpFragment.acceptNewData(allMatchDocuments);
         averageSpeakerFragment.acceptNewData(allMatchDocuments);
         averageAmpAndSpeakerFragment.acceptNewData(allMatchDocuments);
+        averagePassesFragment.acceptNewData(allMatchDocuments);
         averageCyclesFragment.acceptNewData(allMatchDocuments);
         averageWeightedCyclesFragment.acceptNewData(allMatchDocuments);
     }
