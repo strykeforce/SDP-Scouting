@@ -17,7 +17,7 @@ import org.wildstang.wildrank.androidv2.fragments.TeamsComparison.TeamsCompariso
 import java.util.List;
 
 public class TeamsComparisonFragmentPagerAdapter extends FragmentStatePagerAdapter {
-    static final int NUM_FRAGMENTS = 6;
+    static final int NUM_FRAGMENTS = 7;
 
     private TeamsComparisonAverageAutoFragment averageAutoFragment;
     private TeamsComparisonAverageAmpFragment averageAmpFragment;
