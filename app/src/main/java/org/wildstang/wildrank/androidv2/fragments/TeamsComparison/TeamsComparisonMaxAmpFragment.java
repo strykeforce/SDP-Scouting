@@ -2,7 +2,6 @@ package org.wildstang.wildrank.androidv2.fragments.TeamsComparison;
 
 import android.graphics.Color;
 import android.os.Bundle;
-import android.support.v4.util.Pair;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -32,7 +31,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
-public class TeamsComparisonAverageWeightedCyclesFragment extends TeamsComparisonFragment {
+public class TeamsComparisonMaxAmpFragment extends TeamsComparisonFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_comparison_chart, container, false);
@@ -73,48 +72,32 @@ public class TeamsComparisonAverageWeightedCyclesFragment extends TeamsCompariso
             for (int i = 0; i < teams.size(); i++) {
                 List<Document> teamDocuments = allMatchDocuments.get(i);
 
-                int cycles = 0;
+                int maxAmp = 0;
                 for (Document document : teamDocuments) {
                     Map<String, Object> data = (Map<String, Object>) document.getProperty("data");
-                    if (data.get("tele_made_speaker") == null) {
-                        return;
-                    }
-                    if (data.get("tele_missed_speaker") == null) {
-                        return;
-                    }
                     if (data.get("tele_made_amp") == null) {
                         return;
                     }
-                    if (data.get("tele_passes") == null) {
-                        return;
+                    if (maxAmp < (int) data.get("tele_made_amp")) {
+                        maxAmp = (int) data.get("tele_made_amp");
                     }
-                    if (data.get("Trap") == null) {
-                        return;
-                    }
-                    cycles += Double.valueOf(Integer.toString((int) data.get("tele_made_speaker")));
-                    cycles += Double.valueOf(Integer.toString((int) data.get("tele_missed_speaker")));
-                    cycles += Double.valueOf(Integer.toString((int) data.get("tele_made_amp"))) * 1.25;
-                    cycles += Double.valueOf(Integer.toString((int) data.get("tele_passes"))) * 0.6;
-                    cycles += Double.valueOf(((String) data.get("Trap")).substring(2, 3)) * 2.0;
                 }
 
-                float average = (float) cycles / (float) teamDocuments.size();
-
                 if (spinner.getSelectedItem().equals("Team Number")) {
-                    barValues.add(average);
+                    barValues.add((float) maxAmp);
                     xAxisLabels.add(teams.get(i).toString().substring(0, teams.get(i).toString().length() - 2));
                 } else if (spinner.getSelectedItem().equals("Descending")) {
                     if (barValues.size() == 0) {
-                        barValues.add(average);
+                        barValues.add((float) maxAmp);
                         xAxisLabels.add(teams.get(i).toString().substring(0, teams.get(i).toString().length() - 2));
                     } else {
                         for (int m = 0; m < barValues.size(); m++) {
-                            if (average >= barValues.get(m)) {
-                                barValues.add(m, average);
+                            if ((float) maxAmp >= barValues.get(m)) {
+                                barValues.add(m, (float) maxAmp);
                                 xAxisLabels.add(m, teams.get(i).toString().substring(0, teams.get(i).toString().length() - 2));
                                 break;
                             } else if (m == barValues.size() - 1) {
-                                barValues.add(average);
+                                barValues.add((float) maxAmp);
                                 xAxisLabels.add(teams.get(i).toString().substring(0, teams.get(i).toString().length() - 2));
                                 break;
                             }
@@ -122,23 +105,23 @@ public class TeamsComparisonAverageWeightedCyclesFragment extends TeamsCompariso
                     }
                 } else if (spinner.getSelectedItem().equals("Ascending")) {
                     if (barValues.size() == 0) {
-                        barValues.add(average);
+                        barValues.add((float) maxAmp);
                         xAxisLabels.add(teams.get(i).toString().substring(0, teams.get(i).toString().length() - 2));
                     } else {
                         for (int n = 0; n < barValues.size(); n++) {
-                            if (average <= barValues.get(n)) {
-                                barValues.add(n, average);
+                            if ((float) maxAmp <= barValues.get(n)) {
+                                barValues.add(n, (float) maxAmp);
                                 xAxisLabels.add(n, teams.get(i).toString().substring(0, teams.get(i).toString().length() - 2));
                                 break;
                             } else if (n == barValues.size() - 1) {
-                                barValues.add(average);
+                                barValues.add((float) maxAmp);
                                 xAxisLabels.add(teams.get(i).toString().substring(0, teams.get(i).toString().length() - 2));
                                 break;
                             }
                         }
                     }
                 }
-                max.add((float) average);
+                max.add((float) maxAmp);
             }
 
             float lineMax = 0f;
@@ -161,7 +144,7 @@ public class TeamsComparisonAverageWeightedCyclesFragment extends TeamsCompariso
             yAxis.setAxisLineColor(Color.BLACK);
             yAxis.setLabelCount((int) (lineMax / 5));
 
-            BarDataSet dataSet = new BarDataSet(entries, "Average Weighted Cycles");
+            BarDataSet dataSet = new BarDataSet(entries, "Max Amp");
             dataSet.setColors(Color.BLACK);
             BarData data = new BarData(dataSet);
             chart.setData(data);

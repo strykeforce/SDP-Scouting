@@ -13,11 +13,18 @@ import org.wildstang.wildrank.androidv2.fragments.TeamsComparison.TeamsCompariso
 import org.wildstang.wildrank.androidv2.fragments.TeamsComparison.TeamsComparisonAveragePassesFragment;
 import org.wildstang.wildrank.androidv2.fragments.TeamsComparison.TeamsComparisonAverageSpeakerFragment;
 import org.wildstang.wildrank.androidv2.fragments.TeamsComparison.TeamsComparisonAverageWeightedCyclesFragment;
+import org.wildstang.wildrank.androidv2.fragments.TeamsComparison.TeamsComparisonMaxAmpAndSpeakerFragment;
+import org.wildstang.wildrank.androidv2.fragments.TeamsComparison.TeamsComparisonMaxAmpFragment;
+import org.wildstang.wildrank.androidv2.fragments.TeamsComparison.TeamsComparisonMaxAutoFragment;
+import org.wildstang.wildrank.androidv2.fragments.TeamsComparison.TeamsComparisonMaxCyclesFragment;
+import org.wildstang.wildrank.androidv2.fragments.TeamsComparison.TeamsComparisonMaxPassesFragment;
+import org.wildstang.wildrank.androidv2.fragments.TeamsComparison.TeamsComparisonMaxSpeakerFragment;
+import org.wildstang.wildrank.androidv2.fragments.TeamsComparison.TeamsComparisonMaxWeightedCyclesFragment;
 
 import java.util.List;
 
 public class TeamsComparisonFragmentPagerAdapter extends FragmentStatePagerAdapter {
-    static final int NUM_FRAGMENTS = 7;
+    static final int NUM_FRAGMENTS = 14;
 
     private TeamsComparisonAverageAutoFragment averageAutoFragment;
     private TeamsComparisonAverageAmpFragment averageAmpFragment;
@@ -26,6 +33,13 @@ public class TeamsComparisonFragmentPagerAdapter extends FragmentStatePagerAdapt
     private TeamsComparisonAveragePassesFragment averagePassesFragment;
     private TeamsComparisonAverageCyclesFragment averageCyclesFragment;
     private TeamsComparisonAverageWeightedCyclesFragment averageWeightedCyclesFragment;
+    private TeamsComparisonMaxAutoFragment maxAutoFragment;
+    private TeamsComparisonMaxAmpFragment maxAmpFragment;
+    private TeamsComparisonMaxSpeakerFragment maxSpeakerFragment;
+    private TeamsComparisonMaxAmpAndSpeakerFragment maxAmpAndSpeakerFragment;
+    private TeamsComparisonMaxPassesFragment maxPassesFragment;
+    private TeamsComparisonMaxCyclesFragment maxCyclesFragment;
+    private TeamsComparisonMaxWeightedCyclesFragment maxWeightedCyclesFragment;
 
     public TeamsComparisonFragmentPagerAdapter(FragmentManager fm) {
         super(fm);
@@ -40,6 +54,13 @@ public class TeamsComparisonFragmentPagerAdapter extends FragmentStatePagerAdapt
         averagePassesFragment = new TeamsComparisonAveragePassesFragment();
         averageCyclesFragment = new TeamsComparisonAverageCyclesFragment();
         averageWeightedCyclesFragment = new TeamsComparisonAverageWeightedCyclesFragment();
+        maxAutoFragment = new TeamsComparisonMaxAutoFragment();
+        maxAmpFragment = new TeamsComparisonMaxAmpFragment();
+        maxSpeakerFragment = new TeamsComparisonMaxSpeakerFragment();
+        maxAmpAndSpeakerFragment = new TeamsComparisonMaxAmpAndSpeakerFragment();
+        maxPassesFragment = new TeamsComparisonMaxPassesFragment();
+        maxCyclesFragment = new TeamsComparisonMaxCyclesFragment();
+        maxWeightedCyclesFragment = new TeamsComparisonMaxWeightedCyclesFragment();
     }
 
     @Override
@@ -59,6 +80,20 @@ public class TeamsComparisonFragmentPagerAdapter extends FragmentStatePagerAdapt
                 return averageCyclesFragment;
             case 6:
                 return averageWeightedCyclesFragment;
+            case 7:
+                return maxAutoFragment;
+            case 8:
+                return maxAmpFragment;
+            case 9:
+                return maxSpeakerFragment;
+            case 10:
+                return maxAmpAndSpeakerFragment;
+            case 11:
+                return maxPassesFragment;
+            case 12:
+                return maxCyclesFragment;
+            case 13:
+                return maxWeightedCyclesFragment;
             default:
                 return null;
         }
@@ -86,6 +121,20 @@ public class TeamsComparisonFragmentPagerAdapter extends FragmentStatePagerAdapt
                 return "Average Cycles";
             case 6:
                 return "Average Weighted Cycles";
+            case 7:
+                return "Max Auto";
+            case 8:
+                return "Max Amp";
+            case 9:
+                return "Max Speaker";
+            case 10:
+                return "Max Amp and Speaker";
+            case 11:
+                return "Max Passes";
+            case 12:
+                return "Max Cycles";
+            case 13:
+                return "Max Weighted Cycles";
             default:
                 return "ERROR INVALID POSITION";
         }
@@ -99,5 +148,12 @@ public class TeamsComparisonFragmentPagerAdapter extends FragmentStatePagerAdapt
         averagePassesFragment.acceptNewData(allMatchDocuments);
         averageCyclesFragment.acceptNewData(allMatchDocuments);
         averageWeightedCyclesFragment.acceptNewData(allMatchDocuments);
+        maxAutoFragment.acceptNewData(allMatchDocuments);
+        maxAmpFragment.acceptNewData(allMatchDocuments);
+        maxSpeakerFragment.acceptNewData(allMatchDocuments);
+        maxAmpAndSpeakerFragment.acceptNewData(allMatchDocuments);
+        maxPassesFragment.acceptNewData(allMatchDocuments);
+        maxCyclesFragment.acceptNewData(allMatchDocuments);
+        maxWeightedCyclesFragment.acceptNewData(allMatchDocuments);
     }
 }
