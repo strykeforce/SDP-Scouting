@@ -2,6 +2,7 @@ package org.wildstang.wildrank.androidv2.fragments.TeamsComparison;
 
 import android.graphics.Color;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -32,14 +33,24 @@ import java.util.List;
 import java.util.Map;
 
 public class TeamsComparisonMaxPassesFragment extends TeamsComparisonFragment {
+    List<List<Document>> data;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_comparison_chart, container, false);
     }
 
     @Override
+    public void onViewCreated(View view, @Nullable @androidx.annotation.Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        acceptNewData(data);
+    }
+
+    @Override
     public void acceptNewData(List<List<Document>> allMatchDocuments) {
-        if (allMatchDocuments == null || allMatchDocuments.size() == 0) {
+        data = allMatchDocuments;
+
+        if (allMatchDocuments == null || allMatchDocuments.size() == 0 || getView() == null) {
             return;
         }
 
