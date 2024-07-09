@@ -46,8 +46,12 @@ public class PicklistAdapter extends ArrayAdapter<QueryRow> {
         return convertView;
     }
 
-    private static class ViewHolder {
+    public static class ViewHolder {
         TextView teamNumber;
         TextView teamName;
+
+        public String getNumber() {
+            return (String) teamNumber.getText();
+        }
     }
 }

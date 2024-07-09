@@ -86,6 +86,13 @@ public class PicklistAutoFragment extends PicklistMainFragment {
             }
         });
 
+        picksList.setOnScrollChangeListener(new View.OnScrollChangeListener() {
+            @Override
+            public void onScrollChange(View view, int i, int i1, int i2, int i3) {
+                adjustTint(picksList);
+            }
+        });
+
         return view;
     }
 
@@ -136,5 +143,9 @@ public class PicklistAutoFragment extends PicklistMainFragment {
 
     public boolean onTeamDragged(ListView tList, ListView oList, DragEvent event) {
         return(super.onTeamDragged(tList, oList, event));
+    }
+
+    public void adjustTint(ListView list) {
+        super.adjustTint(list);
     }
 }

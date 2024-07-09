@@ -32,12 +32,13 @@ import org.wildstang.wildrank.androidv2.views.data.MatchDataView;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class PicklistMainFragment extends Fragment {
     private ViewPager pager;
     private SlidingTabs tabs;
     private PicklistAdapter listAdapter;
-    private ArrayList<Integer> picked = new ArrayList<>();
+    private ArrayList<String> picked = new ArrayList<>();
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_picklist_main, container, false);
@@ -90,10 +91,10 @@ public class PicklistMainFragment extends Fragment {
 
             if (((ColorDrawable) background.getCurrent()).getColor() == 0) {
                 view.setBackgroundColor(getResources().getColor(R.color.black_tint));
-                picked.add(position);
+                picked.add(((PicklistAdapter.ViewHolder) view.getTag()).getNumber());
             } else if (((ColorDrawable) background.getCurrent()).getColor() == getResources().getColor(R.color.black_tint)) {
                 view.setBackgroundColor(0);
-                picked.remove(position);
+                picked.remove(((PicklistAdapter.ViewHolder) view.getTag()).getNumber());
             }
         }
     }
@@ -115,6 +116,22 @@ public class PicklistMainFragment extends Fragment {
         view.startDragAndDrop(dragData, shadowBuilder, new Pair<>(queryRow, adapter), 0);
     }
 
+    public void adjustTint(ListView list) {
+        for (int i = 0; i < list.getChildCount(); i++) {
+            boolean tint = false;
+            for (int j = 0; j < picked.size(); j++) {
+                if (Objects.equals(((PicklistAdapter.ViewHolder) list.getChildAt(i).getTag()).getNumber(), picked.get(j))) {
+                    tint = true;
+                }
+            }
+            if (tint) {
+                list.getChildAt(i).setBackgroundColor(getResources().getColor(R.color.black_tint));
+            } else {
+                list.getChildAt(i).setBackgroundColor(0);
+            }
+        }
+    }
+
     public boolean onTeamDragged(ListView tList, ListView oList, DragEvent event) {
         int action = event.getAction();
         switch (action) {
@@ -127,82 +144,20 @@ public class PicklistMainFragment extends Fragment {
 
                     if (targetAdapter.getCount() == 0) {
                         sourceAdapter.remove(draggedItem);
-                        targetAdapter.add(draggedItem);
+                        targetAdapter.insert(draggedItem, 0);
                     } else {
                         int position = tList.pointToPosition((int) event.getX(), (int) event.getY());
                         if (position != ListView.INVALID_POSITION) {
-                            int firstPosition = sourceAdapter.getPosition(draggedItem);
                             sourceAdapter.remove(draggedItem);
                             targetAdapter.insert(draggedItem, position);
                             targetAdapter.notifyDataSetChanged();
                             if (tList.getTransitionName().equals("teamsList")) {
                                 if (sourceAdapter != targetAdapter) {
-                                    for (int c = 0; c < picked.size(); c++) {
-                                        if (picked.get(c) == firstPosition) {
-                                            picked.remove(c);
-                                        }
-                                    }
-                                    for (int s = 0; s < picked.size(); s++) {
-                                        if (picked.get(s) >= position) {
-                                            picked.add(s, picked.get(s) - 1);
-                                            picked.remove(s + 1);
-                                        }
-                                    }
-                                    for (int i = 0; i < oList.getChildCount(); i++) {
-                                        boolean tint = false;
-                                        for (int j = 0; j < picked.size(); j++) {
-                                            if (i == picked.get(j)) {
-                                                tint = true;
-                                            }
-                                        }
-                                        if (tint == true) {
-                                            oList.getChildAt(i).setBackgroundColor(getResources().getColor(R.color.black_tint));
-                                        } else if (tint == false) {
-                                            oList.getChildAt(i).setBackgroundColor(0);
-                                        }
-                                    }
+                                    adjustTint(oList);
                                 }
+                            } else if (tList.getTransitionName().equals("picksList")) {
+                                adjustTint(tList);
                             }
-                            if (tList.getTransitionName().equals("picksList")) {
-                                boolean tinted = false;
-                                if (sourceAdapter == targetAdapter) {
-                                    for (int c = 0; c < picked.size(); c++) {
-                                        if (picked.get(c) == firstPosition) {
-                                            picked.remove(c);
-                                            tinted = true;
-                                        }
-                                    }
-                                    for (int r = 0; r < picked.size(); r++) {
-                                        if (picked.get(r) >= firstPosition) {
-                                            picked.add(r, picked.get(r) - 1);
-                                            picked.remove(r + 1);
-                                        }
-                                    }
-                                }
-                                for (int a = 0; a < picked.size(); a++) {
-                                    if (picked.get(a) >= position) {
-                                        picked.add(a, picked.get(a) + 1);
-                                        picked.remove(a + 1);
-                                    }
-                                }
-                                if (tinted == true) {
-                                    picked.add(position);
-                                }
-                                for (int i = 0; i < tList.getChildCount(); i++) {
-                                    boolean tint = false;
-                                    for (int j = 0; j < picked.size(); j++) {
-                                        if (i == picked.get(j)) {
-                                            tint = true;
-                                        }
-                                    }
-                                    if (tint == true) {
-                                        tList.getChildAt(i).setBackgroundColor(getResources().getColor(R.color.black_tint));
-                                    } else if (tint == false) {
-                                        tList.getChildAt(i).setBackgroundColor(0);
-                                    }
-                                }
-                            }
-                            System.out.println(picked);
                             return true;
                         }
                     }
