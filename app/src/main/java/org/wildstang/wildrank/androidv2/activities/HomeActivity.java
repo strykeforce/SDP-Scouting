@@ -65,6 +65,20 @@ public class HomeActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        if (PreferenceManager.getDefaultSharedPreferences(this).contains("teamsArray_size")) {
+            int teamsArrayStrings = PreferenceManager.getDefaultSharedPreferences(this).getInt("teamsArray_size", 0);
+            for(int m = 0; m < teamsArrayStrings; m++) {
+                PreferenceManager.getDefaultSharedPreferences(this).edit().remove("teamsArray_" + m).apply();
+            }
+            PreferenceManager.getDefaultSharedPreferences(this).edit().remove("teamsArray_size").apply();
+            int picksArrayStrings = PreferenceManager.getDefaultSharedPreferences(this).getInt("picksArray_size", 0);
+            for(int n = 0; n < picksArrayStrings; n++) {
+                PreferenceManager.getDefaultSharedPreferences(this).edit().remove("picksArray_" + n).apply();
+            }
+            PreferenceManager.getDefaultSharedPreferences(this).edit().remove("picksArray_size").apply();
+        }
+
         setContentView(R.layout.activity_home);
 
         toolbar = (Toolbar) findViewById(R.id.toolbar);

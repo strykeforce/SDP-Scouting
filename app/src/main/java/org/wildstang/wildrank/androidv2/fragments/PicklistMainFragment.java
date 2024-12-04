@@ -37,13 +37,10 @@ import java.util.Objects;
 public class PicklistMainFragment extends Fragment {
     private ViewPager pager;
     private SlidingTabs tabs;
-    private PicklistAdapter listAdapter;
     private ArrayList<String> picked = new ArrayList<>();
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_picklist_main, container, false);
-
-        listAdapter = new PicklistAdapter(getActivity(), new ArrayList<>());
 
         pager = (ViewPager) view.findViewById(R.id.view_pager);
         tabs = (SlidingTabs) view.findViewById(R.id.tabs);
@@ -167,5 +164,11 @@ public class PicklistMainFragment extends Fragment {
                 break;
         }
         return false;
+    }
+
+    @Override
+    public void onDestroy() {
+        ((PicklistFragmentPagerAdapter) pager.getAdapter()).getItem(0).onDestroy();
+        super.onDestroy();
     }
 }
