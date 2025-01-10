@@ -4,8 +4,6 @@ import android.app.AlertDialog;
 import android.content.ClipData;
 import android.content.ClipDescription;
 import android.graphics.Point;
-import android.graphics.drawable.ColorDrawable;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
@@ -81,17 +79,17 @@ public class PicklistMainFragment extends Fragment {
             AlertDialog.Builder info = new AlertDialog.Builder(getActivity()).setView(dialogView).setNegativeButton("Exit", (dialog, which) -> dialog.dismiss());
             info.show();
         } else if (list.getTransitionName().equals("picksList")) {
-            Drawable background = view.getBackground();
 
-            int[] stateSet = {android.R.attr.state_enabled};
-            background.setState(stateSet);
-
-            if (((ColorDrawable) background.getCurrent()).getColor() == 0) {
+            if (!((PicklistAdapter.ViewHolder) view.getTag()).getTint()) {
                 view.setBackgroundColor(getResources().getColor(R.color.black_tint));
+                ((PicklistAdapter.ViewHolder) view.getTag()).updateTint(true);
                 picked.add(((PicklistAdapter.ViewHolder) view.getTag()).getNumber());
-            } else if (((ColorDrawable) background.getCurrent()).getColor() == getResources().getColor(R.color.black_tint)) {
+                System.out.println("Main: " + (PicklistAdapter.ViewHolder) view.getTag());
+            } else if (((PicklistAdapter.ViewHolder) view.getTag()).getTint()) {
                 view.setBackgroundColor(0);
+                ((PicklistAdapter.ViewHolder) view.getTag()).updateTint(false);
                 picked.remove(((PicklistAdapter.ViewHolder) view.getTag()).getNumber());
+                System.out.println("Main: " + (PicklistAdapter.ViewHolder) view.getTag());
             }
         }
     }
@@ -113,6 +111,14 @@ public class PicklistMainFragment extends Fragment {
         view.startDragAndDrop(dragData, shadowBuilder, new Pair<>(queryRow, adapter), 0);
     }
 
+    public void setPicked(ArrayList<String> oldPicked) {
+        picked = oldPicked;
+    }
+
+    public ArrayList<String> getPicked() {
+        return picked;
+    }
+
     public void adjustTint(ListView list) {
         for (int i = 0; i < list.getChildCount(); i++) {
             boolean tint = false;
@@ -123,8 +129,10 @@ public class PicklistMainFragment extends Fragment {
             }
             if (tint) {
                 list.getChildAt(i).setBackgroundColor(getResources().getColor(R.color.black_tint));
+                ((PicklistAdapter.ViewHolder) list.getChildAt(i).getTag()).updateTint(true);
             } else {
                 list.getChildAt(i).setBackgroundColor(0);
+                ((PicklistAdapter.ViewHolder) list.getChildAt(i).getTag()).updateTint(false);
             }
         }
     }

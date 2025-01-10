@@ -123,7 +123,7 @@ public class PicklistFirstFragment extends PicklistMainFragment {
             queryRows.add(row);
         }
 
-        if (!PreferenceManager.getDefaultSharedPreferences(getActivity()).contains("teamsArray_size")) {
+        if (!PreferenceManager.getDefaultSharedPreferences(getActivity()).contains("firstTeamsArray_size")) {
             Parcelable teamsState = teamsList.onSaveInstanceState();
             teamsAdapter = new PicklistAdapter(getActivity(), queryRows);
             teamsList.setAdapter(teamsAdapter);
@@ -137,9 +137,9 @@ public class PicklistFirstFragment extends PicklistMainFragment {
             picksList.onRestoreInstanceState(picksState);
         } else {
             List<QueryRow> teamsQueryRows = new ArrayList<>();
-            for (int i = 0; i < PreferenceManager.getDefaultSharedPreferences(getActivity()).getInt("teamsArray_size", 0); i++) {
+            for (int i = 0; i < PreferenceManager.getDefaultSharedPreferences(getActivity()).getInt("firstTeamsArray_size", 0); i++) {
                 QueryRow teamsRow = null;
-                String teamsNumber = PreferenceManager.getDefaultSharedPreferences(getActivity()).getString("teamsArray_" + i, "");
+                String teamsNumber = PreferenceManager.getDefaultSharedPreferences(getActivity()).getString("firstTeamsArray_" + i, "");
                 for (int m = 0; m < queryRows.size(); m++) {
                     if (Objects.equals(queryRows.get(m).getKey().toString(), teamsNumber)) {
                         teamsRow = queryRows.get(m);
@@ -155,9 +155,9 @@ public class PicklistFirstFragment extends PicklistMainFragment {
             teamsList.onRestoreInstanceState(teamsState);
 
             List<QueryRow> picksQueryRows = new ArrayList<>();
-            for (int j = 0; j < PreferenceManager.getDefaultSharedPreferences(getActivity()).getInt("picksArray_size", 0); j++) {
+            for (int j = 0; j < PreferenceManager.getDefaultSharedPreferences(getActivity()).getInt("firstPicksArray_size", 0); j++) {
                 QueryRow picksRow = null;
-                String picksNumber = PreferenceManager.getDefaultSharedPreferences(getActivity()).getString("picksArray_" + j, "");
+                String picksNumber = PreferenceManager.getDefaultSharedPreferences(getActivity()).getString("firstPicksArray_" + j, "");
                 for (int n = 0; n < queryRows.size(); n++) {
                     if (Objects.equals(queryRows.get(n).getKey().toString(), picksNumber)) {
                         picksRow = queryRows.get(n);
@@ -171,6 +171,13 @@ public class PicklistFirstFragment extends PicklistMainFragment {
             picksAdapter = new PicklistAdapter(getActivity(), picksQueryRows);
             picksList.setAdapter(picksAdapter);
             picksList.onRestoreInstanceState(picksState);
+
+            ArrayList<String> oldPicked = new ArrayList<>();
+            for(int m = 0; m < PreferenceManager.getDefaultSharedPreferences(getActivity()).getInt("firstPicked_size", 0); m++) {
+                oldPicked.add(PreferenceManager.getDefaultSharedPreferences(getActivity()).getString("firstPicked_" + m, ""));
+            }
+            setPicked(oldPicked);
+            adjustTint(picksList);
         }
     }
 
@@ -191,28 +198,25 @@ public class PicklistFirstFragment extends PicklistMainFragment {
         super.adjustTint(list);
     }
 
-    @Override
-    public Object getSharedElementEnterTransition() {
-        return picksList;
-    }
-
     @SuppressLint("MissingSuperCall")
     @Override
     public void onDestroy() {
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getActivity());
         SharedPreferences.Editor editor = prefs.edit();
 
-        if (prefs.contains("teamsArray_size")) {
-            int teamsArrayStrings = prefs.getInt("teamsArray_size", 0);
-            for(int m = 0; m < teamsArrayStrings; m++) {
-                editor.remove("teamsArray_" + m);
+        if (prefs.contains("firstTeamsArray_size")) {
+            for(int m = 0; m < prefs.getInt("firstTeamsArray_size", 0); m++) {
+                editor.remove("firstTeamsArray_" + m);
             }
-            editor.remove("teamsArray_size");
-            int picksArrayStrings = prefs.getInt("picksArray_size", 0);
-            for(int n = 0; n < picksArrayStrings; n++) {
-                editor.remove("picksArray_" + n);
+            editor.remove("firstTeamsArray_size");
+            for(int n = 0; n < prefs.getInt("firstPicksArray_size", 0); n++) {
+                editor.remove("firstPicksArray_" + n);
             }
-            editor.remove("picksArray_size");
+            editor.remove("firstPicksArray_size");
+            for(int u = 0; u < prefs.getInt("firstPicked_size", 0); u++) {
+                editor.remove("firstPicked_" + u);
+            }
+            editor.remove("firstPicked_size");
         }
 
         ArrayList<String> teamsArray = new ArrayList<>();
@@ -224,13 +228,17 @@ public class PicklistFirstFragment extends PicklistMainFragment {
             picksArray.add(((QueryRow) picksList.getAdapter().getItem(d)).getKey().toString());
         }
 
-        editor.putInt("teamsArray_size", teamsArray.size());
+        editor.putInt("firstTeamsArray_size", teamsArray.size());
         for(int i = 0; i < teamsArray.size(); i++) {
-            editor.putString("teamsArray_" + i, teamsArray.get(i));
+            editor.putString("firstTeamsArray_" + i, teamsArray.get(i));
         }
-        editor.putInt("picksArray_size", picksArray.size());
+        editor.putInt("firstPicksArray_size", picksArray.size());
         for(int j = 0; j < picksArray.size(); j++) {
-            editor.putString("picksArray_" + j, picksArray.get(j));
+            editor.putString("firstPicksArray_" + j, picksArray.get(j));
+        }
+        editor.putInt("firstPicked_size", getPicked().size());
+        for(int n = 0; n < getPicked().size(); n++) {
+            editor.putString("firstPicked_" + n, getPicked().get(n));
         }
 
         editor.commit();
