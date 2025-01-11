@@ -11,7 +11,7 @@ android {
         minSdkVersion 20
         targetSdkVersion 23
         versionCode 1
-        versionName "2024_SEASON_FINAL"
+        versionName "2024_SEASON_STJOE2"
     }
 
     compileOptions {
