@@ -3,9 +3,8 @@ package org.wildstang.wildrank.androidv2.fragments;
 import android.app.AlertDialog;
 import android.content.ClipData;
 import android.content.ClipDescription;
+import android.content.SharedPreferences;
 import android.graphics.Point;
-import android.graphics.drawable.ColorDrawable;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
@@ -32,17 +31,14 @@ import org.wildstang.wildrank.androidv2.views.data.MatchDataView;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class PicklistMainFragment extends Fragment {
     private ViewPager pager;
     private SlidingTabs tabs;
-    private PicklistAdapter listAdapter;
-    private ArrayList<Integer> picked = new ArrayList<>();
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_picklist_main, container, false);
-
-        listAdapter = new PicklistAdapter(getActivity(), new ArrayList<>());
 
         pager = (ViewPager) view.findViewById(R.id.view_pager);
         tabs = (SlidingTabs) view.findViewById(R.id.tabs);
@@ -83,18 +79,36 @@ public class PicklistMainFragment extends Fragment {
             AlertDialog.Builder info = new AlertDialog.Builder(getActivity()).setView(dialogView).setNegativeButton("Exit", (dialog, which) -> dialog.dismiss());
             info.show();
         } else if (list.getTransitionName().equals("picksList")) {
-            Drawable background = view.getBackground();
+            SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getActivity());
+            SharedPreferences.Editor editor = prefs.edit();
 
-            int[] stateSet = {android.R.attr.state_enabled};
-            background.setState(stateSet);
-
-            if (((ColorDrawable) background.getCurrent()).getColor() == 0) {
+            if (!((PicklistAdapter.ViewHolder) view.getTag()).getTint()) {
                 view.setBackgroundColor(getResources().getColor(R.color.black_tint));
-                picked.add(position);
-            } else if (((ColorDrawable) background.getCurrent()).getColor() == getResources().getColor(R.color.black_tint)) {
+                ((PicklistAdapter.ViewHolder) view.getTag()).updateTint(true);
+
+                int pickedSize;
+                if (prefs.contains("picked_size")) {
+                    pickedSize = prefs.getInt("picked_size", 0);
+                    editor.remove("picked_size");
+                } else pickedSize = 0;
+                editor.putInt("picked_size", pickedSize + 1);
+                editor.putString("picked_" + pickedSize, ((PicklistAdapter.ViewHolder) view.getTag()).getNumber());
+            } else if (((PicklistAdapter.ViewHolder) view.getTag()).getTint()) {
                 view.setBackgroundColor(0);
-                picked.remove(position);
+                ((PicklistAdapter.ViewHolder) view.getTag()).updateTint(false);
+
+                int pickedSize = prefs.getInt("picked_size", 0);
+                editor.remove("picked_size");
+                editor.putInt("picked_size", pickedSize - 1);
+                for(int i = 0; i < pickedSize; i++) {
+                    if (prefs.getString("picked_" + i, "") == ((PicklistAdapter.ViewHolder) view.getTag()).getNumber()) {
+                        editor.remove("picked_" + 1);
+                        break;
+                    }
+                }
             }
+
+            editor.commit();
         }
     }
 
@@ -115,6 +129,24 @@ public class PicklistMainFragment extends Fragment {
         view.startDragAndDrop(dragData, shadowBuilder, new Pair<>(queryRow, adapter), 0);
     }
 
+    public void adjustTint(ListView list) {
+        for (int i = 0; i < list.getChildCount(); i++) {
+            boolean tint = false;
+            for (int j = 0; j < PreferenceManager.getDefaultSharedPreferences(getActivity()).getInt("picked_size", 0); j++) {
+                if (Objects.equals(((PicklistAdapter.ViewHolder) list.getChildAt(i).getTag()).getNumber(), PreferenceManager.getDefaultSharedPreferences(getActivity()).getString("picked_" + j, ""))) {
+                    tint = true;
+                }
+            }
+            if (tint) {
+                list.getChildAt(i).setBackgroundColor(getResources().getColor(R.color.black_tint));
+                ((PicklistAdapter.ViewHolder) list.getChildAt(i).getTag()).updateTint(true);
+            } else {
+                list.getChildAt(i).setBackgroundColor(0);
+                ((PicklistAdapter.ViewHolder) list.getChildAt(i).getTag()).updateTint(false);
+            }
+        }
+    }
+
     public boolean onTeamDragged(ListView tList, ListView oList, DragEvent event) {
         int action = event.getAction();
         switch (action) {
@@ -127,82 +159,20 @@ public class PicklistMainFragment extends Fragment {
 
                     if (targetAdapter.getCount() == 0) {
                         sourceAdapter.remove(draggedItem);
-                        targetAdapter.add(draggedItem);
+                        targetAdapter.insert(draggedItem, 0);
                     } else {
                         int position = tList.pointToPosition((int) event.getX(), (int) event.getY());
                         if (position != ListView.INVALID_POSITION) {
-                            int firstPosition = sourceAdapter.getPosition(draggedItem);
                             sourceAdapter.remove(draggedItem);
                             targetAdapter.insert(draggedItem, position);
                             targetAdapter.notifyDataSetChanged();
                             if (tList.getTransitionName().equals("teamsList")) {
                                 if (sourceAdapter != targetAdapter) {
-                                    for (int c = 0; c < picked.size(); c++) {
-                                        if (picked.get(c) == firstPosition) {
-                                            picked.remove(c);
-                                        }
-                                    }
-                                    for (int s = 0; s < picked.size(); s++) {
-                                        if (picked.get(s) >= position) {
-                                            picked.add(s, picked.get(s) - 1);
-                                            picked.remove(s + 1);
-                                        }
-                                    }
-                                    for (int i = 0; i < oList.getChildCount(); i++) {
-                                        boolean tint = false;
-                                        for (int j = 0; j < picked.size(); j++) {
-                                            if (i == picked.get(j)) {
-                                                tint = true;
-                                            }
-                                        }
-                                        if (tint == true) {
-                                            oList.getChildAt(i).setBackgroundColor(getResources().getColor(R.color.black_tint));
-                                        } else if (tint == false) {
-                                            oList.getChildAt(i).setBackgroundColor(0);
-                                        }
-                                    }
+                                    adjustTint(oList);
                                 }
+                            } else if (tList.getTransitionName().equals("picksList")) {
+                                adjustTint(tList);
                             }
-                            if (tList.getTransitionName().equals("picksList")) {
-                                boolean tinted = false;
-                                if (sourceAdapter == targetAdapter) {
-                                    for (int c = 0; c < picked.size(); c++) {
-                                        if (picked.get(c) == firstPosition) {
-                                            picked.remove(c);
-                                            tinted = true;
-                                        }
-                                    }
-                                    for (int r = 0; r < picked.size(); r++) {
-                                        if (picked.get(r) >= firstPosition) {
-                                            picked.add(r, picked.get(r) - 1);
-                                            picked.remove(r + 1);
-                                        }
-                                    }
-                                }
-                                for (int a = 0; a < picked.size(); a++) {
-                                    if (picked.get(a) >= position) {
-                                        picked.add(a, picked.get(a) + 1);
-                                        picked.remove(a + 1);
-                                    }
-                                }
-                                if (tinted == true) {
-                                    picked.add(position);
-                                }
-                                for (int i = 0; i < tList.getChildCount(); i++) {
-                                    boolean tint = false;
-                                    for (int j = 0; j < picked.size(); j++) {
-                                        if (i == picked.get(j)) {
-                                            tint = true;
-                                        }
-                                    }
-                                    if (tint == true) {
-                                        tList.getChildAt(i).setBackgroundColor(getResources().getColor(R.color.black_tint));
-                                    } else if (tint == false) {
-                                        tList.getChildAt(i).setBackgroundColor(0);
-                                    }
-                                }
-                            }
-                            System.out.println(picked);
                             return true;
                         }
                     }
@@ -212,5 +182,12 @@ public class PicklistMainFragment extends Fragment {
                 break;
         }
         return false;
+    }
+
+    @Override
+    public void onDestroy() {
+        ((PicklistFragmentPagerAdapter) pager.getAdapter()).getItem(0).onDestroy();
+        ((PicklistFragmentPagerAdapter) pager.getAdapter()).getItem(1).onDestroy();
+        super.onDestroy();
     }
 }

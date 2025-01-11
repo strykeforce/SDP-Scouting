@@ -2,6 +2,7 @@ package org.wildstang.wildrank.androidv2.fragments.TeamsComparison;
 
 import android.graphics.Color;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.util.Pair;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -33,14 +34,24 @@ import java.util.List;
 import java.util.Map;
 
 public class TeamsComparisonAverageWeightedCyclesFragment extends TeamsComparisonFragment {
+    List<List<Document>> data;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_comparison_chart, container, false);
     }
 
     @Override
+    public void onViewCreated(View view, @Nullable @androidx.annotation.Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        acceptNewData(data);
+    }
+
+    @Override
     public void acceptNewData(List<List<Document>> allMatchDocuments) {
-        if (allMatchDocuments == null || allMatchDocuments.size() == 0) {
+        data = allMatchDocuments;
+
+        if (allMatchDocuments == null || allMatchDocuments.size() == 0 || getView() == null) {
             return;
         }
 
@@ -72,6 +83,8 @@ public class TeamsComparisonAverageWeightedCyclesFragment extends TeamsCompariso
 
             for (int i = 0; i < teams.size(); i++) {
                 List<Document> teamDocuments = allMatchDocuments.get(i);
+
+                if (teamDocuments == null) break;
 
                 int cycles = 0;
                 for (Document document : teamDocuments) {
@@ -161,7 +174,7 @@ public class TeamsComparisonAverageWeightedCyclesFragment extends TeamsCompariso
             yAxis.setAxisLineColor(Color.BLACK);
             yAxis.setLabelCount((int) (lineMax / 5));
 
-            BarDataSet dataSet = new BarDataSet(entries, "Average Cycles");
+            BarDataSet dataSet = new BarDataSet(entries, "Average Weighted Cycles");
             dataSet.setColors(Color.BLACK);
             BarData data = new BarData(dataSet);
             chart.setData(data);

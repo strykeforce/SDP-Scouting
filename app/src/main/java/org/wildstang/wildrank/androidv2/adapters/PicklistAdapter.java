@@ -10,7 +10,6 @@ import android.widget.TextView;
 import com.couchbase.lite.QueryRow;
 
 import org.wildstang.wildrank.androidv2.R;
-import org.wildstang.wildrank.androidv2.data.DatabaseManager;
 
 import java.util.List;
 import java.util.Map;
@@ -27,9 +26,10 @@ public class PicklistAdapter extends ArrayAdapter<QueryRow> {
         if (convertView == null) {
             LayoutInflater inflater = (LayoutInflater.from(getContext()));
             convertView = inflater.inflate(R.layout.list_item_team, null, false);
-            holder = new PicklistAdapter.ViewHolder();
+            holder = new ViewHolder();
             holder.teamNumber = (TextView) convertView.findViewById(R.id.team_number);
             holder.teamName = (TextView) convertView.findViewById(R.id.team_name);
+            holder.tinted = false;
             convertView.setTag(holder);
         } else {
             holder = (PicklistAdapter.ViewHolder) convertView.getTag();
@@ -46,8 +46,21 @@ public class PicklistAdapter extends ArrayAdapter<QueryRow> {
         return convertView;
     }
 
-    private static class ViewHolder {
+    public static class ViewHolder {
         TextView teamNumber;
         TextView teamName;
+        boolean tinted;
+
+        public String getNumber() {
+            return (String) teamNumber.getText();
+        }
+
+        public void updateTint(boolean change) {
+            tinted = change;
+        }
+
+        public boolean getTint() {
+            return tinted;
+        }
     }
 }

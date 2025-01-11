@@ -46,7 +46,8 @@ public class TeamSummariesGraphsFragment extends TeamSummariesFragment {
 
         button.setOnClickListener(v -> {
             ArrayList<BarEntry> entries = new ArrayList<>();
-            List<Pair<String, Float>> xValues = new ArrayList<>();
+            ArrayList<Float> barValues = new ArrayList<>();
+            ArrayList<String> xAxisLabels = new ArrayList<>();
             ArrayList<Float> max = new ArrayList<>();
 
             if (spinner.getSelectedItem().equals("Cycles")) {
@@ -70,15 +71,18 @@ public class TeamSummariesGraphsFragment extends TeamSummariesFragment {
 
                     max.add((float) cycles);
 
-                    if (xValues.size() == 0) {
-                        xValues.add(Pair.create(mNum.substring(start), (float) cycles));
+                    if (xAxisLabels.size() == 0) {
+                        barValues.add((float) cycles);
+                        xAxisLabels.add(mNum.substring(start));
                     } else {
-                        for (int k = 0; k < xValues.size(); k++) {
-                            if (Integer.valueOf(mNum.substring(start)) < Integer.valueOf((xValues.get(k)).first)) {
-                                xValues.add(k, Pair.create(mNum.substring(start), (float) cycles));
+                        for (int k = 0; k < xAxisLabels.size(); k++) {
+                            if (Integer.valueOf(mNum.substring(start)) < Integer.valueOf(xAxisLabels.get(k))) {
+                                barValues.add(k, (float) cycles);
+                                xAxisLabels.add(k, mNum.substring(start));
                                 break;
-                            } else if (k == xValues.size() - 1) {
-                                xValues.add(Pair.create(mNum.substring(start), (float) cycles));
+                            } else if (k == xAxisLabels.size() - 1) {
+                                barValues.add((float) cycles);
+                                xAxisLabels.add(mNum.substring(start));
                                 break;
                             }
                         }
@@ -105,15 +109,18 @@ public class TeamSummariesGraphsFragment extends TeamSummariesFragment {
 
                     max.add((float) cycles);
 
-                    if (xValues.size() == 0) {
-                        xValues.add(Pair.create(mNum.substring(start), (float) cycles));
+                    if (xAxisLabels.size() == 0) {
+                        barValues.add((float) cycles);
+                        xAxisLabels.add(mNum.substring(start));
                     } else {
-                        for (int k = 0; k < xValues.size(); k++) {
-                            if (Integer.valueOf(mNum.substring(start)) < Integer.valueOf((xValues.get(k)).first)) {
-                                xValues.add(k, Pair.create(mNum.substring(start), (float) cycles));
+                        for (int k = 0; k < xAxisLabels.size(); k++) {
+                            if (Integer.valueOf(mNum.substring(start)) < Integer.valueOf(xAxisLabels.get(k))) {
+                                barValues.add(k, (float) cycles);
+                                xAxisLabels.add(k, mNum.substring(start));
                                 break;
-                            } else if (k == xValues.size() - 1) {
-                                xValues.add(Pair.create(mNum.substring(start), (float) cycles));
+                            } else if (k == xAxisLabels.size() - 1) {
+                                barValues.add((float) cycles);
+                                xAxisLabels.add(mNum.substring(start));
                                 break;
                             }
                         }
@@ -134,15 +141,18 @@ public class TeamSummariesGraphsFragment extends TeamSummariesFragment {
 
                     max.add((float) ((int) data.get("tele_made_amp") + (int) data.get("tele_made_speaker")));
 
-                    if (xValues.size() == 0) {
-                        xValues.add(Pair.create(mNum.substring(start), (float) ((int) data.get("tele_made_amp") + (int) data.get("tele_made_speaker"))));
+                    if (xAxisLabels.size() == 0) {
+                        barValues.add((float) ((int) data.get("tele_made_amp") + (int) data.get("tele_made_speaker")));
+                        xAxisLabels.add(mNum.substring(start));
                     } else {
-                        for (int k = 0; k < xValues.size(); k++) {
-                            if (Integer.valueOf(mNum.substring(start)) < Integer.valueOf((xValues.get(k)).first)) {
-                                xValues.add(k, Pair.create(mNum.substring(start), (float) ((int) data.get("tele_made_amp") + (int) data.get("tele_made_speaker"))));
+                        for (int k = 0; k < xAxisLabels.size(); k++) {
+                            if (Integer.valueOf(mNum.substring(start)) < Integer.valueOf(xAxisLabels.get(k))) {
+                                barValues.add(k, (float) ((int) data.get("tele_made_amp") + (int) data.get("tele_made_speaker")));
+                                xAxisLabels.add(k, mNum.substring(start));
                                 break;
-                            } else if (k == xValues.size() - 1) {
-                                xValues.add(Pair.create(mNum.substring(start), (float) ((int) data.get("tele_made_amp") + (int) data.get("tele_made_speaker"))));
+                            } else if (k == xAxisLabels.size() - 1) {
+                                barValues.add((float) ((int) data.get("tele_made_amp") + (int) data.get("tele_made_speaker")));
+                                xAxisLabels.add(mNum.substring(start));
                                 break;
                             }
                         }
@@ -163,15 +173,18 @@ public class TeamSummariesGraphsFragment extends TeamSummariesFragment {
 
                     max.add((float) (int) data.get("tele_made_amp"));
 
-                    if (xValues.size() == 0) {
-                        xValues.add(Pair.create(mNum.substring(start), (float) (int) data.get("tele_made_amp")));
+                    if (xAxisLabels.size() == 0) {
+                        barValues.add((float) (int) data.get("tele_made_amp"));
+                        xAxisLabels.add(mNum.substring(start));
                     } else {
-                        for (int k = 0; k < xValues.size(); k++) {
-                            if (Integer.valueOf(mNum.substring(start)) < Integer.valueOf((xValues.get(k)).first)) {
-                                xValues.add(k, Pair.create(mNum.substring(start), (float) (int) data.get("tele_made_amp")));
+                        for (int k = 0; k < xAxisLabels.size(); k++) {
+                            if (Integer.valueOf(mNum.substring(start)) < Integer.valueOf(xAxisLabels.get(k))) {
+                                barValues.add(k, (float) (int) data.get("tele_made_amp"));
+                                xAxisLabels.add(k, mNum.substring(start));
                                 break;
-                            } else if (k == xValues.size() - 1) {
-                                xValues.add(Pair.create(mNum.substring(start), (float) (int) data.get("tele_made_amp")));
+                            } else if (k == xAxisLabels.size() - 1) {
+                                barValues.add((float) (int) data.get("tele_made_amp"));
+                                xAxisLabels.add(mNum.substring(start));
                                 break;
                             }
                         }
@@ -192,15 +205,50 @@ public class TeamSummariesGraphsFragment extends TeamSummariesFragment {
 
                     max.add((float) (int) data.get("tele_made_speaker"));
 
-                    if (xValues.size() == 0) {
-                        xValues.add(Pair.create(mNum.substring(start), (float) (int) data.get("tele_made_speaker")));
+                    if (xAxisLabels.size() == 0) {
+                        barValues.add((float) (int) data.get("tele_made_speaker"));
+                        xAxisLabels.add(mNum.substring(start));
                     } else {
-                        for (int k = 0; k < xValues.size(); k++) {
-                            if (Integer.valueOf(mNum.substring(start)) < Integer.valueOf((xValues.get(k)).first)) {
-                                xValues.add(k, Pair.create(mNum.substring(start), (float) (int) data.get("tele_made_speaker")));
+                        for (int k = 0; k < xAxisLabels.size(); k++) {
+                            if (Integer.valueOf(mNum.substring(start)) < Integer.valueOf(xAxisLabels.get(k))) {
+                                barValues.add(k, (float) (int) data.get("tele_made_speaker"));
+                                xAxisLabels.add(k, mNum.substring(start));
                                 break;
-                            } else if (k == xValues.size() - 1) {
-                                xValues.add(Pair.create(mNum.substring(start), (float) (int) data.get("tele_made_speaker")));
+                            } else if (k == xAxisLabels.size() - 1) {
+                                barValues.add((float) (int) data.get("tele_made_speaker"));
+                                xAxisLabels.add(mNum.substring(start));
+                                break;
+                            }
+                        }
+                    }
+                }
+            } else if (spinner.getSelectedItem().equals("Passes")) {
+                for (Document document : matchDocuments) {
+                    Map<String, Object> data = (Map<String, Object>) document.getProperty("data");
+
+                    String mNum = (String) document.getProperty("match_key");
+                    int start = 0;
+                    for (int i = mNum.length() - 1; i >= 0; i--) {
+                        if (mNum.charAt(i) == 'm') {
+                            start = i + 1;
+                            break;
+                        }
+                    }
+
+                    max.add((float) (int) data.get("tele_passes"));
+
+                    if (xAxisLabels.size() == 0) {
+                        barValues.add((float) (int) data.get("tele_passes"));
+                        xAxisLabels.add(mNum.substring(start));
+                    } else {
+                        for (int k = 0; k < xAxisLabels.size(); k++) {
+                            if (Integer.valueOf(mNum.substring(start)) < Integer.valueOf(xAxisLabels.get(k))) {
+                                barValues.add(k, (float) (int) data.get("tele_passes"));
+                                xAxisLabels.add(k, mNum.substring(start));
+                                break;
+                            } else if (k == xAxisLabels.size() - 1) {
+                                barValues.add((float) (int) data.get("tele_passes"));
+                                xAxisLabels.add(mNum.substring(start));
                                 break;
                             }
                         }
@@ -210,16 +258,14 @@ public class TeamSummariesGraphsFragment extends TeamSummariesFragment {
                 for (Document document : matchDocuments) {
                     Map<String, Object> data = (Map<String, Object>) document.getProperty("data");
                     int notes = 0;
-                    for (int i = 9; i < 11; i++) {
-                        if (data.get("redbutton" + i) != null) {
-                            for (int j = 0; j < ((ArrayList<Long>) data.get("redbutton" + i)).size(); j++) {
-                                notes++;
-                            }
+                    if (data.get("redbutton9") != null) {
+                        for (int j = 0; j < ((ArrayList<Long>) data.get("redbutton9")).size(); j++) {
+                            notes++;
                         }
-                        if (data.get("bluebutton" + i) != null) {
-                            for (int j = 0; j < ((ArrayList<Long>) data.get("bluebutton" + i)).size(); j++) {
-                                notes++;
-                            }
+                    }
+                    if (data.get("bluebutton9") != null) {
+                        for (int j = 0; j < ((ArrayList<Long>) data.get("bluebutton9")).size(); j++) {
+                            notes++;
                         }
                     }
 
@@ -234,15 +280,18 @@ public class TeamSummariesGraphsFragment extends TeamSummariesFragment {
 
                     max.add((float) notes);
 
-                    if (xValues.size() == 0) {
-                        xValues.add(Pair.create(mNum.substring(start), (float) notes));
+                    if (xAxisLabels.size() == 0) {
+                        barValues.add((float) notes);
+                        xAxisLabels.add(mNum.substring(start));
                     } else {
-                        for (int k = 0; k < xValues.size(); k++) {
-                            if (Integer.valueOf(mNum.substring(start)) < Integer.valueOf((xValues.get(k)).first)) {
-                                xValues.add(k, Pair.create(mNum.substring(start), (float) notes));
+                        for (int k = 0; k < xAxisLabels.size(); k++) {
+                            if (Integer.valueOf(mNum.substring(start)) < Integer.valueOf(xAxisLabels.get(k))) {
+                                barValues.add((float) notes);
+                                xAxisLabels.add(mNum.substring(start));
                                 break;
-                            } else if (k == xValues.size() - 1) {
-                                xValues.add(Pair.create(mNum.substring(start), (float) notes));
+                            } else if (k == xAxisLabels.size() - 1) {
+                                barValues.add((float) notes);
+                                xAxisLabels.add(mNum.substring(start));
                                 break;
                             }
                         }
@@ -259,10 +308,8 @@ public class TeamSummariesGraphsFragment extends TeamSummariesFragment {
             float increase = lineMax % 5;
             lineMax += (5 - increase);
 
-            ArrayList<String> format = new ArrayList<>();
-            for (int d = 0; d < xValues.size(); d++) {
-                entries.add(new BarEntry(d, xValues.get(d).second));
-                format.add(Integer.toString(d + 1));
+            for (int d = 0; d < barValues.size(); d++) {
+                entries.add(new BarEntry(d, barValues.get(d)));
             }
 
             YAxis yAxis = chart.getAxisLeft();
@@ -280,11 +327,11 @@ public class TeamSummariesGraphsFragment extends TeamSummariesFragment {
             chart.invalidate();
 
             chart.getXAxis().setDrawLabels(true);
-            chart.getXAxis().setValueFormatter(new IndexAxisValueFormatter(format));
+            chart.getXAxis().setValueFormatter(new IndexAxisValueFormatter(xAxisLabels));
             chart.getXAxis().setPosition(XAxis.XAxisPosition.BOTTOM);
             chart.getXAxis().setGranularity(1f);
             chart.getXAxis().setGranularityEnabled(true);
-            chart.getXAxis().setLabelCount(xValues.size());
+            chart.getXAxis().setLabelCount(xAxisLabels.size() + 1);
         });
     }
 }

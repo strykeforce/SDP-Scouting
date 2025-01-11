@@ -65,6 +65,30 @@ public class HomeActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        if (PreferenceManager.getDefaultSharedPreferences(this).contains("firstTeamsArray_size") || PreferenceManager.getDefaultSharedPreferences(this).contains("secondTeamsArray_size")) {
+            for(int m = 0; m < PreferenceManager.getDefaultSharedPreferences(this).getInt("firstTeamsArray_size", 0); m++) {
+                PreferenceManager.getDefaultSharedPreferences(this).edit().remove("firstTeamsArray_" + m).apply();
+            }
+            PreferenceManager.getDefaultSharedPreferences(this).edit().remove("firstTeamsArray_size").apply();
+            for(int n = 0; n < PreferenceManager.getDefaultSharedPreferences(this).getInt("firstPicksArray_size", 0); n++) {
+                PreferenceManager.getDefaultSharedPreferences(this).edit().remove("firstPicksArray_" + n).apply();
+            }
+            PreferenceManager.getDefaultSharedPreferences(this).edit().remove("firstPicksArray_size").apply();
+            for(int b = 0; b < PreferenceManager.getDefaultSharedPreferences(this).getInt("secondTeamsArray_size", 0); b++) {
+                PreferenceManager.getDefaultSharedPreferences(this).edit().remove("secondTeamsArray_" + b).apply();
+            }
+            PreferenceManager.getDefaultSharedPreferences(this).edit().remove("secondTeamsArray_size").apply();
+            for(int d = 0; d < PreferenceManager.getDefaultSharedPreferences(this).getInt("secondPicksArray_size", 0); d++) {
+                PreferenceManager.getDefaultSharedPreferences(this).edit().remove("secondPicksArray_" + d).apply();
+            }
+            PreferenceManager.getDefaultSharedPreferences(this).edit().remove("secondPicksArray_size").apply();
+            for(int p = 0; p < PreferenceManager.getDefaultSharedPreferences(this).getInt("picked_size", 0); p++) {
+                PreferenceManager.getDefaultSharedPreferences(this).edit().remove("picked_" + p).apply();
+            }
+            PreferenceManager.getDefaultSharedPreferences(this).edit().remove("picked_size").apply();
+        }
+
         setContentView(R.layout.activity_home);
 
         toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -79,7 +103,7 @@ public class HomeActivity extends AppCompatActivity {
                 // Default to match scouting mode
                 switchToMode(Mode.MATCH_SCOUTING);
             } else {
-                // A user needs to be looged in first before we can begin
+                // A user needs to be logged in first before we can begin
                 startActivity(new Intent(this, UserLoginActivity.class));
                 finish();
             }
