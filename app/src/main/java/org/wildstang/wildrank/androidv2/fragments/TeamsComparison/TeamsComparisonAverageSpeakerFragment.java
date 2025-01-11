@@ -84,6 +84,8 @@ public class TeamsComparisonAverageSpeakerFragment extends TeamsComparisonFragme
             for (int i = 0; i < teams.size(); i++) {
                 List<Document> teamDocuments = allMatchDocuments.get(i);
 
+                if (teamDocuments == null) break;
+
                 int speaker = 0;
                 for (Document document : teamDocuments) {
                     Map<String, Object> data = (Map<String, Object>) document.getProperty("data");

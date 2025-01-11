@@ -83,6 +83,8 @@ public class TeamsComparisonMaxAmpFragment extends TeamsComparisonFragment {
             for (int i = 0; i < teams.size(); i++) {
                 List<Document> teamDocuments = allMatchDocuments.get(i);
 
+                if (teamDocuments == null) break;
+
                 int maxAmp = 0;
                 for (Document document : teamDocuments) {
                     Map<String, Object> data = (Map<String, Object>) document.getProperty("data");
