@@ -3,6 +3,7 @@ package org.wildstang.wildrank.androidv2.fragments;
 import android.app.AlertDialog;
 import android.content.ClipData;
 import android.content.ClipDescription;
+import android.content.SharedPreferences;
 import android.graphics.Point;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -35,7 +36,6 @@ import java.util.Objects;
 public class PicklistMainFragment extends Fragment {
     private ViewPager pager;
     private SlidingTabs tabs;
-    private ArrayList<String> picked = new ArrayList<>();
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_picklist_main, container, false);
@@ -79,18 +79,36 @@ public class PicklistMainFragment extends Fragment {
             AlertDialog.Builder info = new AlertDialog.Builder(getActivity()).setView(dialogView).setNegativeButton("Exit", (dialog, which) -> dialog.dismiss());
             info.show();
         } else if (list.getTransitionName().equals("picksList")) {
+            SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getActivity());
+            SharedPreferences.Editor editor = prefs.edit();
 
             if (!((PicklistAdapter.ViewHolder) view.getTag()).getTint()) {
                 view.setBackgroundColor(getResources().getColor(R.color.black_tint));
                 ((PicklistAdapter.ViewHolder) view.getTag()).updateTint(true);
-                picked.add(((PicklistAdapter.ViewHolder) view.getTag()).getNumber());
-                System.out.println("Main: " + (PicklistAdapter.ViewHolder) view.getTag());
+
+                int pickedSize;
+                if (prefs.contains("picked_size")) {
+                    pickedSize = prefs.getInt("picked_size", 0);
+                    editor.remove("picked_size");
+                } else pickedSize = 0;
+                editor.putInt("picked_size", pickedSize + 1);
+                editor.putString("picked_" + pickedSize, ((PicklistAdapter.ViewHolder) view.getTag()).getNumber());
             } else if (((PicklistAdapter.ViewHolder) view.getTag()).getTint()) {
                 view.setBackgroundColor(0);
                 ((PicklistAdapter.ViewHolder) view.getTag()).updateTint(false);
-                picked.remove(((PicklistAdapter.ViewHolder) view.getTag()).getNumber());
-                System.out.println("Main: " + (PicklistAdapter.ViewHolder) view.getTag());
+
+                int pickedSize = prefs.getInt("picked_size", 0);
+                editor.remove("picked_size");
+                editor.putInt("picked_size", pickedSize - 1);
+                for(int i = 0; i < pickedSize; i++) {
+                    if (prefs.getString("picked_" + i, "") == ((PicklistAdapter.ViewHolder) view.getTag()).getNumber()) {
+                        editor.remove("picked_" + 1);
+                        break;
+                    }
+                }
             }
+
+            editor.commit();
         }
     }
 
@@ -111,19 +129,11 @@ public class PicklistMainFragment extends Fragment {
         view.startDragAndDrop(dragData, shadowBuilder, new Pair<>(queryRow, adapter), 0);
     }
 
-    public void setPicked(ArrayList<String> oldPicked) {
-        picked = oldPicked;
-    }
-
-    public ArrayList<String> getPicked() {
-        return picked;
-    }
-
     public void adjustTint(ListView list) {
         for (int i = 0; i < list.getChildCount(); i++) {
             boolean tint = false;
-            for (int j = 0; j < picked.size(); j++) {
-                if (Objects.equals(((PicklistAdapter.ViewHolder) list.getChildAt(i).getTag()).getNumber(), picked.get(j))) {
+            for (int j = 0; j < PreferenceManager.getDefaultSharedPreferences(getActivity()).getInt("picked_size", 0); j++) {
+                if (Objects.equals(((PicklistAdapter.ViewHolder) list.getChildAt(i).getTag()).getNumber(), PreferenceManager.getDefaultSharedPreferences(getActivity()).getString("picked_" + j, ""))) {
                     tint = true;
                 }
             }
@@ -177,6 +187,7 @@ public class PicklistMainFragment extends Fragment {
     @Override
     public void onDestroy() {
         ((PicklistFragmentPagerAdapter) pager.getAdapter()).getItem(0).onDestroy();
+        ((PicklistFragmentPagerAdapter) pager.getAdapter()).getItem(1).onDestroy();
         super.onDestroy();
     }
 }

@@ -34,7 +34,7 @@ public class PicklistFirstFragment extends PicklistMainFragment {
     private PicklistAdapter picksAdapter;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_picklist_first, container, false);
+        View view = inflater.inflate(R.layout.fragment_picklist_lists, container, false);
 
         teamsList = (ListView) view.findViewById(R.id.teams_list);
         teamsAdapter = new PicklistAdapter(getActivity(), new ArrayList<>());
@@ -171,12 +171,6 @@ public class PicklistFirstFragment extends PicklistMainFragment {
             picksAdapter = new PicklistAdapter(getActivity(), picksQueryRows);
             picksList.setAdapter(picksAdapter);
             picksList.onRestoreInstanceState(picksState);
-
-            ArrayList<String> oldPicked = new ArrayList<>();
-            for(int m = 0; m < PreferenceManager.getDefaultSharedPreferences(getActivity()).getInt("firstPicked_size", 0); m++) {
-                oldPicked.add(PreferenceManager.getDefaultSharedPreferences(getActivity()).getString("firstPicked_" + m, ""));
-            }
-            setPicked(oldPicked);
             adjustTint(picksList);
         }
     }
@@ -213,32 +207,24 @@ public class PicklistFirstFragment extends PicklistMainFragment {
                 editor.remove("firstPicksArray_" + n);
             }
             editor.remove("firstPicksArray_size");
-            for(int u = 0; u < prefs.getInt("firstPicked_size", 0); u++) {
-                editor.remove("firstPicked_" + u);
-            }
-            editor.remove("firstPicked_size");
         }
 
         ArrayList<String> teamsArray = new ArrayList<>();
-        for (int b = 0; b < teamsList.getAdapter().getCount(); b++) {
-            teamsArray.add(((QueryRow) teamsList.getAdapter().getItem(b)).getKey().toString());
+        for (int i = 0; i < teamsList.getAdapter().getCount(); i++) {
+            teamsArray.add(((QueryRow) teamsList.getAdapter().getItem(i)).getKey().toString());
         }
         ArrayList<String> picksArray = new ArrayList<>();
-        for (int d = 0; d < picksList.getAdapter().getCount(); d++) {
-            picksArray.add(((QueryRow) picksList.getAdapter().getItem(d)).getKey().toString());
+        for (int j = 0; j < picksList.getAdapter().getCount(); j++) {
+            picksArray.add(((QueryRow) picksList.getAdapter().getItem(j)).getKey().toString());
         }
 
         editor.putInt("firstTeamsArray_size", teamsArray.size());
-        for(int i = 0; i < teamsArray.size(); i++) {
-            editor.putString("firstTeamsArray_" + i, teamsArray.get(i));
+        for(int b = 0; b < teamsArray.size(); b++) {
+            editor.putString("firstTeamsArray_" + b, teamsArray.get(b));
         }
         editor.putInt("firstPicksArray_size", picksArray.size());
-        for(int j = 0; j < picksArray.size(); j++) {
-            editor.putString("firstPicksArray_" + j, picksArray.get(j));
-        }
-        editor.putInt("firstPicked_size", getPicked().size());
-        for(int n = 0; n < getPicked().size(); n++) {
-            editor.putString("firstPicked_" + n, getPicked().get(n));
+        for(int d = 0; d < picksArray.size(); d++) {
+            editor.putString("firstPicksArray_" + d, picksArray.get(d));
         }
 
         editor.commit();

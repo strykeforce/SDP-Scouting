@@ -4,14 +4,14 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 
-import org.wildstang.wildrank.androidv2.fragments.PicklistAutoFragment;
+import org.wildstang.wildrank.androidv2.fragments.PicklistSecondFragment;
 import org.wildstang.wildrank.androidv2.fragments.PicklistFirstFragment;
 
 public class PicklistFragmentPagerAdapter extends FragmentStatePagerAdapter {
     static final int NUM_FRAGMENTS = 2;
 
     private PicklistFirstFragment firstFragment;
-    private PicklistAutoFragment autoFragment;
+    private PicklistSecondFragment secondFragment;
 
     public PicklistFragmentPagerAdapter(FragmentManager fm) {
         super(fm);
@@ -20,7 +20,7 @@ public class PicklistFragmentPagerAdapter extends FragmentStatePagerAdapter {
 
     private void initFragments() {
         firstFragment = new PicklistFirstFragment();
-        autoFragment = new PicklistAutoFragment();
+        secondFragment = new PicklistSecondFragment();
     }
 
     @Override
@@ -29,7 +29,7 @@ public class PicklistFragmentPagerAdapter extends FragmentStatePagerAdapter {
             case 0:
                 return firstFragment;
             case 1:
-                return autoFragment;
+                return secondFragment;
             default:
                 return null;
         }
@@ -51,7 +51,7 @@ public class PicklistFragmentPagerAdapter extends FragmentStatePagerAdapter {
             case 0:
                 return "First Pick";
             case 1:
-                return "Best Auto";
+                return "Second Pick";
             default:
                 return "ERROR INVALID POSITION";
         }

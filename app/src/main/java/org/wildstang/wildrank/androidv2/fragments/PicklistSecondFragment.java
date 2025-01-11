@@ -1,7 +1,10 @@
 package org.wildstang.wildrank.androidv2.fragments;
 
+import android.annotation.SuppressLint;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Parcelable;
+import android.preference.PreferenceManager;
 import android.view.DragEvent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -22,15 +25,16 @@ import org.wildstang.wildrank.androidv2.data.DatabaseManager;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Objects;
 
-public class PicklistAutoFragment extends PicklistMainFragment {
+public class PicklistSecondFragment extends PicklistMainFragment {
     private ListView teamsList;
     private ListView picksList;
     private PicklistAdapter teamsAdapter;
     private PicklistAdapter picksAdapter;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_picklist_auto, container, false);
+        View view = inflater.inflate(R.layout.fragment_picklist_lists, container, false);
 
         teamsList = (ListView) view.findViewById(R.id.teams_list);
         teamsAdapter = new PicklistAdapter(getActivity(), new ArrayList<>());
@@ -119,17 +123,57 @@ public class PicklistAutoFragment extends PicklistMainFragment {
             queryRows.add(row);
         }
 
-        Parcelable teamsState = teamsList.onSaveInstanceState();
-        teamsAdapter = new PicklistAdapter(getActivity(), queryRows);
-        teamsList.setAdapter(teamsAdapter);
-        teamsList.onRestoreInstanceState(teamsState);
+        if (!PreferenceManager.getDefaultSharedPreferences(getActivity()).contains("secondTeamsArray_size")) {
+            Parcelable teamsState = teamsList.onSaveInstanceState();
+            teamsAdapter = new PicklistAdapter(getActivity(), queryRows);
+            teamsList.setAdapter(teamsAdapter);
+            teamsList.onRestoreInstanceState(teamsState);
 
-        List<QueryRow> fillerRow = new ArrayList<>();
+            List<QueryRow> fillerRow = new ArrayList<>();
 
-        Parcelable picksState = picksList.onSaveInstanceState();
-        picksAdapter = new PicklistAdapter(getActivity(), fillerRow);
-        picksList.setAdapter(picksAdapter);
-        picksList.onRestoreInstanceState(picksState);
+            Parcelable picksState = picksList.onSaveInstanceState();
+            picksAdapter = new PicklistAdapter(getActivity(), fillerRow);
+            picksList.setAdapter(picksAdapter);
+            picksList.onRestoreInstanceState(picksState);
+        } else {
+            List<QueryRow> teamsQueryRows = new ArrayList<>();
+            for (int i = 0; i < PreferenceManager.getDefaultSharedPreferences(getActivity()).getInt("secondTeamsArray_size", 0); i++) {
+                QueryRow teamsRow = null;
+                String teamsNumber = PreferenceManager.getDefaultSharedPreferences(getActivity()).getString("secondTeamsArray_" + i, "");
+                for (int m = 0; m < queryRows.size(); m++) {
+                    if (Objects.equals(queryRows.get(m).getKey().toString(), teamsNumber)) {
+                        teamsRow = queryRows.get(m);
+                        m = queryRows.size();
+                    }
+                }
+                teamsQueryRows.add(teamsRow);
+            }
+
+            Parcelable teamsState = teamsList.onSaveInstanceState();
+            teamsAdapter = new PicklistAdapter(getActivity(), teamsQueryRows);
+            teamsList.setAdapter(teamsAdapter);
+            teamsList.onRestoreInstanceState(teamsState);
+
+            List<QueryRow> picksQueryRows = new ArrayList<>();
+            for (int j = 0; j < PreferenceManager.getDefaultSharedPreferences(getActivity()).getInt("secondPicksArray_size", 0); j++) {
+                QueryRow picksRow = null;
+                String picksNumber = PreferenceManager.getDefaultSharedPreferences(getActivity()).getString("secondPicksArray_" + j, "");
+                for (int n = 0; n < queryRows.size(); n++) {
+                    if (Objects.equals(queryRows.get(n).getKey().toString(), picksNumber)) {
+                        picksRow = queryRows.get(n);
+                        n = queryRows.size();
+                    }
+                }
+                picksQueryRows.add(picksRow);
+            }
+
+            Parcelable picksState = picksList.onSaveInstanceState();
+            picksAdapter = new PicklistAdapter(getActivity(), picksQueryRows);
+            picksList.setAdapter(picksAdapter);
+            picksList.onRestoreInstanceState(picksState);
+
+            adjustTint(picksList);
+        }
     }
 
     @Override
@@ -142,10 +186,48 @@ public class PicklistAutoFragment extends PicklistMainFragment {
     }
 
     public boolean onTeamDragged(ListView tList, ListView oList, DragEvent event) {
-        return(super.onTeamDragged(tList, oList, event));
+        return super.onTeamDragged(tList, oList, event);
     }
 
     public void adjustTint(ListView list) {
         super.adjustTint(list);
+    }
+
+    @SuppressLint("MissingSuperCall")
+    @Override
+    public void onDestroy() {
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getActivity());
+        SharedPreferences.Editor editor = prefs.edit();
+
+        if (prefs.contains("secondTeamsArray_size")) {
+            for(int m = 0; m < prefs.getInt("secondTeamsArray_size", 0); m++) {
+                editor.remove("secondTeamsArray_" + m);
+            }
+            editor.remove("secondTeamsArray_size");
+            for(int n = 0; n < prefs.getInt("secondPicksArray_size", 0); n++) {
+                editor.remove("secondPicksArray_" + n);
+            }
+            editor.remove("secondPicksArray_size");
+        }
+
+        ArrayList<String> teamsArray = new ArrayList<>();
+        for (int i = 0; i < teamsList.getAdapter().getCount(); i++) {
+            teamsArray.add(((QueryRow) teamsList.getAdapter().getItem(i)).getKey().toString());
+        }
+        ArrayList<String> picksArray = new ArrayList<>();
+        for (int j = 0; j < picksList.getAdapter().getCount(); j++) {
+            picksArray.add(((QueryRow) picksList.getAdapter().getItem(j)).getKey().toString());
+        }
+
+        editor.putInt("secondTeamsArray_size", teamsArray.size());
+        for(int b = 0; b < teamsArray.size(); b++) {
+            editor.putString("secondTeamsArray_" + b, teamsArray.get(b));
+        }
+        editor.putInt("secondPicksArray_size", picksArray.size());
+        for(int d = 0; d < picksArray.size(); d++) {
+            editor.putString("secondPicksArray_" + d, picksArray.get(d));
+        }
+
+        editor.commit();
     }
 }

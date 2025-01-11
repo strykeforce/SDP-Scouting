@@ -66,7 +66,7 @@ public class HomeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        if (PreferenceManager.getDefaultSharedPreferences(this).contains("firstTeamsArray_size")) {
+        if (PreferenceManager.getDefaultSharedPreferences(this).contains("firstTeamsArray_size") || PreferenceManager.getDefaultSharedPreferences(this).contains("secondTeamsArray_size")) {
             for(int m = 0; m < PreferenceManager.getDefaultSharedPreferences(this).getInt("firstTeamsArray_size", 0); m++) {
                 PreferenceManager.getDefaultSharedPreferences(this).edit().remove("firstTeamsArray_" + m).apply();
             }
@@ -75,10 +75,18 @@ public class HomeActivity extends AppCompatActivity {
                 PreferenceManager.getDefaultSharedPreferences(this).edit().remove("firstPicksArray_" + n).apply();
             }
             PreferenceManager.getDefaultSharedPreferences(this).edit().remove("firstPicksArray_size").apply();
-            for(int u = 0; u < PreferenceManager.getDefaultSharedPreferences(this).getInt("firstPicked_size", 0); u++) {
-                PreferenceManager.getDefaultSharedPreferences(this).edit().remove("firstPicked_" + u).apply();
+            for(int b = 0; b < PreferenceManager.getDefaultSharedPreferences(this).getInt("secondTeamsArray_size", 0); b++) {
+                PreferenceManager.getDefaultSharedPreferences(this).edit().remove("secondTeamsArray_" + b).apply();
             }
-            PreferenceManager.getDefaultSharedPreferences(this).edit().remove("firstPicked_size").apply();
+            PreferenceManager.getDefaultSharedPreferences(this).edit().remove("secondTeamsArray_size").apply();
+            for(int d = 0; d < PreferenceManager.getDefaultSharedPreferences(this).getInt("secondPicksArray_size", 0); d++) {
+                PreferenceManager.getDefaultSharedPreferences(this).edit().remove("secondPicksArray_" + d).apply();
+            }
+            PreferenceManager.getDefaultSharedPreferences(this).edit().remove("secondPicksArray_size").apply();
+            for(int p = 0; p < PreferenceManager.getDefaultSharedPreferences(this).getInt("picked_size", 0); p++) {
+                PreferenceManager.getDefaultSharedPreferences(this).edit().remove("picked_" + p).apply();
+            }
+            PreferenceManager.getDefaultSharedPreferences(this).edit().remove("picked_size").apply();
         }
 
         setContentView(R.layout.activity_home);
