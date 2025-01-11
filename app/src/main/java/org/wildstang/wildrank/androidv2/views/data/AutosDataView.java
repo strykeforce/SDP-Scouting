@@ -12,6 +12,7 @@ import com.couchbase.lite.Document;
 
 import org.wildstang.wildrank.androidv2.interfaces.IMatchDataView;
 import org.wildstang.wildrank.androidv2.models.CycleModel;
+import org.wildstang.wildrank.androidv2.views.data.MatchDataView;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -21,8 +22,6 @@ import java.util.Map;
 import java.util.Objects;
 
 public class AutosDataView extends MatchDataView implements IMatchDataView {
-    ArrayList<String> autopaths = new ArrayList<>();
-
     public AutosDataView(Context context, AttributeSet attrs) {
         super(context, attrs);
     }
@@ -36,12 +35,9 @@ public class AutosDataView extends MatchDataView implements IMatchDataView {
             return;
         }
         boolean didSomething = false;
+        ArrayList<String> autopaths = new ArrayList<>();
         for (Document doc : matchDocs) {
             Map<String, Object> data = (Map<String, Object>) doc.getProperty("data");
-
-            int totalSpeaker = 0;
-            int totalAmp = 0;
-
             ArrayList<Pair<String, Long>> presses = new ArrayList<>();
             for (int i = 1; i < 11; i++) {
                 if (data.get("redbutton" + i) != null) {
@@ -80,37 +76,33 @@ public class AutosDataView extends MatchDataView implements IMatchDataView {
             String path = "";
             for (int d = 0; d < pathList.size(); d++) {
                 if (Objects.equals(pathList.get(d).first, "redbutton1") || Objects.equals(pathList.get(d).first, "bluebutton1")) {
-                    path += "--> Collected Shared Note One ";
+                    path += "--> Shared Note One ";
                 } else if (Objects.equals(pathList.get(d).first, "redbutton2") || Objects.equals(pathList.get(d).first, "bluebutton2")) {
-                    path += "--> Collected Shared Note Two ";
+                    path += "--> Shared Note Two ";
                 } else if (Objects.equals(pathList.get(d).first, "redbutton3") || Objects.equals(pathList.get(d).first, "bluebutton3")) {
-                    path += "--> Collected Shared Note Three ";
+                    path += "--> Shared Note Three ";
                 } else if (Objects.equals(pathList.get(d).first, "redbutton4") || Objects.equals(pathList.get(d).first, "bluebutton4")) {
-                    path += "--> Collected Shared Note Four ";
+                    path += "--> Shared Note Four ";
                 } else if (Objects.equals(pathList.get(d).first, "redbutton5") || Objects.equals(pathList.get(d).first, "bluebutton5")) {
-                    path += "--> Collected Shared Note Five ";
+                    path += "--> Shared Note Five ";
                 } else if (Objects.equals(pathList.get(d).first, "redbutton6")) {
-                    path += "--> Collected Red Note One ";
+                    path += "--> Red Note One ";
                 } else if (Objects.equals(pathList.get(d).first, "redbutton7")) {
-                    path += "--> Collected Red Note Two ";
+                    path += "--> Red Note Two ";
                 } else if (Objects.equals(pathList.get(d).first, "redbutton8")) {
-                    path += "--> Collected Red Note Three ";
+                    path += "--> Red Note Three ";
                 } else if (Objects.equals(pathList.get(d).first, "bluebutton6")) {
-                    path += "--> Collected Blue Note One ";
+                    path += "--> Blue Note One ";
                 } else if (Objects.equals(pathList.get(d).first, "bluebutton7")) {
-                    path += "--> Collected Blue Note Two ";
+                    path += "--> Blue Note Two ";
                 } else if (Objects.equals(pathList.get(d).first, "bluebutton8")) {
-                    path += "--> Collected Blue Note Three ";
+                    path += "--> Blue Note Three ";
                 } else if (Objects.equals(pathList.get(d).first, "redbutton9") || Objects.equals(pathList.get(d).first, "bluebutton9")) {
-                    path += "--> Scored in Speaker ";
-                    totalSpeaker++;
+                    path += "--> Scored Speaker ";
                 } else if (Objects.equals(pathList.get(d).first, "redbutton10") || Objects.equals(pathList.get(d).first, "bluebutton10")) {
-                    path += "--> Scored in Amp ";
-                    totalAmp++;
+                    path += "--> Missed Speaker ";
                 }
             }
-
-            path += "\n\nTotal Speaker: " + totalSpeaker + "\t\tTotal Amp: " + totalAmp;
 
             if (autopaths.size() == 0) {
                 autopaths.add(path);
@@ -120,6 +112,7 @@ public class AutosDataView extends MatchDataView implements IMatchDataView {
                         break;
                     } else if (b == autopaths.size() - 1) {
                         autopaths.add(path);
+                        break;
                     }
                 }
             }
@@ -127,11 +120,10 @@ public class AutosDataView extends MatchDataView implements IMatchDataView {
         String output = "";
         for (int p = 0; p < autopaths.size(); p++) {
             if (p != 0) {
-                output += "\n\n\n";
+                output += "\n\n";
             }
             output += (p + 1) + ": " + autopaths.get(p);
         }
-
         if (!didSomething) {
             setValueText("N/A", "gray");
         } else {
