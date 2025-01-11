@@ -1,4 +1,4 @@
-package org.wildstang.wildrank.androidv2.views.data;
+package org.wildstang.wildrank.androidv2.views.data.crescendo;
 
 import android.content.Context;
 import android.graphics.Color;
@@ -74,6 +74,36 @@ public class AutosDataView extends MatchDataView implements IMatchDataView {
             }
 
             String path = "";
+            for (int b = 1; b < 4; b++) {
+                if (data.get("redposbutton" + b) != null) {
+                    if (((ArrayList) data.get("redposbutton" + b)).size() != 0) {
+                        if (b == 3) {
+                            path += "Started on Source Side ";
+                            break;
+                        } else if (b == 1) {
+                            path += "Started on Amp Side ";
+                            break;
+                        } else if (b == 2) {
+                            path += "Started in Middle ";
+                            break;
+                        }
+                    }
+                }
+                if (data.get("blueposbutton" + b) != null) {
+                    if (((ArrayList) data.get("blueposbutton" + b)).size() != 0) {
+                        if (b == 3) {
+                            path += "Started on Source Side ";
+                            break;
+                        } else if (b == 1) {
+                            path += "Started on Amp Side ";
+                            break;
+                        } else if (b == 2) {
+                            path += "Started in Middle ";
+                            break;
+                        }
+                    }
+                }
+            }
             for (int d = 0; d < pathList.size(); d++) {
                 if (Objects.equals(pathList.get(d).first, "redbutton1") || Objects.equals(pathList.get(d).first, "bluebutton1")) {
                     path += "--> Shared Note One ";
