@@ -4,7 +4,6 @@ package org.wildstang.wildrank.androidv2.fragments;
 import android.app.AlertDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.Parcelable;
@@ -31,7 +30,6 @@ import org.wildstang.wildrank.androidv2.R;
 import org.wildstang.wildrank.androidv2.Utilities;
 import org.wildstang.wildrank.androidv2.activities.ScoutMatchActivity;
 import org.wildstang.wildrank.androidv2.adapters.MatchListAdapter;
-import org.wildstang.wildrank.androidv2.adapters.TeamSummariesFragmentPagerAdapter;
 import org.wildstang.wildrank.androidv2.data.DatabaseManager;
 import org.wildstang.wildrank.androidv2.views.data.MatchDataView;
 
@@ -188,6 +186,9 @@ public class MatchScoutingMainFragment extends Fragment implements View.OnClickL
 
     private void onMatchSelected(Document matchDocument) {
         selectedMatchKey = (String) matchDocument.getProperty("key");
+
+        PreferenceManager.getDefaultSharedPreferences(getActivity()).edit().remove("currMatchKey").commit();
+        PreferenceManager.getDefaultSharedPreferences(getActivity()).edit().putString("currMatchKey", selectedMatchKey).commit();
 
         int matchNumber = (Integer) matchDocument.getProperty("match_number");
         this.matchNumber.setText("Match " + matchNumber);

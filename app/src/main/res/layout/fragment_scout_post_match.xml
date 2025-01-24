@@ -43,7 +43,7 @@
     </LinearLayout>
 
     <org.wildstang.wildrank.androidv2.views.scouting.ScoutingSpinnerView
-        android:layout_width="500dp"
+        android:layout_width="1095dp"
         android:layout_height="wrap_content"
         app:key="Stage"
         app:label="Stage"
@@ -52,18 +52,6 @@
         android:layout_marginBottom="20dp"
         android:layout_alignParentLeft="true"
         android:layout_marginLeft="20dp"
-        />
-
-    <org.wildstang.wildrank.androidv2.views.scouting.ScoutingSpinnerView
-        android:layout_width="500dp"
-        android:layout_height="wrap_content"
-        app:key="Trap"
-        app:label="Trap"
-        app:values="@array/traps"
-        android:layout_above="@+id/notes"
-        android:layout_marginBottom="20dp"
-        android:layout_alignParentRight="true"
-        android:layout_marginRight="20dp"
         />
 
     <Button

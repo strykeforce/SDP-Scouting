@@ -11,9 +11,12 @@
     <string-array name="staging">
         <item>1. Not Parked</item>
         <item>2. Parked</item>
-        <item>3. Onstage</item>
-        <item>4. Onstage w/ Buddy</item>
-        <item>5. Onstage w/ 2 Buddies</item>
+        <item>3. Shallow Cage</item>
+        <item>4. Deep Cage</item>
+    </string-array>
+
+    <string-array name="human_numbers">
+        <item>-</item>
     </string-array>
 
     <string-array name="traps">

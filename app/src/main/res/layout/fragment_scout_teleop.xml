@@ -6,146 +6,264 @@
     android:orientation="vertical"
     android:background="#292929">
 
-    <TextView
-        android:id="@+id/TeleTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Teleop"
-        android:textSize="60sp"
-        android:textColor="#FFFFFF"
-        android:layout_centerHorizontal="true" />
-
-    <LinearLayout
-        android:id="@+id/MadeMissed"
-        android:layout_width="440dp"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:gravity="center_horizontal"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="150dp">
-
-    </LinearLayout>
-
-
-    <LinearLayout
-        android:id="@+id/Amps"
-        android:layout_width="440dp"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:gravity="center_horizontal"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="100dp"
-        android:layout_alignParentLeft="true"
-        android:layout_marginLeft="50dp"
-
+    <RelativeLayout
+        android:layout_width="1138dp"
+        android:layout_height="535dp"
         >
 
         <TextView
-            android:id="@+id/amps_made"
-            android:layout_width="wrap_content"
-            android:layout_height="42dp"
-            android:layout_marginTop="76dp"
-            android:text="Amp"
-            android:textSize="35sp"
-            android:textColor="#FFFFFF"
-            android:gravity="center_horizontal|top" />
-
-        <org.wildstang.wildrank.androidv2.views.scouting.ScoutingCounterView
-            android:id="@+id/MadeAmps"
-            android:layout_width="440dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:background="#D9D9D9"
-            android:orientation="vertical"
-            app:key="tele_made_amp"
-            />
-
-        <TextView
-            android:id="@+id/PassesText"
-            android:layout_width="wrap_content"
-            android:layout_height="42dp"
-            android:text="Passes"
-            android:textSize="35sp"
-            android:textColor="#FFFFFF"
-            android:gravity="center_horizontal|top"
-            android:layout_marginTop="20dp"
-            />
-
-        <org.wildstang.wildrank.androidv2.views.scouting.ScoutingCounterView
-            android:id="@+id/PassCounter"
-            android:layout_width="440dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:background="#D9D9D9"
-            android:orientation="vertical"
-            app:key="tele_passes" />
-/>
-
-    </LinearLayout>
-
-
-    <LinearLayout
-        android:id="@+id/Speaker"
-        android:layout_width="500dp"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:gravity="center_horizontal"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="100dp"
-        android:layout_alignParentEnd="true"
-        android:paddingBottom="25dp"
-        android:background="@drawable/outline_background"
-        >
-        <TextView
-            android:id="@+id/SpeakerText"
-            android:layout_width="wrap_content"
-            android:layout_height="42dp"
-            android:text="Speaker"
-            android:textSize="35sp"
-            android:textColor="#FFFFFF"
-            android:gravity="center_horizontal|top"
-            />
-
-        <TextView
+            android:id="@+id/TeleTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Made"
-            android:layout_marginTop="40dp"
-            android:textSize="30sp"
+            android:text="Teleop"
+            android:textSize="60sp"
             android:textColor="@color/white"
-            android:gravity="center_horizontal"/>
+            android:layout_centerHorizontal="true" />
+
+        <TextView
+            android:id="@+id/CoralTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="205dp"
+            android:layout_marginTop="80dp"
+            android:textSize="45sp"
+            android:textColor="@color/white"
+            android:text="Coral" />
+
+        <TextView
+            android:id="@+id/LevelFourLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="20dp"
+            android:layout_marginTop="162dp"
+            android:textSize="35sp"
+            android:textColor="@color/white"
+            android:text="Level 4" />
 
         <org.wildstang.wildrank.androidv2.views.scouting.ScoutingCounterView
-            android:id="@+id/Speaker_Made"
-            android:layout_width="440dp"
+            android:id="@+id/LevelFourCounter"
+            android:layout_width="250dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="130dp"
+            android:layout_marginTop="145dp"
             android:background="#D9D9D9"
             android:orientation="vertical"
-            app:key="tele_made_speaker"
+            app:key="tele_level_four"
             />
 
         <TextView
+            android:id="@+id/LevelThreeLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Missed"
-            android:textSize="30sp"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="20dp"
+            android:layout_marginTop="252dp"
+            android:textSize="35sp"
             android:textColor="@color/white"
-            android:gravity="center_horizontal"
-            android:layout_marginTop="30dp"
+            android:text="Level 3" />
+
+        <org.wildstang.wildrank.androidv2.views.scouting.ScoutingCounterView
+            android:id="@+id/LevelThreeCounter"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="130dp"
+            android:layout_marginTop="235dp"
+            android:background="#D9D9D9"
+            android:orientation="vertical"
+            app:key="tele_level_three"
+            />
+
+        <TextView
+            android:id="@+id/LevelTwoLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="20dp"
+            android:layout_marginTop="342dp"
+            android:textSize="35sp"
+            android:textColor="@color/white"
+            android:text="Level 2" />
+
+        <org.wildstang.wildrank.androidv2.views.scouting.ScoutingCounterView
+            android:id="@+id/LevelTwoCounter"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="130dp"
+            android:layout_marginTop="325dp"
+            android:background="#D9D9D9"
+            android:orientation="vertical"
+            app:key="tele_level_two"
+            />
+
+        <TextView
+            android:id="@+id/LevelOneLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="20dp"
+            android:layout_marginTop="432dp"
+            android:textSize="35sp"
+            android:textColor="@color/white"
+            android:text="Level 1" />
+
+        <org.wildstang.wildrank.androidv2.views.scouting.ScoutingCounterView
+            android:id="@+id/LevelOneCounter"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="130dp"
+            android:layout_marginTop="415dp"
+            android:background="#D9D9D9"
+            android:orientation="vertical"
+            app:key="tele_level_one"
+            />
+
+        <TextView
+            android:id="@+id/UpperAlgaeRemovedLabel"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="420dp"
+            android:layout_marginTop="115dp"
+            android:textSize="35sp"
+            android:textColor="@color/white"
+            android:text="Upper Algae Removed"
+            android:gravity="center"/>
+
+        <org.wildstang.wildrank.androidv2.views.scouting.ScoutingCounterView
+            android:id="@+id/UpperAlgaeRemovedCounter"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="420dp"
+            android:layout_marginTop="195dp"
+            android:background="#D9D9D9"
+            android:orientation="vertical"
+            app:key="tele_upper_removed"
             />
 
         <org.wildstang.wildrank.androidv2.views.scouting.ScoutingCounterView
-            android:id="@+id/Speaker_Missed"
-            android:layout_width="440dp"
+            android:id="@+id/LowerAlgaeRemovedCounter"
+            android:layout_width="250dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="420dp"
+            android:layout_marginTop="305dp"
             android:background="#D9D9D9"
             android:orientation="vertical"
-            app:key="tele_missed_speaker"
+            app:key="tele_lower_removed"
             />
-    </LinearLayout>
+
+        <TextView
+            android:id="@+id/LowerAlgaeRemovedLabel"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="420dp"
+            android:layout_marginTop="385dp"
+            android:textSize="35sp"
+            android:textColor="@color/white"
+            android:text="Lower Algae Removed"
+            android:gravity="center"/>
+
+        <TextView
+            android:id="@+id/AlgaeTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="780dp"
+            android:layout_marginTop="90dp"
+            android:textSize="45sp"
+            android:textColor="@color/white"
+            android:text="Algae" />
+
+        <org.wildstang.wildrank.androidv2.views.scouting.ScoutingCounterView
+            android:id="@+id/ProcessorCounter"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="710dp"
+            android:layout_marginTop="155dp"
+            android:background="#D9D9D9"
+            android:orientation="vertical"
+            app:key="tele_processor"
+            />
+
+        <TextView
+            android:id="@+id/ProcessorLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="978dp"
+            android:layout_marginTop="170dp"
+            android:textSize="35sp"
+            android:textColor="@color/white"
+            android:text="Processor" />
+
+        <org.wildstang.wildrank.androidv2.views.scouting.ScoutingCounterView
+            android:id="@+id/RobotNetCounter"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="710dp"
+            android:layout_marginTop="245dp"
+            android:background="#D9D9D9"
+            android:orientation="vertical"
+            app:key="tele_robot_net"
+            />
+
+        <TextView
+            android:id="@+id/RobotNetLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="978dp"
+            android:layout_marginTop="260dp"
+            android:textSize="35sp"
+            android:textColor="@color/white"
+            android:text="Robot Net" />
+
+        <org.wildstang.wildrank.androidv2.views.scouting.ScoutingCounterView
+            android:id="@+id/HumanNetCounter"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="710dp"
+            android:layout_marginTop="335dp"
+            android:background="#D9D9D9"
+            android:orientation="vertical"
+            app:key="tele_human_net"
+            />
+
+        <TextView
+            android:id="@+id/HumanNetLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="970dp"
+            android:layout_marginTop="350dp"
+            android:textSize="35sp"
+            android:textColor="@color/white"
+            android:text="Human Net" />
+
+        <org.wildstang.wildrank.androidv2.views.scouting.ScoutingSpinnerView
+            android:id="@+id/HumanSpinner"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="685dp"
+            android:layout_marginTop="425dp"
+            app:label="Human Player Team"
+            app:values="@array/human_numbers"
+            app:key="human_number"
+            />
+
+    </RelativeLayout>
 
 
 
