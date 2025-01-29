@@ -45,7 +45,7 @@
     <org.wildstang.wildrank.androidv2.views.scouting.ScoutingSpinnerView
         android:layout_width="1095dp"
         android:layout_height="wrap_content"
-        app:key="Stage"
+        app:key="stage"
         app:label="Stage"
         app:values="@array/staging"
         android:layout_above="@+id/notes"
