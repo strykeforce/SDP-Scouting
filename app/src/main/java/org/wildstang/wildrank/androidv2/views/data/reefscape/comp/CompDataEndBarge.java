@@ -11,8 +11,8 @@ import org.wildstang.wildrank.androidv2.views.data.MatchDataView;
 import java.util.List;
 import java.util.Map;
 
-public class CompDataEndStage extends MatchDataView implements IMatchDataView {
-    public CompDataEndStage(Context context, AttributeSet attrs) {
+public class CompDataEndBarge extends MatchDataView implements IMatchDataView {
+    public CompDataEndBarge(Context context, AttributeSet attrs) {
         super(context, attrs);
     }
 
@@ -26,16 +26,16 @@ public class CompDataEndStage extends MatchDataView implements IMatchDataView {
         int deeps = 0;
         for (Document document : documents) {
             Map<String, Object> data = (Map<String, Object>) document.getProperty("data");
-            if (data.get("stage") == null) {
+            if (data.get("barge") == null) {
                 continue;
             }
-            if (((String) data.get("stage")).equals("1. Not Parked")) {
+            if (((String) data.get("barge")).equals("1. Not Parked")) {
                 none++;
-            } else if (((String) data.get("stage")).equals("2. Parked")) {
+            } else if (((String) data.get("barge")).equals("2. Parked")) {
                 parks++;
-            } else if (((String) data.get("stage")).equals("3. Shallow Cage")) {
+            } else if (((String) data.get("barge")).equals("3. Shallow Cage")) {
                 shallows++;
-            } else if (((String) data.get("stage")).equals("4. Deep Cage")) {
+            } else if (((String) data.get("barge")).equals("4. Deep Cage")) {
                 deeps++;
             }
         }

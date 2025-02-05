@@ -27,43 +27,43 @@
         <org.wildstang.wildrank.androidv2.views.data.reefscape.match.MatchDataAutoExit
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:explanation="Whether or not the robot exited the starting zone"
+            app:explanation="Whether or not the robot exited the starting zone during auto"
             app:label="Exited Started Zone" />
 
         <org.wildstang.wildrank.androidv2.views.data.reefscape.match.MatchDataAutoUpperAlgaeRemoved
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:explanation="The number of algae removed from between level three and level four"
+            app:explanation="The number of algae removed from between level three and level four during auto"
             app:label="Upper Algae Removed" />
 
         <org.wildstang.wildrank.androidv2.views.data.reefscape.match.MatchDataAutoLowerAlgaeRemoved
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:explanation="The number of algae removed from between level two and level three"
+            app:explanation="The number of algae removed from between level two and level three during auto"
             app:label="Lower Algae Removed" />
 
         <org.wildstang.wildrank.androidv2.views.data.reefscape.match.MatchDataAutoLevelOneCoral
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:explanation="The number of coral scored on level one"
+            app:explanation="The number of coral scored on level one during auto"
             app:label="Level One" />
 
         <org.wildstang.wildrank.androidv2.views.data.reefscape.match.MatchDataAutoLevelTwoCoral
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:explanation="The number of coral scored on level two"
+            app:explanation="The number of coral scored on level two during auto"
             app:label="Level Two" />
 
         <org.wildstang.wildrank.androidv2.views.data.reefscape.match.MatchDataAutoLevelThreeCoral
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:explanation="The number of coral scored on level three"
+            app:explanation="The number of coral scored on level three during auto"
             app:label="Level Three" />
 
         <org.wildstang.wildrank.androidv2.views.data.reefscape.match.MatchDataAutoLevelFourCoral
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:explanation="The number of coral scored on level four"
+            app:explanation="The number of coral scored on level four during auto"
             app:label="Level Four" />
 
         <TextView
@@ -88,37 +88,37 @@
         <org.wildstang.wildrank.androidv2.views.data.reefscape.match.MatchDataTeleUpperAlgaeRemoved
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:explanation="The number of algae removed from between level three and level four"
+            app:explanation="The number of algae removed from between level three and level four during tele"
             app:label="Upper Algae Removed" />
 
         <org.wildstang.wildrank.androidv2.views.data.reefscape.match.MatchDataTeleLowerAlgaeRemoved
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:explanation="The number of algae removed from between level two and level three"
+            app:explanation="The number of algae removed from between level two and level three during tele"
             app:label="Lower Algae Removed" />
 
         <org.wildstang.wildrank.androidv2.views.data.reefscape.match.MatchDataTeleLevelOneCoral
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:explanation="The number of coral scored on level one"
+            app:explanation="The number of coral scored on level one during tele"
             app:label="Level One" />
 
         <org.wildstang.wildrank.androidv2.views.data.reefscape.match.MatchDataTeleLevelTwoCoral
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:explanation="The number of coral scored on level two"
+            app:explanation="The number of coral scored on level two during tele"
             app:label="Level Two" />
 
         <org.wildstang.wildrank.androidv2.views.data.reefscape.match.MatchDataTeleLevelThreeCoral
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:explanation="The number of coral scored on level three"
+            app:explanation="The number of coral scored on level three during tele"
             app:label="Level Three" />
 
         <org.wildstang.wildrank.androidv2.views.data.reefscape.match.MatchDataTeleLevelFourCoral
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:explanation="The number of coral scored on level four"
+            app:explanation="The number of coral scored on level four during tele"
             app:label="Level Four" />
 
         <TextView
@@ -147,11 +147,11 @@
             android:textStyle="bold"
             android:text="End Overview" />
 
-        <org.wildstang.wildrank.androidv2.views.data.reefscape.match.MatchDataEndStage
+        <org.wildstang.wildrank.androidv2.views.data.reefscape.match.MatchDataEndBarge
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:explanation="Which score the robot would recieve at the end of the match"
-            app:label="Stage" />
+            app:explanation="Which score the robot would receive at the end of the match"
+            app:label="Barge" />
 
     </LinearLayout>
 

@@ -11,9 +11,9 @@ import org.wildstang.wildrank.androidv2.views.data.MatchDataView;
 import java.util.List;
 import java.util.Map;
 
-public class MatchDataEndStage extends MatchDataView implements IMatchDataView {
+public class MatchDataEndBarge extends MatchDataView implements IMatchDataView {
 
-    public MatchDataEndStage(Context context, AttributeSet attrs) {
+    public MatchDataEndBarge(Context context, AttributeSet attrs) {
         super(context, attrs);
     }
 
@@ -25,13 +25,13 @@ public class MatchDataEndStage extends MatchDataView implements IMatchDataView {
             return;
         }
         Map<String, Object> data = (Map<String, Object>) document.getProperty("data");
-        if (data.get("stage") == null) {
+        if (data.get("barge") == null) {
             return;
         }
-        String stage = (String) data.get("stage");
+        String barge = (String) data.get("barge");
 
-        String stageData = stage.substring(3);
+        String bargeData = barge.substring(3);
 
-        setValueText(stageData, "gray");
+        setValueText(bargeData, "gray");
     }
 }
