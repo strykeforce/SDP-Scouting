@@ -1,9 +1,8 @@
-package org.wildstang.wildrank.androidv2.fragments.TeamsComparison;
+package org.wildstang.wildrank.androidv2.fragments.TeamsComparison.reefscape;
 
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.util.Pair;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,6 +24,7 @@ import com.github.mikephil.charting.formatter.IndexAxisValueFormatter;
 
 import org.wildstang.wildrank.androidv2.R;
 import org.wildstang.wildrank.androidv2.data.DatabaseManager;
+import org.wildstang.wildrank.androidv2.fragments.TeamsComparison.TeamsComparisonFragment;
 import org.wildstang.wildrank.androidv2.views.scouting.ScoutingSpinnerView;
 
 import java.io.IOException;
@@ -33,7 +33,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
-public class TeamsComparisonAverageAutoFragment extends TeamsComparisonFragment {
+public class TeamsComparisonAverageProcessorFragment extends TeamsComparisonFragment {
     List<List<Document>> data;
 
     @Override
@@ -84,24 +84,18 @@ public class TeamsComparisonAverageAutoFragment extends TeamsComparisonFragment 
             for (int i = 0; i < teams.size(); i++) {
                 List<Document> teamDocuments = allMatchDocuments.get(i);
 
-                if (teamDocuments == null) break;
+                if (teamDocuments == null) continue;
 
-                int scored = 0;
+                int processor = 0;
                 for (Document document : teamDocuments) {
                     Map<String, Object> data = (Map<String, Object>) document.getProperty("data");
-                    if (data.get("redbutton9") != null) {
-                        for (int j = 0; j < ((ArrayList<Long>) data.get("redbutton9")).size(); j++) {
-                            scored++;
-                        }
+                    if (data.get("tele_processor") == null) {
+                        continue;
                     }
-                    if (data.get("bluebutton9") != null) {
-                        for (int j = 0; j < ((ArrayList<Long>) data.get("bluebutton9")).size(); j++) {
-                            scored++;
-                        }
-                    }
+                    processor += (int) data.get("tele_processor");
                 }
 
-                float average = (float) scored / (float) teamDocuments.size();
+                float average = (float) processor / (float) teamDocuments.size();
 
                 if (spinner.getSelectedItem().equals("Team Number")) {
                     barValues.add(average);
@@ -164,7 +158,7 @@ public class TeamsComparisonAverageAutoFragment extends TeamsComparisonFragment 
             yAxis.setAxisLineColor(Color.BLACK);
             yAxis.setLabelCount((int) (lineMax / 5));
 
-            BarDataSet dataSet = new BarDataSet(entries, "Average Auto");
+            BarDataSet dataSet = new BarDataSet(entries, "Average Processor");
             dataSet.setColors(Color.BLACK);
             BarData data = new BarData(dataSet);
             chart.setData(data);

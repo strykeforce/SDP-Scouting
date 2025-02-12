@@ -50,15 +50,15 @@ public class TeamSummariesGraphsFragment extends TeamSummariesFragment {
             ArrayList<String> xAxisLabels = new ArrayList<>();
             ArrayList<Float> max = new ArrayList<>();
 
-            if (spinner.getSelectedItem().equals("Cycles")) {
+            if (spinner.getSelectedItem().equals("Removed Algae")) {
                 for (Document document : matchDocuments) {
                     Map<String, Object> data = (Map<String, Object>) document.getProperty("data");
-                    int cycles = 0;
-                    cycles += (int) data.get("tele_made_speaker");
-                    cycles += (int) data.get("tele_missed_speaker");
-                    cycles += (int) data.get("tele_made_amp");
-                    cycles += (int) data.get("tele_passes");
-                    cycles += Integer.valueOf(((String) data.get("Trap")).substring(2, 3));
+
+                    int algae = 0;
+                    algae += (int) data.get("auto_upper_removed");
+                    algae += (int) data.get("auto_lower_removed");
+                    algae += (int) data.get("tele_upper_removed");
+                    algae += (int) data.get("tele_lower_removed");
 
                     String mNum = (String) document.getProperty("match_key");
                     int start = 0;
@@ -69,34 +69,28 @@ public class TeamSummariesGraphsFragment extends TeamSummariesFragment {
                         }
                     }
 
-                    max.add((float) cycles);
+                    max.add((float) algae);
 
                     if (xAxisLabels.size() == 0) {
-                        barValues.add((float) cycles);
+                        barValues.add((float) algae);
                         xAxisLabels.add(mNum.substring(start));
                     } else {
                         for (int k = 0; k < xAxisLabels.size(); k++) {
                             if (Integer.valueOf(mNum.substring(start)) < Integer.valueOf(xAxisLabels.get(k))) {
-                                barValues.add(k, (float) cycles);
+                                barValues.add(k, (float) algae);
                                 xAxisLabels.add(k, mNum.substring(start));
                                 break;
                             } else if (k == xAxisLabels.size() - 1) {
-                                barValues.add((float) cycles);
+                                barValues.add((float) algae);
                                 xAxisLabels.add(mNum.substring(start));
                                 break;
                             }
                         }
                     }
                 }
-            } else if (spinner.getSelectedItem().equals("Weighted Cycles")) {
+            } else if (spinner.getSelectedItem().equals("Processor")) {
                 for (Document document : matchDocuments) {
                     Map<String, Object> data = (Map<String, Object>) document.getProperty("data");
-                    double cycles = 0.0;
-                    cycles += Double.valueOf(Integer.toString((int) data.get("tele_made_speaker")));
-                    cycles += Double.valueOf(Integer.toString((int) data.get("tele_missed_speaker")));
-                    cycles += Double.valueOf(Integer.toString((int) data.get("tele_made_amp"))) * 1.25;
-                    cycles += Double.valueOf(Integer.toString((int) data.get("tele_passes"))) * 0.6;
-                    cycles += Double.valueOf(((String) data.get("Trap")).substring(2, 3)) * 2.0;
 
                     String mNum = (String) document.getProperty("match_key");
                     int start = 0;
@@ -107,26 +101,26 @@ public class TeamSummariesGraphsFragment extends TeamSummariesFragment {
                         }
                     }
 
-                    max.add((float) cycles);
+                    max.add((float) (int) data.get("tele_processor"));
 
                     if (xAxisLabels.size() == 0) {
-                        barValues.add((float) cycles);
+                        barValues.add((float) (int) data.get("tele_processor"));
                         xAxisLabels.add(mNum.substring(start));
                     } else {
                         for (int k = 0; k < xAxisLabels.size(); k++) {
                             if (Integer.valueOf(mNum.substring(start)) < Integer.valueOf(xAxisLabels.get(k))) {
-                                barValues.add(k, (float) cycles);
+                                barValues.add(k, (float) (int) data.get("tele_processor"));
                                 xAxisLabels.add(k, mNum.substring(start));
                                 break;
                             } else if (k == xAxisLabels.size() - 1) {
-                                barValues.add((float) cycles);
+                                barValues.add((float) (int) data.get("tele_processor"));
                                 xAxisLabels.add(mNum.substring(start));
                                 break;
                             }
                         }
                     }
                 }
-            } else if (spinner.getSelectedItem().equals("Amp and Speaker")) {
+            } else if (spinner.getSelectedItem().equals("Net")) {
                 for (Document document : matchDocuments) {
                     Map<String, Object> data = (Map<String, Object>) document.getProperty("data");
 
@@ -139,28 +133,38 @@ public class TeamSummariesGraphsFragment extends TeamSummariesFragment {
                         }
                     }
 
-                    max.add((float) ((int) data.get("tele_made_amp") + (int) data.get("tele_made_speaker")));
+                    max.add((float) (int) data.get("tele_robot_net"));
 
                     if (xAxisLabels.size() == 0) {
-                        barValues.add((float) ((int) data.get("tele_made_amp") + (int) data.get("tele_made_speaker")));
+                        barValues.add((float) (int) data.get("tele_robot_net"));
                         xAxisLabels.add(mNum.substring(start));
                     } else {
                         for (int k = 0; k < xAxisLabels.size(); k++) {
                             if (Integer.valueOf(mNum.substring(start)) < Integer.valueOf(xAxisLabels.get(k))) {
-                                barValues.add(k, (float) ((int) data.get("tele_made_amp") + (int) data.get("tele_made_speaker")));
+                                barValues.add(k, (float) (int) data.get("tele_robot_net"));
                                 xAxisLabels.add(k, mNum.substring(start));
                                 break;
                             } else if (k == xAxisLabels.size() - 1) {
-                                barValues.add((float) ((int) data.get("tele_made_amp") + (int) data.get("tele_made_speaker")));
+                                barValues.add((float) (int) data.get("tele_robot_net"));
                                 xAxisLabels.add(mNum.substring(start));
                                 break;
                             }
                         }
                     }
                 }
-            } else if (spinner.getSelectedItem().equals("Amp")) {
+            } else if (spinner.getSelectedItem().equals("Coral")) {
                 for (Document document : matchDocuments) {
                     Map<String, Object> data = (Map<String, Object>) document.getProperty("data");
+
+                    int coral = 0;
+                    coral += (int) data.get("auto_level_one");
+                    coral += (int) data.get("auto_level_two");
+                    coral += (int) data.get("auto_level_three");
+                    coral += (int) data.get("auto_level_four");
+                    coral += (int) data.get("tele_level_one");
+                    coral += (int) data.get("tele_level_two");
+                    coral += (int) data.get("tele_level_three");
+                    coral += (int) data.get("tele_level_four");
 
                     String mNum = (String) document.getProperty("match_key");
                     int start = 0;
@@ -171,126 +175,19 @@ public class TeamSummariesGraphsFragment extends TeamSummariesFragment {
                         }
                     }
 
-                    max.add((float) (int) data.get("tele_made_amp"));
+                    max.add((float) coral);
 
                     if (xAxisLabels.size() == 0) {
-                        barValues.add((float) (int) data.get("tele_made_amp"));
+                        barValues.add((float) coral);
                         xAxisLabels.add(mNum.substring(start));
                     } else {
                         for (int k = 0; k < xAxisLabels.size(); k++) {
                             if (Integer.valueOf(mNum.substring(start)) < Integer.valueOf(xAxisLabels.get(k))) {
-                                barValues.add(k, (float) (int) data.get("tele_made_amp"));
+                                barValues.add(k, (float) coral);
                                 xAxisLabels.add(k, mNum.substring(start));
                                 break;
                             } else if (k == xAxisLabels.size() - 1) {
-                                barValues.add((float) (int) data.get("tele_made_amp"));
-                                xAxisLabels.add(mNum.substring(start));
-                                break;
-                            }
-                        }
-                    }
-                }
-            } else if (spinner.getSelectedItem().equals("Speaker")) {
-                for (Document document : matchDocuments) {
-                    Map<String, Object> data = (Map<String, Object>) document.getProperty("data");
-
-                    String mNum = (String) document.getProperty("match_key");
-                    int start = 0;
-                    for (int i = mNum.length() - 1; i >= 0; i--) {
-                        if (mNum.charAt(i) == 'm') {
-                            start = i + 1;
-                            break;
-                        }
-                    }
-
-                    max.add((float) (int) data.get("tele_made_speaker"));
-
-                    if (xAxisLabels.size() == 0) {
-                        barValues.add((float) (int) data.get("tele_made_speaker"));
-                        xAxisLabels.add(mNum.substring(start));
-                    } else {
-                        for (int k = 0; k < xAxisLabels.size(); k++) {
-                            if (Integer.valueOf(mNum.substring(start)) < Integer.valueOf(xAxisLabels.get(k))) {
-                                barValues.add(k, (float) (int) data.get("tele_made_speaker"));
-                                xAxisLabels.add(k, mNum.substring(start));
-                                break;
-                            } else if (k == xAxisLabels.size() - 1) {
-                                barValues.add((float) (int) data.get("tele_made_speaker"));
-                                xAxisLabels.add(mNum.substring(start));
-                                break;
-                            }
-                        }
-                    }
-                }
-            } else if (spinner.getSelectedItem().equals("Passes")) {
-                for (Document document : matchDocuments) {
-                    Map<String, Object> data = (Map<String, Object>) document.getProperty("data");
-
-                    String mNum = (String) document.getProperty("match_key");
-                    int start = 0;
-                    for (int i = mNum.length() - 1; i >= 0; i--) {
-                        if (mNum.charAt(i) == 'm') {
-                            start = i + 1;
-                            break;
-                        }
-                    }
-
-                    max.add((float) (int) data.get("tele_passes"));
-
-                    if (xAxisLabels.size() == 0) {
-                        barValues.add((float) (int) data.get("tele_passes"));
-                        xAxisLabels.add(mNum.substring(start));
-                    } else {
-                        for (int k = 0; k < xAxisLabels.size(); k++) {
-                            if (Integer.valueOf(mNum.substring(start)) < Integer.valueOf(xAxisLabels.get(k))) {
-                                barValues.add(k, (float) (int) data.get("tele_passes"));
-                                xAxisLabels.add(k, mNum.substring(start));
-                                break;
-                            } else if (k == xAxisLabels.size() - 1) {
-                                barValues.add((float) (int) data.get("tele_passes"));
-                                xAxisLabels.add(mNum.substring(start));
-                                break;
-                            }
-                        }
-                    }
-                }
-            } else if (spinner.getSelectedItem().equals("Auto")) {
-                for (Document document : matchDocuments) {
-                    Map<String, Object> data = (Map<String, Object>) document.getProperty("data");
-                    int notes = 0;
-                    if (data.get("redbutton9") != null) {
-                        for (int j = 0; j < ((ArrayList<Long>) data.get("redbutton9")).size(); j++) {
-                            notes++;
-                        }
-                    }
-                    if (data.get("bluebutton9") != null) {
-                        for (int j = 0; j < ((ArrayList<Long>) data.get("bluebutton9")).size(); j++) {
-                            notes++;
-                        }
-                    }
-
-                    String mNum = (String) document.getProperty("match_key");
-                    int start = 0;
-                    for (int i = mNum.length() - 1; i >= 0; i--) {
-                        if (mNum.charAt(i) == 'm') {
-                            start = i + 1;
-                            break;
-                        }
-                    }
-
-                    max.add((float) notes);
-
-                    if (xAxisLabels.size() == 0) {
-                        barValues.add((float) notes);
-                        xAxisLabels.add(mNum.substring(start));
-                    } else {
-                        for (int k = 0; k < xAxisLabels.size(); k++) {
-                            if (Integer.valueOf(mNum.substring(start)) < Integer.valueOf(xAxisLabels.get(k))) {
-                                barValues.add((float) notes);
-                                xAxisLabels.add(mNum.substring(start));
-                                break;
-                            } else if (k == xAxisLabels.size() - 1) {
-                                barValues.add((float) notes);
+                                barValues.add((float) coral);
                                 xAxisLabels.add(mNum.substring(start));
                                 break;
                             }

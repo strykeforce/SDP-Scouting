@@ -1,9 +1,8 @@
-package org.wildstang.wildrank.androidv2.fragments.TeamsComparison;
+package org.wildstang.wildrank.androidv2.fragments.TeamsComparison.reefscape;
 
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.util.Pair;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,6 +24,7 @@ import com.github.mikephil.charting.formatter.IndexAxisValueFormatter;
 
 import org.wildstang.wildrank.androidv2.R;
 import org.wildstang.wildrank.androidv2.data.DatabaseManager;
+import org.wildstang.wildrank.androidv2.fragments.TeamsComparison.TeamsComparisonFragment;
 import org.wildstang.wildrank.androidv2.views.scouting.ScoutingSpinnerView;
 
 import java.io.IOException;
@@ -33,7 +33,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
-public class TeamsComparisonAverageAmpFragment extends TeamsComparisonFragment {
+public class TeamsComparisonAverageCoralFragment extends TeamsComparisonFragment {
     List<List<Document>> data;
 
     @Override
@@ -84,18 +84,25 @@ public class TeamsComparisonAverageAmpFragment extends TeamsComparisonFragment {
             for (int i = 0; i < teams.size(); i++) {
                 List<Document> teamDocuments = allMatchDocuments.get(i);
 
-                if (teamDocuments == null) break;
+                if (teamDocuments == null) continue;
 
-                int amp = 0;
+                int coral = 0;
                 for (Document document : teamDocuments) {
                     Map<String, Object> data = (Map<String, Object>) document.getProperty("data");
-                    if (data.get("tele_made_amp") == null) {
-                        return;
+                    if (data.get("auto_level_one") == null || data.get("auto_level_two") == null || data.get("auto_level_three") == null || data.get("auto_level_four") == null || data.get("tele_level_one") == null || data.get("tele_level_two") == null || data.get("tele_level_three") == null || data.get("tele_level_four") == null) {
+                        continue;
                     }
-                    amp += (int) data.get("tele_made_amp");
+                    coral += (int) data.get("auto_level_one");
+                    coral += (int) data.get("auto_level_two");
+                    coral += (int) data.get("auto_level_three");
+                    coral += (int) data.get("auto_level_four");
+                    coral += (int) data.get("tele_level_one");
+                    coral += (int) data.get("tele_level_two");
+                    coral += (int) data.get("tele_level_three");
+                    coral += (int) data.get("tele_level_four");
                 }
 
-                float average = (float) amp / (float) teamDocuments.size();
+                float average = (float) coral / (float) teamDocuments.size();
 
                 if (spinner.getSelectedItem().equals("Team Number")) {
                     barValues.add(average);
@@ -158,7 +165,7 @@ public class TeamsComparisonAverageAmpFragment extends TeamsComparisonFragment {
             yAxis.setAxisLineColor(Color.BLACK);
             yAxis.setLabelCount((int) (lineMax / 5));
 
-            BarDataSet dataSet = new BarDataSet(entries, "Average Amp");
+            BarDataSet dataSet = new BarDataSet(entries, "Average Coral");
             dataSet.setColors(Color.BLACK);
             BarData data = new BarData(dataSet);
             chart.setData(data);

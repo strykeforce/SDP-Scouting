@@ -1,9 +1,8 @@
-package org.wildstang.wildrank.androidv2.fragments.TeamsComparison;
+package org.wildstang.wildrank.androidv2.fragments.TeamsComparison.crescendo;
 
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.util.Pair;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,6 +24,7 @@ import com.github.mikephil.charting.formatter.IndexAxisValueFormatter;
 
 import org.wildstang.wildrank.androidv2.R;
 import org.wildstang.wildrank.androidv2.data.DatabaseManager;
+import org.wildstang.wildrank.androidv2.fragments.TeamsComparison.TeamsComparisonFragment;
 import org.wildstang.wildrank.androidv2.views.scouting.ScoutingSpinnerView;
 
 import java.io.IOException;
@@ -33,7 +33,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
-public class TeamsComparisonAverageAmpAndSpeakerFragment extends TeamsComparisonFragment {
+public class TeamsComparisonMaxPassesFragment extends TeamsComparisonFragment {
     List<List<Document>> data;
 
     @Override
@@ -86,33 +86,32 @@ public class TeamsComparisonAverageAmpAndSpeakerFragment extends TeamsComparison
 
                 if (teamDocuments == null) break;
 
-                int notes = 0;
+                int maxPasses = 0;
                 for (Document document : teamDocuments) {
                     Map<String, Object> data = (Map<String, Object>) document.getProperty("data");
-                    if (data.get("tele_made_amp") == null || data.get("tele_made_speaker") == null) {
+                    if (data.get("tele_passes") == null) {
                         return;
                     }
-                    notes += (int) data.get("tele_made_amp");
-                    notes += (int) data.get("tele_made_speaker");
+                    if (maxPasses < (int) data.get("tele_passes")) {
+                        maxPasses = (int) data.get("tele_passes");
+                    }
                 }
 
-                float average = (float) notes / (float) teamDocuments.size();
-
                 if (spinner.getSelectedItem().equals("Team Number")) {
-                    barValues.add(average);
+                    barValues.add((float) maxPasses);
                     xAxisLabels.add(teams.get(i).toString().substring(0, teams.get(i).toString().length() - 2));
                 } else if (spinner.getSelectedItem().equals("Descending")) {
                     if (barValues.size() == 0) {
-                        barValues.add(average);
+                        barValues.add((float) maxPasses);
                         xAxisLabels.add(teams.get(i).toString().substring(0, teams.get(i).toString().length() - 2));
                     } else {
                         for (int m = 0; m < barValues.size(); m++) {
-                            if (average >= barValues.get(m)) {
-                                barValues.add(m, average);
+                            if ((float) maxPasses >= barValues.get(m)) {
+                                barValues.add(m, (float) maxPasses);
                                 xAxisLabels.add(m, teams.get(i).toString().substring(0, teams.get(i).toString().length() - 2));
                                 break;
                             } else if (m == barValues.size() - 1) {
-                                barValues.add(average);
+                                barValues.add((float) maxPasses);
                                 xAxisLabels.add(teams.get(i).toString().substring(0, teams.get(i).toString().length() - 2));
                                 break;
                             }
@@ -120,23 +119,23 @@ public class TeamsComparisonAverageAmpAndSpeakerFragment extends TeamsComparison
                     }
                 } else if (spinner.getSelectedItem().equals("Ascending")) {
                     if (barValues.size() == 0) {
-                        barValues.add(average);
+                        barValues.add((float) maxPasses);
                         xAxisLabels.add(teams.get(i).toString().substring(0, teams.get(i).toString().length() - 2));
                     } else {
                         for (int n = 0; n < barValues.size(); n++) {
-                            if (average <= barValues.get(n)) {
-                                barValues.add(n, average);
+                            if ((float) maxPasses <= barValues.get(n)) {
+                                barValues.add(n, (float) maxPasses);
                                 xAxisLabels.add(n, teams.get(i).toString().substring(0, teams.get(i).toString().length() - 2));
                                 break;
                             } else if (n == barValues.size() - 1) {
-                                barValues.add(average);
+                                barValues.add((float) maxPasses);
                                 xAxisLabels.add(teams.get(i).toString().substring(0, teams.get(i).toString().length() - 2));
                                 break;
                             }
                         }
                     }
                 }
-                max.add((float) average);
+                max.add((float) maxPasses);
             }
 
             float lineMax = 0f;
@@ -159,7 +158,7 @@ public class TeamsComparisonAverageAmpAndSpeakerFragment extends TeamsComparison
             yAxis.setAxisLineColor(Color.BLACK);
             yAxis.setLabelCount((int) (lineMax / 5));
 
-            BarDataSet dataSet = new BarDataSet(entries, "Average Amp and Speaker");
+            BarDataSet dataSet = new BarDataSet(entries, "Max Passes");
             dataSet.setColors(Color.BLACK);
             BarData data = new BarData(dataSet);
             chart.setData(data);

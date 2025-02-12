@@ -1,4 +1,4 @@
-package org.wildstang.wildrank.androidv2.fragments.TeamsComparison;
+package org.wildstang.wildrank.androidv2.fragments.TeamsComparison.crescendo;
 
 import android.graphics.Color;
 import android.os.Bundle;
@@ -24,6 +24,7 @@ import com.github.mikephil.charting.formatter.IndexAxisValueFormatter;
 
 import org.wildstang.wildrank.androidv2.R;
 import org.wildstang.wildrank.androidv2.data.DatabaseManager;
+import org.wildstang.wildrank.androidv2.fragments.TeamsComparison.TeamsComparisonFragment;
 import org.wildstang.wildrank.androidv2.views.scouting.ScoutingSpinnerView;
 
 import java.io.IOException;
@@ -32,7 +33,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
-public class TeamsComparisonMaxCyclesFragment extends TeamsComparisonFragment {
+public class TeamsComparisonMaxAutoFragment extends TeamsComparisonFragment {
     List<List<Document>> data;
 
     @Override
@@ -85,50 +86,40 @@ public class TeamsComparisonMaxCyclesFragment extends TeamsComparisonFragment {
 
                 if (teamDocuments == null) break;
 
-                int maxCycles = 0;
+                int maxScored = 0;
                 for (Document document : teamDocuments) {
                     Map<String, Object> data = (Map<String, Object>) document.getProperty("data");
-                    if (data.get("tele_made_speaker") == null) {
-                        return;
+                    int scored = 0;
+                    if (data.get("redbutton9") != null) {
+                        for (int j = 0; j < ((ArrayList<Long>) data.get("redbutton9")).size(); j++) {
+                            scored++;
+                        }
                     }
-                    if (data.get("tele_missed_speaker") == null) {
-                        return;
+                    if (data.get("bluebutton9") != null) {
+                        for (int j = 0; j < ((ArrayList<Long>) data.get("bluebutton9")).size(); j++) {
+                            scored++;
+                        }
                     }
-                    if (data.get("tele_made_amp") == null) {
-                        return;
-                    }
-                    if (data.get("tele_passes") == null) {
-                        return;
-                    }
-                    if (data.get("Trap") == null) {
-                        return;
-                    }
-                    int Cycles = 0;
-                    Cycles += (int) data.get("tele_made_speaker");
-                    Cycles += (int) data.get("tele_missed_speaker");
-                    Cycles += (int) data.get("tele_made_amp");
-                    Cycles += (int) data.get("tele_passes");
-                    Cycles += Integer.valueOf(((String) data.get("Trap")).substring(2, 3));
-                    if (maxCycles < Cycles) {
-                        maxCycles = Cycles;
+                    if (maxScored < scored) {
+                        maxScored = scored;
                     }
                 }
 
                 if (spinner.getSelectedItem().equals("Team Number")) {
-                    barValues.add((float) maxCycles);
+                    barValues.add((float) maxScored);
                     xAxisLabels.add(teams.get(i).toString().substring(0, teams.get(i).toString().length() - 2));
                 } else if (spinner.getSelectedItem().equals("Descending")) {
                     if (barValues.size() == 0) {
-                        barValues.add((float) maxCycles);
+                        barValues.add((float) maxScored);
                         xAxisLabels.add(teams.get(i).toString().substring(0, teams.get(i).toString().length() - 2));
                     } else {
                         for (int m = 0; m < barValues.size(); m++) {
-                            if ((float) maxCycles >= barValues.get(m)) {
-                                barValues.add(m, (float) maxCycles);
+                            if ((float) maxScored >= barValues.get(m)) {
+                                barValues.add(m, (float) maxScored);
                                 xAxisLabels.add(m, teams.get(i).toString().substring(0, teams.get(i).toString().length() - 2));
                                 break;
                             } else if (m == barValues.size() - 1) {
-                                barValues.add((float) maxCycles);
+                                barValues.add((float) maxScored);
                                 xAxisLabels.add(teams.get(i).toString().substring(0, teams.get(i).toString().length() - 2));
                                 break;
                             }
@@ -136,23 +127,23 @@ public class TeamsComparisonMaxCyclesFragment extends TeamsComparisonFragment {
                     }
                 } else if (spinner.getSelectedItem().equals("Ascending")) {
                     if (barValues.size() == 0) {
-                        barValues.add((float) maxCycles);
+                        barValues.add((float) maxScored);
                         xAxisLabels.add(teams.get(i).toString().substring(0, teams.get(i).toString().length() - 2));
                     } else {
                         for (int n = 0; n < barValues.size(); n++) {
-                            if ((float) maxCycles <= barValues.get(n)) {
-                                barValues.add(n, (float) maxCycles);
+                            if ((float) maxScored <= barValues.get(n)) {
+                                barValues.add(n, (float) maxScored);
                                 xAxisLabels.add(n, teams.get(i).toString().substring(0, teams.get(i).toString().length() - 2));
                                 break;
                             } else if (n == barValues.size() - 1) {
-                                barValues.add((float) maxCycles);
+                                barValues.add((float) maxScored);
                                 xAxisLabels.add(teams.get(i).toString().substring(0, teams.get(i).toString().length() - 2));
                                 break;
                             }
                         }
                     }
                 }
-                max.add((float) maxCycles);
+                max.add((float) maxScored);
             }
 
             float lineMax = 0f;
@@ -175,7 +166,7 @@ public class TeamsComparisonMaxCyclesFragment extends TeamsComparisonFragment {
             yAxis.setAxisLineColor(Color.BLACK);
             yAxis.setLabelCount((int) (lineMax / 5));
 
-            BarDataSet dataSet = new BarDataSet(entries, "Max Cycles");
+            BarDataSet dataSet = new BarDataSet(entries, "Max Auto");
             dataSet.setColors(Color.BLACK);
             BarData data = new BarData(dataSet);
             chart.setData(data);

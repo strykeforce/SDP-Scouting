@@ -1,4 +1,4 @@
-package org.wildstang.wildrank.androidv2.fragments.TeamsComparison;
+package org.wildstang.wildrank.androidv2.fragments.TeamsComparison.crescendo;
 
 import android.graphics.Color;
 import android.os.Bundle;
@@ -24,6 +24,7 @@ import com.github.mikephil.charting.formatter.IndexAxisValueFormatter;
 
 import org.wildstang.wildrank.androidv2.R;
 import org.wildstang.wildrank.androidv2.data.DatabaseManager;
+import org.wildstang.wildrank.androidv2.fragments.TeamsComparison.TeamsComparisonFragment;
 import org.wildstang.wildrank.androidv2.views.scouting.ScoutingSpinnerView;
 
 import java.io.IOException;
@@ -32,7 +33,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
-public class TeamsComparisonMaxWeightedCyclesFragment extends TeamsComparisonFragment {
+public class TeamsComparisonMaxSpeakerFragment extends TeamsComparisonFragment {
     List<List<Document>> data;
 
     @Override
@@ -85,50 +86,32 @@ public class TeamsComparisonMaxWeightedCyclesFragment extends TeamsComparisonFra
 
                 if (teamDocuments == null) break;
 
-                int maxCycles = 0;
+                int maxSpeaker = 0;
                 for (Document document : teamDocuments) {
                     Map<String, Object> data = (Map<String, Object>) document.getProperty("data");
                     if (data.get("tele_made_speaker") == null) {
                         return;
                     }
-                    if (data.get("tele_missed_speaker") == null) {
-                        return;
-                    }
-                    if (data.get("tele_made_amp") == null) {
-                        return;
-                    }
-                    if (data.get("tele_passes") == null) {
-                        return;
-                    }
-                    if (data.get("Trap") == null) {
-                        return;
-                    }
-                    int cycles = 0;
-                    cycles += Double.valueOf(Integer.toString((int) data.get("tele_made_speaker")));
-                    cycles += Double.valueOf(Integer.toString((int) data.get("tele_missed_speaker")));
-                    cycles += Double.valueOf(Integer.toString((int) data.get("tele_made_amp"))) * 1.25;
-                    cycles += Double.valueOf(Integer.toString((int) data.get("tele_passes"))) * 0.6;
-                    cycles += Double.valueOf(((String) data.get("Trap")).substring(2, 3)) * 2.0;
-                    if (maxCycles < cycles) {
-                        maxCycles = cycles;
+                    if (maxSpeaker < (int) data.get("tele_made_speaker")) {
+                        maxSpeaker = (int) data.get("tele_made_speaker");
                     }
                 }
 
                 if (spinner.getSelectedItem().equals("Team Number")) {
-                    barValues.add((float) maxCycles);
+                    barValues.add((float) maxSpeaker);
                     xAxisLabels.add(teams.get(i).toString().substring(0, teams.get(i).toString().length() - 2));
                 } else if (spinner.getSelectedItem().equals("Descending")) {
                     if (barValues.size() == 0) {
-                        barValues.add((float) maxCycles);
+                        barValues.add((float) maxSpeaker);
                         xAxisLabels.add(teams.get(i).toString().substring(0, teams.get(i).toString().length() - 2));
                     } else {
                         for (int m = 0; m < barValues.size(); m++) {
-                            if ((float) maxCycles >= barValues.get(m)) {
-                                barValues.add(m, (float) maxCycles);
+                            if ((float) maxSpeaker >= barValues.get(m)) {
+                                barValues.add(m, (float) maxSpeaker);
                                 xAxisLabels.add(m, teams.get(i).toString().substring(0, teams.get(i).toString().length() - 2));
                                 break;
                             } else if (m == barValues.size() - 1) {
-                                barValues.add((float) maxCycles);
+                                barValues.add((float) maxSpeaker);
                                 xAxisLabels.add(teams.get(i).toString().substring(0, teams.get(i).toString().length() - 2));
                                 break;
                             }
@@ -136,23 +119,23 @@ public class TeamsComparisonMaxWeightedCyclesFragment extends TeamsComparisonFra
                     }
                 } else if (spinner.getSelectedItem().equals("Ascending")) {
                     if (barValues.size() == 0) {
-                        barValues.add((float) maxCycles);
+                        barValues.add((float) maxSpeaker);
                         xAxisLabels.add(teams.get(i).toString().substring(0, teams.get(i).toString().length() - 2));
                     } else {
                         for (int n = 0; n < barValues.size(); n++) {
-                            if ((float) maxCycles <= barValues.get(n)) {
-                                barValues.add(n, (float) maxCycles);
+                            if ((float) maxSpeaker <= barValues.get(n)) {
+                                barValues.add(n, (float) maxSpeaker);
                                 xAxisLabels.add(n, teams.get(i).toString().substring(0, teams.get(i).toString().length() - 2));
                                 break;
                             } else if (n == barValues.size() - 1) {
-                                barValues.add((float) maxCycles);
+                                barValues.add((float) maxSpeaker);
                                 xAxisLabels.add(teams.get(i).toString().substring(0, teams.get(i).toString().length() - 2));
                                 break;
                             }
                         }
                     }
                 }
-                max.add((float) maxCycles);
+                max.add((float) maxSpeaker);
             }
 
             float lineMax = 0f;
@@ -175,7 +158,7 @@ public class TeamsComparisonMaxWeightedCyclesFragment extends TeamsComparisonFra
             yAxis.setAxisLineColor(Color.BLACK);
             yAxis.setLabelCount((int) (lineMax / 5));
 
-            BarDataSet dataSet = new BarDataSet(entries, "Max Weighted Cycles");
+            BarDataSet dataSet = new BarDataSet(entries, "Max Speaker");
             dataSet.setColors(Color.BLACK);
             BarData data = new BarData(dataSet);
             chart.setData(data);

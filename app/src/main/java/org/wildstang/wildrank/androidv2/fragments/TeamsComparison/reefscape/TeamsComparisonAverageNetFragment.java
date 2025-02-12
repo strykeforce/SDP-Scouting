@@ -1,9 +1,8 @@
-package org.wildstang.wildrank.androidv2.fragments.TeamsComparison;
+package org.wildstang.wildrank.androidv2.fragments.TeamsComparison.reefscape;
 
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.util.Pair;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,6 +24,7 @@ import com.github.mikephil.charting.formatter.IndexAxisValueFormatter;
 
 import org.wildstang.wildrank.androidv2.R;
 import org.wildstang.wildrank.androidv2.data.DatabaseManager;
+import org.wildstang.wildrank.androidv2.fragments.TeamsComparison.TeamsComparisonFragment;
 import org.wildstang.wildrank.androidv2.views.scouting.ScoutingSpinnerView;
 
 import java.io.IOException;
@@ -33,7 +33,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
-public class TeamsComparisonAverageWeightedCyclesFragment extends TeamsComparisonFragment {
+public class TeamsComparisonAverageNetFragment extends TeamsComparisonFragment {
     List<List<Document>> data;
 
     @Override
@@ -84,34 +84,18 @@ public class TeamsComparisonAverageWeightedCyclesFragment extends TeamsCompariso
             for (int i = 0; i < teams.size(); i++) {
                 List<Document> teamDocuments = allMatchDocuments.get(i);
 
-                if (teamDocuments == null) break;
+                if (teamDocuments == null) continue;
 
-                int cycles = 0;
+                int net = 0;
                 for (Document document : teamDocuments) {
                     Map<String, Object> data = (Map<String, Object>) document.getProperty("data");
-                    if (data.get("tele_made_speaker") == null) {
-                        return;
+                    if (data.get("tele_robot_net") == null) {
+                        continue;
                     }
-                    if (data.get("tele_missed_speaker") == null) {
-                        return;
-                    }
-                    if (data.get("tele_made_amp") == null) {
-                        return;
-                    }
-                    if (data.get("tele_passes") == null) {
-                        return;
-                    }
-                    if (data.get("Trap") == null) {
-                        return;
-                    }
-                    cycles += Double.valueOf(Integer.toString((int) data.get("tele_made_speaker")));
-                    cycles += Double.valueOf(Integer.toString((int) data.get("tele_missed_speaker")));
-                    cycles += Double.valueOf(Integer.toString((int) data.get("tele_made_amp"))) * 1.25;
-                    cycles += Double.valueOf(Integer.toString((int) data.get("tele_passes"))) * 0.6;
-                    cycles += Double.valueOf(((String) data.get("Trap")).substring(2, 3)) * 2.0;
+                    net += (int) data.get("tele_robot_net");
                 }
 
-                float average = (float) cycles / (float) teamDocuments.size();
+                float average = (float) net / (float) teamDocuments.size();
 
                 if (spinner.getSelectedItem().equals("Team Number")) {
                     barValues.add(average);
@@ -174,7 +158,7 @@ public class TeamsComparisonAverageWeightedCyclesFragment extends TeamsCompariso
             yAxis.setAxisLineColor(Color.BLACK);
             yAxis.setLabelCount((int) (lineMax / 5));
 
-            BarDataSet dataSet = new BarDataSet(entries, "Average Weighted Cycles");
+            BarDataSet dataSet = new BarDataSet(entries, "Average Net");
             dataSet.setColors(Color.BLACK);
             BarData data = new BarData(dataSet);
             chart.setData(data);

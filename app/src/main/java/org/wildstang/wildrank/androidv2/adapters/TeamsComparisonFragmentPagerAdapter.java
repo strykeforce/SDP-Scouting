@@ -6,40 +6,28 @@ import android.support.v4.app.FragmentStatePagerAdapter;
 
 import com.couchbase.lite.Document;
 
-import org.wildstang.wildrank.androidv2.fragments.TeamsComparison.TeamsComparisonAverageAmpAndSpeakerFragment;
-import org.wildstang.wildrank.androidv2.fragments.TeamsComparison.TeamsComparisonAverageAmpFragment;
-import org.wildstang.wildrank.androidv2.fragments.TeamsComparison.TeamsComparisonAverageAutoFragment;
-import org.wildstang.wildrank.androidv2.fragments.TeamsComparison.TeamsComparisonAverageCyclesFragment;
-import org.wildstang.wildrank.androidv2.fragments.TeamsComparison.TeamsComparisonAveragePassesFragment;
-import org.wildstang.wildrank.androidv2.fragments.TeamsComparison.TeamsComparisonAverageSpeakerFragment;
-import org.wildstang.wildrank.androidv2.fragments.TeamsComparison.TeamsComparisonAverageWeightedCyclesFragment;
-import org.wildstang.wildrank.androidv2.fragments.TeamsComparison.TeamsComparisonMaxAmpAndSpeakerFragment;
-import org.wildstang.wildrank.androidv2.fragments.TeamsComparison.TeamsComparisonMaxAmpFragment;
-import org.wildstang.wildrank.androidv2.fragments.TeamsComparison.TeamsComparisonMaxAutoFragment;
-import org.wildstang.wildrank.androidv2.fragments.TeamsComparison.TeamsComparisonMaxCyclesFragment;
-import org.wildstang.wildrank.androidv2.fragments.TeamsComparison.TeamsComparisonMaxPassesFragment;
-import org.wildstang.wildrank.androidv2.fragments.TeamsComparison.TeamsComparisonMaxSpeakerFragment;
-import org.wildstang.wildrank.androidv2.fragments.TeamsComparison.TeamsComparisonMaxWeightedCyclesFragment;
+import org.wildstang.wildrank.androidv2.fragments.TeamsComparison.reefscape.TeamsComparisonAverageCoralFragment;
+import org.wildstang.wildrank.androidv2.fragments.TeamsComparison.reefscape.TeamsComparisonAverageNetFragment;
+import org.wildstang.wildrank.androidv2.fragments.TeamsComparison.reefscape.TeamsComparisonAverageProcessorFragment;
+import org.wildstang.wildrank.androidv2.fragments.TeamsComparison.reefscape.TeamsComparisonAverageRemovedAlgaeFragment;
+import org.wildstang.wildrank.androidv2.fragments.TeamsComparison.reefscape.TeamsComparisonMaxCoralFragment;
+import org.wildstang.wildrank.androidv2.fragments.TeamsComparison.reefscape.TeamsComparisonMaxNetFragment;
+import org.wildstang.wildrank.androidv2.fragments.TeamsComparison.reefscape.TeamsComparisonMaxProcessorFragment;
+import org.wildstang.wildrank.androidv2.fragments.TeamsComparison.reefscape.TeamsComparisonMaxRemovedAlgaeFragment;
 
 import java.util.List;
 
 public class TeamsComparisonFragmentPagerAdapter extends FragmentStatePagerAdapter {
-    static final int NUM_FRAGMENTS = 14;
+    static final int NUM_FRAGMENTS = 8;
 
-    private TeamsComparisonAverageAutoFragment averageAutoFragment;
-    private TeamsComparisonAverageAmpFragment averageAmpFragment;
-    private TeamsComparisonAverageSpeakerFragment averageSpeakerFragment;
-    private TeamsComparisonAverageAmpAndSpeakerFragment averageAmpAndSpeakerFragment;
-    private TeamsComparisonAveragePassesFragment averagePassesFragment;
-    private TeamsComparisonAverageCyclesFragment averageCyclesFragment;
-    private TeamsComparisonAverageWeightedCyclesFragment averageWeightedCyclesFragment;
-    private TeamsComparisonMaxAutoFragment maxAutoFragment;
-    private TeamsComparisonMaxAmpFragment maxAmpFragment;
-    private TeamsComparisonMaxSpeakerFragment maxSpeakerFragment;
-    private TeamsComparisonMaxAmpAndSpeakerFragment maxAmpAndSpeakerFragment;
-    private TeamsComparisonMaxPassesFragment maxPassesFragment;
-    private TeamsComparisonMaxCyclesFragment maxCyclesFragment;
-    private TeamsComparisonMaxWeightedCyclesFragment maxWeightedCyclesFragment;
+    private TeamsComparisonAverageRemovedAlgaeFragment averageRemovedAlgaeFragment;
+    private TeamsComparisonAverageProcessorFragment averageProcessorFragment;
+    private TeamsComparisonAverageNetFragment averageNetFragment;
+    private TeamsComparisonAverageCoralFragment averageCoralFragment;
+    private TeamsComparisonMaxRemovedAlgaeFragment maxRemovedAlgaeFragment;
+    private TeamsComparisonMaxProcessorFragment maxProcessorFragment;
+    private TeamsComparisonMaxNetFragment maxNetFragment;
+    private TeamsComparisonMaxCoralFragment maxCoralFragment;
 
     public TeamsComparisonFragmentPagerAdapter(FragmentManager fm) {
         super(fm);
@@ -47,53 +35,35 @@ public class TeamsComparisonFragmentPagerAdapter extends FragmentStatePagerAdapt
     }
 
     private void initFragments() {
-        averageAutoFragment = new TeamsComparisonAverageAutoFragment();
-        averageAmpFragment = new TeamsComparisonAverageAmpFragment();
-        averageSpeakerFragment = new TeamsComparisonAverageSpeakerFragment();
-        averageAmpAndSpeakerFragment = new TeamsComparisonAverageAmpAndSpeakerFragment();
-        averagePassesFragment = new TeamsComparisonAveragePassesFragment();
-        averageCyclesFragment = new TeamsComparisonAverageCyclesFragment();
-        averageWeightedCyclesFragment = new TeamsComparisonAverageWeightedCyclesFragment();
-        maxAutoFragment = new TeamsComparisonMaxAutoFragment();
-        maxAmpFragment = new TeamsComparisonMaxAmpFragment();
-        maxSpeakerFragment = new TeamsComparisonMaxSpeakerFragment();
-        maxAmpAndSpeakerFragment = new TeamsComparisonMaxAmpAndSpeakerFragment();
-        maxPassesFragment = new TeamsComparisonMaxPassesFragment();
-        maxCyclesFragment = new TeamsComparisonMaxCyclesFragment();
-        maxWeightedCyclesFragment = new TeamsComparisonMaxWeightedCyclesFragment();
+        averageRemovedAlgaeFragment = new TeamsComparisonAverageRemovedAlgaeFragment();
+        averageProcessorFragment = new TeamsComparisonAverageProcessorFragment();
+        averageNetFragment = new TeamsComparisonAverageNetFragment();
+        averageCoralFragment = new TeamsComparisonAverageCoralFragment();
+        maxRemovedAlgaeFragment = new TeamsComparisonMaxRemovedAlgaeFragment();
+        maxProcessorFragment = new TeamsComparisonMaxProcessorFragment();
+        maxNetFragment = new TeamsComparisonMaxNetFragment();
+        maxCoralFragment = new TeamsComparisonMaxCoralFragment();
     }
 
     @Override
     public Fragment getItem(int position) {
         switch (position) {
             case 0:
-                return averageAutoFragment;
+                return averageRemovedAlgaeFragment;
             case 1:
-                return averageAmpFragment;
+                return averageProcessorFragment;
             case 2:
-                return averageSpeakerFragment;
+                return averageNetFragment;
             case 3:
-                return averageAmpAndSpeakerFragment;
+                return averageCoralFragment;
             case 4:
-                return averagePassesFragment;
+                return maxRemovedAlgaeFragment;
             case 5:
-                return averageCyclesFragment;
+                return maxProcessorFragment;
             case 6:
-                return averageWeightedCyclesFragment;
+                return maxNetFragment;
             case 7:
-                return maxAutoFragment;
-            case 8:
-                return maxAmpFragment;
-            case 9:
-                return maxSpeakerFragment;
-            case 10:
-                return maxAmpAndSpeakerFragment;
-            case 11:
-                return maxPassesFragment;
-            case 12:
-                return maxCyclesFragment;
-            case 13:
-                return maxWeightedCyclesFragment;
+                return maxCoralFragment;
             default:
                 return null;
         }
@@ -108,52 +78,34 @@ public class TeamsComparisonFragmentPagerAdapter extends FragmentStatePagerAdapt
     public CharSequence getPageTitle(int position) {
         switch (position) {
             case 0:
-                return "Average Auto";
+                return "Average Removed Algae";
             case 1:
-                return "Average Amp";
+                return "Average Processor";
             case 2:
-                return "Average Speaker";
+                return "Average Net";
             case 3:
-                return "Average Amp and Speaker";
+                return "Average Coral";
             case 4:
-                return "Average Passes";
+                return "Max Removed Algae";
             case 5:
-                return "Average Cycles";
+                return "Max Processor";
             case 6:
-                return "Average Weighted Cycles";
+                return "Max Net";
             case 7:
-                return "Max Auto";
-            case 8:
-                return "Max Amp";
-            case 9:
-                return "Max Speaker";
-            case 10:
-                return "Max Amp and Speaker";
-            case 11:
-                return "Max Passes";
-            case 12:
-                return "Max Cycles";
-            case 13:
-                return "Max Weighted Cycles";
+                return "Max Coral";
             default:
                 return "ERROR INVALID POSITION";
         }
     }
 
     public void acceptNewData(List<List<Document>> allMatchDocuments) {
-        averageAutoFragment.acceptNewData(allMatchDocuments);
-        averageAmpFragment.acceptNewData(allMatchDocuments);
-        averageSpeakerFragment.acceptNewData(allMatchDocuments);
-        averageAmpAndSpeakerFragment.acceptNewData(allMatchDocuments);
-        averagePassesFragment.acceptNewData(allMatchDocuments);
-        averageCyclesFragment.acceptNewData(allMatchDocuments);
-        averageWeightedCyclesFragment.acceptNewData(allMatchDocuments);
-        maxAutoFragment.acceptNewData(allMatchDocuments);
-        maxAmpFragment.acceptNewData(allMatchDocuments);
-        maxSpeakerFragment.acceptNewData(allMatchDocuments);
-        maxAmpAndSpeakerFragment.acceptNewData(allMatchDocuments);
-        maxPassesFragment.acceptNewData(allMatchDocuments);
-        maxCyclesFragment.acceptNewData(allMatchDocuments);
-        maxWeightedCyclesFragment.acceptNewData(allMatchDocuments);
+        averageRemovedAlgaeFragment.acceptNewData(allMatchDocuments);
+        averageProcessorFragment.acceptNewData(allMatchDocuments);
+        averageNetFragment.acceptNewData(allMatchDocuments);
+        averageCoralFragment.acceptNewData(allMatchDocuments);
+        maxRemovedAlgaeFragment.acceptNewData(allMatchDocuments);
+        maxProcessorFragment.acceptNewData(allMatchDocuments);
+        maxNetFragment.acceptNewData(allMatchDocuments);
+        maxCoralFragment.acceptNewData(allMatchDocuments);
     }
 }

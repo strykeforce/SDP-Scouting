@@ -111,13 +111,10 @@
     </string-array>
 
     <string-array name="Charts">
-        <item>Cycles</item>
-        <item>Weighted Cycles</item>
-        <item>Amp and Speaker</item>
-        <item>Amp</item>
-        <item>Speaker</item>
-        <item>Passes</item>
-        <item>Auto</item>
+        <item>Removed Algae</item>
+        <item>Processor</item>
+        <item>Net</item>
+        <item>Coral</item>
     </string-array>
 
     <string-array name="Sorting">
