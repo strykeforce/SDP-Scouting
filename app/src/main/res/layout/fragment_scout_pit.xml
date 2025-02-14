@@ -23,25 +23,25 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:key="height"
-            app:label="Height" />
+            app:label="Height (in):" />
 
         <org.wildstang.wildrank.androidv2.views.scouting.ScoutingNumberView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:key="width"
-            app:label="Width" />
+            app:label="Width (in):" />
 
         <org.wildstang.wildrank.androidv2.views.scouting.ScoutingNumberView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:key="length"
-            app:label="Length" />
+            app:label="Length (in):" />
 
         <org.wildstang.wildrank.androidv2.views.scouting.ScoutingNumberView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:key="weight"
-            app:label="Weight" />
+            app:label="Weight (lb):" />
 
         <org.wildstang.wildrank.androidv2.views.scouting.ScoutingSpinnerView
             android:layout_width="match_parent"
@@ -53,16 +53,16 @@
         <org.wildstang.wildrank.androidv2.views.scouting.ScoutingSpinnerView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:key="scorer"
-            app:label="Scorable Places"
-            app:values="@array/scorable" />
+            app:key="coral"
+            app:label="Highest Coral"
+            app:values="@array/levels" />
 
         <org.wildstang.wildrank.androidv2.views.scouting.ScoutingSpinnerView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:key="Shoot_Height"
-            app:label="Shooter Height"
-            app:values="@array/Shooter_Height" />
+            app:key="algae"
+            app:label="Algae Capabilities"
+            app:values="@array/algae" />
 
     </LinearLayout>
 
@@ -91,15 +91,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:key="auto_drives"
-            app:label="Crosses Line" />
+            app:label="Exits Starting Zone" />
 
-      <!--
-        <org.wildstang.wildrank.androidv2.views.scouting.ScoutingCheckboxView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:key="auto_balances"
-            app:label="" />
--->
     </LinearLayout>
 
     <LinearLayout
@@ -123,32 +116,13 @@
             app:label="Intake"
             app:values="@array/Intake"
             />
-<!--
-        <org.wildstang.wildrank.androidv2.views.scouting.ScoutingCheckboxView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:key="Trap"
-            app:label="Able to Trap" />
 
-                <org.wildstang.wildrank.androidv2.views.scouting.ScoutingCheckboxView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    app:key="external_intake"
-                    app:label="External Intake" />
-
-                <org.wildstang.wildrank.androidv2.views.scouting.ScoutingCheckboxView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    app:key="retract_intake"
-                    app:label="Intake Retractable" />
-
-        -->
         <org.wildstang.wildrank.androidv2.views.scouting.ScoutingSpinnerView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:key="end_game_cap"
-            app:label="EndGame"
-            app:values="@array/EndGame" />
+            app:key="endgame"
+            app:label="Endgame"
+            app:values="@array/Endgame" />
 
         <Button
             android:id="@+id/CameraButton"

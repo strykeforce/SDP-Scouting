@@ -43,13 +43,12 @@
         <item>5</item>
     </string-array>
 
-    <string-array name="EndGame">
+    <string-array name="Endgame">
         <item>--</item>
-        <item>1. Other</item>
-        <item>2. Park</item>
-        <item>3. Climb</item>
-        <item>4. Buddy Climb</item>
-        <item>5. Trap</item>
+        <item>Park</item>
+        <item>Shallow Cage</item>
+        <item>Deep Cage</item>
+        <item>Shallow/Deep Cage</item>
     </string-array>
 
     <string-array name="drives">
@@ -63,14 +62,12 @@
         <item>Any Other (Add note)</item>
     </string-array>
 
-    <string-array name="scorable">
+    <string-array name="levels">
         <item>--</item>
-        <item>Amp</item>
-        <item>Speaker</item>
-        <item>Amp+Speaker</item>
-        <item>Amp+Speaker+Trap</item>
-        <item>Speaker+Trap</item>
-        <item>Amp+Trap</item>
+        <item>Level 1</item>
+        <item>Level 2</item>
+        <item>Level 3</item>
+        <item>Level 4</item>
     </string-array>
 
     <string-array name="player_stations">
@@ -92,13 +89,15 @@
         <item>8</item>
     </string-array>
 
-    <string-array name="Shooter_Height">
+    <string-array name="algae">
         <item>--</item>
-        <item>Low</item>
-        <item>Medium</item>
-        <item>High</item>
-
-
+        <item>Remove</item>
+        <item>Processor</item>
+        <item>Net</item>
+        <item>Remove+Processor</item>
+        <item>Remove+Net</item>
+        <item>Processor+Net</item>
+        <item>Remove+Processor+Net</item>
     </string-array>
 
     <string-array name="Intake">

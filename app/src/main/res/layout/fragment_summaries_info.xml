@@ -100,12 +100,6 @@
                         android:layout_height="wrap_content"
                         android:textSize="20sp"
                         app:text="&lt;b>Drivetrain:&lt;/b> {{drivetrain}}" />
-
-                    <org.wildstang.wildrank.androidv2.views.TemplatedTextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textSize="20sp"
-                        app:text="&lt;b>Shooter Height:&lt;/b> {{Shoot_Height}}" />
                     
                     <TextView
                         android:layout_width="wrap_content"
@@ -139,7 +133,20 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textSize="20sp"
-                        app:text="&lt;b>Endgame Climb:&lt;/b> {{end_game_cap}}" />
+                        app:text="&lt;b>Highest Coral:&lt;/b> {{coral}}" />
+
+                    <org.wildstang.wildrank.androidv2.views.TemplatedTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:textSize="20sp"
+                        app:text="&lt;b>Algae Capabilities:&lt;/b> {{algae}}"
+                        />
+
+                    <org.wildstang.wildrank.androidv2.views.TemplatedTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="20sp"
+                        app:text="&lt;b>Endgame Capabilities:&lt;/b> {{endgame}}" />
 
 
                     <org.wildstang.wildrank.androidv2.views.TemplatedTextView
@@ -149,13 +156,6 @@
                         app:falseString="No"
                         app:text="&lt;b>Intake:&lt;/b> {{intake}}"
                         app:trueString="Yes" />
-
-                    <org.wildstang.wildrank.androidv2.views.TemplatedTextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:textSize="20sp"
-                        app:text="&lt;b>Scorable Places:&lt;/b> {{scorer}}"
-                        />
 
                     <TextView
                         android:layout_width="wrap_content"
