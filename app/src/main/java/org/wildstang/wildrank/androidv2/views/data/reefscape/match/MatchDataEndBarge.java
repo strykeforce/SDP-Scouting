@@ -30,8 +30,6 @@ public class MatchDataEndBarge extends MatchDataView implements IMatchDataView {
         }
         String barge = (String) data.get("barge");
 
-        String bargeData = barge.substring(3);
-
-        setValueText(bargeData, "gray");
+        setValueText(barge, "gray");
     }
 }

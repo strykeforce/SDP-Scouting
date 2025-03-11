@@ -194,6 +194,71 @@ public class TeamSummariesGraphsFragment extends TeamSummariesFragment {
                         }
                     }
                 }
+            } else if (spinner.getSelectedItem().equals("Barge")) {
+                for (Document document : matchDocuments) {
+                    Map<String, Object> data = (Map<String, Object>) document.getProperty("data");
+
+                    String mNum = (String) document.getProperty("match_key");
+                    int start = 0;
+                    for (int i = mNum.length() - 1; i >= 0; i--) {
+                        if (mNum.charAt(i) == 'm') {
+                            start = i + 1;
+                            break;
+                        }
+                    }
+
+                    if (xAxisLabels.size() == 0) {
+                        if (data.get("barge").equals("Not Parked")) {
+                            barValues.add(1f);
+                            xAxisLabels.add(mNum.substring(start));
+                        } else if (data.get("barge").equals("Parked")) {
+                            barValues.add(2f);
+                            xAxisLabels.add(mNum.substring(start));
+                        } else if (data.get("barge").equals("Shallow Cage (High)")) {
+                            barValues.add(3f);
+                            xAxisLabels.add(mNum.substring(start));
+                        } else if (data.get("barge").equals("Deep Cage (Low)")) {
+                            barValues.add(4f);
+                            xAxisLabels.add(mNum.substring(start));
+                        }
+                    } else {
+                        for (int k = 0; k < xAxisLabels.size(); k++) {
+                            System.out.println("match number: " + Integer.valueOf(mNum.substring(start)));
+                            System.out.println("match number of x axis: " + Integer.valueOf(xAxisLabels.get(k)));
+                            if (Integer.valueOf(mNum.substring(start)) < Integer.valueOf(xAxisLabels.get(k))) {
+                                if (data.get("barge").equals("Not Parked")) {
+                                    barValues.add(1f);
+                                    xAxisLabels.add(mNum.substring(start));
+                                } else if (data.get("barge").equals("Parked")) {
+                                    barValues.add(2f);
+                                    xAxisLabels.add(mNum.substring(start));
+                                } else if (data.get("barge").equals("Shallow Cage (High)")) {
+                                    barValues.add(3f);
+                                    xAxisLabels.add(mNum.substring(start));
+                                } else if (data.get("barge").equals("Deep Cage (Low)")) {
+                                    barValues.add(4f);
+                                    xAxisLabels.add(mNum.substring(start));
+                                }
+                                break;
+                            } else if (k == xAxisLabels.size() - 1) {
+                                if (data.get("barge").equals("Not Parked")) {
+                                    barValues.add(1f);
+                                    xAxisLabels.add(mNum.substring(start));
+                                } else if (data.get("barge").equals("Parked")) {
+                                    barValues.add(2f);
+                                    xAxisLabels.add(mNum.substring(start));
+                                } else if (data.get("barge").equals("Shallow Cage (High)")) {
+                                    barValues.add(3f);
+                                    xAxisLabels.add(mNum.substring(start));
+                                } else if (data.get("barge").equals("Deep Cage (Low)")) {
+                                    barValues.add(4f);
+                                    xAxisLabels.add(mNum.substring(start));
+                                }
+                                break;
+                            }
+                        }
+                    }
+                }
             }
 
             float lineMax = 0f;
@@ -216,7 +281,12 @@ public class TeamSummariesGraphsFragment extends TeamSummariesFragment {
             yAxis.setAxisLineColor(Color.BLACK);
             yAxis.setLabelCount((int) (lineMax / 5));
 
-            BarDataSet dataSet = new BarDataSet(entries, spinner.getSelectedItem().toString());
+            BarDataSet dataSet;
+            if (spinner.getSelectedItem().toString().equals("Barge")) {
+                dataSet = new BarDataSet(entries, spinner.getSelectedItem().toString() + "\t\t\t\t\t\t\t\t\t\t1 = Not Parked\t\t\t\t\t2 = Parked\t\t\t\t\t3 = Shallow Cage\t\t\t\t\t4 = Deep Cage");
+            } else {
+                dataSet = new BarDataSet(entries, spinner.getSelectedItem().toString());
+            }
             dataSet.setColors(Color.BLACK);
             BarData data = new BarData(dataSet);
             chart.setData(data);

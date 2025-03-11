@@ -175,9 +175,21 @@
             android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
-            android:layout_marginTop="250dp"
+            android:layout_marginTop="195dp"
             android:layout_marginEnd="880dp"
             app:label="Exited Robot\nStarting Zone" />
+
+        <TextView
+            android:id="@+id/HumanPlayerReminder"
+            android:layout_width="245dp"
+            android:layout_height="160dp"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="860dp"
+            android:layout_marginTop="270dp"
+            android:textSize="30sp"
+            android:textColor="@color/black_tint"
+            android:gravity="center"
+            android:text="Remember to identify the human player now, and keep track of their scoring!" />
 
     </RelativeLayout>
 

@@ -29,13 +29,13 @@ public class CompDataEndBarge extends MatchDataView implements IMatchDataView {
             if (data.get("barge") == null) {
                 continue;
             }
-            if (((String) data.get("barge")).equals("1. Not Parked")) {
+            if (((String) data.get("barge")).equals("Not Parked")) {
                 none++;
-            } else if (((String) data.get("barge")).equals("2. Parked")) {
+            } else if (((String) data.get("barge")).equals("Parked")) {
                 parks++;
-            } else if (((String) data.get("barge")).equals("3. Shallow Cage")) {
+            } else if (((String) data.get("barge")).equals("Shallow Cage (High)")) {
                 shallows++;
-            } else if (((String) data.get("barge")).equals("4. Deep Cage")) {
+            } else if (((String) data.get("barge")).equals("Deep Cage (Low)")) {
                 deeps++;
             }
         }

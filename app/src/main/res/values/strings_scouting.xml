@@ -9,10 +9,11 @@
     </string-array>
 
     <string-array name="staging">
-        <item>1. Not Parked</item>
-        <item>2. Parked</item>
-        <item>3. Shallow Cage</item>
-        <item>4. Deep Cage</item>
+        <item>-</item>
+        <item>Not Parked</item>
+        <item>Parked</item>
+        <item>Shallow Cage (High)</item>
+        <item>Deep Cage (Low)</item>
     </string-array>
 
     <string-array name="human_numbers">
@@ -114,6 +115,7 @@
         <item>Processor</item>
         <item>Net</item>
         <item>Coral</item>
+        <item>Barge</item>
     </string-array>
 
     <string-array name="Sorting">
