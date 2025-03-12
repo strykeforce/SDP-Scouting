@@ -114,7 +114,9 @@
         <item>Removed Algae</item>
         <item>Processor</item>
         <item>Net</item>
-        <item>Coral</item>
+        <item>Auto Coral</item>
+        <item>Tele Coral</item>
+        <item>Combined Coral</item>
         <item>Barge</item>
     </string-array>
 

@@ -47,6 +47,7 @@ public class TeamSummariesGraphsFragment extends TeamSummariesFragment {
         button.setOnClickListener(v -> {
             ArrayList<BarEntry> entries = new ArrayList<>();
             ArrayList<Float> barValues = new ArrayList<>();
+            ArrayList<float[]> coralBarValues = new ArrayList<>();
             ArrayList<String> xAxisLabels = new ArrayList<>();
             ArrayList<Float> max = new ArrayList<>();
 
@@ -152,19 +153,9 @@ public class TeamSummariesGraphsFragment extends TeamSummariesFragment {
                         }
                     }
                 }
-            } else if (spinner.getSelectedItem().equals("Coral")) {
+            } else if (spinner.getSelectedItem().equals("Auto Coral")) {
                 for (Document document : matchDocuments) {
                     Map<String, Object> data = (Map<String, Object>) document.getProperty("data");
-
-                    int coral = 0;
-                    coral += (int) data.get("auto_level_one");
-                    coral += (int) data.get("auto_level_two");
-                    coral += (int) data.get("auto_level_three");
-                    coral += (int) data.get("auto_level_four");
-                    coral += (int) data.get("tele_level_one");
-                    coral += (int) data.get("tele_level_two");
-                    coral += (int) data.get("tele_level_three");
-                    coral += (int) data.get("tele_level_four");
 
                     String mNum = (String) document.getProperty("match_key");
                     int start = 0;
@@ -175,19 +166,83 @@ public class TeamSummariesGraphsFragment extends TeamSummariesFragment {
                         }
                     }
 
-                    max.add((float) coral);
+                    max.add((float) ((int) data.get("auto_level_one") + (int) data.get("auto_level_two") + (int) data.get("auto_level_three") + (int) data.get("auto_level_four")));
 
                     if (xAxisLabels.size() == 0) {
-                        barValues.add((float) coral);
+                        coralBarValues.add(new float[] {(float) (int) data.get("auto_level_one"), (float) (int) data.get("auto_level_two"), (float) (int) data.get("auto_level_three"), (float) (int) data.get("auto_level_four")});
                         xAxisLabels.add(mNum.substring(start));
                     } else {
                         for (int k = 0; k < xAxisLabels.size(); k++) {
                             if (Integer.valueOf(mNum.substring(start)) < Integer.valueOf(xAxisLabels.get(k))) {
-                                barValues.add(k, (float) coral);
+                                coralBarValues.add(k, new float[] {(float) (int) data.get("auto_level_one"), (float) (int) data.get("auto_level_two"), (float) (int) data.get("auto_level_three"), (float) (int) data.get("auto_level_four")});
                                 xAxisLabels.add(k, mNum.substring(start));
                                 break;
                             } else if (k == xAxisLabels.size() - 1) {
-                                barValues.add((float) coral);
+                                coralBarValues.add(new float[] {(float) (int) data.get("auto_level_one"), (float) (int) data.get("auto_level_two"), (float) (int) data.get("auto_level_three"), (float) (int) data.get("auto_level_four")});
+                                xAxisLabels.add(mNum.substring(start));
+                                break;
+                            }
+                        }
+                    }
+                }
+            } else if (spinner.getSelectedItem().equals("Tele Coral")) {
+                for (Document document : matchDocuments) {
+                    Map<String, Object> data = (Map<String, Object>) document.getProperty("data");
+
+                    String mNum = (String) document.getProperty("match_key");
+                    int start = 0;
+                    for (int i = mNum.length() - 1; i >= 0; i--) {
+                        if (mNum.charAt(i) == 'm') {
+                            start = i + 1;
+                            break;
+                        }
+                    }
+
+                    max.add((float) ((int) data.get("tele_level_one") + (int) data.get("tele_level_two") + (int) data.get("tele_level_three") + (int) data.get("tele_level_four")));
+
+                    if (xAxisLabels.size() == 0) {
+                        coralBarValues.add(new float[] {(float) (int) data.get("tele_level_one"), (float) (int) data.get("tele_level_two"), (float) (int) data.get("tele_level_three"), (float) (int) data.get("tele_level_four")});
+                        xAxisLabels.add(mNum.substring(start));
+                    } else {
+                        for (int k = 0; k < xAxisLabels.size(); k++) {
+                            if (Integer.valueOf(mNum.substring(start)) < Integer.valueOf(xAxisLabels.get(k))) {
+                                coralBarValues.add(k, new float[] {(float) (int) data.get("tele_level_one"), (float) (int) data.get("tele_level_two"), (float) (int) data.get("tele_level_three"), (float) (int) data.get("tele_level_four")});
+                                xAxisLabels.add(k, mNum.substring(start));
+                                break;
+                            } else if (k == xAxisLabels.size() - 1) {
+                                coralBarValues.add(new float[] {(float) (int) data.get("tele_level_one"), (float) (int) data.get("tele_level_two"), (float) (int) data.get("tele_level_three"), (int) data.get("tele_level_four")});
+                                xAxisLabels.add(mNum.substring(start));
+                                break;
+                            }
+                        }
+                    }
+                }
+            } else if (spinner.getSelectedItem().equals("Combined Coral")) {
+                for (Document document : matchDocuments) {
+                    Map<String, Object> data = (Map<String, Object>) document.getProperty("data");
+
+                    String mNum = (String) document.getProperty("match_key");
+                    int start = 0;
+                    for (int i = mNum.length() - 1; i >= 0; i--) {
+                        if (mNum.charAt(i) == 'm') {
+                            start = i + 1;
+                            break;
+                        }
+                    }
+
+                    max.add((float) ((int) data.get("auto_level_one") + (int) data.get("auto_level_two") + (int) data.get("auto_level_three") + (int) data.get("auto_level_four") + (int) data.get("tele_level_one") + (int) data.get("tele_level_two") + (int) data.get("tele_level_three") + (int) data.get("tele_level_four")));
+
+                    if (xAxisLabels.size() == 0) {
+                        coralBarValues.add(new float[] {(float) ((int) data.get("auto_level_one") + (int) data.get("tele_level_one")), (float) ((int) data.get("auto_level_two") + (int) data.get("tele_level_two")), (float) ((int) data.get("auto_level_three") + (int) data.get("tele_level_three")), (float) ((int) data.get("auto_level_four") + (int) data.get("tele_level_four"))});
+                        xAxisLabels.add(mNum.substring(start));
+                    } else {
+                        for (int k = 0; k < xAxisLabels.size(); k++) {
+                            if (Integer.valueOf(mNum.substring(start)) < Integer.valueOf(xAxisLabels.get(k))) {
+                                coralBarValues.add(k, new float[] {(float) ((int) data.get("auto_level_one") + (int) data.get("tele_level_one")), (float) ((int) data.get("auto_level_two") + (int) data.get("tele_level_two")), (float) ((int) data.get("auto_level_three") + (int) data.get("tele_level_three")), (float) ((int) data.get("auto_level_four") + (int) data.get("tele_level_four"))});
+                                xAxisLabels.add(k, mNum.substring(start));
+                                break;
+                            } else if (k == xAxisLabels.size() - 1) {
+                                coralBarValues.add(new float[] {(float) ((int) data.get("auto_level_one") + (int) data.get("tele_level_one")), (float) ((int) data.get("auto_level_two") + (int) data.get("tele_level_two")), (float) ((int) data.get("auto_level_three") + (int) data.get("tele_level_three")), (float) ((int) data.get("auto_level_four") + (int) data.get("tele_level_four"))});
                                 xAxisLabels.add(mNum.substring(start));
                                 break;
                             }
@@ -207,51 +262,57 @@ public class TeamSummariesGraphsFragment extends TeamSummariesFragment {
                         }
                     }
 
+                    if (data.get("barge").equals("Parked")) {
+                        max.add(2f);
+                    } else if (data.get("barge").equals("Shallow Cage (High)")) {
+                        max.add(6f);
+                    } else if (data.get("barge").equals("Deep Cage (Low)")) {
+                        max.add(12f);
+                    }
+
                     if (xAxisLabels.size() == 0) {
                         if (data.get("barge").equals("Not Parked")) {
-                            barValues.add(1f);
+                            barValues.add(0f);
                             xAxisLabels.add(mNum.substring(start));
                         } else if (data.get("barge").equals("Parked")) {
                             barValues.add(2f);
                             xAxisLabels.add(mNum.substring(start));
                         } else if (data.get("barge").equals("Shallow Cage (High)")) {
-                            barValues.add(3f);
+                            barValues.add(6f);
                             xAxisLabels.add(mNum.substring(start));
                         } else if (data.get("barge").equals("Deep Cage (Low)")) {
-                            barValues.add(4f);
+                            barValues.add(12f);
                             xAxisLabels.add(mNum.substring(start));
                         }
                     } else {
                         for (int k = 0; k < xAxisLabels.size(); k++) {
-                            System.out.println("match number: " + Integer.valueOf(mNum.substring(start)));
-                            System.out.println("match number of x axis: " + Integer.valueOf(xAxisLabels.get(k)));
                             if (Integer.valueOf(mNum.substring(start)) < Integer.valueOf(xAxisLabels.get(k))) {
                                 if (data.get("barge").equals("Not Parked")) {
-                                    barValues.add(1f);
-                                    xAxisLabels.add(mNum.substring(start));
+                                    barValues.add(k, 0f);
+                                    xAxisLabels.add(k, mNum.substring(start));
                                 } else if (data.get("barge").equals("Parked")) {
-                                    barValues.add(2f);
-                                    xAxisLabels.add(mNum.substring(start));
+                                    barValues.add(k, 2f);
+                                    xAxisLabels.add(k, mNum.substring(start));
                                 } else if (data.get("barge").equals("Shallow Cage (High)")) {
-                                    barValues.add(3f);
-                                    xAxisLabels.add(mNum.substring(start));
+                                    barValues.add(k, 6f);
+                                    xAxisLabels.add(k, mNum.substring(start));
                                 } else if (data.get("barge").equals("Deep Cage (Low)")) {
-                                    barValues.add(4f);
-                                    xAxisLabels.add(mNum.substring(start));
+                                    barValues.add(k, 12f);
+                                    xAxisLabels.add(k, mNum.substring(start));
                                 }
                                 break;
                             } else if (k == xAxisLabels.size() - 1) {
                                 if (data.get("barge").equals("Not Parked")) {
-                                    barValues.add(1f);
+                                    barValues.add(0f);
                                     xAxisLabels.add(mNum.substring(start));
                                 } else if (data.get("barge").equals("Parked")) {
                                     barValues.add(2f);
                                     xAxisLabels.add(mNum.substring(start));
                                 } else if (data.get("barge").equals("Shallow Cage (High)")) {
-                                    barValues.add(3f);
+                                    barValues.add(6f);
                                     xAxisLabels.add(mNum.substring(start));
                                 } else if (data.get("barge").equals("Deep Cage (Low)")) {
-                                    barValues.add(4f);
+                                    barValues.add(12f);
                                     xAxisLabels.add(mNum.substring(start));
                                 }
                                 break;
@@ -270,8 +331,14 @@ public class TeamSummariesGraphsFragment extends TeamSummariesFragment {
             float increase = lineMax % 5;
             lineMax += (5 - increase);
 
-            for (int d = 0; d < barValues.size(); d++) {
-                entries.add(new BarEntry(d, barValues.get(d)));
+            if (barValues.size() != 0) {
+                for (int d = 0; d < barValues.size(); d++) {
+                    entries.add(new BarEntry(d, barValues.get(d)));
+                }
+            } else if (coralBarValues.size() != 0) {
+                for (int b = 0; b < coralBarValues.size(); b++) {
+                    entries.add(new BarEntry(b, coralBarValues.get(b)));
+                }
             }
 
             YAxis yAxis = chart.getAxisLeft();
@@ -281,13 +348,14 @@ public class TeamSummariesGraphsFragment extends TeamSummariesFragment {
             yAxis.setAxisLineColor(Color.BLACK);
             yAxis.setLabelCount((int) (lineMax / 5));
 
-            BarDataSet dataSet;
-            if (spinner.getSelectedItem().toString().equals("Barge")) {
-                dataSet = new BarDataSet(entries, spinner.getSelectedItem().toString() + "\t\t\t\t\t\t\t\t\t\t1 = Not Parked\t\t\t\t\t2 = Parked\t\t\t\t\t3 = Shallow Cage\t\t\t\t\t4 = Deep Cage");
-            } else {
-                dataSet = new BarDataSet(entries, spinner.getSelectedItem().toString());
+            BarDataSet dataSet = new BarDataSet(entries, spinner.getSelectedItem().toString());;
+            if (barValues.size() != 0) {
+                dataSet.setColors(Color.BLACK);
+            } else if (coralBarValues.size() != 0) {
+                dataSet.setColors(Color.RED, Color.YELLOW, Color.GREEN, Color.BLUE);
+                dataSet.setLabel("");
+                dataSet.setStackLabels(new String[] {"Level One", "Level Two", "Level Three", "Level Four"});
             }
-            dataSet.setColors(Color.BLACK);
             BarData data = new BarData(dataSet);
             chart.setData(data);
             chart.getDescription().setEnabled(false);
@@ -297,8 +365,11 @@ public class TeamSummariesGraphsFragment extends TeamSummariesFragment {
             chart.getXAxis().setValueFormatter(new IndexAxisValueFormatter(xAxisLabels));
             chart.getXAxis().setPosition(XAxis.XAxisPosition.BOTTOM);
             chart.getXAxis().setGranularity(1f);
-            chart.getXAxis().setGranularityEnabled(true);
+            chart.getXAxis().setDrawGridLines(false);
             chart.getXAxis().setLabelCount(xAxisLabels.size() + 1);
+
+            chart.getAxisLeft().setDrawGridLines(false);
+            chart.getAxisRight().setDrawGridLines(false);
         });
     }
 }

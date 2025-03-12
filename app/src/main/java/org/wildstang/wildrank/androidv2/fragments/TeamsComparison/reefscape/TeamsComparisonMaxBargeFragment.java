@@ -33,7 +33,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
-public class TeamsComparisonAverageCoralFragment extends TeamsComparisonFragment {
+public class TeamsComparisonMaxBargeFragment extends TeamsComparisonFragment {
     List<List<Document>> data;
 
     @Override
@@ -86,39 +86,45 @@ public class TeamsComparisonAverageCoralFragment extends TeamsComparisonFragment
 
                 if (teamDocuments == null) continue;
 
-                int coral = 0;
+                int maxBarge = 0;
                 for (Document document : teamDocuments) {
                     Map<String, Object> data = (Map<String, Object>) document.getProperty("data");
-                    if (data.get("auto_level_one") == null || data.get("auto_level_two") == null || data.get("auto_level_three") == null || data.get("auto_level_four") == null || data.get("tele_level_one") == null || data.get("tele_level_two") == null || data.get("tele_level_three") == null || data.get("tele_level_four") == null) {
+                    if (data.get("barge") == null) {
                         continue;
                     }
-                    coral += (int) data.get("auto_level_one");
-                    coral += (int) data.get("auto_level_two");
-                    coral += (int) data.get("auto_level_three");
-                    coral += (int) data.get("auto_level_four");
-                    coral += (int) data.get("tele_level_one");
-                    coral += (int) data.get("tele_level_two");
-                    coral += (int) data.get("tele_level_three");
-                    coral += (int) data.get("tele_level_four");
+//                    if (data.get("barge").equals("Parked") && maxBarge < 2) {
+//                        maxBarge = 2;
+//                    } else if (data.get("barge").equals("Shallow Cage (High)") && maxBarge < 6) {
+//                        maxBarge = 6;
+//                    } else if (data.get("barge").equals("Deep Cage (Low)")) {
+//                        maxBarge = 12;
+//                        break;
+//                    }
+                    if (data.get("barge").equals("2. Parked") && maxBarge < 2) {
+                        maxBarge = 2;
+                    } else if (data.get("barge").equals("3. Shallow Cage") && maxBarge < 6) {
+                        maxBarge = 6;
+                    } else if (data.get("barge").equals("4. Deep Cage")) {
+                        maxBarge = 12;
+                        break;
+                    }
                 }
 
-                float average = (float) coral / (float) teamDocuments.size();
-
                 if (spinner.getSelectedItem().equals("Team Number")) {
-                    barValues.add(average);
+                    barValues.add((float) maxBarge);
                     xAxisLabels.add(teams.get(i).toString().substring(0, teams.get(i).toString().length() - 2));
                 } else if (spinner.getSelectedItem().equals("Descending")) {
                     if (barValues.size() == 0) {
-                        barValues.add(average);
+                        barValues.add((float) maxBarge);
                         xAxisLabels.add(teams.get(i).toString().substring(0, teams.get(i).toString().length() - 2));
                     } else {
                         for (int m = 0; m < barValues.size(); m++) {
-                            if (average >= barValues.get(m)) {
-                                barValues.add(m, average);
+                            if ((float) maxBarge >= barValues.get(m)) {
+                                barValues.add(m, (float) maxBarge);
                                 xAxisLabels.add(m, teams.get(i).toString().substring(0, teams.get(i).toString().length() - 2));
                                 break;
                             } else if (m == barValues.size() - 1) {
-                                barValues.add(average);
+                                barValues.add((float) maxBarge);
                                 xAxisLabels.add(teams.get(i).toString().substring(0, teams.get(i).toString().length() - 2));
                                 break;
                             }
@@ -126,23 +132,23 @@ public class TeamsComparisonAverageCoralFragment extends TeamsComparisonFragment
                     }
                 } else if (spinner.getSelectedItem().equals("Ascending")) {
                     if (barValues.size() == 0) {
-                        barValues.add(average);
+                        barValues.add((float) maxBarge);
                         xAxisLabels.add(teams.get(i).toString().substring(0, teams.get(i).toString().length() - 2));
                     } else {
                         for (int n = 0; n < barValues.size(); n++) {
-                            if (average <= barValues.get(n)) {
-                                barValues.add(n, average);
+                            if ((float) maxBarge <= barValues.get(n)) {
+                                barValues.add(n, (float) maxBarge);
                                 xAxisLabels.add(n, teams.get(i).toString().substring(0, teams.get(i).toString().length() - 2));
                                 break;
                             } else if (n == barValues.size() - 1) {
-                                barValues.add(average);
+                                barValues.add((float) maxBarge);
                                 xAxisLabels.add(teams.get(i).toString().substring(0, teams.get(i).toString().length() - 2));
                                 break;
                             }
                         }
                     }
                 }
-                max.add((float) average);
+                max.add((float) maxBarge);
             }
 
             float lineMax = 0f;
@@ -165,7 +171,7 @@ public class TeamsComparisonAverageCoralFragment extends TeamsComparisonFragment
             yAxis.setAxisLineColor(Color.BLACK);
             yAxis.setLabelCount((int) (lineMax / 5));
 
-            BarDataSet dataSet = new BarDataSet(entries, "Average Coral");
+            BarDataSet dataSet = new BarDataSet(entries, "Max Barge");
             dataSet.setColors(Color.BLACK);
             BarData data = new BarData(dataSet);
             chart.setData(data);
@@ -176,8 +182,11 @@ public class TeamsComparisonAverageCoralFragment extends TeamsComparisonFragment
             chart.getXAxis().setValueFormatter(new IndexAxisValueFormatter(xAxisLabels));
             chart.getXAxis().setPosition(XAxis.XAxisPosition.BOTTOM);
             chart.getXAxis().setGranularity(1f);
-            chart.getXAxis().setGranularityEnabled(true);
+            chart.getXAxis().setDrawGridLines(false);
             chart.getXAxis().setLabelCount(xAxisLabels.size() + 1);
+
+            chart.getAxisLeft().setDrawGridLines(false);
+            chart.getAxisRight().setDrawGridLines(false);
         });
     }
 }

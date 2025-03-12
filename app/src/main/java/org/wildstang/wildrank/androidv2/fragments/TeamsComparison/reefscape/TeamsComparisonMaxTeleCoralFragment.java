@@ -33,7 +33,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
-public class TeamsComparisonMaxNetFragment extends TeamsComparisonFragment {
+public class TeamsComparisonMaxTeleCoralFragment extends TeamsComparisonFragment {
     List<List<Document>> data;
 
     @Override
@@ -64,7 +64,7 @@ public class TeamsComparisonMaxNetFragment extends TeamsComparisonFragment {
 
         button.setOnClickListener(v -> {
             ArrayList<BarEntry> entries = new ArrayList<>();
-            ArrayList<Float> barValues = new ArrayList<>();
+            ArrayList<float[]> barValues = new ArrayList<>();
             ArrayList<String> xAxisLabels = new ArrayList<>();
             ArrayList<Float> max = new ArrayList<>();
 
@@ -86,32 +86,52 @@ public class TeamsComparisonMaxNetFragment extends TeamsComparisonFragment {
 
                 if (teamDocuments == null) continue;
 
-                int maxNet = 0;
+                int maxLevelOne = 0;
+                int maxLevelTwo = 0;
+                int maxLevelThree = 0;
+                int maxLevelFour = 0;
                 for (Document document : teamDocuments) {
                     Map<String, Object> data = (Map<String, Object>) document.getProperty("data");
-                    if (data.get("tele_robot_net") == null) {
+                    if (data.get("tele_level_one") == null || data.get("tele_level_two") == null || data.get("tele_level_three") == null || data.get("tele_level_four") == null) {
                         continue;
                     }
-                    if (maxNet < (int) data.get("tele_robot_net")) {
-                        maxNet = (int) data.get("tele_robot_net");
+                    int levelOne = 0;
+                    int levelTwo = 0;
+                    int levelThree = 0;
+                    int levelFour = 0;
+                    levelOne += (int) data.get("tele_level_one");
+                    levelTwo += (int) data.get("tele_level_two");
+                    levelThree += (int) data.get("tele_level_three");
+                    levelFour += (int) data.get("tele_level_four");
+                    if (maxLevelOne < levelOne) {
+                        maxLevelOne = levelOne;
+                    }
+                    if (maxLevelTwo < levelTwo) {
+                        maxLevelTwo = levelTwo;
+                    }
+                    if (maxLevelThree < levelThree) {
+                        maxLevelThree = levelThree;
+                    }
+                    if (maxLevelFour < levelFour) {
+                        maxLevelFour = levelFour;
                     }
                 }
 
                 if (spinner.getSelectedItem().equals("Team Number")) {
-                    barValues.add((float) maxNet);
+                    barValues.add(new float[] {(float) maxLevelOne, (float) maxLevelTwo, (float) maxLevelThree, (float) maxLevelFour});
                     xAxisLabels.add(teams.get(i).toString().substring(0, teams.get(i).toString().length() - 2));
                 } else if (spinner.getSelectedItem().equals("Descending")) {
                     if (barValues.size() == 0) {
-                        barValues.add((float) maxNet);
+                        barValues.add(new float[] {(float) maxLevelOne, (float) maxLevelTwo, (float) maxLevelThree, (float) maxLevelFour});
                         xAxisLabels.add(teams.get(i).toString().substring(0, teams.get(i).toString().length() - 2));
                     } else {
                         for (int m = 0; m < barValues.size(); m++) {
-                            if ((float) maxNet >= barValues.get(m)) {
-                                barValues.add(m, (float) maxNet);
+                            if ((float) (maxLevelOne + maxLevelTwo + maxLevelThree + maxLevelFour) >= barValues.get(m)[0] + barValues.get(m)[1] + barValues.get(m)[2] + barValues.get(m)[3]) {
+                                barValues.add(m, new float[] {(float) maxLevelOne, (float) maxLevelTwo, (float) maxLevelThree, (float) maxLevelFour});
                                 xAxisLabels.add(m, teams.get(i).toString().substring(0, teams.get(i).toString().length() - 2));
                                 break;
                             } else if (m == barValues.size() - 1) {
-                                barValues.add((float) maxNet);
+                                barValues.add(new float[] {(float) maxLevelOne, (float) maxLevelTwo, (float) maxLevelThree, (float) maxLevelFour});
                                 xAxisLabels.add(teams.get(i).toString().substring(0, teams.get(i).toString().length() - 2));
                                 break;
                             }
@@ -119,23 +139,23 @@ public class TeamsComparisonMaxNetFragment extends TeamsComparisonFragment {
                     }
                 } else if (spinner.getSelectedItem().equals("Ascending")) {
                     if (barValues.size() == 0) {
-                        barValues.add((float) maxNet);
+                        barValues.add(new float[] {(float) maxLevelOne, (float) maxLevelTwo, (float) maxLevelThree, (float) maxLevelFour});
                         xAxisLabels.add(teams.get(i).toString().substring(0, teams.get(i).toString().length() - 2));
                     } else {
                         for (int n = 0; n < barValues.size(); n++) {
-                            if ((float) maxNet <= barValues.get(n)) {
-                                barValues.add(n, (float) maxNet);
+                            if ((float) (maxLevelOne + maxLevelTwo + maxLevelThree + maxLevelFour) <= barValues.get(n)[0] + barValues.get(n)[1] + barValues.get(n)[2] + barValues.get(n)[3]) {
+                                barValues.add(n, new float[] {(float) maxLevelOne, (float) maxLevelTwo, (float) maxLevelThree, (float) maxLevelFour});
                                 xAxisLabels.add(n, teams.get(i).toString().substring(0, teams.get(i).toString().length() - 2));
                                 break;
                             } else if (n == barValues.size() - 1) {
-                                barValues.add((float) maxNet);
+                                barValues.add(new float[] {(float) maxLevelOne, (float) maxLevelTwo, (float) maxLevelThree, (float) maxLevelFour});
                                 xAxisLabels.add(teams.get(i).toString().substring(0, teams.get(i).toString().length() - 2));
                                 break;
                             }
                         }
                     }
                 }
-                max.add((float) maxNet);
+                max.add((float) (maxLevelOne + maxLevelTwo + maxLevelThree + maxLevelFour));
             }
 
             float lineMax = 0f;
@@ -158,8 +178,9 @@ public class TeamsComparisonMaxNetFragment extends TeamsComparisonFragment {
             yAxis.setAxisLineColor(Color.BLACK);
             yAxis.setLabelCount((int) (lineMax / 5));
 
-            BarDataSet dataSet = new BarDataSet(entries, "Max Net");
-            dataSet.setColors(Color.BLACK);
+            BarDataSet dataSet = new BarDataSet(entries, "");
+            dataSet.setColors(Color.RED, Color.YELLOW, Color.GREEN, Color.BLUE);
+            dataSet.setStackLabels(new String[] {"Max Level One", "Max Level Two", "Max Level Three", "Max Level Four"});
             BarData data = new BarData(dataSet);
             chart.setData(data);
             chart.getDescription().setEnabled(false);

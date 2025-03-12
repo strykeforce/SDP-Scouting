@@ -169,8 +169,11 @@ public class TeamsComparisonMaxProcessorFragment extends TeamsComparisonFragment
             chart.getXAxis().setValueFormatter(new IndexAxisValueFormatter(xAxisLabels));
             chart.getXAxis().setPosition(XAxis.XAxisPosition.BOTTOM);
             chart.getXAxis().setGranularity(1f);
-            chart.getXAxis().setGranularityEnabled(true);
+            chart.getXAxis().setDrawGridLines(false);
             chart.getXAxis().setLabelCount(xAxisLabels.size() + 1);
+
+            chart.getAxisLeft().setDrawGridLines(false);
+            chart.getAxisRight().setDrawGridLines(false);
         });
     }
 }

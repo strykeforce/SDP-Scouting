@@ -6,28 +6,40 @@ import android.support.v4.app.FragmentStatePagerAdapter;
 
 import com.couchbase.lite.Document;
 
-import org.wildstang.wildrank.androidv2.fragments.TeamsComparison.reefscape.TeamsComparisonAverageCoralFragment;
+import org.wildstang.wildrank.androidv2.fragments.TeamsComparison.reefscape.TeamsComparisonAverageAutoCoralFragment;
+import org.wildstang.wildrank.androidv2.fragments.TeamsComparison.reefscape.TeamsComparisonAverageBargeFragment;
+import org.wildstang.wildrank.androidv2.fragments.TeamsComparison.reefscape.TeamsComparisonAverageCombinedCoralFragment;
 import org.wildstang.wildrank.androidv2.fragments.TeamsComparison.reefscape.TeamsComparisonAverageNetFragment;
 import org.wildstang.wildrank.androidv2.fragments.TeamsComparison.reefscape.TeamsComparisonAverageProcessorFragment;
 import org.wildstang.wildrank.androidv2.fragments.TeamsComparison.reefscape.TeamsComparisonAverageRemovedAlgaeFragment;
-import org.wildstang.wildrank.androidv2.fragments.TeamsComparison.reefscape.TeamsComparisonMaxCoralFragment;
+import org.wildstang.wildrank.androidv2.fragments.TeamsComparison.reefscape.TeamsComparisonAverageTeleCoralFragment;
+import org.wildstang.wildrank.androidv2.fragments.TeamsComparison.reefscape.TeamsComparisonMaxAutoCoralFragment;
+import org.wildstang.wildrank.androidv2.fragments.TeamsComparison.reefscape.TeamsComparisonMaxBargeFragment;
+import org.wildstang.wildrank.androidv2.fragments.TeamsComparison.reefscape.TeamsComparisonMaxCombinedCoralFragment;
 import org.wildstang.wildrank.androidv2.fragments.TeamsComparison.reefscape.TeamsComparisonMaxNetFragment;
 import org.wildstang.wildrank.androidv2.fragments.TeamsComparison.reefscape.TeamsComparisonMaxProcessorFragment;
 import org.wildstang.wildrank.androidv2.fragments.TeamsComparison.reefscape.TeamsComparisonMaxRemovedAlgaeFragment;
+import org.wildstang.wildrank.androidv2.fragments.TeamsComparison.reefscape.TeamsComparisonMaxTeleCoralFragment;
 
 import java.util.List;
 
 public class TeamsComparisonFragmentPagerAdapter extends FragmentStatePagerAdapter {
-    static final int NUM_FRAGMENTS = 8;
+    static final int NUM_FRAGMENTS = 14;
 
     private TeamsComparisonAverageRemovedAlgaeFragment averageRemovedAlgaeFragment;
     private TeamsComparisonAverageProcessorFragment averageProcessorFragment;
     private TeamsComparisonAverageNetFragment averageNetFragment;
-    private TeamsComparisonAverageCoralFragment averageCoralFragment;
+    private TeamsComparisonAverageAutoCoralFragment averageAutoCoralFragment;
+    private TeamsComparisonAverageTeleCoralFragment averageTeleCoralFragment;
+    private TeamsComparisonAverageCombinedCoralFragment averageCombinedCoralFragment;
+    private TeamsComparisonAverageBargeFragment averageBargeFragment;
     private TeamsComparisonMaxRemovedAlgaeFragment maxRemovedAlgaeFragment;
     private TeamsComparisonMaxProcessorFragment maxProcessorFragment;
     private TeamsComparisonMaxNetFragment maxNetFragment;
-    private TeamsComparisonMaxCoralFragment maxCoralFragment;
+    private TeamsComparisonMaxAutoCoralFragment maxAutoCoralFragment;
+    private TeamsComparisonMaxTeleCoralFragment maxTeleCoralFragment;
+    private TeamsComparisonMaxCombinedCoralFragment maxCombinedCoralFragment;
+    private TeamsComparisonMaxBargeFragment maxBargeFragment;
 
     public TeamsComparisonFragmentPagerAdapter(FragmentManager fm) {
         super(fm);
@@ -38,11 +50,17 @@ public class TeamsComparisonFragmentPagerAdapter extends FragmentStatePagerAdapt
         averageRemovedAlgaeFragment = new TeamsComparisonAverageRemovedAlgaeFragment();
         averageProcessorFragment = new TeamsComparisonAverageProcessorFragment();
         averageNetFragment = new TeamsComparisonAverageNetFragment();
-        averageCoralFragment = new TeamsComparisonAverageCoralFragment();
+        averageAutoCoralFragment = new TeamsComparisonAverageAutoCoralFragment();
+        averageTeleCoralFragment = new TeamsComparisonAverageTeleCoralFragment();
+        averageCombinedCoralFragment = new TeamsComparisonAverageCombinedCoralFragment();
+        averageBargeFragment = new TeamsComparisonAverageBargeFragment();
         maxRemovedAlgaeFragment = new TeamsComparisonMaxRemovedAlgaeFragment();
         maxProcessorFragment = new TeamsComparisonMaxProcessorFragment();
         maxNetFragment = new TeamsComparisonMaxNetFragment();
-        maxCoralFragment = new TeamsComparisonMaxCoralFragment();
+        maxAutoCoralFragment = new TeamsComparisonMaxAutoCoralFragment();
+        maxTeleCoralFragment = new TeamsComparisonMaxTeleCoralFragment();
+        maxCombinedCoralFragment = new TeamsComparisonMaxCombinedCoralFragment();
+        maxBargeFragment = new TeamsComparisonMaxBargeFragment();
     }
 
     @Override
@@ -55,15 +73,27 @@ public class TeamsComparisonFragmentPagerAdapter extends FragmentStatePagerAdapt
             case 2:
                 return averageNetFragment;
             case 3:
-                return averageCoralFragment;
+                return averageAutoCoralFragment;
             case 4:
-                return maxRemovedAlgaeFragment;
+                return averageTeleCoralFragment;
             case 5:
-                return maxProcessorFragment;
+                return averageCombinedCoralFragment;
             case 6:
-                return maxNetFragment;
+                return averageBargeFragment;
             case 7:
-                return maxCoralFragment;
+                return maxRemovedAlgaeFragment;
+            case 8:
+                return maxProcessorFragment;
+            case 9:
+                return maxNetFragment;
+            case 10:
+                return maxAutoCoralFragment;
+            case 11:
+                return maxTeleCoralFragment;
+            case 12:
+                return maxCombinedCoralFragment;
+            case 13:
+                return maxBargeFragment;
             default:
                 return null;
         }
@@ -84,15 +114,27 @@ public class TeamsComparisonFragmentPagerAdapter extends FragmentStatePagerAdapt
             case 2:
                 return "Average Net";
             case 3:
-                return "Average Coral";
+                return "Average Auto Coral";
             case 4:
-                return "Max Removed Algae";
+                return "Average Tele Coral";
             case 5:
-                return "Max Processor";
+                return "Average Combined Coral";
             case 6:
-                return "Max Net";
+                return "Average Barge";
             case 7:
-                return "Max Coral";
+                return "Max Removed Algae";
+            case 8:
+                return "Max Processor";
+            case 9:
+                return "Max Net";
+            case 10:
+                return "Max Auto Coral";
+            case 11:
+                return "Max Tele Coral";
+            case 12:
+                return "Max Combined Coral";
+            case 13:
+                return "Max Barge";
             default:
                 return "ERROR INVALID POSITION";
         }
@@ -102,10 +144,16 @@ public class TeamsComparisonFragmentPagerAdapter extends FragmentStatePagerAdapt
         averageRemovedAlgaeFragment.acceptNewData(allMatchDocuments);
         averageProcessorFragment.acceptNewData(allMatchDocuments);
         averageNetFragment.acceptNewData(allMatchDocuments);
-        averageCoralFragment.acceptNewData(allMatchDocuments);
+        averageAutoCoralFragment.acceptNewData(allMatchDocuments);
+        averageTeleCoralFragment.acceptNewData(allMatchDocuments);
+        averageCombinedCoralFragment.acceptNewData(allMatchDocuments);
+        averageBargeFragment.acceptNewData(allMatchDocuments);
         maxRemovedAlgaeFragment.acceptNewData(allMatchDocuments);
         maxProcessorFragment.acceptNewData(allMatchDocuments);
         maxNetFragment.acceptNewData(allMatchDocuments);
-        maxCoralFragment.acceptNewData(allMatchDocuments);
+        maxAutoCoralFragment.acceptNewData(allMatchDocuments);
+        maxTeleCoralFragment.acceptNewData(allMatchDocuments);
+        maxCombinedCoralFragment.acceptNewData(allMatchDocuments);
+        maxBargeFragment.acceptNewData(allMatchDocuments);
     }
 }
