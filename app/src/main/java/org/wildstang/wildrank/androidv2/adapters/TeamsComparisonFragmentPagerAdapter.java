@@ -7,24 +7,30 @@ import android.support.v4.app.FragmentStatePagerAdapter;
 import com.couchbase.lite.Document;
 
 import org.wildstang.wildrank.androidv2.fragments.TeamsComparison.reefscape.TeamsComparisonAverageAutoCoralFragment;
+import org.wildstang.wildrank.androidv2.fragments.TeamsComparison.reefscape.TeamsComparisonAverageAutoPointsFragment;
 import org.wildstang.wildrank.androidv2.fragments.TeamsComparison.reefscape.TeamsComparisonAverageBargeFragment;
 import org.wildstang.wildrank.androidv2.fragments.TeamsComparison.reefscape.TeamsComparisonAverageCombinedCoralFragment;
 import org.wildstang.wildrank.androidv2.fragments.TeamsComparison.reefscape.TeamsComparisonAverageNetFragment;
 import org.wildstang.wildrank.androidv2.fragments.TeamsComparison.reefscape.TeamsComparisonAverageProcessorFragment;
 import org.wildstang.wildrank.androidv2.fragments.TeamsComparison.reefscape.TeamsComparisonAverageRemovedAlgaeFragment;
 import org.wildstang.wildrank.androidv2.fragments.TeamsComparison.reefscape.TeamsComparisonAverageTeleCoralFragment;
+import org.wildstang.wildrank.androidv2.fragments.TeamsComparison.reefscape.TeamsComparisonAverageTelePointsFragment;
+import org.wildstang.wildrank.androidv2.fragments.TeamsComparison.reefscape.TeamsComparisonAverageTotalPointsFragment;
 import org.wildstang.wildrank.androidv2.fragments.TeamsComparison.reefscape.TeamsComparisonMaxAutoCoralFragment;
+import org.wildstang.wildrank.androidv2.fragments.TeamsComparison.reefscape.TeamsComparisonMaxAutoPointsFragment;
 import org.wildstang.wildrank.androidv2.fragments.TeamsComparison.reefscape.TeamsComparisonMaxBargeFragment;
 import org.wildstang.wildrank.androidv2.fragments.TeamsComparison.reefscape.TeamsComparisonMaxCombinedCoralFragment;
 import org.wildstang.wildrank.androidv2.fragments.TeamsComparison.reefscape.TeamsComparisonMaxNetFragment;
 import org.wildstang.wildrank.androidv2.fragments.TeamsComparison.reefscape.TeamsComparisonMaxProcessorFragment;
 import org.wildstang.wildrank.androidv2.fragments.TeamsComparison.reefscape.TeamsComparisonMaxRemovedAlgaeFragment;
 import org.wildstang.wildrank.androidv2.fragments.TeamsComparison.reefscape.TeamsComparisonMaxTeleCoralFragment;
+import org.wildstang.wildrank.androidv2.fragments.TeamsComparison.reefscape.TeamsComparisonMaxTelePointsFragment;
+import org.wildstang.wildrank.androidv2.fragments.TeamsComparison.reefscape.TeamsComparisonMaxTotalPointsFragment;
 
 import java.util.List;
 
 public class TeamsComparisonFragmentPagerAdapter extends FragmentStatePagerAdapter {
-    static final int NUM_FRAGMENTS = 14;
+    static final int NUM_FRAGMENTS = 20;
 
     private TeamsComparisonAverageRemovedAlgaeFragment averageRemovedAlgaeFragment;
     private TeamsComparisonAverageProcessorFragment averageProcessorFragment;
@@ -33,6 +39,9 @@ public class TeamsComparisonFragmentPagerAdapter extends FragmentStatePagerAdapt
     private TeamsComparisonAverageTeleCoralFragment averageTeleCoralFragment;
     private TeamsComparisonAverageCombinedCoralFragment averageCombinedCoralFragment;
     private TeamsComparisonAverageBargeFragment averageBargeFragment;
+    private TeamsComparisonAverageAutoPointsFragment averageAutoPointsFragment;
+    private TeamsComparisonAverageTelePointsFragment averageTelePointsFragment;
+    private TeamsComparisonAverageTotalPointsFragment averageTotalPointsFragment;
     private TeamsComparisonMaxRemovedAlgaeFragment maxRemovedAlgaeFragment;
     private TeamsComparisonMaxProcessorFragment maxProcessorFragment;
     private TeamsComparisonMaxNetFragment maxNetFragment;
@@ -40,6 +49,9 @@ public class TeamsComparisonFragmentPagerAdapter extends FragmentStatePagerAdapt
     private TeamsComparisonMaxTeleCoralFragment maxTeleCoralFragment;
     private TeamsComparisonMaxCombinedCoralFragment maxCombinedCoralFragment;
     private TeamsComparisonMaxBargeFragment maxBargeFragment;
+    private TeamsComparisonMaxAutoPointsFragment maxAutoPointsFragment;
+    private TeamsComparisonMaxTelePointsFragment maxTelePointsFragment;
+    private TeamsComparisonMaxTotalPointsFragment maxTotalPointsFragment;
 
     public TeamsComparisonFragmentPagerAdapter(FragmentManager fm) {
         super(fm);
@@ -54,6 +66,9 @@ public class TeamsComparisonFragmentPagerAdapter extends FragmentStatePagerAdapt
         averageTeleCoralFragment = new TeamsComparisonAverageTeleCoralFragment();
         averageCombinedCoralFragment = new TeamsComparisonAverageCombinedCoralFragment();
         averageBargeFragment = new TeamsComparisonAverageBargeFragment();
+        averageAutoPointsFragment = new TeamsComparisonAverageAutoPointsFragment();
+        averageTelePointsFragment = new TeamsComparisonAverageTelePointsFragment();
+        averageTotalPointsFragment = new TeamsComparisonAverageTotalPointsFragment();
         maxRemovedAlgaeFragment = new TeamsComparisonMaxRemovedAlgaeFragment();
         maxProcessorFragment = new TeamsComparisonMaxProcessorFragment();
         maxNetFragment = new TeamsComparisonMaxNetFragment();
@@ -61,6 +76,9 @@ public class TeamsComparisonFragmentPagerAdapter extends FragmentStatePagerAdapt
         maxTeleCoralFragment = new TeamsComparisonMaxTeleCoralFragment();
         maxCombinedCoralFragment = new TeamsComparisonMaxCombinedCoralFragment();
         maxBargeFragment = new TeamsComparisonMaxBargeFragment();
+        maxAutoPointsFragment = new TeamsComparisonMaxAutoPointsFragment();
+        maxTelePointsFragment = new TeamsComparisonMaxTelePointsFragment();
+        maxTotalPointsFragment = new TeamsComparisonMaxTotalPointsFragment();
     }
 
     @Override
@@ -81,19 +99,31 @@ public class TeamsComparisonFragmentPagerAdapter extends FragmentStatePagerAdapt
             case 6:
                 return averageBargeFragment;
             case 7:
-                return maxRemovedAlgaeFragment;
+                return averageAutoPointsFragment;
             case 8:
-                return maxProcessorFragment;
+                return averageTelePointsFragment;
             case 9:
-                return maxNetFragment;
+                return averageTotalPointsFragment;
             case 10:
-                return maxAutoCoralFragment;
+                return maxRemovedAlgaeFragment;
             case 11:
-                return maxTeleCoralFragment;
+                return maxProcessorFragment;
             case 12:
-                return maxCombinedCoralFragment;
+                return maxNetFragment;
             case 13:
+                return maxAutoCoralFragment;
+            case 14:
+                return maxTeleCoralFragment;
+            case 15:
+                return maxCombinedCoralFragment;
+            case 16:
                 return maxBargeFragment;
+            case 17:
+                return maxAutoPointsFragment;
+            case 18:
+                return maxTelePointsFragment;
+            case 19:
+                return maxTotalPointsFragment;
             default:
                 return null;
         }
@@ -122,19 +152,31 @@ public class TeamsComparisonFragmentPagerAdapter extends FragmentStatePagerAdapt
             case 6:
                 return "Average Barge";
             case 7:
-                return "Max Removed Algae";
+                return "Average Auto Points";
             case 8:
-                return "Max Processor";
+                return "Average Tele Points";
             case 9:
-                return "Max Net";
+                return "Average Total Points";
             case 10:
-                return "Max Auto Coral";
+                return "Max Removed Algae";
             case 11:
-                return "Max Tele Coral";
+                return "Max Processor";
             case 12:
-                return "Max Combined Coral";
+                return "Max Net";
             case 13:
+                return "Max Auto Coral";
+            case 14:
+                return "Max Tele Coral";
+            case 15:
+                return "Max Combined Coral";
+            case 16:
                 return "Max Barge";
+            case 17:
+                return "Max Auto Points";
+            case 18:
+                return "Max Tele Points";
+            case 19:
+                return "Max Total Points";
             default:
                 return "ERROR INVALID POSITION";
         }
@@ -148,6 +190,9 @@ public class TeamsComparisonFragmentPagerAdapter extends FragmentStatePagerAdapt
         averageTeleCoralFragment.acceptNewData(allMatchDocuments);
         averageCombinedCoralFragment.acceptNewData(allMatchDocuments);
         averageBargeFragment.acceptNewData(allMatchDocuments);
+        averageAutoPointsFragment.acceptNewData(allMatchDocuments);
+        averageTelePointsFragment.acceptNewData(allMatchDocuments);
+        averageTotalPointsFragment.acceptNewData(allMatchDocuments);
         maxRemovedAlgaeFragment.acceptNewData(allMatchDocuments);
         maxProcessorFragment.acceptNewData(allMatchDocuments);
         maxNetFragment.acceptNewData(allMatchDocuments);
@@ -155,5 +200,8 @@ public class TeamsComparisonFragmentPagerAdapter extends FragmentStatePagerAdapt
         maxTeleCoralFragment.acceptNewData(allMatchDocuments);
         maxCombinedCoralFragment.acceptNewData(allMatchDocuments);
         maxBargeFragment.acceptNewData(allMatchDocuments);
+        maxAutoPointsFragment.acceptNewData(allMatchDocuments);
+        maxTelePointsFragment.acceptNewData(allMatchDocuments);
+        maxTotalPointsFragment.acceptNewData(allMatchDocuments);
     }
 }

@@ -320,6 +320,137 @@ public class TeamSummariesGraphsFragment extends TeamSummariesFragment {
                         }
                     }
                 }
+            } else if (spinner.getSelectedItem().equals("Auto Points")) {
+                for (Document document : matchDocuments) {
+                    Map<String, Object> data = (Map<String, Object>) document.getProperty("data");
+
+                    int points = 0;
+                    points += 3 * ((boolean) data.get("auto_exit") ? 1 : 0);
+                    points += 3 * (int) data.get("auto_level_one");
+                    points += 4 * (int) data.get("auto_level_two");
+                    points += 6 * (int) data.get("auto_level_three");
+                    points += 7 * (int) data.get("auto_level_four");
+
+                    String mNum = (String) document.getProperty("match_key");
+                    int start = 0;
+                    for (int i = mNum.length() - 1; i >= 0; i--) {
+                        if (mNum.charAt(i) == 'm') {
+                            start = i + 1;
+                            break;
+                        }
+                    }
+
+                    max.add((float) points);
+
+                    if (xAxisLabels.size() == 0) {
+                        barValues.add((float) points);
+                        xAxisLabels.add(mNum.substring(start));
+                    } else {
+                        for (int k = 0; k < xAxisLabels.size(); k++) {
+                            if (Integer.valueOf(mNum.substring(start)) < Integer.valueOf(xAxisLabels.get(k))) {
+                                barValues.add(k, (float) points);
+                                xAxisLabels.add(k, mNum.substring(start));
+                                break;
+                            } else if (k == xAxisLabels.size() - 1) {
+                                barValues.add((float) points);
+                                xAxisLabels.add(mNum.substring(start));
+                                break;
+                            }
+                        }
+                    }
+                }
+            } else if (spinner.getSelectedItem().equals("Tele Points")) {
+                for (Document document : matchDocuments) {
+                    Map<String, Object> data = (Map<String, Object>) document.getProperty("data");
+
+                    int points = 0;
+                    points += 2 * (int) data.get("tele_level_one");
+                    points += 3 * (int) data.get("tele_level_two");
+                    points += 4 * (int) data.get("tele_level_three");
+                    points += 5 * (int) data.get("tele_level_four");
+                    points += 6 * (int) data.get("tele_processor");
+                    points += 4 * (int) data.get("tele_robot_net");
+
+                    String mNum = (String) document.getProperty("match_key");
+                    int start = 0;
+                    for (int i = mNum.length() - 1; i >= 0; i--) {
+                        if (mNum.charAt(i) == 'm') {
+                            start = i + 1;
+                            break;
+                        }
+                    }
+
+                    max.add((float) points);
+
+                    if (xAxisLabels.size() == 0) {
+                        barValues.add((float) points);
+                        xAxisLabels.add(mNum.substring(start));
+                    } else {
+                        for (int k = 0; k < xAxisLabels.size(); k++) {
+                            if (Integer.valueOf(mNum.substring(start)) < Integer.valueOf(xAxisLabels.get(k))) {
+                                barValues.add(k, (float) points);
+                                xAxisLabels.add(k, mNum.substring(start));
+                                break;
+                            } else if (k == xAxisLabels.size() - 1) {
+                                barValues.add((float) points);
+                                xAxisLabels.add(mNum.substring(start));
+                                break;
+                            }
+                        }
+                    }
+                }
+            } else if (spinner.getSelectedItem().equals("Total Points")) {
+                for (Document document : matchDocuments) {
+                    Map<String, Object> data = (Map<String, Object>) document.getProperty("data");
+
+                    int points = 0;
+                    points += 3 * ((boolean) data.get("auto_exit") ? 1 : 0);
+                    points += 3 * (int) data.get("auto_level_one");
+                    points += 4 * (int) data.get("auto_level_two");
+                    points += 6 * (int) data.get("auto_level_three");
+                    points += 7 * (int) data.get("auto_level_four");
+                    points += 2 * (int) data.get("tele_level_one");
+                    points += 3 * (int) data.get("tele_level_two");
+                    points += 4 * (int) data.get("tele_level_three");
+                    points += 5 * (int) data.get("tele_level_four");
+                    points += 6 * (int) data.get("tele_processor");
+                    points += 4 * (int) data.get("tele_robot_net");
+                    if (data.get("barge").equals("Parked")) {
+                        points += 2;
+                    } else if (data.get("barge").equals("Shallow Cage (High)")) {
+                        points += 6;
+                    } else if (data.get("barge").equals("Deep Cage (Low)")) {
+                        points += 12;
+                    }
+
+                    String mNum = (String) document.getProperty("match_key");
+                    int start = 0;
+                    for (int i = mNum.length() - 1; i >= 0; i--) {
+                        if (mNum.charAt(i) == 'm') {
+                            start = i + 1;
+                            break;
+                        }
+                    }
+
+                    max.add((float) points);
+
+                    if (xAxisLabels.size() == 0) {
+                        barValues.add((float) points);
+                        xAxisLabels.add(mNum.substring(start));
+                    } else {
+                        for (int k = 0; k < xAxisLabels.size(); k++) {
+                            if (Integer.valueOf(mNum.substring(start)) < Integer.valueOf(xAxisLabels.get(k))) {
+                                barValues.add(k, (float) points);
+                                xAxisLabels.add(k, mNum.substring(start));
+                                break;
+                            } else if (k == xAxisLabels.size() - 1) {
+                                barValues.add((float) points);
+                                xAxisLabels.add(mNum.substring(start));
+                                break;
+                            }
+                        }
+                    }
+                }
             }
 
             float lineMax = 0f;
