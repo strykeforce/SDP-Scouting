@@ -23,25 +23,25 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:key="height"
-            app:label="Height (in):" />
+            app:label="Height (inches):" />
 
         <org.wildstang.wildrank.androidv2.views.scouting.ScoutingNumberView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:key="width"
-            app:label="Width (in):" />
+            app:label="Width (With Bumpers, inches):" />
 
         <org.wildstang.wildrank.androidv2.views.scouting.ScoutingNumberView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:key="length"
-            app:label="Length (in):" />
+            app:label="Length (With Bumpers, inches):" />
 
         <org.wildstang.wildrank.androidv2.views.scouting.ScoutingNumberView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:key="weight"
-            app:label="Weight (lb):" />
+            app:label="Weight (pounds):" />
 
         <org.wildstang.wildrank.androidv2.views.scouting.ScoutingSpinnerView
             android:layout_width="match_parent"
@@ -113,7 +113,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:key="intake"
-            app:label="Intake"
+            app:label="Ground Intake"
             app:values="@array/Intake"
             />
 

@@ -55,11 +55,8 @@
     <string-array name="drives">
         <item>--</item>
         <item>Tank</item>
-        <item>Tank w/ Omni corners</item>
         <item>Mecanum</item>
         <item>Swerve</item>
-        <item>H-Drive/Slide</item>
-        <item>Other Holonomic</item>
         <item>Any Other (Add note)</item>
     </string-array>
 
@@ -103,10 +100,10 @@
 
     <string-array name="Intake">
         <item>--</item>
-        <item>No Intake</item>
-        <item>Internal Intake</item>
-        <item>External Intake</item>
-        <item>Retractable External Intake</item>
+        <item>No Ground Intake</item>
+        <item>Internal</item>
+        <item>External</item>
+        <item>Retractable External</item>
 
     </string-array>
 
@@ -118,6 +115,9 @@
         <item>Tele Coral</item>
         <item>Combined Coral</item>
         <item>Barge</item>
+        <item>Auto Points</item>
+        <item>Tele Points</item>
+        <item>Total Points</item>
     </string-array>
 
     <string-array name="Sorting">
