@@ -92,19 +92,11 @@ public class TeamsComparisonMaxBargeFragment extends TeamsComparisonFragment {
                     if (data.get("barge") == null) {
                         continue;
                     }
-//                    if (data.get("barge").equals("Parked") && maxBarge < 2) {
-//                        maxBarge = 2;
-//                    } else if (data.get("barge").equals("Shallow Cage (High)") && maxBarge < 6) {
-//                        maxBarge = 6;
-//                    } else if (data.get("barge").equals("Deep Cage (Low)")) {
-//                        maxBarge = 12;
-//                        break;
-//                    }
-                    if (data.get("barge").equals("2. Parked") && maxBarge < 2) {
+                    if (data.get("barge").equals("Parked") && maxBarge < 2) {
                         maxBarge = 2;
-                    } else if (data.get("barge").equals("3. Shallow Cage") && maxBarge < 6) {
+                    } else if (data.get("barge").equals("Shallow Cage (High)") && maxBarge < 6) {
                         maxBarge = 6;
-                    } else if (data.get("barge").equals("4. Deep Cage")) {
+                    } else if (data.get("barge").equals("Deep Cage (Low)")) {
                         maxBarge = 12;
                         break;
                     }

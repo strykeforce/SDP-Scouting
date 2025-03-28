@@ -26,6 +26,7 @@ public class CompDataTeleHumanNetAlgaeMax extends MatchDataView implements IMatc
         }
 
         List<Document> matchDocuments = new ArrayList<>();
+        List<Document> comparisonDocuments = new ArrayList<>();
         String teamNumber = documents.get(0).getProperty("team_key").toString().substring(3);
 
         for (Document document : documents) {
@@ -34,7 +35,13 @@ public class CompDataTeleHumanNetAlgaeMax extends MatchDataView implements IMatc
                     matchDocuments.add((Document) DatabaseManager.getInstance(getContext()).getMatchResults(document.getProperty("match_key").toString(), Utilities.getRedTeamsFromMatchDocument(DatabaseManager.getInstance(getContext()).getMatchFromKey(document.getProperty("match_key").toString()))[0].toString()));
                     matchDocuments.add((Document) DatabaseManager.getInstance(getContext()).getMatchResults(document.getProperty("match_key").toString(), Utilities.getRedTeamsFromMatchDocument(DatabaseManager.getInstance(getContext()).getMatchFromKey(document.getProperty("match_key").toString()))[1].toString()));
                     matchDocuments.add((Document) DatabaseManager.getInstance(getContext()).getMatchResults(document.getProperty("match_key").toString(), Utilities.getRedTeamsFromMatchDocument(DatabaseManager.getInstance(getContext()).getMatchFromKey(document.getProperty("match_key").toString()))[2].toString()));
+                    comparisonDocuments.add((Document) DatabaseManager.getInstance(getContext()).getMatchResults(document.getProperty("match_key").toString(), Utilities.getBlueTeamsFromMatchDocument(DatabaseManager.getInstance(getContext()).getMatchFromKey(document.getProperty("match_key").toString()))[0].toString()));
+                    comparisonDocuments.add((Document) DatabaseManager.getInstance(getContext()).getMatchResults(document.getProperty("match_key").toString(), Utilities.getBlueTeamsFromMatchDocument(DatabaseManager.getInstance(getContext()).getMatchFromKey(document.getProperty("match_key").toString()))[1].toString()));
+                    comparisonDocuments.add((Document) DatabaseManager.getInstance(getContext()).getMatchResults(document.getProperty("match_key").toString(), Utilities.getBlueTeamsFromMatchDocument(DatabaseManager.getInstance(getContext()).getMatchFromKey(document.getProperty("match_key").toString()))[2].toString()));
                 } else {
+                    comparisonDocuments.add((Document) DatabaseManager.getInstance(getContext()).getMatchResults(document.getProperty("match_key").toString(), Utilities.getRedTeamsFromMatchDocument(DatabaseManager.getInstance(getContext()).getMatchFromKey(document.getProperty("match_key").toString()))[0].toString()));
+                    comparisonDocuments.add((Document) DatabaseManager.getInstance(getContext()).getMatchResults(document.getProperty("match_key").toString(), Utilities.getRedTeamsFromMatchDocument(DatabaseManager.getInstance(getContext()).getMatchFromKey(document.getProperty("match_key").toString()))[1].toString()));
+                    comparisonDocuments.add((Document) DatabaseManager.getInstance(getContext()).getMatchResults(document.getProperty("match_key").toString(), Utilities.getRedTeamsFromMatchDocument(DatabaseManager.getInstance(getContext()).getMatchFromKey(document.getProperty("match_key").toString()))[2].toString()));
                     matchDocuments.add((Document) DatabaseManager.getInstance(getContext()).getMatchResults(document.getProperty("match_key").toString(), Utilities.getBlueTeamsFromMatchDocument(DatabaseManager.getInstance(getContext()).getMatchFromKey(document.getProperty("match_key").toString()))[0].toString()));
                     matchDocuments.add((Document) DatabaseManager.getInstance(getContext()).getMatchResults(document.getProperty("match_key").toString(), Utilities.getBlueTeamsFromMatchDocument(DatabaseManager.getInstance(getContext()).getMatchFromKey(document.getProperty("match_key").toString()))[1].toString()));
                     matchDocuments.add((Document) DatabaseManager.getInstance(getContext()).getMatchResults(document.getProperty("match_key").toString(), Utilities.getBlueTeamsFromMatchDocument(DatabaseManager.getInstance(getContext()).getMatchFromKey(document.getProperty("match_key").toString()))[2].toString()));
@@ -45,20 +52,33 @@ public class CompDataTeleHumanNetAlgaeMax extends MatchDataView implements IMatc
         }
 
         int i = 0;
-        int tempHumanNet = 0;
+        int humanNet = 0;
+        int algae = 0;
         double max = 0.0;
-        int values = 0;
+        int entries = 0;
         for (Document document : matchDocuments) {
             i++;
             if (document == null || document.getProperty("data") == null) {
                 if (i % 3 == 0) {
-                    if (values != 0) {
-                        double humanNet = (double) tempHumanNet / (double) values;
-                        if (humanNet > max) {
-                            max = humanNet;
+                    if (entries != 0) {
+                        for (int j = i - 3; j < i; j++) {
+                            if (comparisonDocuments.get(j) != null && comparisonDocuments.get(j).getProperty("data") != null) {
+                                Map<String, Object> comparisonData = (Map<String, Object>) comparisonDocuments.get(j).getProperty("data");
+                                if (comparisonData.get("tele_processor") != null) {
+                                    algae += (int) comparisonData.get("tele_processor");
+                                }
+                            }
                         }
-                        tempHumanNet = 0;
-                        values = 0;
+                        double averagedHumanNet = (double) humanNet / (double) entries;
+                        if (algae != 0) {
+                            double humanNetPercentage = averagedHumanNet / (double) algae;
+                            if (humanNetPercentage > max) {
+                                max = humanNetPercentage;
+                            }
+                        }
+                        humanNet = 0;
+                        algae = 0;
+                        entries = 0;
                     }
                 }
                 continue;
@@ -66,33 +86,57 @@ public class CompDataTeleHumanNetAlgaeMax extends MatchDataView implements IMatc
             Map<String, Object> data = (Map<String, Object>) document.getProperty("data");
             if (data.get("human_number") == null || data.get("tele_human_net") == null) {
                 if (i % 3 == 0) {
-                    if (values != 0) {
-                        double humanNet = (double) tempHumanNet / (double) values;
-                        if (humanNet > max) {
-                            max = humanNet;
+                    if (entries != 0) {
+                        for (int j = i - 3; j < i; j++) {
+                            if (comparisonDocuments.get(j) != null && comparisonDocuments.get(j).getProperty("data") != null) {
+                                Map<String, Object> comparisonData = (Map<String, Object>) comparisonDocuments.get(j).getProperty("data");
+                                if (comparisonData.get("tele_processor") != null) {
+                                    algae += (int) comparisonData.get("tele_processor");
+                                }
+                            }
                         }
-                        tempHumanNet = 0;
-                        values = 0;
+                        double averagedHumanNet = (double) humanNet / (double) entries;
+                        if (algae != 0) {
+                            double humanNetPercentage = averagedHumanNet / (double) algae;
+                            if (humanNetPercentage > max) {
+                                max = humanNetPercentage;
+                            }
+                        }
+                        humanNet = 0;
+                        algae = 0;
+                        entries = 0;
                     }
                 }
                 continue;
             }
             if (Objects.equals(data.get("human_number").toString(), teamNumber)) {
-                tempHumanNet += (int) data.get("tele_human_net");
-                values++;
+                humanNet += (int) data.get("tele_human_net");
+                entries++;
             }
             if (i % 3 == 0) {
-                if (values != 0) {
-                    double humanNet = (double) tempHumanNet / (double) values;
-                    if (humanNet > max) {
-                        max = humanNet;
+                if (entries != 0) {
+                    for (int j = i - 3; j < i; j++) {
+                        if (comparisonDocuments.get(j) != null && comparisonDocuments.get(j).getProperty("data") != null) {
+                            Map<String, Object> comparisonData = (Map<String, Object>) comparisonDocuments.get(j).getProperty("data");
+                            if (comparisonData.get("tele_processor") != null) {
+                                algae += (int) comparisonData.get("tele_processor");
+                            }
+                        }
                     }
-                    tempHumanNet = 0;
-                    values = 0;
+                    double averagedHumanNet = (double) humanNet / (double) entries;
+                    if (algae != 0) {
+                        double humanNetPercentage = averagedHumanNet / (double) algae;
+                        if (humanNetPercentage > max) {
+                            max = humanNetPercentage;
+                        }
+                    }
+                    humanNet = 0;
+                    algae = 0;
+                    entries = 0;
                 }
             }
         }
-        setValueText(formatNumberAsString(max), "gray");
+        setValueText(formatPercentageAsString(max), "gray");
     }
 
     public void calculateFromDocument(Document document) {}

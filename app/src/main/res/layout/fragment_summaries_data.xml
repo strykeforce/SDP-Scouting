@@ -103,6 +103,18 @@
             app:explanation="The average amount of coral scored on level four during auto"
             app:label="Average Level Four" />
 
+        <org.wildstang.wildrank.androidv2.views.data.reefscape.comp.CompDataAutoTotalCoralMax
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:explanation="The max amount of coral scored on all levels during auto"
+            app:label="Max Total Coral" />
+
+        <org.wildstang.wildrank.androidv2.views.data.reefscape.comp.CompDataAutoTotalCoralAverage
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:explanation="The average amount of coral scored on all levels during auto"
+            app:label="Average Total Coral" />
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -206,6 +218,18 @@
             app:explanation="The average amount of coral scored on level four during tele"
             app:label="Average Level Four" />
 
+        <org.wildstang.wildrank.androidv2.views.data.reefscape.comp.CompDataTeleTotalCoralMax
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:explanation="The max amount of coral scored on all levels during tele"
+            app:label="Max Total Coral" />
+
+        <org.wildstang.wildrank.androidv2.views.data.reefscape.comp.CompDataTeleTotalCoralAverage
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:explanation="The average amount of coral scored on all levels during tele"
+            app:label="Average Total Coral" />
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -216,13 +240,13 @@
         <org.wildstang.wildrank.androidv2.views.data.reefscape.comp.CompDataTeleHumanNetAlgaeMax
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:explanation="The max amount of algae scored in the net by this team's human player"
+            app:explanation="The max percentage of processed algae scored in the net by this team's human player"
             app:label="Max Human Net" />
 
         <org.wildstang.wildrank.androidv2.views.data.reefscape.comp.CompDataTeleHumanNetAlgaeAverage
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:explanation="The average amount of algae scored in the net by this team's human player"
+            app:explanation="The average percentage of processed algae scored in the net by this team's human player"
             app:label="Average Human Net" />
 
         <TextView

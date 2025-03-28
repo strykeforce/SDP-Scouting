@@ -86,6 +86,7 @@ public class TeamsComparisonMaxAutoCoralFragment extends TeamsComparisonFragment
 
                 if (teamDocuments == null) continue;
 
+                int maxCoral = 0;
                 int maxLevelOne = 0;
                 int maxLevelTwo = 0;
                 int maxLevelThree = 0;
@@ -95,25 +96,19 @@ public class TeamsComparisonMaxAutoCoralFragment extends TeamsComparisonFragment
                     if (data.get("auto_level_one") == null || data.get("auto_level_two") == null || data.get("auto_level_three") == null || data.get("auto_level_four") == null) {
                         continue;
                     }
-                    int levelOne = 0;
-                    int levelTwo = 0;
-                    int levelThree = 0;
-                    int levelFour = 0;
-                    levelOne += (int) data.get("auto_level_one");
-                    levelTwo += (int) data.get("auto_level_two");
-                    levelThree += (int) data.get("auto_level_three");
-                    levelFour += (int) data.get("auto_level_four");
-                    if (maxLevelOne < levelOne) {
-                        maxLevelOne = levelOne;
-                    }
-                    if (maxLevelTwo < levelTwo) {
-                        maxLevelTwo = levelTwo;
-                    }
-                    if (maxLevelThree < levelThree) {
-                        maxLevelThree = levelThree;
-                    }
-                    if (maxLevelFour < levelFour) {
-                        maxLevelFour = levelFour;
+
+                    int coral = 0;
+                    coral += (int) data.get("auto_level_one");
+                    coral += (int) data.get("auto_level_two");
+                    coral += (int) data.get("auto_level_three");
+                    coral += (int) data.get("auto_level_four");
+
+                    if (coral > maxCoral || (coral == maxCoral && ((int) data.get("auto_level_four") > maxLevelFour || ((int) data.get("auto_level_four") == maxLevelFour && (int) data.get("auto_level_three") > maxLevelThree) || ((int) data.get("auto_level_four") == maxLevelFour && (int) data.get("auto_level_three") == maxLevelThree && (int) data.get("auto_level_two") > maxLevelTwo)))) {
+                        maxCoral = coral;
+                        maxLevelOne = (int) data.get("auto_level_one");
+                        maxLevelTwo = (int) data.get("auto_level_two");
+                        maxLevelThree = (int) data.get("auto_level_three");
+                        maxLevelFour = (int) data.get("auto_level_four");
                     }
                 }
 

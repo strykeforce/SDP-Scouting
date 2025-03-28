@@ -92,18 +92,11 @@ public class TeamsComparisonAverageBargeFragment extends TeamsComparisonFragment
                     if (data.get("barge") == null) {
                         continue;
                     }
-//                    if (data.get("barge").equals("Parked")) {
-//                        barge += 2;
-//                    } else if (data.get("barge").equals("Shallow Cage (High)")) {
-//                        barge += 6;
-//                    } else if (data.get("barge").equals("Deep Cage (Low)")) {
-//                        barge += 12;
-//                    }
-                    if (data.get("barge").equals("2. Parked")) {
+                    if (data.get("barge").equals("Parked")) {
                         barge += 2;
-                    } else if (data.get("barge").equals("3. Shallow Cage")) {
+                    } else if (data.get("barge").equals("Shallow Cage (High)")) {
                         barge += 6;
-                    } else if (data.get("barge").equals("4. Deep Cage")) {
+                    } else if (data.get("barge").equals("Deep Cage (Low)")) {
                         barge += 12;
                     }
                 }

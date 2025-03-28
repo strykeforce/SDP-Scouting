@@ -86,29 +86,46 @@ public class TeamsComparisonAverageCombinedCoralFragment extends TeamsComparison
 
                 if (teamDocuments == null) continue;
 
-                int levelOne = 0;
-                int levelTwo = 0;
-                int levelThree = 0;
-                int levelFour = 0;
+                int coral = 0;
+                float levelOnePercentage = 0;
+                float levelTwoPercentage = 0;
+                float levelThreePercentage = 0;
+                float levelFourPercentage = 0;
                 for (Document document : teamDocuments) {
                     Map<String, Object> data = (Map<String, Object>) document.getProperty("data");
                     if (data.get("auto_level_one") == null || data.get("auto_level_two") == null || data.get("auto_level_three") == null || data.get("auto_level_four") == null || data.get("tele_level_one") == null || data.get("tele_level_two") == null || data.get("tele_level_three") == null || data.get("tele_level_four") == null) {
                         continue;
                     }
-                    levelOne += (int) data.get("auto_level_one");
-                    levelTwo += (int) data.get("auto_level_two");
-                    levelThree += (int) data.get("auto_level_three");
-                    levelFour += (int) data.get("auto_level_four");
-                    levelOne += (int) data.get("tele_level_one");
-                    levelTwo += (int) data.get("tele_level_two");
-                    levelThree += (int) data.get("tele_level_three");
-                    levelFour += (int) data.get("tele_level_four");
+
+                    int match = 0;
+                    match += (int) data.get("auto_level_one");
+                    match += (int) data.get("auto_level_two");
+                    match += (int) data.get("auto_level_three");
+                    match += (int) data.get("auto_level_four");
+                    match += (int) data.get("tele_level_one");
+                    match += (int) data.get("tele_level_two");
+                    match += (int) data.get("tele_level_three");
+                    match += (int) data.get("tele_level_four");
+                    coral += match;
+
+                    if (match != 0) {
+                        levelOnePercentage += ((float) (int) data.get("auto_level_one") + (float) (int) data.get("tele_level_one")) / (float) match;
+                        levelTwoPercentage += ((float) (int) data.get("auto_level_two") + (float) (int) data.get("tele_level_two")) / (float) match;
+                        levelThreePercentage += ((float) (int) data.get("auto_level_three") + (float) (int) data.get("tele_level_three")) / (float) match;
+                        levelFourPercentage += ((float) (int) data.get("auto_level_four") + (float) (int) data.get("tele_level_four")) / (float) match;
+                    }
                 }
 
-                float averageLevelOne = (float) levelOne / (float) teamDocuments.size();
-                float averageLevelTwo = (float) levelTwo / (float) teamDocuments.size();
-                float averageLevelThree = (float) levelThree / (float) teamDocuments.size();
-                float averageLevelFour = (float) levelFour / (float) teamDocuments.size();
+                float averageCoral = (float) coral / (float) teamDocuments.size();
+                float averageLevelOnePercentage = levelOnePercentage / (float) teamDocuments.size();
+                float averageLevelTwoPercentage = levelTwoPercentage / (float) teamDocuments.size();
+                float averageLevelThreePercentage = levelThreePercentage / (float) teamDocuments.size();
+                float averageLevelFourPercentage = levelFourPercentage / (float) teamDocuments.size();
+
+                float averageLevelOne = averageLevelOnePercentage * averageCoral;
+                float averageLevelTwo = averageLevelTwoPercentage * averageCoral;
+                float averageLevelThree = averageLevelThreePercentage * averageCoral;
+                float averageLevelFour = averageLevelFourPercentage * averageCoral;
 
                 if (spinner.getSelectedItem().equals("Team Number")) {
                     barValues.add(new float[] {averageLevelOne, averageLevelTwo, averageLevelThree, averageLevelFour});
