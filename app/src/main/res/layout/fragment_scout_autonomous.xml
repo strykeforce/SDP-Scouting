@@ -129,7 +129,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
             android:layout_marginEnd="530dp"
-            android:layout_marginTop="140dp"
+            android:layout_marginTop="80dp"
             android:textSize="35sp"
             android:textColor="@color/white"
             android:text="Upper Algae Removed" />
@@ -140,7 +140,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
             android:layout_marginEnd="525dp"
-            android:layout_marginTop="195dp"
+            android:layout_marginTop="130dp"
             android:background="#D9D9D9"
             android:orientation="vertical"
             app:key="auto_upper_removed"
@@ -152,7 +152,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
             android:layout_marginEnd="525dp"
-            android:layout_marginTop="305dp"
+            android:layout_marginTop="220dp"
             android:background="#D9D9D9"
             android:orientation="vertical"
             app:key="auto_lower_removed"
@@ -164,10 +164,33 @@
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
             android:layout_marginEnd="530dp"
-            android:layout_marginTop="392dp"
+            android:layout_marginTop="307dp"
             android:textSize="35sp"
             android:textColor="@color/white"
             android:text="Lower Algae Removed" />
+
+        <org.wildstang.wildrank.androidv2.views.scouting.ScoutingCounterView
+            android:id="@+id/RobotNetCounter"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="525dp"
+            android:layout_marginTop="400dp"
+            android:background="#D9D9D9"
+            android:orientation="vertical"
+            app:key="auto_robot_net"
+            />
+
+        <TextView
+            android:id="@+id/RobotNetLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="610dp"
+            android:layout_marginTop="480dp"
+            android:textSize="35sp"
+            android:textColor="@color/white"
+            android:text="Robot Net" />
 
         <org.wildstang.wildrank.androidv2.views.scouting.ScoutingCheckboxView
             android:id="@+id/exitcheckbox"

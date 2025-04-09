@@ -89,11 +89,11 @@ public class TeamsComparisonMaxNetFragment extends TeamsComparisonFragment {
                 int maxNet = 0;
                 for (Document document : teamDocuments) {
                     Map<String, Object> data = (Map<String, Object>) document.getProperty("data");
-                    if (data.get("tele_robot_net") == null) {
+                    if (data.get("auto_robot_net") == null || data.get("tele_robot_net") == null) {
                         continue;
                     }
-                    if (maxNet < (int) data.get("tele_robot_net")) {
-                        maxNet = (int) data.get("tele_robot_net");
+                    if (maxNet < (int) data.get("auto_robot_net") + (int) data.get("tele_robot_net")) {
+                        maxNet = (int) data.get("auto_robot_net") + (int) data.get("tele_robot_net");
                     }
                 }
 

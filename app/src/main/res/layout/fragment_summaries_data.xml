@@ -31,6 +31,18 @@
             app:explanation="How often the robot exited the starting zone during auto"
             app:label="Exited Starting Zone" />
 
+        <org.wildstang.wildrank.androidv2.views.data.reefscape.comp.CompDataAutoRobotNetAlgaeMax
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:explanation="The max amount of algae scored in the net by the robot during auto"
+            app:label="Max Net" />
+
+        <org.wildstang.wildrank.androidv2.views.data.reefscape.comp.CompDataAutoRobotNetAlgaeAverage
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:explanation="The average amount of algae scored in the net by the robot during auto"
+            app:label="Average Net" />
+
         <org.wildstang.wildrank.androidv2.views.data.reefscape.comp.CompDataAutoUpperAlgaeRemovedMax
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -137,13 +149,13 @@
         <org.wildstang.wildrank.androidv2.views.data.reefscape.comp.CompDataTeleRobotNetAlgaeMax
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:explanation="The max amount of algae scored in the net by the robot"
+            app:explanation="The max amount of algae scored in the net by the robot during tele"
             app:label="Max Net" />
 
         <org.wildstang.wildrank.androidv2.views.data.reefscape.comp.CompDataTeleRobotNetAlgaeAverage
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:explanation="The average amount of algae scored in the net by the robot"
+            app:explanation="The average amount of algae scored in the net by the robot during tele"
             app:label="Average Net" />
 
         <org.wildstang.wildrank.androidv2.views.data.reefscape.comp.CompDataTeleUpperAlgaeRemovedMax

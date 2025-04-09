@@ -30,6 +30,12 @@
             app:explanation="Whether or not the robot exited the starting zone during auto"
             app:label="Exited Started Zone" />
 
+        <org.wildstang.wildrank.androidv2.views.data.reefscape.match.MatchDataAutoRobotNetAlgae
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:explanation="The amount of algae scored in the net by the robot during auto"
+            app:label="Net" />
+
         <org.wildstang.wildrank.androidv2.views.data.reefscape.match.MatchDataAutoUpperAlgaeRemoved
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -82,7 +88,7 @@
         <org.wildstang.wildrank.androidv2.views.data.reefscape.match.MatchDataTeleRobotNetAlgae
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:explanation="The amount of algae scored in the net by the robot"
+            app:explanation="The amount of algae scored in the net by the robot during tele"
             app:label="Net" />
 
         <org.wildstang.wildrank.androidv2.views.data.reefscape.match.MatchDataTeleUpperAlgaeRemoved

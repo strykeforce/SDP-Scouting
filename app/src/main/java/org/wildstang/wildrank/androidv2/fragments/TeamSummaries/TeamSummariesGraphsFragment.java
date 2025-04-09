@@ -54,6 +54,9 @@ public class TeamSummariesGraphsFragment extends TeamSummariesFragment {
             if (spinner.getSelectedItem().equals("Removed Algae")) {
                 for (Document document : matchDocuments) {
                     Map<String, Object> data = (Map<String, Object>) document.getProperty("data");
+                    if (data.get("auto_upper_removed") == null || data.get("auto_lower_removed") == null || data.get("tele_upper_removed") == null || data.get("tele_lower_removed") == null) {
+                        continue;
+                    }
 
                     int algae = 0;
                     algae += (int) data.get("auto_upper_removed");
@@ -92,6 +95,9 @@ public class TeamSummariesGraphsFragment extends TeamSummariesFragment {
             } else if (spinner.getSelectedItem().equals("Processor")) {
                 for (Document document : matchDocuments) {
                     Map<String, Object> data = (Map<String, Object>) document.getProperty("data");
+                    if (data.get("tele_processor") == null) {
+                        continue;
+                    }
 
                     String mNum = (String) document.getProperty("match_key");
                     int start = 0;
@@ -124,6 +130,9 @@ public class TeamSummariesGraphsFragment extends TeamSummariesFragment {
             } else if (spinner.getSelectedItem().equals("Net")) {
                 for (Document document : matchDocuments) {
                     Map<String, Object> data = (Map<String, Object>) document.getProperty("data");
+                    if (data.get("auto_robot_net") == null || data.get("tele_robot_net") == null) {
+                        continue;
+                    }
 
                     String mNum = (String) document.getProperty("match_key");
                     int start = 0;
@@ -134,19 +143,23 @@ public class TeamSummariesGraphsFragment extends TeamSummariesFragment {
                         }
                     }
 
-                    max.add((float) (int) data.get("tele_robot_net"));
+                    int net = 0;
+                    net += (int) data.get("auto_robot_net");
+                    net += (int) data.get("tele_robot_net");
+
+                    max.add((float) net);
 
                     if (xAxisLabels.size() == 0) {
-                        barValues.add((float) (int) data.get("tele_robot_net"));
+                        barValues.add((float) net);
                         xAxisLabels.add(mNum.substring(start));
                     } else {
                         for (int k = 0; k < xAxisLabels.size(); k++) {
                             if (Integer.valueOf(mNum.substring(start)) < Integer.valueOf(xAxisLabels.get(k))) {
-                                barValues.add(k, (float) (int) data.get("tele_robot_net"));
+                                barValues.add(k, (float) net);
                                 xAxisLabels.add(k, mNum.substring(start));
                                 break;
                             } else if (k == xAxisLabels.size() - 1) {
-                                barValues.add((float) (int) data.get("tele_robot_net"));
+                                barValues.add((float) net);
                                 xAxisLabels.add(mNum.substring(start));
                                 break;
                             }
@@ -156,6 +169,9 @@ public class TeamSummariesGraphsFragment extends TeamSummariesFragment {
             } else if (spinner.getSelectedItem().equals("Auto Coral")) {
                 for (Document document : matchDocuments) {
                     Map<String, Object> data = (Map<String, Object>) document.getProperty("data");
+                    if (data.get("auto_level_one") == null || data.get("auto_level_two") == null || data.get("auto_level_three") == null || data.get("auto_level_four") == null) {
+                        continue;
+                    }
 
                     String mNum = (String) document.getProperty("match_key");
                     int start = 0;
@@ -188,6 +204,9 @@ public class TeamSummariesGraphsFragment extends TeamSummariesFragment {
             } else if (spinner.getSelectedItem().equals("Tele Coral")) {
                 for (Document document : matchDocuments) {
                     Map<String, Object> data = (Map<String, Object>) document.getProperty("data");
+                    if (data.get("tele_level_one") == null || data.get("tele_level_two") == null || data.get("tele_level_three") == null || data.get("tele_level_four") == null) {
+                        continue;
+                    }
 
                     String mNum = (String) document.getProperty("match_key");
                     int start = 0;
@@ -220,6 +239,9 @@ public class TeamSummariesGraphsFragment extends TeamSummariesFragment {
             } else if (spinner.getSelectedItem().equals("Combined Coral")) {
                 for (Document document : matchDocuments) {
                     Map<String, Object> data = (Map<String, Object>) document.getProperty("data");
+                    if (data.get("auto_level_one") == null || data.get("auto_level_two") == null || data.get("auto_level_three") == null || data.get("auto_level_four") == null || data.get("tele_level_one") == null || data.get("tele_level_two") == null || data.get("tele_level_three") == null || data.get("tele_level_four") == null) {
+                        continue;
+                    }
 
                     String mNum = (String) document.getProperty("match_key");
                     int start = 0;
@@ -252,6 +274,9 @@ public class TeamSummariesGraphsFragment extends TeamSummariesFragment {
             } else if (spinner.getSelectedItem().equals("Barge")) {
                 for (Document document : matchDocuments) {
                     Map<String, Object> data = (Map<String, Object>) document.getProperty("data");
+                    if (data.get("barge") == null) {
+                        continue;
+                    }
 
                     String mNum = (String) document.getProperty("match_key");
                     int start = 0;
@@ -323,6 +348,9 @@ public class TeamSummariesGraphsFragment extends TeamSummariesFragment {
             } else if (spinner.getSelectedItem().equals("Auto Points")) {
                 for (Document document : matchDocuments) {
                     Map<String, Object> data = (Map<String, Object>) document.getProperty("data");
+                    if (data.get("auto_exit") == null || data.get("auto_level_one") == null || data.get("auto_level_two") == null || data.get("auto_level_three") == null || data.get("auto_level_four") == null) {
+                        continue;
+                    }
 
                     int points = 0;
                     points += 3 * ((boolean) data.get("auto_exit") ? 1 : 0);
@@ -362,6 +390,9 @@ public class TeamSummariesGraphsFragment extends TeamSummariesFragment {
             } else if (spinner.getSelectedItem().equals("Tele Points")) {
                 for (Document document : matchDocuments) {
                     Map<String, Object> data = (Map<String, Object>) document.getProperty("data");
+                    if (data.get("tele_level_one") == null || data.get("tele_level_two") == null || data.get("tele_level_three") == null || data.get("tele_level_four") == null || data.get("tele_processor") == null || data.get("tele_robot_net") == null) {
+                        continue;
+                    }
 
                     int points = 0;
                     points += 2 * (int) data.get("tele_level_one");
@@ -402,6 +433,9 @@ public class TeamSummariesGraphsFragment extends TeamSummariesFragment {
             } else if (spinner.getSelectedItem().equals("Total Points")) {
                 for (Document document : matchDocuments) {
                     Map<String, Object> data = (Map<String, Object>) document.getProperty("data");
+                    if (data.get("auto_exit") == null || data.get("auto_level_one") == null || data.get("auto_level_two") == null || data.get("auto_level_three") == null || data.get("auto_level_four") == null || data.get("tele_level_one") == null || data.get("tele_level_two") == null || data.get("tele_level_three") == null || data.get("tele_level_four") == null || data.get("tele_processor") == null || data.get("tele_robot_net") == null || data.get("barge") == null) {
+                        continue;
+                    }
 
                     int points = 0;
                     points += 3 * ((boolean) data.get("auto_exit") ? 1 : 0);
