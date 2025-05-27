@@ -86,10 +86,12 @@ public class ScoutMatchActivity extends AppCompatActivity {
 
         if (team.contains("red")) {
             alliance.setText("Red");
+            allianceColor = "red";
             toolbar.setBackgroundColor(getResources().getColor(R.color.material_red));
             tabs.setBackgroundColor(getResources().getColor(R.color.material_red));
         } else {
             alliance.setText("Blue");
+            allianceColor = "blue";
             toolbar.setBackgroundColor(getResources().getColor(R.color.material_blue));
             tabs.setBackgroundColor(getResources().getColor(R.color.material_blue));
         }

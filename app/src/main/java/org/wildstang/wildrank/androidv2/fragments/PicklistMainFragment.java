@@ -186,8 +186,10 @@ public class PicklistMainFragment extends Fragment {
 
     @Override
     public void onDestroy() {
-        ((PicklistFragmentPagerAdapter) pager.getAdapter()).getItem(0).onDestroy();
-        ((PicklistFragmentPagerAdapter) pager.getAdapter()).getItem(1).onDestroy();
+        if (pager != null) {
+            ((PicklistFragmentPagerAdapter) pager.getAdapter()).getItem(0).onDetach();
+            ((PicklistFragmentPagerAdapter) pager.getAdapter()).getItem(1).onDetach();
+        }
         super.onDestroy();
     }
 }

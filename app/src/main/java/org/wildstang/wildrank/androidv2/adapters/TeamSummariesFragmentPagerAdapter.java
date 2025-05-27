@@ -16,12 +16,11 @@ import java.util.List;
 
 public class TeamSummariesFragmentPagerAdapter extends FragmentStatePagerAdapter {
 
-    static final int NUM_FRAGMENTS = 5;
+    static final int NUM_FRAGMENTS = 4;
 
     private TeamSummariesInfoFragment infoFragment;
     private TeamSummariesDataFragment dataFragment;
     private TeamSummariesGraphsFragment graphsFragment;
-    private TeamSummariesAutosFragment autosFragment;
     private TeamSummariesRawDataFragment rawDataFragment;
 
     public TeamSummariesFragmentPagerAdapter(FragmentManager fm) {
@@ -33,7 +32,6 @@ public class TeamSummariesFragmentPagerAdapter extends FragmentStatePagerAdapter
         infoFragment = new TeamSummariesInfoFragment();
         dataFragment = new TeamSummariesDataFragment();
         graphsFragment = new TeamSummariesGraphsFragment();
-        autosFragment = new TeamSummariesAutosFragment();
         rawDataFragment = new TeamSummariesRawDataFragment();
     }
 
@@ -47,8 +45,6 @@ public class TeamSummariesFragmentPagerAdapter extends FragmentStatePagerAdapter
             case 2:
                 return graphsFragment;
             case 3:
-                return autosFragment;
-            case 4:
                 return rawDataFragment;
             default:
                 return null;
@@ -75,8 +71,6 @@ public class TeamSummariesFragmentPagerAdapter extends FragmentStatePagerAdapter
             case 2:
                 return "Graphs";
             case 3:
-                return "Unique Autos";
-            case 4:
                 return "Raw Data";
             default:
                 return "ERROR INVALID POSITION";
@@ -87,7 +81,6 @@ public class TeamSummariesFragmentPagerAdapter extends FragmentStatePagerAdapter
         infoFragment.acceptNewTeamData(teamKey, teamDoc, pitDoc, matchDocs);
         dataFragment.acceptNewTeamData(teamKey, teamDoc, pitDoc, matchDocs);
         graphsFragment.acceptNewTeamData(teamKey, teamDoc, pitDoc, matchDocs);
-        autosFragment.acceptNewTeamData(teamKey, teamDoc, pitDoc, matchDocs);
         rawDataFragment.acceptNewTeamData(teamKey, teamDoc, pitDoc, matchDocs);
     }
 

@@ -32,7 +32,6 @@ import org.wildstang.wildrank.androidv2.fragments.PitScoutingMainFragment;
 import org.wildstang.wildrank.androidv2.fragments.ScoutersFragment;
 import org.wildstang.wildrank.androidv2.fragments.TeamSummaries.TeamSummariesMainFragment;
 import org.wildstang.wildrank.androidv2.fragments.TeamsComparison.TeamsComparisonMainFragment;
-import org.wildstang.wildrank.androidv2.fragments.WhiteboardFragment;
 import org.wildstang.wildrank.androidv2.models.UserModel;
 
 import java.util.List;
@@ -209,10 +208,6 @@ public class HomeActivity extends AppCompatActivity {
                 // Scouters
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new ScoutersFragment()).commit();
                 break;
-            case WHITEBOARD:
-                // Whiteboard
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new WhiteboardFragment()).commit();
-                break;
             case TEAM_SUMMARIES:
                 // Team Summaries
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new TeamSummariesMainFragment()).commit();
@@ -275,7 +270,6 @@ public class HomeActivity extends AppCompatActivity {
         PIT_SCOUTING(R.string.mode_pit_scouting),
         NOTES(R.string.mode_notes),
         SCOUTERS(R.string.mode_scouters),
-        WHITEBOARD(R.string.mode_whiteboard),
         TEAM_SUMMARIES(R.string.mode_team_summaries),
         TEAMS_COMPARISON(R.string.mode_teams_comparison),
         PICKLIST(R.string.mode_picklist);

@@ -192,9 +192,8 @@ public class PicklistFirstFragment extends PicklistMainFragment {
         super.adjustTint(list);
     }
 
-    @SuppressLint("MissingSuperCall")
     @Override
-    public void onDestroy() {
+    public void onDetach() {
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getActivity());
         SharedPreferences.Editor editor = prefs.edit();
 
@@ -228,5 +227,7 @@ public class PicklistFirstFragment extends PicklistMainFragment {
         }
 
         editor.commit();
+
+        super.onDetach();
     }
 }

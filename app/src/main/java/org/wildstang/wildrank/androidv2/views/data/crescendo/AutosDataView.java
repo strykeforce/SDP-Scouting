@@ -11,7 +11,6 @@ import android.view.View;
 import com.couchbase.lite.Document;
 
 import org.wildstang.wildrank.androidv2.interfaces.IMatchDataView;
-import org.wildstang.wildrank.androidv2.models.CycleModel;
 import org.wildstang.wildrank.androidv2.views.data.MatchDataView;
 
 import java.util.ArrayList;
