@@ -51,7 +51,7 @@
                 android:layout_gravity="center_vertical"
                 android:layout_margin="16dp"
                 android:scaleType="centerInside"
-                android:src="@drawable/dozer" />
+                android:src="@drawable/no_image_available" />
         </LinearLayout>
 
         <LinearLayout

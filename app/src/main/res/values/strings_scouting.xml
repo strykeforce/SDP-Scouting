@@ -3,11 +3,6 @@
 
     <!-- Year-specific strings that are used in the scouting UI should go here -->
 
-    <string-array name="auto_start_loc">
-        <item>1</item>
-        <item>2</item>
-    </string-array>
-
     <string-array name="staging">
         <item>-</item>
         <item>Not Parked</item>
@@ -18,30 +13,6 @@
 
     <string-array name="human_numbers">
         <item>-</item>
-    </string-array>
-
-    <string-array name="traps">
-        <item>\t\t0\t\t</item>
-        <item>\t\t1\t\t</item>
-        <item>\t\t2\t\t</item>
-        <item>\t\t3\t\t</item>
-    </string-array>
-
-    <string-array name="auto_step">
-        <item>0</item>
-        <item>1</item>
-        <item>2</item>
-        <item>3</item>
-        <item>4</item>
-    </string-array>
-
-    <string-array name="rankings">
-        <item>0</item>
-        <item>1</item>
-        <item>2</item>
-        <item>3</item>
-        <item>4</item>
-        <item>5</item>
     </string-array>
 
     <string-array name="Endgame">
@@ -66,13 +37,6 @@
         <item>Level 2</item>
         <item>Level 3</item>
         <item>Level 4</item>
-    </string-array>
-
-    <string-array name="player_stations">
-        <item>Left</item>
-        <item>Right</item>
-        <item>Both</item>
-        <item>None</item>
     </string-array>
 
     <string-array name="Highest_Auto">
@@ -126,10 +90,5 @@
         <item>Ascending</item>
     </string-array>
 
-
-    <string name="autonomous_explanation">This Screen is for Autonomous Game Actions Only.</string>
-    <string name="cycle">Single Shot Cycle</string>
     <string name="button_finish">Finish</string>
-    <string name="button_finish_cycle">Finish shot</string>
-    <string name="cycle_help">Help</string>
 </resources>
